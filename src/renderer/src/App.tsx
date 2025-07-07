@@ -9,13 +9,13 @@ import { useSelector } from 'react-redux'
 
 function App(): React.JSX.Element {
   const userData = useSelector((state: any) => state.loginAccess.validationAccess);
-
+  const userId = useSelector((state: any) => state.loginAccess.userLogin?.id_usuario);
   const sseRef = useRef<EventSource | null>(null);
 
   useEffect(() => {
     if (!userData || sseRef.current) return;
 
-    const source = new EventSource('/api/eventos-login');
+    const source = new EventSource(`/api/eventos-login?id_usuario=${userId}`);
     sseRef.current = source;
 
     source.onerror = (err) => {
@@ -30,14 +30,6 @@ function App(): React.JSX.Element {
     };
   }, [userData]);
 
-  // const cerrarSesion = async () => {
-  //   // 1. Cerrar SSE
-  //   if (sseRef.current) {
-  //     sseRef.current.close();
-  //     sseRef.current = null;
-  //     console.log('🔌 SSE cerrada manualmente');
-  //   }
-  // }
 
   return (
     <>

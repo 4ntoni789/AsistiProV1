@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 function Cargos(props) {
   const userData = useSelector((state: any) => state.loginAccess.validationAccess);
+  const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
   const spam = useSelector((state: any) => state.menuAccions.errorSpam);
   const [userCargo, setUserCargo] = useState<[object]>();
   const dispatch = useDispatch();
