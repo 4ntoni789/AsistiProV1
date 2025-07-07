@@ -1,0 +1,13 @@
+.App__init__encabezado {
+  width: 95%;
+  margin: auto;
+  display: flex;
+}
+.App__init__encabezado__btnEmpleados {
+  width: 45%;
+}
+.App__init__encabezado__btnEmpleados button {
+  margin: 0 5px 0 5px;
+}
+
+/*# sourceMappingURL=empleados.css.map */

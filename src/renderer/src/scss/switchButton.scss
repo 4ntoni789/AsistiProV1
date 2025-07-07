@@ -1,0 +1,109 @@
+.toggle {
+    background: #740000;
+    width: 70px;
+    height: 40px;
+    padding: 5px;
+    border-radius: 50px;
+    margin: auto;
+    // border: 1px solid #000;
+    transition: all .5s;
+
+    &__active {
+        background: #54d621;
+        width: 70px;
+        height: 40px;
+        padding: 5px;
+        border-radius: 50px;
+        margin: auto;
+        // border: 1px solid #000;
+        transition: all .5s;
+
+    }
+
+    &__label {
+        width: 40px !important;
+        height: 40px !important;
+        background: #fff;
+        display: flex;
+        cursor: pointer;
+        border-radius: 60px;
+        margin-top: -5px;
+        margin-left: -5px;
+        transition: all 0.25s ease 0s;
+
+
+        &__active {
+            width: 40px !important;
+            height: 40px !important;
+            display: flex;
+            cursor: pointer;
+            border-radius: 60px;
+            margin-top: -5px;
+            margin-left: 28px;
+            background: #ffffff;
+            transition: all 0.25s ease 0s;
+        }
+    }
+
+    &__input {
+        display: none;
+
+    }
+
+
+}
+
+.disable{
+       background: #ccc;
+    width: 70px;
+    height: 40px;
+    padding: 5px;
+    border-radius: 50px;
+    margin: auto;
+    // border: 1px solid #000;
+    transition: all .5s;
+
+    &__active {
+        background: #54d621;
+        width: 70px;
+        height: 40px;
+        padding: 5px;
+        border-radius: 50px;
+        margin: auto;
+        // border: 1px solid #000;
+        transition: all .5s;
+
+    }
+
+    &__label {
+        width: 40px;
+        height: 40px;
+        background: #fff;
+        display: flex;
+        cursor: pointer;
+        border-radius: 50px;
+        margin-top: -5px;
+        margin-left: -5px;
+        transition: all 0.25s ease 0s;
+
+
+        &__active {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            cursor: pointer;
+            border-radius: 50px;
+            margin-top: -5px;
+            margin-left: -5px;
+            margin-left: 25px;
+            background: rgb(255, 255, 255);
+            transition: all 0.25s ease 0s;
+        }
+    }
+
+    &__input {
+        display: none;
+
+    }
+
+}

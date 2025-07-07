@@ -1,0 +1,63 @@
+.App__dashboard__contPageOutlet__user {
+    background-color: #333;
+    border-radius: 5px;
+    width: 20%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: aparecer 1s forwards;
+
+    hr{
+        width: 50%;
+        
+    }
+
+    &__view {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-weight: 600;
+
+        &__userLenght {
+            h2 {
+                width: 60px;
+                height: 60px;
+                font-size: 35px;
+                background-color: #dd8702;
+                text-align: center;
+                border-radius: 100%;
+            }
+        }
+    }
+    &__opcions{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: first baseline;
+        span{
+            b{
+                color: #dd8702;
+            }
+        }
+        button{
+            width: 100%;
+            margin-top: 10px;
+        }
+    }
+}
+
+
+@keyframes aparecer {
+    0% {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    100% {
+        opacity: 1;
+        visibility: visible;
+    }
+}

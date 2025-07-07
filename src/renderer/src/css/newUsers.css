@@ -1,0 +1,344 @@
+@charset "UTF-8";
+.App__dashboard__contPageOutlet__PageUsers__newUser {
+  background-color: rgba(51, 51, 51, 0.8470588235);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  left: 0;
+  top: 0;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form {
+  position: relative;
+  width: 40%;
+  min-height: 40%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #222;
+  border-radius: 10px;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form__contInputs {
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form__contInputs__check {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form__contInputs__check label {
+  display: inline-block;
+  width: 30px !important;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form__contInputs__contForm {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form__contInputs__contForm__showPass {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form__contInputs__contForm__showPass input {
+  width: 100% !important;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form__contInputs__contForm__showPass svg {
+  position: absolute;
+  cursor: pointer;
+  transition: all 0.5s;
+  color: #dd8702;
+  right: 10px;
+  top: 10px;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form__contInputs__contForm__showPass svg:hover {
+  color: #dd8702;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form__contInputs__contForm__showPassLogin {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form__contInputs__contForm__showPassLogin input {
+  width: 100% !important;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form__contInputs__contForm__showPassLogin svg {
+  position: absolute;
+  cursor: pointer;
+  transition: all 0.5s;
+  color: #dd8702;
+  right: 5px;
+  top: 5px;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form__contInputs__contForm__showPassLogin svg:hover {
+  color: #dd8702;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form__contInputs__contForm__passInvalid {
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  height: 5px;
+  transition: all 0.5s;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form__contInputs__contForm__passInvalid__active {
+  text-align: center;
+  opacity: 1;
+  visibility: visible;
+  height: 50px;
+  transition: all 0.5s;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form__contInputs__contForm__passInvalid__active span {
+  font-weight: 600;
+  color: #c52929;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form__contInputs h2 {
+  font-weight: 600;
+  display: inline-block;
+  height: 500px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100% !important;
+  border-radius: 0px !important;
+  margin-bottom: 20px !important;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form__contInputs__title {
+  background-color: #222 !important;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form__dataUser {
+  padding-left: 10px;
+  width: 45%;
+  height: 100%;
+  background-color: #dd8702;
+  border-radius: 10px 0px 10px 10px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form__dataUser span {
+  width: 100% !important;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form__dataUser b {
+  font-weight: 600;
+  text-decoration: underline;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form__dataUser__contcheck {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form__dataUser__contcheck__checkDia {
+  display: flex;
+  width: 50%;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form__dataUser__contcheck__checkDia label {
+  display: inline-block !important;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form__dataUser__contcheck__checkDia input[type=checkbox] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 35px;
+  height: 10px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  position: relative;
+  outline: none;
+  /* Quita el borde azul al hacer focus */
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form__dataUser__contcheck__checkDia input[type=checkbox]:checked {
+  background-color: #4CAF50;
+  border-color: #4CAF50;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form__dataUser__contcheck__checkDia input[type=checkbox]:checked::before {
+  content: "✓";
+  /* Símbolo de verificación */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 16px;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form__dataUser__contcheck__checkDia input[type=checkbox]:focus {
+  border-color: #ccc;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form h2 {
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100% !important;
+  border-radius: 0px 0px 10px 10px !important;
+  margin-bottom: 20px !important;
+  background-color: #dd8702;
+  height: 50px !important;
+  text-align: center !important;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form label {
+  width: 60% !important;
+  display: flex;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form label input {
+  width: 10%;
+  margin: 0 10px 0 0;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form input {
+  width: 60%;
+  border-radius: 5px;
+  border: 2px solid #fff;
+  margin-bottom: 5px;
+  min-height: 35px;
+  outline: none;
+  transition: all 0.5s;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form input:focus {
+  border-color: #dd8702;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form input:disabled {
+  border: 2px solid #ccc;
+  background-color: #ccc;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form select {
+  width: 60%;
+  border-radius: 5px;
+  border: 2px solid #fff;
+  margin-bottom: 10px;
+  min-height: 35px !important;
+  outline: none;
+  transition: all 0.5s;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form select:focus {
+  border-color: #dd8702;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form button {
+  width: 60%;
+  height: 35px;
+  cursor: pointer;
+  border-radius: 10px;
+  border: none;
+  margin: 10px 0 10px 0;
+  transition: all 0.5s;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form button:hover {
+  background-color: #dd8702;
+  color: #fff;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form__close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form__close svg {
+  font-size: 30px;
+  cursor: pointer;
+  transition: color 0.5s;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form__contratoNotFound {
+  height: 100%;
+  width: 60%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form__contratoNotFound__contInputs {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form__contratoNotFound__contInputs__check {
+  display: flex;
+  width: 80%;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form__contratoNotFound__contInputs__active {
+  height: 90%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.5s;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form__contratoNotFound__contInputs__contBtn {
+  width: 30%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form__contratoNotFound__contInputs__contBtn svg {
+  cursor: pointer;
+  font-size: 30px;
+  transition: color 0.5s;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form__contratoNotFound__contInputs__contBtn svg:hover {
+  color: #dd8702;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form__contratoNotFound__contInputs__contBtn span {
+  font-size: 25px;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__active {
+  background-color: rgba(51, 51, 51, 0.8470588235);
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  opacity: 1;
+  visibility: visible;
+  z-index: 100;
+  transition: all 0.5s;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__active__btnRemove {
+  cursor: pointer;
+  border: none !important;
+  color: #fff;
+  border-radius: 10px !important;
+  background-color: #dd8702;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__active__btnRemove:hover {
+  background-color: #f30000;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__active__btnSubmit {
+  cursor: pointer;
+  border: none !important;
+  color: #fff;
+  border-radius: 10px !important;
+  background-color: #dd8702;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__active__btnSubmit:hover {
+  background-color: #6ef71f;
+}
+
+/*# sourceMappingURL=newUsers.css.map */

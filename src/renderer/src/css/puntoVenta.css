@@ -1,0 +1,32 @@
+.App__init__puntoVenta {
+  width: 95%;
+  animation: aparecer 1s forwards;
+}
+.App__init__puntoVenta__encabezado {
+  width: 100%;
+  margin: auto;
+  display: flex;
+}
+.App__init__puntoVenta__encabezado h2 {
+  width: 50%;
+}
+.App__init__puntoVenta__encabezado__btnEmpleados {
+  width: 50%;
+  text-align: end;
+}
+.App__init__puntoVenta__encabezado__btnEmpleados button {
+  margin: 0 5px 0 5px;
+}
+
+@keyframes aparecer {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+/*# sourceMappingURL=puntoVenta.css.map */

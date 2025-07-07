@@ -1,0 +1,66 @@
+.App__dashboard__errorSpam {
+
+    width: 30%;
+    height: 60px;
+    border-radius: 0px 0px 50px 50px;
+    background-color: #dd8702;
+    position: absolute;
+    top: -80px;
+    left: 40%;
+    padding: 40px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .5s;
+
+    &__active {
+
+        width: 30%;
+        height: 60px;
+        border-radius: 0px 0px 50px 50px;
+        background-color: #dd8702;
+        position: absolute;
+        text-align: center;
+        top: 0px;
+        left: 40%;
+        padding: 40px !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all .5s;
+
+    }
+
+}
+
+.submit {
+    // font-size: 15px;
+    width: 30%;
+    height: 60px;
+    border-radius: 0px 0px 50px 50px;
+    background-color: #11c02e;
+    position: absolute;
+    top: 00px;
+    left: 40%;
+    padding: 40px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .5s;
+}
+
+.error {
+    // font-size: 13px;
+    width: 30%;
+    height: 60px;
+    border-radius: 0px 0px 50px 50px;
+    background-color: #ad0606;
+    position: absolute;
+    top: 00px;
+    left: 40%;
+    padding: 40px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .5s;
+}

@@ -1,0 +1,20 @@
+.App__init {
+
+
+    &__encabezado {
+        width: 95%;
+        margin: auto;
+        display: flex;
+
+        &__btnEmpleados {
+            width: 45%;
+            // margin: 0 50px 0 0 ;
+
+           button{
+            margin: 0 5px 0 5px;
+           }
+        }
+    }
+}
+
+

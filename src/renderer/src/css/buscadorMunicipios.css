@@ -1,0 +1,14 @@
+.App__dashboard__contPageOutlet__PageUsers__newUser__form__contInputs__selectMunicipio {
+  width: 60%;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form__contInputs__selectMunicipio label {
+  width: 100% !important;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form__contInputs__selectMunicipio select {
+  width: 100%;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form__contInputs__selectMunicipio input {
+  width: 100%;
+}
+
+/*# sourceMappingURL=buscadorMunicipios.css.map */

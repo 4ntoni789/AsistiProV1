@@ -1,0 +1,61 @@
+.App__dashboard__errorSpam {
+  width: 30%;
+  height: 60px;
+  border-radius: 0px 0px 50px 50px;
+  background-color: #dd8702;
+  position: absolute;
+  top: -80px;
+  left: 40%;
+  padding: 40px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s;
+}
+.App__dashboard__errorSpam__active {
+  width: 30%;
+  height: 60px;
+  border-radius: 0px 0px 50px 50px;
+  background-color: #dd8702;
+  position: absolute;
+  text-align: center;
+  top: 0px;
+  left: 40%;
+  padding: 40px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s;
+}
+
+.submit {
+  width: 30%;
+  height: 60px;
+  border-radius: 0px 0px 50px 50px;
+  background-color: #11c02e;
+  position: absolute;
+  top: 0px;
+  left: 40%;
+  padding: 40px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s;
+}
+
+.error {
+  width: 30%;
+  height: 60px;
+  border-radius: 0px 0px 50px 50px;
+  background-color: #ad0606;
+  position: absolute;
+  top: 0px;
+  left: 40%;
+  padding: 40px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s;
+}
+
+/*# sourceMappingURL=errorSpam.css.map */

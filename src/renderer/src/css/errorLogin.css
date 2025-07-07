@@ -1,0 +1,18 @@
+.App__loginPage__errorLogin {
+  margin-top: 10px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s;
+}
+.App__loginPage__errorLogin__textError {
+  color: #c52929;
+  font-weight: 600;
+}
+.App__loginPage__errorLogin__active {
+  margin-top: 10px;
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.5s;
+}
+
+/*# sourceMappingURL=errorLogin.css.map */

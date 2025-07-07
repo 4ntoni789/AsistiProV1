@@ -1,0 +1,33 @@
+.App__dashboard__contPageOutlet__PageUsers__newUser__btnControl {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__btnControl__btn {
+  background-color: #dd8702;
+  border: none;
+  margin-right: 10px;
+  height: 40px;
+  border-radius: 10px 10px 0 0;
+  color: #fff;
+  cursor: pointer;
+  border-bottom: 1px solid #000;
+  transition: all 0.5s;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__btnControl__btn:hover {
+  height: 50px;
+  background-color: #c47601;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__btnControl__btn__active {
+  background-color: #c47601;
+  border: none;
+  margin-right: 10px;
+  height: 50px;
+  border-radius: 10px 10px 0 0;
+  color: #fff;
+  cursor: pointer;
+  border-bottom: 1px solid #000;
+  transition: all 0.5s;
+}
+
+/*# sourceMappingURL=menuEmpleados.css.map */

@@ -1,0 +1,94 @@
+.App__dashboard__contPageOutlet {
+    width: 78%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .5s;
+
+    &__PageUsers {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &__contUsers {
+            width: 80%;
+            background-color: #333;
+            border-radius: 5px;
+            padding: 20px;
+            animation: aparecer 1s forwards;
+
+            &__contBtnNewUser {
+                margin: 0px 0 10px 0;
+                width: 100%;
+                text-align: end;
+
+                &__btn {
+                    min-width: 60px;
+                    height: 40px;
+                    border-radius: 100px;
+                    border: none;
+                    font-weight: 600;
+                    font-size: 14px;
+                    cursor: pointer;
+                    transition: all .5s;
+
+                    &:hover {
+                        background-color: #dd8702;
+                        color: #fff;
+
+                        &:disabled {
+
+                            &:hover {
+                                color: #444;
+                                background-color: #efefef4d;
+                            }
+                        }
+                    }
+
+                }
+            }
+
+            &__table {
+                max-height: 300px;
+                overflow: auto;
+            }
+
+            table,
+            th,
+            td {
+
+                text-align: center;
+                border: 1px solid #fffff5db;
+            }
+        }
+    }
+
+    @media (min-width: 1400px) {
+
+        & {
+            width: 89%;
+        }
+    }
+
+
+    &__active {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all .5s;
+    }
+}
+
+@keyframes aparecer {
+    0% {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    100% {
+        opacity: 1;
+        visibility: visible;
+    }
+}

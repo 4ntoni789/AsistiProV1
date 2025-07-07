@@ -1,0 +1,37 @@
+.App__init__puntoVenta {
+    width: 95%;
+    animation: aparecer 1s forwards;
+
+    &__encabezado {
+        width: 100%;
+        margin: auto;
+        display: flex;
+        
+        h2{
+            width: 50%;
+        }
+
+        &__btnEmpleados {
+            width: 50%;
+            // margin: 0 50px 0 0 ;
+            text-align: end;
+
+           button{
+            margin: 0 5px 0 5px;
+           }
+        }
+    }
+}
+
+
+@keyframes aparecer {
+    0% {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    100% {
+        opacity: 1;
+        visibility: visible;
+    }
+}

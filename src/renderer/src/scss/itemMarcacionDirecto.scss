@@ -1,0 +1,48 @@
+.App__init__marcacionesEnDirecto__body__item {
+    position: relative;
+    background-color: #555;
+    border-radius: 5px;
+    width: 90%;
+    margin: 10px 0 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: first baseline;
+    flex-direction: column;
+    transition: all .5s;
+    animation: aparecer 1s forwards;
+
+    h5 {
+        margin: 0 0 0 5px;
+    }
+
+    svg {
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        cursor: pointer;
+        transition: all .5s;
+
+        &:hover {
+            color: #dd8702;
+        }
+    }
+
+    &__subMenu {
+        h5 {
+            margin: 0 !important;
+            // margin: 0 0 0 5px;
+        }
+    }
+}
+
+@keyframes aparecer {
+    0% {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    100% {
+        opacity: 1;
+        visibility: visible;
+    }
+}
