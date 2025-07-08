@@ -5,12 +5,14 @@ import DeleteUser from './components/modal/DeleteUser'
 import ErrorSpam from './components/modal/ErrorSpam'
 import Login from './page/Login'
 import Enrutado from './router/Enrutado'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import {  Logout } from './actions/actionsLogin'
 
 function App(): React.JSX.Element {
   const userData = useSelector((state: any) => state.loginAccess.validationAccess);
   const userId = useSelector((state: any) => state.loginAccess.userLogin?.id_usuario);
   const sseRef = useRef<EventSource | null>(null);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (!userData || sseRef.current) return;
@@ -22,8 +24,9 @@ function App(): React.JSX.Element {
       console.error('SSE error:', err);
       source.close();
       sseRef.current = null;
+      dispatch(Logout());
     };
-    
+
     return () => {
       source.close();
       sseRef.current = null;
