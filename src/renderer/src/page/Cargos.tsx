@@ -14,7 +14,11 @@ function Cargos(props) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch('/api/cargos')
+    fetch('/api/cargos', {
+      headers: {
+        'x-id-usuario': userId
+      }
+    })
       .then((res) => res.json())
       .then((data) => {
         setUserCargo(data)

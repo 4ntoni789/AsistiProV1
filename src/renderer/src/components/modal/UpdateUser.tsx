@@ -8,6 +8,7 @@ import '../../css/newUsers.css';
 import SwitchButtonEdit from '../SwitchButtonEdit';
 
 function UpdateUser(props) {
+  const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
   const [activeEdition, setActiveEdition] = useState<boolean>(true);
   const { register, handleSubmit, reset } = useForm();
   const activeUpdateUser = useSelector((state: any) => state.menuAccions.subMenuUpdateUser);
@@ -20,7 +21,8 @@ function UpdateUser(props) {
       const response = await fetch(`/api/usuarios/${activeUpdateUser.user.id_usuario}`, {
         method: 'PUT',
         headers: {
-          'Content-Type': 'application/json',
+          'x-id-usuario': userId,
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           nombre_usuario: dataInput.nombre_usuario,
@@ -41,7 +43,11 @@ function UpdateUser(props) {
   }
   useEffect(() => {
     setActiveEdition(true);
-    fetch('/api/roles')
+    fetch('/api/roles', {
+      headers: {
+        'x-id-usuario': userId
+      }
+    })
       .then((res) => res.json())
       .then((data) => {
         setUserRoles(data);

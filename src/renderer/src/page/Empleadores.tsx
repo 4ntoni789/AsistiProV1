@@ -10,12 +10,18 @@ import UpdateEmpleador from '@renderer/components/modal/UpdateEmpleador';
 
 function Empleadores(props) {
   const userData = useSelector((state: any) => state.loginAccess.validationAccess);
+    const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
+  
   const spam = useSelector((state: any) => state.menuAccions.errorSpam);
   const [empleadores, setEmpleadores] = useState<[object]>();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch('/api/empleadores')
+    fetch('/api/empleadores', {
+      headers: {
+        'x-id-usuario': userId
+      }
+    })
       .then((res) => res.json())
       .then((data) => {
         setEmpleadores(data)

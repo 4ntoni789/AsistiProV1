@@ -11,6 +11,7 @@ function UpdateCargo(props) {
   const { register, handleSubmit, reset } = useForm();
   const [activeEdition, setActiveEdition] = useState<boolean>(true);
   const activeUpdateCargo = useSelector((state: any) => state.menuAccions.subMenuUpdateCargo);
+  const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
   const dispatch = useDispatch();
 
   const onSubmit = async (dataInput) => {
@@ -18,7 +19,8 @@ function UpdateCargo(props) {
       const response = await fetch(`/api/cargo/${activeUpdateCargo.user.item.id_cargo}`, {
         method: 'PUT',
         headers: {
-          'Content-Type': 'application/json',
+          'x-id-usuario': userId,
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           nombre_cargo: dataInput.nombre_cargo,

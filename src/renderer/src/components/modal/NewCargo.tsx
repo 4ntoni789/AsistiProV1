@@ -10,13 +10,15 @@ function NewCargo(props) {
   const userData = useSelector((state: any) => state.loginAccess.userLogin);
   const { register, handleSubmit, reset } = useForm();
   const dispatch = useDispatch();
+  const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
 
   const onSubmit = async (dataInput) => {
     try {
       const response = await fetch('/api/cargo', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'x-id-usuario': userId,
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           nombre_cargo: dataInput.nombre_cargo,
@@ -29,9 +31,9 @@ function NewCargo(props) {
         dispatch(ActiveSubMenuNewCargo({ user: {}, subMenuNewCargo: false }));
         dispatch(ActiveErrorSpam({ msg: result.message, active: true, typeError: 'submit' }));
         reset();
-      }else{
+      } else {
         dispatch(ActiveErrorSpam({ msg: result.error, active: true, typeError: 'Error' }));
-         throw new Error(result.error)
+        throw new Error(result.error)
       }
     } catch (error) {
       console.error('Error:', error);

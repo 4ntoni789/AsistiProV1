@@ -1,11 +1,11 @@
 export const DeleteUserAs = async (activeDeleteUsers, userData) => {
     let ress;
-
     try {
         const response = await fetch(`/api/usuarios/${activeDeleteUsers.user.id_usuario}`, {
             method: 'DELETE',
             headers: {
-                'Content-Type': 'application/json',
+                'x-id-usuario': userData.id_usuario,
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 reqUser: userData
@@ -23,7 +23,6 @@ export const DeleteUserAs = async (activeDeleteUsers, userData) => {
             .catch((err) => console.log('Error:', err));
     } catch (error) {
         ress = { msg: 'Error al eliminar ese usuario', active: true, typeError: 'error' };
-        // dispatch(ActiveErrorSpam({ msg: 'Error al eliminar este usuario', active: true, typeError: 'error' }));
         console.log(error)
     }
     return ress;

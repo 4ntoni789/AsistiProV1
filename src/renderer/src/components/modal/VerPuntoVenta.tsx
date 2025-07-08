@@ -13,9 +13,14 @@ function VerPuntoVenta(props) {
   const [horario, setHorario] = useState<any>({});
   // const { register, handleSubmit, reset } = useForm();
   const dispatch = useDispatch();
+  const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
 
   useEffect(() => {
-    fetch('/api/horarios')
+    fetch('/api/horarios', {
+      headers: {
+        'x-id-usuario': userId
+      }
+    })
       .then((res) => res.json())
       .then((data) => {
         const resultado = data

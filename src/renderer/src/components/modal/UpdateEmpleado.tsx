@@ -16,14 +16,16 @@ function UpdateEmpleado(props) {
   const [userCargo, setUserCargo] = useState<any>();
   const { register, handleSubmit, reset } = useForm();
   const dispatch = useDispatch();
+  const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
 
   const onSubmit = async (dataInput) => {
     try {
       const response = await fetch(`/api/empleados/${activeNewEmpleado.user.id_empleado}`, {
         method: 'PUT',
         headers: {
-          'Content-Type': 'application/json',
-        },
+          'x-id-usuario': userId
+        }
+        ,
         body: JSON.stringify({
           nombres: dataInput.nombre_usuario,
           apellidos: dataInput.apellidos,
@@ -52,7 +54,11 @@ function UpdateEmpleado(props) {
 
   useEffect(() => {
     setActiveEdition(true);
-    fetch('/api/cargos')
+    fetch('/api/cargos', {
+      headers: {
+        'x-id-usuario': userId
+      }
+    })
       .then((res) => res.json())
       .then((data) => {
         setUserCargo(data);
@@ -100,7 +106,7 @@ function UpdateEmpleado(props) {
           <input id='direccion' type="text" {...register('direccion', { required: true, disabled: activeEdition })} placeholder='Dirección residencial' defaultValue={activeNewEmpleado.user.direccion} />
           <label htmlFor='fecha_nacimiento'>Fecha de nacimiento</label>
           <input id='fecha_nacimiento' type="date" {...register('fecha_nacimiento', { required: true, disabled: activeEdition })} defaultValue={activeNewEmpleado.user.fecha_nacimiento?.toString().split('T')[0]} placeholder='Fecha de nacimiento' />
-          <BuscadorMunicipios seleccionado={municipio} setSeleccionado={setMunicipio} disable={activeEdition}  />
+          <BuscadorMunicipios seleccionado={municipio} setSeleccionado={setMunicipio} disable={activeEdition} />
           <label htmlFor='sexo'>Sexo</label>
           <select id='sexo' {...register('sexo', { required: true, disabled: activeEdition })}>
             {

@@ -19,13 +19,16 @@ function NewEmpleado() {
   const dispatch = useDispatch();
   const [lNacimiento, setLNacimiento] = useState<string>('');
   const [nacionalidadText, setNacionalidadText] = useState<string>('');
+  const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
+
 
   const onSubmit = async (dataInput) => {
     try {
       const response = await fetch('/api/empleados', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'x-id-usuario': userId,
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           nombre_usuario: capitalizarCadaPalabra(dataInput.nombre_usuario),
@@ -55,7 +58,11 @@ function NewEmpleado() {
   }
 
   useEffect(() => {
-    fetch('/api/cargos')
+    fetch('/api/cargos', {
+      headers: {
+        'x-id-usuario': userId
+      }
+    })
       .then((res) => res.json())
       .then((data) => {
         setUserCargo(data);

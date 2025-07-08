@@ -14,6 +14,8 @@ function NewUser() {
   const { register, handleSubmit, reset } = useForm();
   const dispatch = useDispatch();
   const [showPass, setShowPass] = useState<boolean>(true);
+  const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
+
   const [typeErrorPass, setTypeErrorPass] = useState<{ activeError: boolean, typeError: string }>({
     activeError: false,
     typeError: ''
@@ -24,8 +26,10 @@ function NewUser() {
       const response = await fetch('/api/usuarios', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-        },
+          'x-id-usuario': userId,
+          'Content-Type': 'application/json'
+        }
+        ,
         body: JSON.stringify({
           nombre_usuario: dataInput.nombre_usuario,
           password: dataInput.contrasena,
@@ -59,7 +63,11 @@ function NewUser() {
   }
 
   useEffect(() => {
-    fetch('/api/roles')
+    fetch('/api/roles', {
+      headers: {
+        'x-id-usuario': userId
+      }
+    })
       .then((res) => res.json())
       .then((data) => {
         setUserRoles(data);

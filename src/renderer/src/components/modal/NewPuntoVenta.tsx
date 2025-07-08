@@ -11,17 +11,19 @@ function NewPuntoVenta(props) {
   // const [userRoles, setUserCargo] = useState<any>();
   const { register, handleSubmit, reset } = useForm();
   const dispatch = useDispatch();
+  const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
 
   const onSubmit = async (dataInput) => {
     try {
       const response = await fetch('/api/punto-venta', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'x-id-usuario': userId,
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           nombre: dataInput.nombre,
-          direccion:dataInput.direccion,
+          direccion: dataInput.direccion,
           numero_serie_dispositivo: dataInput.numero_serie_dispositivo,
           reqUser: userData
         }),
@@ -32,7 +34,7 @@ function NewPuntoVenta(props) {
         dispatch(ActiveSubMenuNewPuntoVenta({ user: {}, subMenuNewPuntoVenta: false }));
         dispatch(ActiveErrorSpam({ msg: result.message, active: true, typeError: 'submit' }));
         reset();
-      }else{
+      } else {
         dispatch(ActiveErrorSpam({ msg: result.error, active: true, typeError: 'Error' }));
         throw new Error(result.error);
       }

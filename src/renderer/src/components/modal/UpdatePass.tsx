@@ -17,12 +17,14 @@ function UpdatePass(props) {
     activeError: false,
     typeError: ''
   });
+  const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
 
   const onSubmit = async (dataInput) => {
     const response = await fetch(`/api/single-usuario-put-pass/${activeUpdateUser.user.id_usuario}`, {
       method: 'PUT',
       headers: {
-        'Content-Type': 'application/json',
+        'x-id-usuario': userId,
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         password: dataInput.contrasena,

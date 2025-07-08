@@ -14,6 +14,7 @@ function FormNewHorario(userCargo) {
   const diaSemana = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
   const [semana, setSemana] = useState<string>('');
   let almacenDiasSemana: any = [];
+  const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
 
   const onSubmit = async (dataInput) => {
     if (semana == 'dias_especificos' || semana == 'toda_semana') {
@@ -22,7 +23,8 @@ function FormNewHorario(userCargo) {
           const response = await fetch(`/api/horario`, {
             method: 'POST',
             headers: {
-              'Content-Type': 'application/json',
+              'x-id-usuario': userId,
+              'Content-Type': 'application/json'
             },
             body: JSON.stringify({
               hora_entrada: dataInput.hora_entrada,

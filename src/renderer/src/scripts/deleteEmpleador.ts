@@ -4,7 +4,8 @@ export const DeleteEmpleador = async (activeDeleteUsers, userData) => {
         const response = await fetch(`/api/empleador/${activeDeleteUsers.id_empleador}`, {
             method: 'DELETE',
             headers: {
-                'Content-Type': 'application/json',
+                'x-id-usuario': userData.id_usuario,
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 reqUser: userData

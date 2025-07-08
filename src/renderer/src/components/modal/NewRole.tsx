@@ -10,13 +10,15 @@ function NewRole(props) {
   const userData = useSelector((state: any) => state.loginAccess.userLogin);
   const { register, handleSubmit, reset } = useForm();
   const dispatch = useDispatch();
+  const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
 
   const onSubmit = async (dataInput) => {
     try {
       const response = await fetch('/api/rol', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'x-id-usuario': userId,
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           nombre_rol: dataInput.nombre_rol,

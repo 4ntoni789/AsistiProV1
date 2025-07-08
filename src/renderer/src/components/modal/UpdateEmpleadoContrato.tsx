@@ -18,24 +18,36 @@ function UpdateEmpleadoContrato(props) {
   const [userContrato, setUserContrato] = useState<any>();
   const [empleadores, setEmpleadores] = useState<[object]>([{}]);
   const dispatch = useDispatch();
-
+  const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
 
   useEffect(() => {
-    fetch('/api/contratos')
+    fetch('/api/contratos', {
+      headers: {
+        'x-id-usuario': userId
+      }
+    })
       .then((res) => res.json())
       .then((data) => {
         setUserContrato(data.filter((item) => (item.id_empleado == activeNewEmpleado.user.id_empleado)))
       })
       .catch((err) => console.error('Error:', err));
 
-    fetch('/api/cargos')
+    fetch('/api/cargos', {
+      headers: {
+        'x-id-usuario': userId
+      }
+    })
       .then((res) => res.json())
       .then((data) => {
         setUserCargo(data);
       })
       .catch((err) => console.error('Error:', err));
 
-    fetch('/api/empleadores')
+    fetch('/api/empleadores', {
+      headers: {
+        'x-id-usuario': userId
+      }
+    })
       .then((res) => res.json())
       .then((data) => {
         setEmpleadores(data);
@@ -59,7 +71,7 @@ function UpdateEmpleadoContrato(props) {
         </div>
         {
           userContrato == undefined ? <Loader /> : userContrato?.length > 0 && contFilter?.estado == 'Activo' ?
-            <DataUser userContrato={userContrato} userCargo={userCargo} activeNewEmpleado={activeNewEmpleado} activeEdition={activeEdition} empleadores={empleadores}/>
+            <DataUser userContrato={userContrato} userCargo={userCargo} activeNewEmpleado={activeNewEmpleado} activeEdition={activeEdition} empleadores={empleadores} />
             : <FormEmpleadoContrato activeEdition={activeEdition} setActiveEdition={setActiveEdition} userCargo={userCargo} activeNewEmpleado={activeNewEmpleado}
               empleadores={empleadores} />
         }

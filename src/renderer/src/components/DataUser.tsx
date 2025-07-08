@@ -8,6 +8,7 @@ function DataUser({ userContrato, userCargo, activeNewEmpleado, activeEdition, e
   const dispatch = useDispatch();
   const userData = useSelector((state: any) => state.loginAccess.userLogin);
   const [loader, setLoader] = useState<boolean>(false);
+  const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
 
   const contFilter = userContrato.find((c, i) => {
     if (c.estado == 'Activo') {
@@ -15,7 +16,7 @@ function DataUser({ userContrato, userCargo, activeNewEmpleado, activeEdition, e
     }
   })
 
-  
+
   const contFilterEmpleador = empleadores.find((e, i) => {
     if (e.id_empleador === contFilter.id_empleador) {
       return e
@@ -28,7 +29,8 @@ function DataUser({ userContrato, userCargo, activeNewEmpleado, activeEdition, e
     const response = await fetch('/api/generar-contrato', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'x-id-usuario': userId,
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         nombre: `${activeNewEmpleado.user.nombres} ${activeNewEmpleado.user.apellidos}`,
@@ -43,8 +45,8 @@ function DataUser({ userContrato, userCargo, activeNewEmpleado, activeEdition, e
         lugarNacimiento: activeNewEmpleado.user.lugar_nacimiento.split(',').slice(0, -1),
         gentilicio: activeNewEmpleado.user.lugar_nacimiento.split(',').at(-1),
         nombre_empleador: contFilterEmpleador.nombre_empleador,
-        nit:contFilterEmpleador.nit,
-        direccion_empleador:contFilterEmpleador.direccion_empleador,
+        nit: contFilterEmpleador.nit,
+        direccion_empleador: contFilterEmpleador.direccion_empleador,
         reqUser: userData
       }),
     });

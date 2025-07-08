@@ -1,6 +1,5 @@
 import MarcacionesEnDirecto from '@renderer/components/MarcacionesEnDirecto';
 import TablaDeMarcaciones from '@renderer/components/tablas/TablaDeEmpleadosMarcaciones';
-import React, { useEffect } from 'react';
 import '../css/inicio.css';
 import '../css/empleados.css';
 import ButtonStyle from '@renderer/components/ButtonStyle';

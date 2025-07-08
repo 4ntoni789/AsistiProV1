@@ -4,7 +4,8 @@ export const DesactivateContrato = async (activeDeleteUsers, userData) => {
     const response = await fetch(`/api/contrato/${activeDeleteUsers.user.id_contrato}`, {
       method: 'PUT',
       headers: {
-        'Content-Type': 'application/json',
+        'x-id-usuario': userData.id_usuario,
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         estado: 'Inactivo',

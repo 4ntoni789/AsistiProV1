@@ -12,13 +12,15 @@ function UpdateRole(props) {
   const [activeEdition, setActiveEdition] = useState<boolean>(true);
   const activeUpdateRole = useSelector((state: any) => state.menuAccions.subMenuUpdateRole);
   const dispatch = useDispatch();
+  const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
 
   const onSubmit = async (dataInput) => {
     try {
       const response = await fetch(`/api/rol/${activeUpdateRole.user.item.id_rol}`, {
         method: 'PUT',
         headers: {
-          'Content-Type': 'application/json',
+          'x-id-usuario': userId,
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           nombre_rol: dataInput.nombre_rol,

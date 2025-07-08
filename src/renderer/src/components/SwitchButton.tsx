@@ -7,12 +7,14 @@ function SwitchButton({ estado, disabled }) {
   const dispatch = useDispatch();
   const [btnActive, setBtnActive] = useState<boolean>(estado.estado == 'activo' ? true : false);
   const userData = useSelector((state: any) => state.loginAccess.userLogin);
+  const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
   const handlerToggle = async () => {
     try {
       const response = await fetch(`/api/usuarios-active/${estado.id_usuario}`, {
         method: 'PUT',
         headers: {
-          'Content-Type': 'application/json',
+          'x-id-usuario': userId,
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           estado: btnActive == true ? 'inactivo' : 'activo',
@@ -24,11 +26,11 @@ function SwitchButton({ estado, disabled }) {
       if (!response.ok) throw new Error(result.error);
       if (!btnActive) {
         dispatch(ActiveErrorSpam({ msg: `Usuario ${!btnActive ? 'activo' : 'inactivo'}`, active: true, typeError: 'submit' }))
-        
+
       } else {
         dispatch(ActiveErrorSpam({ msg: `Usuario ${!btnActive ? 'activo' : 'inactivo'}`, active: true, typeError: 'error' }))
       }
-      
+
     } catch (error) {
       dispatch(ActiveErrorSpam({ msg: `Ocurrió un error al activar el usuario`, active: true, typeError: 'error' }))
     }

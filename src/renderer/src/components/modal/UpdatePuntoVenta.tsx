@@ -12,13 +12,15 @@ function UpdatePuntoVenta(props) {
   const [activeEdition, setActiveEdition] = useState<boolean>(true);
   const activeUpdatePuntoVenta = useSelector((state: any) => state.menuAccions.subMenuUpdatePuntoVenta);
   const dispatch = useDispatch();
+  const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
 
   const onSubmit = async (dataInput) => {
     try {
       const response = await fetch(`/api/punto-venta/${activeUpdatePuntoVenta.user.id_pv}`, {
         method: 'PUT',
         headers: {
-          'Content-Type': 'application/json',
+          'x-id-usuario': userId,
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           nombre: dataInput.nombre,
@@ -28,9 +30,12 @@ function UpdatePuntoVenta(props) {
         }),
       });
       const result = await response.json();
-      if (!response.ok) throw new Error(result.error);
-      dispatch(ActiveErrorSpam({ msg: 'Punto de venta actualizado', active: true, typeError: 'submit' }));
-      dispatch(ActiveSubMenuUpdateRole({ user: {}, subMenuUpdateRole: false }));
+      if (response.ok) {
+        dispatch(ActiveErrorSpam({ msg: result.message, active: true, typeError: 'submit' }));
+        dispatch(ActiveSubMenuUpdatePuntoVenta({ user: {}, subMenuUpdatePuntoVenta: false }))
+      } else {
+        throw new Error(result.error);
+      }
     } catch (error) {
       dispatch(ActiveErrorSpam({ msg: 'Error al actualizar este punto de venta', active: true, typeError: 'Error' }));
       console.log('Ocurrió un error al actualizar este punto de venta');

@@ -2,14 +2,20 @@ import React, { useEffect, useState } from 'react';
 import '../css/marcacionesEnDirecto.css';
 import ItemTable from './items/ItemTable';
 import ItemMarcacionDirecto from './items/ItemMarcacionDirecto';
+import { useSelector } from 'react-redux';
 
 function MarcacionesEnDirecto(props) {
   const [dataUser, setDataUser] = useState<any[]>();
+  const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
 
   useEffect(() => {
     const intervalo = setInterval(async () => {
       try {
-        const response = await fetch('/api/accesosdia');
+        const response = await fetch('/api/accesosdia', {
+          headers: {
+            'x-id-usuario': userId
+          }
+        });
         if (!response.ok) throw new Error('Error en la respuesta del servidor');
         const data = await response.json();
         setDataUser(data);

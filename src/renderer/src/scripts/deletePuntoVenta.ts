@@ -4,7 +4,8 @@ export const DeletePuntoVenta = async (activeDeleteUsers, userData) => {
         const response = await fetch(`/api/punto-venta/${activeDeleteUsers.id_pv}`, {
             method: 'DELETE',
             headers: {
-                'Content-Type': 'application/json',
+                'x-id-usuario': userData.id_usuario,
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 reqUser: userData

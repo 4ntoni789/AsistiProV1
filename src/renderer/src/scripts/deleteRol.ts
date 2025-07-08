@@ -4,7 +4,8 @@ export const DeleteRol = async (activeDeleteUsers, userData) => {
         const response = await fetch(`/api/rol/${activeDeleteUsers.user.id_rol}`, {
             method: 'DELETE',
             headers: {
-                'Content-Type': 'application/json',
+                'x-id-usuario': userData.id_usuario,
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 reqUser: userData

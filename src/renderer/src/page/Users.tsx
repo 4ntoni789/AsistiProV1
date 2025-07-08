@@ -13,10 +13,16 @@ function Users() {
   const spam = useSelector((state: any) => state.menuAccions.errorSpam);
   const userData = useSelector((state: any) => state.loginAccess);
   // const activeNewUsers = useSelector((state: any) => state.menuAccions);
+  const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch('/api/usuarios')
+    fetch('/api/usuarios', {
+      headers: {
+        'x-id-usuario': userId
+      }
+    })
       .then((res) => res.json())
       .then((data) => {
         setDataUsers(data);

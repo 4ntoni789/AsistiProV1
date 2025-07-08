@@ -18,10 +18,15 @@ function TablaPuntoVenta(props) {
   const [puntosVenta, setPuntosVenta] = useState<any[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState('');
+  const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
   const itemsPerPage = 7;
 
   useEffect(() => {
-    fetch('/api/puntos-venta')
+    fetch('/api/puntos-venta', {
+      headers: {
+        'x-id-usuario': userId
+      }
+    })
       .then((res) => res.json())
       .then((data) => {
         setPuntosVenta(data);
@@ -74,7 +79,7 @@ function TablaPuntoVenta(props) {
       <div className='App__init__contTable__tablaPuntoVenta__body'>
         {/* <ItemTableHeader /> */}
         {currentItems.map((item, index) => (
-          <ItemTablePuntoVenta item={item} clickLoad={clickLoad} key={index}/>
+          <ItemTablePuntoVenta item={item} clickLoad={clickLoad} key={index} />
         ))}
         <div className='App__init__contTable__tablaPuntoVenta__body__pagination'>
           <button
@@ -102,7 +107,7 @@ function TablaPuntoVenta(props) {
           </button>
         </div>
       </div>
-      <SubMenuPuntoVenta/>
+      <SubMenuPuntoVenta />
     </div>
   );
 }

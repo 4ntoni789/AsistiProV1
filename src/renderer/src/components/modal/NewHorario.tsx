@@ -11,11 +11,16 @@ function NewHorario(props) {
   const activeMenuPuntoVenta = useSelector((state: any) => state.menuAccions.subMenuPuntoVenta);
   const [userCargo, setUserCargo] = useState<[]>([]);
   const dispatch = useDispatch();
+  const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
 
   useEffect(() => {
-    fetch('/api/cargos')
-    .then((res) => res.json())
-    .then((data) => {
+    fetch('/api/cargos', {
+      headers: {
+        'x-id-usuario': userId
+      }
+    })
+      .then((res) => res.json())
+      .then((data) => {
         setUserCargo(data)
       })
       .catch((err) => console.error('Error:', err));

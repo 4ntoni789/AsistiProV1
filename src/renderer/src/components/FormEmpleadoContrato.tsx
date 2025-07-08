@@ -20,7 +20,7 @@ function FormEmpleadoContrato({ activeEdition, setActiveEdition, userCargo, acti
   const [valorSalario, setValorSalario] = useState<string>('');
   const inputRef = useRef<HTMLInputElement>(null);
   const dispatch = useDispatch();
-
+  const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
 
   const onSubmit = async (dataInput) => {
     console.log(dataInput);
@@ -28,7 +28,8 @@ function FormEmpleadoContrato({ activeEdition, setActiveEdition, userCargo, acti
       const response = await fetch(`/api/contrato`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'x-id-usuario': userId,
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           tipo_contrato: dataInput.tContrato,

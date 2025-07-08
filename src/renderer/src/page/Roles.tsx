@@ -9,10 +9,16 @@ function Roles(props) {
   const userData = useSelector((state: any) => state.loginAccess.validationAccess);
   const spam = useSelector((state: any) => state.menuAccions.errorSpam);
   const [userRoles, setUserRoles] = useState<[any]>();
+  const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch('/api/roles')
+    fetch('/api/roles', {
+      headers: {
+        'x-id-usuario': userId
+      }
+    })
       .then((res) => res.json())
       .then((data) => {
         setUserRoles(data);

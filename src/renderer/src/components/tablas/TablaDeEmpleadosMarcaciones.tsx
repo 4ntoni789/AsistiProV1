@@ -19,17 +19,26 @@ function TablaMarcaciones() {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState('');
   const itemsPerPage = 10;
+  const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
   // const [activeOptions, setActiveOptions] = useState<boolean>(false);
 
   useEffect(() => {
-    fetch('/api/contratos')
+    fetch('/api/contratos', {
+      headers: {
+        'x-id-usuario': userId
+      }
+    }
+    )
       .then((res) => res.json())
       .then((data) => {
         setUserContrato(data);
       })
       .catch((err) => console.error('Error:', err));
 
-    fetch('/api/empleados')
+    fetch('/api/empleados', {
+      headers: {
+        'x-id-usuario': userId
+      }})
       .then((res) => res.json())
       .then((data) => {
         setAccesos(data);
@@ -109,7 +118,7 @@ function TablaMarcaciones() {
           </span>
 
           <div className={isOpen ? 'App__init__contTable__tablaMarcaciones__header__contBtn__contOptions__active' :
-             'App__init__contTable__tablaMarcaciones__header__contBtn__contOptions'}>
+            'App__init__contTable__tablaMarcaciones__header__contBtn__contOptions'}>
             <span><FontAwesomeIcon icon={faCalendar} /> Fecha de inicio</span>
             <span><FontAwesomeIcon icon={faCalendar} /> Fecha de fin</span>
             <span><FontAwesomeIcon icon={faCalendarXmark} /> Sin contrato</span>
