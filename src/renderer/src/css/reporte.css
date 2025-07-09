@@ -8,7 +8,7 @@
 }
 .App__init__Reporte__tipoReporte {
   background-color: #333;
-  min-height: 50vh;
+  min-height: 40vh;
   border-radius: 5px;
   display: flex;
   padding: 10px 0 10px 0;
@@ -16,9 +16,26 @@
   padding-left: 30px;
   flex-wrap: wrap;
   flex-direction: column;
+  position: relative;
+}
+.App__init__Reporte__tipoReporte__contBtnFlotante {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+.App__init__Reporte__tipoReporte__contBtnFlotante svg {
+  cursor: pointer;
+  transition: all 0.5s;
+}
+.App__init__Reporte__tipoReporte__contBtnFlotante svg:hover {
+  color: #dd8702;
 }
 .App__init__Reporte__tipoReporte h3 {
   margin-bottom: 20px;
+  font-weight: 600 !important;
+}
+.App__init__Reporte__tipoReporte h3 b {
+  color: #dd8702;
   font-weight: 600 !important;
 }
 .App__init__Reporte__tipoReporte select {
@@ -36,7 +53,7 @@
   margin-left: 60px;
 }
 .App__init__Reporte__tipoReporte input {
-  width: 13%;
+  width: 200px;
   border-radius: 5px;
   border: 2px solid #fff;
   margin-bottom: 10px;
@@ -48,8 +65,8 @@
   border-color: #dd8702;
 }
 .App__init__Reporte__tipoReporte button {
-  width: 10%;
-  margin-left: 30%;
+  width: 150px;
+  margin-left: 5%;
   height: 35px;
   cursor: pointer;
   border-radius: 10px;
@@ -61,9 +78,17 @@
 .App__init__Reporte__tipoReporte button:hover {
   background-color: #d89633;
 }
+.App__init__Reporte__tipoReporte button:disabled {
+  background-color: #ccc;
+  color: #999;
+  cursor: auto;
+}
 @media screen and (max-width: 1366px) {
   .App__init__Reporte__tipoReporte {
-    min-height: 45px;
+    min-height: 35vh;
+  }
+  .App__init__Reporte__tipoReporte button {
+    margin-left: 10%;
   }
 }
 .App__init__Reporte__contSingleReporte {
@@ -127,9 +152,23 @@
   border: 1px solid #dd8702;
   border-radius: 5px;
 }
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1366px) {
+  .App__init__Reporte__contSingleReporte__active {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    width: 120px;
+    height: 100px;
+    margin: 0 20px 0 20px;
+    padding: 5px;
+    border: 1px solid #d89633;
+    transition: all 0.5s;
+  }
   .App__init__Reporte__contSingleReporte__active svg {
-    font-size: 50px !important;
+    font-size: 30px !important;
   }
 }
 .App__init__Reporte__contSingleReporte__active svg {

@@ -23,7 +23,6 @@ function FormEmpleadoContrato({ activeEdition, setActiveEdition, userCargo, acti
   const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
 
   const onSubmit = async (dataInput) => {
-    console.log(dataInput);
     try {
       const response = await fetch(`/api/contrato`, {
         method: 'POST',

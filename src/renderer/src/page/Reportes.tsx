@@ -1,23 +1,52 @@
 import React, { useEffect, useState } from 'react';
 import '../css/reporte.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBell, faCalendar, faCalendarDay, faCalendarDays, faCalendarWeek, faCalendarXmark, faClockFour, faFileExport, faRightFromBracket, faShuffle, faUserTie } from '@fortawesome/free-solid-svg-icons';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
+import { typeReports } from '../typeReport/index'
 
 function Reportes(props) {
   const [seleted, setSeleted] = useState<string>('');
   const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
-  const userData = useSelector((state: any) => state.loginAccess.validationAccess);
+  const userData = useSelector((state: any) => state.loginAccess);
   const { register, handleSubmit, reset } = useForm();
   const [puntosVenta, setPuntosVenta] = useState<[any]>([{}]);
 
   const onSubmit = async (dataInput) => {
-    console.log(dataInput)
+    const response = await fetch(`/api/generar-reporte`, {
+      method: 'POST',
+      headers: {
+        'x-id-usuario': userId,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        fecha_ini: dataInput.fecha_inicio,
+        fecha_fin: dataInput.fecha_fin,
+        id_pv: dataInput.punto_venta,
+        type_report: seleted,
+        reqUser: userData.userLogin
+      }),
+    });
+    // const result = await response.json();
+    // if (response.ok) {
+    //   dispatch(ActiveErrorSpam({ msg: result.message, active: true, typeError: 'submit' }));
+    //   dispatch(ActiveSubMenuUpdatePass({ user: {}, subMenuUpdatePass: false }));
+    //   reset()
+    //   setTypeErrorPass({
+    //     activeError: false,
+    //     typeError: ''
+    //   });
+    // } else {
+    //   setTypeErrorPass({
+    //     activeError: true,
+    //     typeError: result.message
+    //   });
+
+    // }
   }
 
   useEffect(() => {
-    console.log(seleted);
     fetch('/api/puntos-venta', {
       headers: {
         'x-id-usuario': userId
@@ -28,7 +57,7 @@ function Reportes(props) {
         setPuntosVenta(data)
       })
       .catch((err) => console.error('Error:', err));
-  }, [userData == true, seleted]);
+  }, [userData.validationAccess == true, seleted]);
 
   return (
     <div className='App__init__puntoVenta'>
@@ -36,68 +65,43 @@ function Reportes(props) {
         <h2>Reportes de Período</h2>
       </div>
       <div className='App__init__Reporte'>
-        <div className={seleted == 'Asistencias general' ? 'App__init__Reporte__contSingleReporte__active' : 'App__init__Reporte__contSingleReporte'}
-          onClick={() => setSeleted('Asistencias general')} title='Informe de asistencia por punto de venta'>
-          <FontAwesomeIcon icon={faFileExport} />
-          <span>Asistencias general</span>
-        </div>
-        <div className={seleted == 'Asistencias de hoy' ? 'App__init__Reporte__contSingleReporte__active' : 'App__init__Reporte__contSingleReporte'}
-          onClick={() => setSeleted('Asistencias de hoy')}>
-          <FontAwesomeIcon icon={faCalendarDay} />
-          <span>Asistencias de hoy</span>
-        </div>
-        <div className={seleted == 'Asistencias semanal' ? 'App__init__Reporte__contSingleReporte__active' : 'App__init__Reporte__contSingleReporte'}
-          onClick={() => setSeleted('Asistencias semanal')}>
-          <FontAwesomeIcon icon={faCalendarWeek} />
-          <span>Asistencias semanal</span>
-        </div>
-        <div className={seleted == 'Asistencias mensual' ? 'App__init__Reporte__contSingleReporte__active' : 'App__init__Reporte__contSingleReporte'}
-          onClick={() => setSeleted('Asistencias mensual')}>
-          <FontAwesomeIcon icon={faCalendarDays} />
-          <span>Asistencias mensual</span>
-        </div>
-        <div className={seleted == 'Asistencias por empleado' ? 'App__init__Reporte__contSingleReporte__active' : 'App__init__Reporte__contSingleReporte'}
-          onClick={() => setSeleted('Asistencias por empleado')}>
-          <FontAwesomeIcon icon={faUserTie} />
-          <span>Asistencias por empleado</span>
-        </div>
-        <div className={seleted == 'Asistencias por turno' ? 'App__init__Reporte__contSingleReporte__active' : 'App__init__Reporte__contSingleReporte'}
-          onClick={() => setSeleted('Asistencias por turno')}>
-          <FontAwesomeIcon icon={faShuffle} />
-          <span>Asistencias por turno</span>
-        </div>
+        {
+          typeReports.map((report: any, i) => (
+            report.typeReport == 'general' ? <div key={i} className={seleted == report.reportName ? 'App__init__Reporte__contSingleReporte__active' : 'App__init__Reporte__contSingleReporte'}
+              onClick={() => setSeleted(report.reportName)}>
+              <FontAwesomeIcon icon={report.icon} />
+              <span>{report.reportName}</span>
+            </div> : null
+          ))
+        }
       </div>
       <div className='App__init__puntoVenta__encabezado'>
         <h2>Reportes de Control y Análisis</h2>
       </div>
       <div className='App__init__Reporte'>
-        <div className={seleted == 'Ausencias' ? 'App__init__Reporte__contSingleReporte__active' : 'App__init__Reporte__contSingleReporte'}
-          onClick={() => setSeleted('Ausencias')} title='Informe de asistencia por punto de venta'>
-          <FontAwesomeIcon icon={faCalendarXmark} />
-          <span>Ausencias</span>
-        </div>
-        <div className={seleted == 'Entrada tarde' ? 'App__init__Reporte__contSingleReporte__active' : 'App__init__Reporte__contSingleReporte'}
-          onClick={() => setSeleted('Entrada tarde')}>
-          <FontAwesomeIcon icon={faClockFour} />
-          <span>Entrada tarde</span>
-        </div>
-        <div className={seleted == 'Entrada temprana' ? 'App__init__Reporte__contSingleReporte__active' : 'App__init__Reporte__contSingleReporte'}
-          onClick={() => setSeleted('Entrada temprana')}>
-          <FontAwesomeIcon icon={faBell} />
-          <span>Entrada temprana</span>
-        </div>
-        <div className={seleted == 'Salida temprana' ? 'App__init__Reporte__contSingleReporte__active' : 'App__init__Reporte__contSingleReporte'}
-          onClick={() => setSeleted('Salida temprana')}>
-          <FontAwesomeIcon icon={faRightFromBracket} />
-          <span>Salida temprana</span>
-        </div>
+        {
+          typeReports.map((report: any, i) => (
+            report.typeReport == 'control_analisis' ? <div key={i} className={seleted == report.reportName ? 'App__init__Reporte__contSingleReporte__active' : 'App__init__Reporte__contSingleReporte'}
+              onClick={() => setSeleted(report.reportName)}>
+              <FontAwesomeIcon icon={report.icon} />
+              <span>{report.reportName}</span>
+            </div> : null
+          ))
+        }
       </div>
       <br />
+      <div className='App__init__puntoVenta__encabezado'>
+        <h2>Generador de reporte</h2>
+      </div>
       <div className='App__init__Reporte__tipoReporte'>
-        <h3>{seleted != '' ? seleted : 'Escoge un tipo de informe'}</h3>
+        <div className='App__init__Reporte__tipoReporte__contBtnFlotante'>
+          <FontAwesomeIcon icon={faTrash} title='Limpiar' onClick={() => setSeleted('')} />
+        </div>
+        <h3>Tipo de reporte: <b>{seleted != '' ? seleted : 'Escoge un tipo de informe'}</b></h3>
         <form onSubmit={handleSubmit(onSubmit)}>
           <span>Punto de venta: </span>
-          <select id='punto_venta' {...register('punto_venta', { required: true, disabled: false })}>
+          <select id='punto_venta' {...register('punto_venta',
+            { required: true, disabled: seleted == '' ? true : false })}>
             <option value=''>--Escoge un punto de venta--</option>
             {
               puntosVenta?.map((item, i) => (
@@ -106,10 +110,12 @@ function Reportes(props) {
             }
           </select><br />
           <span>Fecha de inicio: </span>
-          <input type="date" id='fecha_inicio' {...register('fecha_inicio', { required: true, disabled: false })} />
+          <input type="date" id='fecha_inicio' {...register('fecha_inicio',
+            { required: true, disabled: seleted == '' ? true : false })} />
           <span>Fecha de fin: </span>
-          <input type="date" id='fecha_fin' {...register('fecha_fin', { required: true, disabled: false })} />
-          <button>Generar</button>
+          <input type="date" id='fecha_fin' {...register('fecha_fin',
+            { required: true, disabled: seleted == '' ? true : false })} />
+          <button disabled={seleted == '' ? true : false}>Generar</button>
         </form>
       </div>
     </div>

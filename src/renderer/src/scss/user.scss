@@ -9,9 +9,17 @@
     align-items: center;
     animation: aparecer 1s forwards;
 
-    hr{
+
+    @media screen and (max-width: 1366px) {
+        & {
+            width: 35%;
+            height: 80%;
+        }
+    }
+
+    hr {
         width: 50%;
-        
+
     }
 
     &__view {
@@ -32,17 +40,20 @@
             }
         }
     }
-    &__opcions{
+
+    &__opcions {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: first baseline;
-        span{
-            b{
+
+        span {
+            b {
                 color: #dd8702;
             }
         }
-        button{
+
+        button {
             width: 100%;
             margin-top: 10px;
         }

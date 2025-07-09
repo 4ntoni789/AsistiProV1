@@ -109,6 +109,9 @@
 .App__init__tablaMarcaciones__body__item__contRegistros__active__cont svg:hover {
   color: #dd8702;
 }
+.App__init__tablaMarcaciones__body__item__contRegistros__active__cont h5 {
+  width: 30%;
+}
 .App__init__tablaMarcaciones__body__item__contRegistros__active__marcaciones {
   display: none;
   width: 100%;

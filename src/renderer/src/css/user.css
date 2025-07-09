@@ -9,6 +9,12 @@
   align-items: center;
   animation: aparecer 1s forwards;
 }
+@media screen and (max-width: 1366px) {
+  .App__dashboard__contPageOutlet__user {
+    width: 35%;
+    height: 80%;
+  }
+}
 .App__dashboard__contPageOutlet__user hr {
   width: 50%;
 }
