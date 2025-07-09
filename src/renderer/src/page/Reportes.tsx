@@ -72,26 +72,12 @@ function Reportes(props) {
         </div>
       </div>
 <br />
-      <div className='App__init__Reporte'>
+      <div className='App__init__Reporte__tipoReporte'>
           <br />
           <br />
           <br />
           <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
+
       </div>
     </div>
   );
