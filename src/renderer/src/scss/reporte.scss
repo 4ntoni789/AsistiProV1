@@ -8,12 +8,74 @@
 
     &__tipoReporte {
         background-color: #333;
-        min-height: 45vh;
+        min-height: 50vh;
         border-radius: 5px;
         display: flex;
         padding: 10px 0 10px 0;
-        align-items: center;
+        // align-items: center;
+        justify-content: center;
+        padding-left: 30px;
         flex-wrap: wrap;
+        flex-direction: column;
+
+        h3 {
+            margin-bottom: 20px;
+            font-weight: 600 !important;
+        }
+
+        select {
+            // width: 60%;
+            border-radius: 5px;
+            border: 2px solid #fff;
+            margin-bottom: 10px;
+            min-height: 35px !important;
+            outline: none;
+            transition: all .5s;
+
+            &:focus {
+                border-color: #dd8702;
+            }
+        }
+
+        span:nth-child(6) {
+            margin-left: 60px;
+        }
+
+        input {
+            width: 13%;
+            border-radius: 5px;
+            border: 2px solid #fff;
+            margin-bottom: 10px;
+            min-height: 35px !important;
+            outline: none;
+            transition: all .5s;
+
+            &:focus {
+                border-color: #dd8702;
+            }
+        }
+
+        button {
+            width: 10%;
+            margin-left: 30%;
+            height: 35px;
+            cursor: pointer;
+            border-radius: 10px;
+            border: none;
+            transition: all .5s;
+            background-color: #dd8702;
+            color: #fff;
+
+            &:hover {
+                background-color: #d89633;
+            }
+        }
+
+        @media screen and (max-width: 1366px) {
+            & {
+                min-height: 45px;
+            }
+        }
     }
 
     &__contSingleReporte {
@@ -98,7 +160,7 @@
             }
 
             svg {
-                font-size: 70px;
+                font-size: 50px;
             }
 
             span {
