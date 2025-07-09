@@ -46,7 +46,7 @@ function Menu(props) {
           <h3>{dataUser.type_role}</h3>
           <h2>{dataUser.nombre_usuario}</h2>
         </div>
-        <NavLink to='user'><FontAwesomeIcon icon={faEye} /></NavLink>
+        <NavLink to='user' title='Opciones de usuario'><FontAwesomeIcon icon={faEye} /></NavLink>
       </div>
     </div>
   );

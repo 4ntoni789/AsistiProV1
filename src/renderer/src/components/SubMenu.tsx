@@ -33,7 +33,7 @@ function SubMenu(props) {
 
   return (
     <div className='App__dashboard__subMenu'>
-      <div className='App__dashboard__subMenu__btn'>
+      <div className='App__dashboard__subMenu__btn' title='Opciones'>
         <FontAwesomeIcon icon={faGear} ref={buttonRef} onClick={() => dispatch(ActiveSubMenu(!menuActive))} />
       </div>
       <div className={menuActive ? 'App__dashboard__subMenu__contBtn__active' : 'App__dashboard__subMenu__contBtn'}>

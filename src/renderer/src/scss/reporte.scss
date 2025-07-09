@@ -1,0 +1,103 @@
+.App__init__Reporte {
+    background-color: #333;
+    border-radius: 5px;
+    display: flex;
+    padding: 10px 0 10px 0;
+    align-items: center;
+    flex-wrap: wrap;
+
+    &__contSingleReporte {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        cursor: pointer;
+        width: 160px;
+        height: 150px;
+        margin: 0 20px 0 20px;
+        padding: 5px;
+        border: 1px solid transparent;
+
+        transition: all .5s;
+
+        @media screen and (max-width: 1200px) {
+
+
+            & {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                cursor: pointer;
+                width: 100px;
+                height: 100px;
+                margin: 0 20px 0 20px;
+                padding: 5px;
+                border: 1px solid transparent;
+
+                transition: all .5s;
+            }
+
+            svg {
+                font-size: 30px !important;
+            }
+
+        }
+
+        svg {
+            font-size: 50px;
+
+        }
+
+        span {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 200px;
+            display: block;
+        }
+
+        &:hover {
+            transition: all .5s;
+
+            border: 1px solid #dd8702;
+            border-radius: 5px;
+        }
+
+        &__active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+            width: 160px;
+            height: 150px;
+            margin: 0 20px 0 20px;
+            padding: 5px;
+            border: 1px solid #dd8702;
+            border-radius: 5px;
+
+            @media screen and (max-width: 1200px) {
+
+                svg {
+                    font-size: 50px !important;
+                }
+
+            }
+
+            svg {
+                font-size: 70px;
+            }
+
+            span {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 200px;
+                display: block;
+            }
+
+        }
+    }
+}

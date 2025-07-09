@@ -109,8 +109,9 @@
             visibility: visible;
             transition: all .3s;
 
-            h5 {
-                width: 30%;
+            h5:nth-child(2) {
+                width: 60%;
+                text-align: center;
             }
 
 

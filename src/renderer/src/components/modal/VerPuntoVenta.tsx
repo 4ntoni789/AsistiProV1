@@ -14,6 +14,7 @@ function VerPuntoVenta(props) {
   // const { register, handleSubmit, reset } = useForm();
   const dispatch = useDispatch();
   const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
+  const [userCargo, setUserCargo] = useState<[]>([]);
 
   useEffect(() => {
     fetch('/api/horarios', {
@@ -45,6 +46,20 @@ function VerPuntoVenta(props) {
       .catch((err) => console.error('Error:', err));
   }, [activeMenuPuntoVenta.subMenuPuntoVenta == true, activeModalDelete]);
 
+  useEffect(() => {
+    fetch('/api/cargos', {
+      headers: {
+        'x-id-usuario': userId
+      }
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setUserCargo(data);
+      })
+      .catch((err) => console.error('Error:', err));
+  }, [activeMenuPuntoVenta.subMenuPuntoVenta == true]);
+
+
   return (
     <>
       <form className='App__dashboard__contPageOutlet__PageUsers__newUser__form'>
@@ -65,7 +80,7 @@ function VerPuntoVenta(props) {
               <h3>Horarios de este punto de venta</h3>
               {
                 horario?.map((item: any, i: number) => (
-                  <ItemHorario key={i} registro={item} />
+                  <ItemHorario cargos={userCargo} key={i} registro={item} />
                 ))
               }
             </> : <h3>No hay horarios para este punto</h3>

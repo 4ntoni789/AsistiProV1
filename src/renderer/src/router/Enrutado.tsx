@@ -12,6 +12,7 @@ import Roles from '@renderer/page/Roles';
 import PuntoVenta from '@renderer/page/PuntoVenta';
 import Empleadores from '@renderer/page/Empleadores';
 import User from '@renderer/page/User';
+import Reportes from '@renderer/page/Reportes';
 
 function Enrutado(props) {
   const userData = useSelector((state: any) => state.loginAccess.validationAccess);
@@ -28,7 +29,7 @@ function Enrutado(props) {
               <Route path='pSale' element={<PuntoVenta/>} />
               <Route path='employe' element={<Empleados />} />
               <Route path='ausentismo' element={<h2>Ausentismo</h2>} />
-              <Route path='report' element={<h2>Reportes</h2>} />
+              <Route path='report' element={<Reportes/>} />
               <Route path='roles' element={<Roles />} />
               <Route path='cargos' element={<Cargos />} />
               <Route path='contracts' element={<h2>Contratos</h2>} />
