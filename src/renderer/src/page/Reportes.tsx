@@ -28,22 +28,12 @@ function Reportes(props) {
         reqUser: userData.userLogin
       }),
     });
-    // const result = await response.json();
-    // if (response.ok) {
-    //   dispatch(ActiveErrorSpam({ msg: result.message, active: true, typeError: 'submit' }));
-    //   dispatch(ActiveSubMenuUpdatePass({ user: {}, subMenuUpdatePass: false }));
-    //   reset()
-    //   setTypeErrorPass({
-    //     activeError: false,
-    //     typeError: ''
-    //   });
-    // } else {
-    //   setTypeErrorPass({
-    //     activeError: true,
-    //     typeError: result.message
-    //   });
-
-    // }
+    const blob = await response.blob();
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `reporte_asistencias_${dataInput.punto_venta}.xlsx`;
+    a.click();
   }
 
   useEffect(() => {
@@ -109,13 +99,35 @@ function Reportes(props) {
               ))
             }
           </select><br />
-          <span>Fecha de inicio: </span>
-          <input type="date" id='fecha_inicio' {...register('fecha_inicio',
-            { required: true, disabled: seleted == '' ? true : false })} />
-          <span>Fecha de fin: </span>
-          <input type="date" id='fecha_fin' {...register('fecha_fin',
-            { required: true, disabled: seleted == '' ? true : false })} />
-          <button disabled={seleted == '' ? true : false}>Generar</button>
+          {
+            seleted == 'Asistencias general' ?
+              <>
+                <span>Fecha de inicio: </span>
+                <input type="date" id='fecha_inicio' {...register('fecha_inicio',
+                  { required: true, disabled: false })} />
+                <span>Fecha de fin: </span>
+                <input type="date" id='fecha_fin' {...register('fecha_fin',
+                  { required: true, disabled: false })} />
+                <button disabled={false}>Generar</button>
+              </>
+              :
+              seleted == 'Asistencias diaria' ?
+                <>
+                  <span>Fecha de inicio: </span>
+                  <input type="date" id='fecha_inicio' {...register('fecha_inicio',
+                    { required: true, disabled: false })} />
+                  <button disabled={false}>Generar</button>
+                </>
+                : <>
+                  <span>Fecha de inicio: </span>
+                  <input type="date" id='fecha_inicio' {...register('fecha_inicio',
+                    { required: true, disabled: seleted == '' ? true : false })} />
+                  <span>Fecha de fin: </span>
+                  <input type="date" id='fecha_fin' {...register('fecha_fin',
+                    { required: true, disabled: seleted == '' ? true : false })} />
+                  <button disabled={seleted == '' ? true : false}>Generar</button>
+                </>
+          }
         </form>
       </div>
     </div>

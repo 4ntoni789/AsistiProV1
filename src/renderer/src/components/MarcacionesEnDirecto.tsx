@@ -25,7 +25,7 @@ function MarcacionesEnDirecto(props) {
     }, 500)
     return () => clearInterval(intervalo);
   }, [])
-
+  
   return (
     <div className='App__init__marcacionesEnDirecto'>
       <h2>Ultimos registros</h2>

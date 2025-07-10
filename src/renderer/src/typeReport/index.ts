@@ -8,7 +8,7 @@ export const typeReports: Array<object> = [
         typeReport: 'general'
     }, {
         icon: faCalendarDay,
-        reportName: 'Asistencias de hoy',
+        reportName: 'Asistencias diaria',
         typeReport: 'general'
     }, {
         icon: faCalendarWeek,

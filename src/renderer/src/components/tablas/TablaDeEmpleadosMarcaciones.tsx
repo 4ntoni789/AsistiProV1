@@ -42,7 +42,6 @@ function TablaMarcaciones() {
       .then((res) => res.json())
       .then((data) => {
         setAccesos(data);
-        console.log(data);
         if (clickLoad) {
           const interval = setTimeout(() => {
             setClickLoad(false);
