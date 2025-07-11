@@ -11,7 +11,7 @@ import { useEffect } from 'react';
 function Empleados(props) {
   // const type_role = useSelector((state: any) => state.loginAccess.userLogin.type_role);
   const dispatch = useDispatch();
-  // const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
+  const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
 
 
   // useEffect(() => {
@@ -23,7 +23,7 @@ function Empleados(props) {
   //         }
   //       });
   //       if (!response.ok) throw new Error('Error en la respuesta del servidor');
-        
+
   //     } catch (err) {
   //       console.error('Error al obtener accesos:', err);
   //     }

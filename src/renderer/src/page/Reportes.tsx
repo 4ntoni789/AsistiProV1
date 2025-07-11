@@ -25,15 +25,32 @@ function Reportes(props) {
         fecha_fin: dataInput.fecha_fin,
         id_pv: dataInput.punto_venta,
         type_report: seleted,
+        type_archive: dataInput.tipo_archivo,
         reqUser: userData.userLogin
       }),
     });
-    const blob = await response.blob();
+
+    if (!response.ok) throw new Error('Error al generar este archivo');
+
+    if (dataInput.tipo_archivo == 'excel') {
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `reporte_asistencias_${dataInput.punto_venta}_${seleted}.xlsx`;
+      a.click();
+    } else {
+       const blob = await response.blob();
     const url = window.URL.createObjectURL(blob);
+
     const a = document.createElement('a');
     a.href = url;
-    a.download = `reporte_asistencias_${dataInput.punto_venta}.xlsx`;
+    a.download = 'asistencias.pdf';
+    document.body.appendChild(a);
     a.click();
+    a.remove();
+    window.URL.revokeObjectURL(url);
+    }
   }
 
   useEffect(() => {
@@ -98,6 +115,12 @@ function Reportes(props) {
                 <option key={i} value={item.id_pv}>{item.nombre}</option>
               ))
             }
+          </select><br />
+          <span>Tipo de archivo: </span>
+          <select id='tipo_archivo' {...register('tipo_archivo',
+            { required: true, disabled: seleted == '' ? true : false })}>
+            <option value='pdf'>PDF</option>
+            <option value='excel'>EXCEL</option>
           </select><br />
           {
             seleted == 'Asistencias general' ?
