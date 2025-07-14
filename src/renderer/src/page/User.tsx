@@ -15,7 +15,7 @@ function Usuario(props) {
     <div className='App__dashboard__contPageOutlet__user'>
       <div className='App__dashboard__contPageOutlet__user__view'>
         <div className='App__dashboard__contPageOutlet__user__view__userLenght'>
-          <h2>{dataUser.nombre_usuario[0]}</h2>
+          <h2>{dataUser.nombre_usuario[0].toUpperCase()}</h2>
         </div>
         <h3>{dataUser.type_role}</h3>
         <h2>{dataUser.nombre_usuario}</h2>

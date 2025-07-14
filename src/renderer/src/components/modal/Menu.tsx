@@ -40,7 +40,7 @@ function Menu(props) {
       </div>
       <div className='App__dashboard__contMenu__active__menu__footerUser'>
         <div className='App__dashboard__contMenu__active__menu__footerUser__userLenght'>
-          <h2>{dataUser.nombre_usuario[0]}</h2>
+          <h2>{dataUser.nombre_usuario[0].toUpperCase()}</h2>
         </div>
         <div className='App__dashboard__contMenu__active__menu__footerUser__infoUser'>
           <h3>{dataUser.type_role}</h3>

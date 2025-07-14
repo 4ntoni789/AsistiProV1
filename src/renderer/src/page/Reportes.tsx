@@ -2,9 +2,13 @@ import React, { useEffect, useState } from 'react';
 import '../css/reporte.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
-import { typeReports } from '../typeReport/index'
+import { obtenerSemanaSiEsLunes } from '@renderer/scripts/calcularLunesYDomingo';
+import { ActiveErrorSpam } from '@renderer/actions/actionsLogin';
+import ContenedorReportes from '@renderer/components/ContenedorReportes';
+import FormularioReportSeleccionado from '@renderer/components/FormularioReportSeleccionado';
+import { obtenerRangoDelMesSiEsPrimerDia } from '@renderer/scripts/calcularInicio&FinDeMes';
 
 function Reportes(props) {
   const [seleted, setSeleted] = useState<string>('');
@@ -12,44 +16,66 @@ function Reportes(props) {
   const userData = useSelector((state: any) => state.loginAccess);
   const { register, handleSubmit, reset } = useForm();
   const [puntosVenta, setPuntosVenta] = useState<[any]>([{}]);
+  const dispatch = useDispatch();
+  const [empleados, setEmpleados] = useState<[any]>([{}]);
 
   const onSubmit = async (dataInput) => {
-    const response = await fetch(`/api/generar-reporte`, {
-      method: 'POST',
-      headers: {
-        'x-id-usuario': userId,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        fecha_ini: dataInput.fecha_inicio,
-        fecha_fin: dataInput.fecha_fin,
-        id_pv: dataInput.punto_venta,
-        type_report: seleted,
-        type_archive: dataInput.tipo_archivo,
-        reqUser: userData.userLogin
-      }),
-    });
+    try {
+      const fechaIniSemana: any = obtenerSemanaSiEsLunes(dataInput.fecha_inicio);
+      const fechaIniMes: any = obtenerRangoDelMesSiEsPrimerDia(dataInput.fecha_inicio);
+      let fechaFin;
+      if (seleted == 'Asistencia semanal' && fechaIniSemana != null) {
+        fechaFin = fechaIniSemana.domingo
+      } else if (seleted == 'Asistencia diaria') {
+        fechaFin = dataInput.fecha_inicio
+      } else if (seleted == 'Asistencia general') {
+        fechaFin = dataInput.fecha_fin
+      } else if (seleted == 'Asistencia mensual' && fechaIniMes != null) {
+        fechaFin = fechaIniMes.finMes
+      } else if (fechaIniMes == null && seleted == 'Asistencia mensual') {
+        dispatch(ActiveErrorSpam({ msg: 'Tienes que ingresar el primer dia del mes para procesar este reporte', active: true, typeError: 'error' }));
+      } else if (fechaIniSemana == null && seleted == 'Asistencia semanal') {
+        dispatch(ActiveErrorSpam({ msg: 'Tienes que ingresar un lunes para procesar este reporte', active: true, typeError: 'error' }));
+      }
+      const response = await fetch(`/api/generar-reporte`, {
+        method: 'POST',
+        headers: {
+          'x-id-usuario': userId,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          fecha_ini: dataInput.fecha_inicio,
+          fecha_fin: fechaFin,
+          id_pv: dataInput.punto_venta,
+          type_report: seleted,
+          type_archive: dataInput.tipo_archivo,
+          reqUser: userData.userLogin
+        }),
+      });
 
-    if (!response.ok) throw new Error('Error al generar este archivo');
+      if (!response.ok) throw new Error('Error al generar este archivo');
 
-    if (dataInput.tipo_archivo == 'excel') {
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `reporte_asistencias_${dataInput.punto_venta}_${seleted}.xlsx`;
-      a.click();
-    } else {
-       const blob = await response.blob();
-    const url = window.URL.createObjectURL(blob);
+      if (dataInput.tipo_archivo == 'excel') {
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `reporte_asistencias_${dataInput.punto_venta}_${seleted}.xlsx`;
+        a.click();
+      } else {
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
 
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'asistencias.pdf';
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    window.URL.revokeObjectURL(url);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `asistencias_${dataInput.punto_venta}_${seleted}.pdf`;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        window.URL.revokeObjectURL(url);
+      }
+    } catch (error) {
+      console.log(error);
     }
   }
 
@@ -64,38 +90,22 @@ function Reportes(props) {
         setPuntosVenta(data)
       })
       .catch((err) => console.error('Error:', err));
+
+    fetch('/api/empleados', {
+      headers: {
+        'x-id-usuario': userId
+      }
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setEmpleados(data);
+      })
+      .catch((err) => console.error('Error:', err));
   }, [userData.validationAccess == true, seleted]);
 
   return (
     <div className='App__init__puntoVenta'>
-      <div className='App__init__puntoVenta__encabezado'>
-        <h2>Reportes de Período</h2>
-      </div>
-      <div className='App__init__Reporte'>
-        {
-          typeReports.map((report: any, i) => (
-            report.typeReport == 'general' ? <div key={i} className={seleted == report.reportName ? 'App__init__Reporte__contSingleReporte__active' : 'App__init__Reporte__contSingleReporte'}
-              onClick={() => setSeleted(report.reportName)}>
-              <FontAwesomeIcon icon={report.icon} />
-              <span>{report.reportName}</span>
-            </div> : null
-          ))
-        }
-      </div>
-      <div className='App__init__puntoVenta__encabezado'>
-        <h2>Reportes de Control y Análisis</h2>
-      </div>
-      <div className='App__init__Reporte'>
-        {
-          typeReports.map((report: any, i) => (
-            report.typeReport == 'control_analisis' ? <div key={i} className={seleted == report.reportName ? 'App__init__Reporte__contSingleReporte__active' : 'App__init__Reporte__contSingleReporte'}
-              onClick={() => setSeleted(report.reportName)}>
-              <FontAwesomeIcon icon={report.icon} />
-              <span>{report.reportName}</span>
-            </div> : null
-          ))
-        }
-      </div>
+      <ContenedorReportes seleted={seleted} setSeleted={setSeleted} />
       <br />
       <div className='App__init__puntoVenta__encabezado'>
         <h2>Generador de reporte</h2>
@@ -106,54 +116,55 @@ function Reportes(props) {
         </div>
         <h3>Tipo de reporte: <b>{seleted != '' ? seleted : 'Escoge un tipo de informe'}</b></h3>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <span>Punto de venta: </span>
-          <select id='punto_venta' {...register('punto_venta',
-            { required: true, disabled: seleted == '' ? true : false })}>
-            <option value=''>--Escoge un punto de venta--</option>
-            {
-              puntosVenta?.map((item, i) => (
-                <option key={i} value={item.id_pv}>{item.nombre}</option>
-              ))
-            }
-          </select><br />
+          {
+            seleted == 'Asistencias por empleado' ?
+              <>
+                <span>Punto de venta: </span>
+                <select id='punto_venta' {...register('punto_venta',
+                  { required: true, disabled: false })}>
+                  <option value='todos'>Todos los puntos de venta</option>
+                  {
+                    puntosVenta?.map((item, i) => (
+                      <option key={i} value={item.id_pv}>{item.nombre}</option>
+                    ))
+                  }
+                </select><br />
+                <span> Empleado: </span>
+                <select id='punto_venta' {...register('punto_venta',
+                  { required: true, disabled: false })}>
+                  <option value='todos'>Escoge un empleado....</option>
+                  {
+                    empleados?.map((item, i) => (
+                      <option key={i} value={item.id_empleado}>{item.nombres} {item.apellidos}</option>
+                    ))
+                  }
+                </select>
+              </>
+              :
+              <>
+                <span>Punto de venta: </span>
+                <select id='punto_venta' {...register('punto_venta',
+                  { required: true, disabled: seleted == '' ? true : false })}>
+                  <option value='todos'>Todos los puntos de venta</option>
+                  {
+                    puntosVenta?.map((item, i) => (
+                      <option key={i} value={item.id_pv}>{item.nombre}</option>
+                    ))
+                  }
+                </select></>
+          }<br />
           <span>Tipo de archivo: </span>
           <select id='tipo_archivo' {...register('tipo_archivo',
             { required: true, disabled: seleted == '' ? true : false })}>
             <option value='pdf'>PDF</option>
             <option value='excel'>EXCEL</option>
           </select><br />
-          {
-            seleted == 'Asistencias general' ?
-              <>
-                <span>Fecha de inicio: </span>
-                <input type="date" id='fecha_inicio' {...register('fecha_inicio',
-                  { required: true, disabled: false })} />
-                <span>Fecha de fin: </span>
-                <input type="date" id='fecha_fin' {...register('fecha_fin',
-                  { required: true, disabled: false })} />
-                <button disabled={false}>Generar</button>
-              </>
-              :
-              seleted == 'Asistencias diaria' ?
-                <>
-                  <span>Fecha de inicio: </span>
-                  <input type="date" id='fecha_inicio' {...register('fecha_inicio',
-                    { required: true, disabled: false })} />
-                  <button disabled={false}>Generar</button>
-                </>
-                : <>
-                  <span>Fecha de inicio: </span>
-                  <input type="date" id='fecha_inicio' {...register('fecha_inicio',
-                    { required: true, disabled: seleted == '' ? true : false })} />
-                  <span>Fecha de fin: </span>
-                  <input type="date" id='fecha_fin' {...register('fecha_fin',
-                    { required: true, disabled: seleted == '' ? true : false })} />
-                  <button disabled={seleted == '' ? true : false}>Generar</button>
-                </>
-          }
+          <FormularioReportSeleccionado seleted={seleted} register={register} />
+          <button disabled={seleted == '' ? true : false}>Generar</button>
+
         </form>
       </div>
-    </div>
+    </div >
   );
 }
 

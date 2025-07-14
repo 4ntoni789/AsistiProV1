@@ -4,19 +4,19 @@ export const typeReports: Array<object> = [
 
     {
         icon: faFileExport,
-        reportName: 'Asistencias general',
+        reportName: 'Asistencia general',
         typeReport: 'general'
     }, {
         icon: faCalendarDay,
-        reportName: 'Asistencias diaria',
+        reportName: 'Asistencia diaria',
         typeReport: 'general'
     }, {
         icon: faCalendarWeek,
-        reportName: 'Asistencias semanal',
+        reportName: 'Asistencia semanal',
         typeReport: 'general'
     }, {
         icon: faCalendarDays,
-        reportName: 'Asistencias mensual',
+        reportName: 'Asistencia mensual',
         typeReport: 'general'
     }, {
         icon: faUserTie,

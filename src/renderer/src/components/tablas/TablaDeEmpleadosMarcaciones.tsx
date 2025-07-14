@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import '../../css/tablaDeMarcaciones.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRotateLeft, faArrowsRotate, faCalendar, faCalendarXmark, faEllipsis, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
+import { faArrowsRotate, faCalendar, faCalendarXmark, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
 import ItemTable from '../items/ItemTable';
 
 import ItemTableHeader from '../items/ItemTableHeader';
@@ -38,11 +38,11 @@ function TablaMarcaciones() {
     fetch('/api/empleados', {
       headers: {
         'x-id-usuario': userId
-      }})
+      }
+    })
       .then((res) => res.json())
       .then((data) => {
         setAccesos(data);
-        console.log(data);
         if (clickLoad) {
           const interval = setTimeout(() => {
             setClickLoad(false);
