@@ -1,0 +1,92 @@
+.timeline-container {
+  width: 100%;
+  padding: 10px;
+  background: #2e2e2e;
+  color: white;
+  font-size: 12px;
+  font-family: sans-serif;
+  border-radius: 5px;
+}
+.timeline-container .ruler {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+  font-size: 10px;
+  color: #aaa;
+}
+.timeline-container .ruler .rulerMark {
+  width: 4.1666666667%;
+  flex: 0 0 4.1666666667%;
+  text-align: center;
+  position: relative;
+}
+.timeline-container .ruler .rulerMark::after {
+  content: "";
+  position: absolute;
+  top: 16px;
+  bottom: -16px;
+  left: 50%;
+  width: 1px;
+  background-color: rgba(255, 255, 255, 0.05);
+  transform: translateX(-50%);
+}
+.timeline-container .break-time {
+  position: absolute;
+  height: 100%;
+  z-index: 3;
+  background-color: #00ff6a;
+  opacity: 0.5;
+}
+.timeline-container .box.gray {
+  background-color: #00ff6a;
+  opacity: 0.5;
+}
+.timeline-container .grace-window {
+  position: absolute;
+  height: 100%;
+  z-index: 1;
+  background-image: repeating-linear-gradient(45deg, rgb(255, 104, 77), rgb(255, 104, 77) 5px, rgba(255, 255, 255, 0.1) 5px, rgba(255, 255, 255, 0.1) 10px);
+}
+.timeline-container .timeline {
+  position: relative;
+  height: 30px;
+  background: #1f1f1f;
+  border: 1px solid #444;
+  width: 100%;
+}
+.timeline-container .timeline .valid-time {
+  position: absolute;
+  height: 100%;
+  background-color: #f4b942;
+  z-index: 1;
+}
+.timeline-container .timeline .work-time {
+  position: absolute;
+  height: 100%;
+  background-color: #4da6ff;
+  z-index: 2;
+}
+.timeline-container .legend {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+}
+.timeline-container .legend .box {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+.timeline-container .legend .box.orange {
+  background-color: #f4b942;
+}
+.timeline-container .legend .box.blue {
+  background-color: #4da6ff;
+}
+.timeline-container .legend .box.striped {
+  background-image: repeating-linear-gradient(45deg, rgb(255, 104, 77), rgb(255, 104, 77) 5px, #b3d9ff 5px, #b3d9ff 10px);
+}
+
+/*# sourceMappingURL=workScheduleBar.css.map */

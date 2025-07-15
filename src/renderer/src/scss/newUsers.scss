@@ -148,7 +148,7 @@
         }
 
         &__dataUser {
-            padding-left: 10px;
+            padding:  0 10px 0 10px;
             width: 45%;
             height: 100%;
             background-color: #dd8702;
@@ -329,6 +329,19 @@
                 opacity: 0;
                 visibility: hidden;
                 transition: all .5s;
+                
+                &__contDobleTime{
+                    width: 60%;
+                    display: flex;
+
+                    input{
+                        width: 35%;
+                    }
+                    label{
+                        display: flex !important;
+                        justify-content: center;
+                    }
+                }
 
                 &__check {
                     display: flex;
@@ -345,6 +358,16 @@
                     opacity: 1;
                     visibility: visible;
                     transition: all .5s;
+
+                    label{
+                        display: flex ;
+                        // justify-content: center;
+                        align-items: center !important;
+                        svg {
+                            margin-left: 5px;
+                            cursor: pointer;
+                        }
+                    }
                 }
 
                 &__contBtn {

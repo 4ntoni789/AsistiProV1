@@ -1,0 +1,124 @@
+$background: #2e2e2e;
+$timeline-bg: #1f1f1f;
+$border-color: #444;
+$valid-time-color: #f4b942;
+$work-time-color: #4da6ff;
+$early-exit-stripe-light: #b3d9ff;
+$descanso:#00ff6a;
+
+.timeline-container {
+  width: 100%;
+  padding: 10px;
+  background: $background;
+  color: white;
+  font-size: 12px;
+  font-family: sans-serif;
+  border-radius: 5px;
+
+  .ruler {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+    font-size: 10px;
+    color: #aaa;
+
+    .rulerMark {
+      width: 4.1666666667%; // exacto: 100 / 24
+      flex: 0 0 4.1666666667%;
+      text-align: center;
+      position: relative;
+
+      // Línea vertical guía (opcional)
+      &::after {
+        content: "";
+        position: absolute;
+        top: 16px;
+        bottom: -16px;
+        left: 50%;
+        width: 1px;
+        background-color: rgba(255, 255, 255, 0.05);
+        transform: translateX(-50%);
+      }
+    }
+  }
+
+  .break-time {
+    position: absolute;
+    height: 100%;
+    z-index: 3;
+    background-color: $descanso;
+    opacity: 0.5;
+  }
+
+
+  .box.gray {
+    background-color: $descanso;
+    opacity: 0.5;
+  }
+
+
+  .grace-window {
+    position: absolute;
+    height: 100%;
+    z-index: 1;
+    background-image: repeating-linear-gradient(45deg,
+        rgb(255, 104, 77),
+        rgb(255, 104, 77) 5px,
+        rgba(255, 255, 255, 0.1) 5px,
+        rgba(255, 255, 255, 0.1) 10px);
+  }
+
+
+  .timeline {
+    position: relative;
+    height: 30px;
+    background: $timeline-bg;
+    border: 1px solid $border-color;
+    width: 100%;
+
+    .valid-time {
+      position: absolute;
+      height: 100%;
+      background-color: $valid-time-color;
+      z-index: 1;
+    }
+
+    .work-time {
+      position: absolute;
+      height: 100%;
+      background-color: $work-time-color;
+      z-index: 2;
+    }
+  }
+
+  .legend {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 12px;
+
+    .box {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      margin-right: 6px;
+      vertical-align: middle;
+
+      &.orange {
+        background-color: $valid-time-color;
+      }
+
+      &.blue {
+        background-color: $work-time-color;
+      }
+
+      &.striped {
+        background-image: repeating-linear-gradient(45deg,
+            rgb(255, 104, 77),
+            rgb(255, 104, 77) 5px,
+            $early-exit-stripe-light 5px,
+            $early-exit-stripe-light 10px);
+      }
+    }
+  }
+}

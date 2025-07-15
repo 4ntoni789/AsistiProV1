@@ -121,7 +121,7 @@
   background-color: #222 !important;
 }
 .App__dashboard__contPageOutlet__PageUsers__newUser__form__dataUser {
-  padding-left: 10px;
+  padding: 0 10px 0 10px;
   width: 45%;
   height: 100%;
   background-color: #dd8702;
@@ -272,6 +272,17 @@
   visibility: hidden;
   transition: all 0.5s;
 }
+.App__dashboard__contPageOutlet__PageUsers__newUser__form__contratoNotFound__contInputs__contDobleTime {
+  width: 60%;
+  display: flex;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form__contratoNotFound__contInputs__contDobleTime input {
+  width: 35%;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form__contratoNotFound__contInputs__contDobleTime label {
+  display: flex !important;
+  justify-content: center;
+}
 .App__dashboard__contPageOutlet__PageUsers__newUser__form__contratoNotFound__contInputs__check {
   display: flex;
   width: 80%;
@@ -286,6 +297,14 @@
   opacity: 1;
   visibility: visible;
   transition: all 0.5s;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form__contratoNotFound__contInputs__active label {
+  display: flex;
+  align-items: center !important;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form__contratoNotFound__contInputs__active label svg {
+  margin-left: 5px;
+  cursor: pointer;
 }
 .App__dashboard__contPageOutlet__PageUsers__newUser__form__contratoNotFound__contInputs__contBtn {
   width: 30%;
