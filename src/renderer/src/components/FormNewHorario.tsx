@@ -98,10 +98,6 @@ function FormNewHorario(userCargo) {
   }
 
   useEffect(() => {
-    console.log(valoresLineaTiempo);
-  }, [valoresLineaTiempo])
-
-  useEffect(() => {
     if (semana == 'toda_semana') {
       almacenDiasSemana = [
         { check: true, diaSemana: 'Lunes' },

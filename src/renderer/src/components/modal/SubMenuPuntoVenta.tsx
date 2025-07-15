@@ -8,7 +8,11 @@ import NewHorario from './NewHorario';
 function SubMenuPuntoVenta(props) {
   const activeMenuPuntoVenta = useSelector((state: any) => state.menuAccions.subMenuPuntoVenta);
   const [verPuntoVentaOHorario, setVerPuntoVentaOHorario] = useState(true);
-  const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
+  // const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
+
+  useEffect(() => {
+    setVerPuntoVentaOHorario(true);
+  }, [activeMenuPuntoVenta])
 
   return (
     <div className={activeMenuPuntoVenta.subMenuPuntoVenta ? 'App__dashboard__contPageOutlet__PageUsers__newUser__active' : 'App__dashboard__contPageOutlet__PageUsers__newUser'}>

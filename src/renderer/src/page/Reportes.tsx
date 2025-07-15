@@ -24,6 +24,7 @@ function Reportes(props) {
       const fechaIniSemana: any = obtenerSemanaSiEsLunes(dataInput.fecha_inicio);
       const fechaIniMes: any = obtenerRangoDelMesSiEsPrimerDia(dataInput.fecha_inicio);
       let fechaFin;
+      let idEmpleado = null;
       if (seleted == 'Asistencia semanal' && fechaIniSemana != null) {
         fechaFin = fechaIniSemana.domingo
       } else if (seleted == 'Asistencia diaria') {
@@ -36,6 +37,9 @@ function Reportes(props) {
         dispatch(ActiveErrorSpam({ msg: 'Tienes que ingresar el primer dia del mes para procesar este reporte', active: true, typeError: 'error' }));
       } else if (fechaIniSemana == null && seleted == 'Asistencia semanal') {
         dispatch(ActiveErrorSpam({ msg: 'Tienes que ingresar un lunes para procesar este reporte', active: true, typeError: 'error' }));
+      } else if (seleted == 'Asistencias por empleado') {
+        fechaFin = dataInput.fecha_fin
+        idEmpleado = dataInput.id_empleado;
       }
       const response = await fetch(`/api/generar-reporte`, {
         method: 'POST',
@@ -48,6 +52,7 @@ function Reportes(props) {
           fecha_fin: fechaFin,
           id_pv: dataInput.punto_venta,
           type_report: seleted,
+          id_empleado: idEmpleado,
           type_archive: dataInput.tipo_archivo,
           reqUser: userData.userLogin
         }),
@@ -130,7 +135,7 @@ function Reportes(props) {
                   }
                 </select><br />
                 <span> Empleado: </span>
-                <select id='punto_venta' {...register('punto_venta',
+                <select id='id_empleado' {...register('id_empleado',
                   { required: true, disabled: false })}>
                   <option value='todos'>Escoge un empleado....</option>
                   {
