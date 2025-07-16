@@ -6,6 +6,7 @@ import { ActiveSubMenuDeleteUsers, ActiveSubMenuUpdatePass, ActiveSubMenuUpdateU
 import UpdateUser from '@renderer/components/modal/UpdateUser';
 import UpdateSingleUser from '@renderer/components/modal/UpdateSingleUser';
 import UpdatePass from '@renderer/components/modal/UpdatePass';
+import BtnDarkMode from '@renderer/components/BtnDarkMode';
 
 function Usuario(props) {
   const dataUser = useSelector((state: any) => state.loginAccess.userLogin);
@@ -13,6 +14,7 @@ function Usuario(props) {
 
   return (
     <div className='App__dashboard__contPageOutlet__user'>
+      <BtnDarkMode/>
       <div className='App__dashboard__contPageOutlet__user__view'>
         <div className='App__dashboard__contPageOutlet__user__view__userLenght'>
           <h2>{dataUser.nombre_usuario[0].toUpperCase()}</h2>

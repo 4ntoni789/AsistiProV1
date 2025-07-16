@@ -7,6 +7,7 @@ import logo from '../../img/AsistiPropng.png';
 import logo2 from '../../img/AsistiProMinPng.png';
 import '../../css/menu.css';
 import { useEffect, useRef, useState } from 'react';
+import BtnDarkMode from '../BtnDarkMode';
 
 function Menu(props) {
   const dispatch = useDispatch();
@@ -41,35 +42,35 @@ function Menu(props) {
             <img className='App__loginPage__cont__contForm__contImg__imgLogo' src={logo2} alt={document.title} />
         }
       </div>
-      <div className={menuActive ? 'App__dashboard__contMenu__active__menu__btnPage' : 'App__dashboard__contMenu__menu__btnPage'}>
+      <div className={menuActive ? 'App__dashboard__contMenu__active__menu__btnPage' : 'App__dashboard__contMenu__menu__btnPage'} title='Inicio'>
         <NavLink to='init'
           className={({ isActive }) => isActive ? "App__dashboard__contMenu__active__menu__btnPage__activeBtn" : ""
           }><FontAwesomeIcon icon={faHome} /><b>Inicio</b></NavLink>
       </div>
 
-      <div className={menuActive ? 'App__dashboard__contMenu__active__menu__btnPage' : 'App__dashboard__contMenu__menu__btnPage'}>
+      <div className={menuActive ? 'App__dashboard__contMenu__active__menu__btnPage' : 'App__dashboard__contMenu__menu__btnPage'} title='Punto de venta'>
         <NavLink to='pSale'
           className={({ isActive }) => isActive ? "App__dashboard__contMenu__active__menu__btnPage__activeBtn" : ""
           }><FontAwesomeIcon icon={faStore} /><b>Puntos de ventas</b></NavLink>
       </div>
-      <div className={menuActive ? 'App__dashboard__contMenu__active__menu__btnPage' : 'App__dashboard__contMenu__menu__btnPage'}>
+      <div className={menuActive ? 'App__dashboard__contMenu__active__menu__btnPage' : 'App__dashboard__contMenu__menu__btnPage'} title='Empleados'>
         <NavLink to='employe'
           className={({ isActive }) => isActive ? "App__dashboard__contMenu__active__menu__btnPage__activeBtn" : ""
           }><FontAwesomeIcon icon={faImagePortrait} /><b>Empleados</b></NavLink>
       </div>
 
-      <div className={menuActive ? 'App__dashboard__contMenu__active__menu__btnPage' : 'App__dashboard__contMenu__menu__btnPage'}>
+      <div className={menuActive ? 'App__dashboard__contMenu__active__menu__btnPage' : 'App__dashboard__contMenu__menu__btnPage'} title='Ausentismo'>
         <NavLink to='ausentismo'
           className={({ isActive }) => isActive ? "App__dashboard__contMenu__active__menu__btnPage__activeBtn" : ""
           }><FontAwesomeIcon icon={faCalendar} /><b>Ausentismo</b></NavLink>
       </div>
 
-      <div className={menuActive ? 'App__dashboard__contMenu__active__menu__btnPage' : 'App__dashboard__contMenu__menu__btnPage'}>
+      <div className={menuActive ? 'App__dashboard__contMenu__active__menu__btnPage' : 'App__dashboard__contMenu__menu__btnPage'} title='Reportes'>
         <NavLink to='report'
           className={({ isActive }) => isActive ? "App__dashboard__contMenu__active__menu__btnPage__activeBtn" : ""
           }><FontAwesomeIcon icon={faFolder} /><b>Reportes</b></NavLink>
       </div>
-      <div className={menuActive ? 'App__dashboard__contMenu__active__menu__btnPage' : 'App__dashboard__contMenu__menu__btnPage'}>
+      <div className={menuActive ? 'App__dashboard__contMenu__active__menu__btnPage' : 'App__dashboard__contMenu__menu__btnPage'}title='Contratos'>
         <NavLink to='contracts'
           className={({ isActive }) => isActive ? "App__dashboard__contMenu__active__menu__btnPage__activeBtn" : ""
           }><FontAwesomeIcon icon={faFileContract} /><b>Contratos</b></NavLink>

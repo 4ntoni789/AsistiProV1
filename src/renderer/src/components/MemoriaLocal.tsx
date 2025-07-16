@@ -1,4 +1,4 @@
-import { ActivatedMenu } from '@renderer/actions/actionsLogin';
+import { ActivatedMenu, ActiveDarkMode } from '@renderer/actions/actionsLogin';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -7,10 +7,11 @@ function MemoriaLocal(props) {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if (Object.keys(dataUser).length !== 0) {
-            const memoriaMenuOptions = localStorage.getItem(`uiOptions${dataUser.id_usuario}`);
-            const memoriaMenu = memoriaMenuOptions ? JSON.parse(memoriaMenuOptions) : {
+        if (Object.keys(dataUser != null ? dataUser : {}).length !== 0) {
+            const memoriaLocalUi = localStorage.getItem(`uiOptions${dataUser.id_usuario}`);
+            const memoriaUi = memoriaLocalUi ? JSON.parse(memoriaLocalUi) : {
                 menuActive: true,
+                darkMode: true,
                 user: {
                     correo: "Default",
                     estado: "Default",
@@ -20,8 +21,8 @@ function MemoriaLocal(props) {
                     type_role: "Default"
                 }
             };
-            dispatch(ActivatedMenu(memoriaMenu.menuActive));
-
+            dispatch(ActivatedMenu(memoriaUi.menuActive));
+            dispatch(ActiveDarkMode(memoriaUi.darkMode))
         }
     }, [dataUser])
 }

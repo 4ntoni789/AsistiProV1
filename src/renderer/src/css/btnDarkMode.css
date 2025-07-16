@@ -1,0 +1,46 @@
+.toggle-container {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 80px;
+  height: 40px;
+  background: #e2e2e2;
+  border-radius: 40px;
+  padding: 5px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.toggle-container.dark {
+  background: #555;
+}
+.toggle-container.dark .toggle-circle {
+  transform: translateX(40px);
+  background-color: #444;
+}
+.toggle-container.dark .icon {
+  left: auto;
+  right: 8px;
+}
+.toggle-container .toggle-circle {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 30px;
+  height: 30px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  transform: translateX(0);
+}
+.toggle-container .icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 8px;
+  font-size: 18px;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+/*# sourceMappingURL=btnDarkMode.css.map */
