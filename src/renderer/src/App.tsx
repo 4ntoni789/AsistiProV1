@@ -6,7 +6,8 @@ import ErrorSpam from './components/modal/ErrorSpam'
 import Login from './page/Login'
 import Enrutado from './router/Enrutado'
 import { useDispatch, useSelector } from 'react-redux'
-import {  Logout } from './actions/actionsLogin'
+import { Logout } from './actions/actionsLogin'
+import MemoriaLocal from './components/MemoriaLocal'
 
 function App(): React.JSX.Element {
   const userData = useSelector((state: any) => state.loginAccess.validationAccess);
@@ -33,9 +34,9 @@ function App(): React.JSX.Element {
     };
   }, [userData]);
 
-
   return (
     <>
+      <MemoriaLocal />
       <Enrutado />
       <Loader />
       <DeleteUser />

@@ -1,0 +1,263 @@
+.App__dashboard__contMenu {
+  height: 100vh;
+  width: 100px;
+  background-color: #333;
+  position: relative;
+  transition: all 0.5s;
+}
+.App__dashboard__contMenu__menu {
+  position: relative;
+  transition: all 0.5s;
+  height: 100vh;
+}
+.App__dashboard__contMenu__menu__headerMenu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: -15px;
+  top: 50vh;
+  background-color: #333;
+  border: 5px solid #333;
+  border-radius: 100%;
+  text-align: center;
+  z-index: 10;
+  transition: all 0.5s;
+}
+.App__dashboard__contMenu__menu__headerMenu:hover {
+  color: #dd8702;
+}
+.App__dashboard__contMenu__menu__headerMenu svg {
+  cursor: pointer;
+  font-size: 30px;
+}
+.App__dashboard__contMenu__menu__titleUser {
+  margin: 10px 0 10px 0;
+}
+.App__dashboard__contMenu__menu__titleUser img {
+  width: 100%;
+}
+.App__dashboard__contMenu__menu__btnPage {
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 10px 0 10px;
+  margin: 10px 0 10px 0;
+  transition: all 0.5s;
+}
+.App__dashboard__contMenu__menu__btnPage a {
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 600;
+  color: rgba(255, 255, 245, 0.8588235294);
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s;
+}
+.App__dashboard__contMenu__menu__btnPage a svg {
+  font-size: 20px;
+  margin: 0 10px 0 10px;
+}
+.App__dashboard__contMenu__menu__btnPage a:hover {
+  background-color: #929292;
+}
+.App__dashboard__contMenu__menu__btnPage a b {
+  width: 0;
+  color: rgba(255, 255, 245, 0.8588235294);
+  opacity: 0;
+  transform: translateX(-50px);
+}
+.App__dashboard__contMenu__menu__footerUser {
+  width: 95%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 15px;
+  border-radius: 10px;
+}
+.App__dashboard__contMenu__menu__footerUser__userLenght h2 {
+  color: #fff;
+  text-decoration: underline;
+  width: 40px;
+  background-color: #dd8702;
+  text-align: center;
+  border-radius: 5px;
+}
+.App__dashboard__contMenu__menu__footerUser__userLenght__activeBtn h2 {
+  animation: respiracion 2s ease-in-out infinite;
+}
+.App__dashboard__contMenu__menu__footerUser__userLenght__activeBtn h2:hover {
+  animation: none;
+  transform: scale(1.1);
+}
+.App__dashboard__contMenu__menu__footerUser__infoUser {
+  height: 60px;
+  width: 60%;
+  margin-left: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.App__dashboard__contMenu__menu__footerUser__infoUser h3 {
+  font-size: 12px;
+}
+.App__dashboard__contMenu__menu__footerUser__infoUser h2 {
+  font-size: 15px;
+}
+.App__dashboard__contMenu__menu__footerUser svg {
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+  transition: all 0.5s;
+}
+.App__dashboard__contMenu__menu__footerUser svg:hover {
+  color: #dd8702;
+}
+.App__dashboard__contMenu__active {
+  height: 100vh;
+  width: 25%;
+  background-color: #333;
+  padding-left: 10px;
+  position: relative;
+  left: 0px;
+  transition: all 0.5s;
+}
+.App__dashboard__contMenu__active__menu {
+  position: relative;
+  transition: all 0.5s;
+  height: 100%;
+}
+.App__dashboard__contMenu__active__menu__headerMenu {
+  position: absolute;
+  right: -15px;
+  top: 50vh;
+  border: 5px solid #333;
+  border-radius: 100%;
+  transition: all 0.5s;
+}
+.App__dashboard__contMenu__active__menu__headerMenu:hover {
+  color: #dd8702;
+}
+.App__dashboard__contMenu__active__menu__headerMenu svg {
+  cursor: pointer;
+  font-size: 30px;
+}
+.App__dashboard__contMenu__active__menu__titleUser img {
+  width: 100%;
+}
+.App__dashboard__contMenu__active__menu__btnPage {
+  height: 45px;
+  display: flex;
+  align-items: center;
+  padding-right: 10px;
+}
+.App__dashboard__contMenu__active__menu__btnPage a {
+  height: 90%;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 600;
+  color: rgba(255, 255, 245, 0.8588235294);
+  width: 100%;
+  border-radius: 5px;
+  transition: all 0.5s;
+}
+.App__dashboard__contMenu__active__menu__btnPage a svg {
+  font-size: 20px;
+  margin: 0 10px 0 10px;
+}
+.App__dashboard__contMenu__active__menu__btnPage a:hover {
+  background-color: #929292;
+}
+.App__dashboard__contMenu__active__menu__btnPage a b {
+  width: 150px;
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 600;
+  color: rgba(255, 255, 245, 0.8588235294);
+  opacity: 1;
+  transform: translateX(10px);
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+.App__dashboard__contMenu__active__menu__btnPage__activeBtn {
+  background-color: #dd8702;
+  transition: background color 0.5s;
+}
+.App__dashboard__contMenu__active__menu__footerUser {
+  width: 95%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 10px;
+  border: 1px solid #dd8702;
+  border-radius: 10px;
+}
+.App__dashboard__contMenu__active__menu__footerUser__userLenght h2 {
+  color: #fff;
+  text-decoration: underline;
+  width: 40px;
+  background-color: #dd8702;
+  text-align: center;
+  border-radius: 5px;
+}
+.App__dashboard__contMenu__active__menu__footerUser__infoUser {
+  height: 60px;
+  width: 60%;
+  margin-left: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.App__dashboard__contMenu__active__menu__footerUser__infoUser h3 {
+  font-size: 12px;
+}
+.App__dashboard__contMenu__active__menu__footerUser__infoUser h2 {
+  font-size: 15px;
+}
+.App__dashboard__contMenu__active__menu__footerUser svg {
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+  transition: all 0.5s;
+}
+.App__dashboard__contMenu__active__menu__footerUser svg:hover {
+  color: #dd8702;
+}
+@media (min-width: 1400px) {
+  .App__dashboard__contMenu__active {
+    width: 11%;
+  }
+}
+
+@keyframes respiracion {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes fadeInLineal {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/*# sourceMappingURL=menu.css.map */
