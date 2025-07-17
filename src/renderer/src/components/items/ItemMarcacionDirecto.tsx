@@ -1,19 +1,26 @@
 import React, { useState } from 'react';
 import '../../css/itemMarcacionDirecto.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown, faChevronUp, faClock, faFingerprint, faStopwatch } from '@fortawesome/free-solid-svg-icons';
+import { tiempoTranscurrido } from '@renderer/scripts/tiempoTranscurrido';
 
-function ItemMarcacionDirecto({ item }) {
-  const [activeMarcacioDirecto, setMarcacionDirecto] = useState<boolean>(false);
+interface Props {
+  item: any;
+  isNew?: boolean;
+}
+
+function ItemMarcacionDirecto({ item, isNew = false }: Props) {
+
   return (
-    <div className='App__init__marcacionesEnDirecto__body__item'>
-      <h5>Fecha: {item.fecha}</h5>
-      <h5>Punto de venta: ({item.nombre_dispositivo})</h5>
-      <h5>Empleado: ({item.nombre_empleado})</h5>
-      {/* <FontAwesomeIcon icon={activeMarcacioDirecto ? faChevronUp : faChevronDown} onClick={() => setMarcacionDirecto(!activeMarcacioDirecto)} /> */}
-      <div className='App__init__marcacionesEnDirecto__body__item__subMenu'>
-        <h5>Hora: ({item.hora})</h5>
-        {/* <h5>Tipo: ({item.registros[0].tipo})</h5> */}
+    <div className={`App__init__marcacionesEnDirecto__body__item ${isNew ? 'item-enter' : ''}`}>
+      <div className='App__init__marcacionesEnDirecto__body__item__ico'>
+        <FontAwesomeIcon icon={faFingerprint} title='Marcación'/>
+      </div>
+      <div className='App__init__marcacionesEnDirecto__body__item__info'>
+        <h5><span>Fecha:</span> {item.fecha}  <span><FontAwesomeIcon icon={faStopwatch}/></span> <b>{tiempoTranscurrido(item.fecha, item.hora)}</b></h5>
+        <h5><span>Punto de venta:</span> {item.nombre_dispositivo}</h5>
+        <h5><span>Empleado:</span> {item.nombre_empleado}</h5>
+        <h5><span>Hora:</span> {item.hora}</h5>
       </div>
     </div>
   );

@@ -6,37 +6,55 @@
   margin: 10px 0 10px 0;
   display: flex;
   justify-content: center;
-  align-items: first baseline;
-  flex-direction: column;
+  align-items: center;
+  height: 110px;
   transition: all 0.5s;
-  animation: aparecer 1s forwards;
+  border: 1px solid transparent;
+  animation: slideDownFade 0.5s ease-out;
+}
+.App__init__marcacionesEnDirecto__body__item:hover {
+  border: 1px solid #dd8702;
 }
 .App__init__marcacionesEnDirecto__body__item h5 {
   margin: 0 0 0 5px;
 }
-.App__init__marcacionesEnDirecto__body__item svg {
-  position: absolute;
-  top: 5px;
-  right: 10px;
-  cursor: pointer;
-  transition: all 0.5s;
+.App__init__marcacionesEnDirecto__body__item__ico {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.App__init__marcacionesEnDirecto__body__item svg:hover {
+.App__init__marcacionesEnDirecto__body__item__ico svg {
+  font-size: 400%;
   color: #dd8702;
 }
-.App__init__marcacionesEnDirecto__body__item__subMenu h5 {
-  margin: 0 !important;
+.App__init__marcacionesEnDirecto__body__item__info {
+  width: 70%;
+}
+.App__init__marcacionesEnDirecto__body__item__info b {
+  color: #dd8702;
+  font-weight: 600;
+}
+.App__init__marcacionesEnDirecto__body__item__info span {
+  font-weight: bold;
 }
 
-@keyframes aparecer {
+.item-enter {
+  animation: slideDownFade 0.5s ease-out;
+}
+
+@keyframes slideDownFade {
   0% {
     opacity: 0;
-    visibility: hidden;
+    transform: translateY(-20px);
   }
   100% {
     opacity: 1;
-    visibility: visible;
+    transform: translateY(0);
   }
+}
+.item-enter {
+  animation: slideDownFade 0.5s ease-out;
 }
 
 /*# sourceMappingURL=itemMarcacionDirecto.css.map */

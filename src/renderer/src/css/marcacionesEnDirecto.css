@@ -3,12 +3,14 @@
   background-color: #333;
   margin-top: 40px;
   border-radius: 10px;
+  height: 100vh;
 }
 .App__init__marcacionesEnDirecto h2 {
   width: 100%;
   border-radius: 10px 10px 0 0;
   margin: 0px 0 0px 0px;
   padding: 15px 0 15px 0px;
+  font-weight: bold;
   background-color: #dd8702;
   text-align: center;
 }
@@ -38,6 +40,48 @@
   /* roundness of the scroll thumb */
   border: 3px solid #dd8702;
   /* creates padding around scroll thumb */
+}
+.App__init__marcacionesEnDirecto__switch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  margin-top: 30px !important;
+}
+.App__init__marcacionesEnDirecto__switch__btn {
+  width: 45%;
+  height: 40px;
+  cursor: pointer;
+  background-color: #666;
+  border: 1px solid #666;
+  color: #fff;
+  transition: all 0.5s;
+}
+.App__init__marcacionesEnDirecto__switch__btn:nth-child(1) {
+  border-radius: 5px 0px 0px 5px;
+}
+.App__init__marcacionesEnDirecto__switch__btn:nth-child(2) {
+  border-radius: 0px 5px 5px 0px;
+}
+.App__init__marcacionesEnDirecto__switch__btn:hover {
+  border-bottom: 1px solid #dd8702;
+  color: #dd8702;
+}
+.App__init__marcacionesEnDirecto__switch__btn__active {
+  width: 45%;
+  height: 40px;
+  cursor: pointer;
+  background-color: #666;
+  border: 1px solid #666;
+  transition: all 0.5s;
+  border-bottom: 1px solid #dd8702;
+  color: #ffffff;
+}
+.App__init__marcacionesEnDirecto__switch__btn__active:nth-child(1) {
+  border-radius: 5px 0px 0px 5px;
+}
+.App__init__marcacionesEnDirecto__switch__btn__active:nth-child(2) {
+  border-radius: 0px 5px 5px 0px;
 }
 
 /*# sourceMappingURL=marcacionesEnDirecto.css.map */
