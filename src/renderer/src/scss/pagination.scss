@@ -1,0 +1,28 @@
+.App__init__contTable__tablaMarcaciones__modalRegistros__contDatos__pagination {
+    text-align: end;
+    margin-right: 20px;
+
+    span {
+        margin: 0 10px 0 10px;
+    }
+
+    button {
+        border-radius: 100px;
+        border: none;
+        background-color: transparent !important;
+        color: #fa9601;
+        cursor: pointer;
+        // height: 20px;
+        transition: all .5s;
+
+        &:hover {
+            background-color: #fa9601;
+
+        }
+
+        &:disabled {
+            background-color: #a38c6a;
+            cursor: auto;
+        }
+    }
+}

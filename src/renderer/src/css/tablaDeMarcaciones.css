@@ -259,6 +259,11 @@
   border: 3px solid #dd8702;
   /* creates padding around scroll thumb */
 }
+@media (max-width: 1366px) {
+  .App__init__contTable__tablaMarcaciones__body {
+    height: 66vh;
+  }
+}
 .App__init__contTable__tablaMarcaciones__pagination {
   text-align: end;
   margin-right: 20px;
@@ -280,6 +285,11 @@
 .App__init__contTable__tablaMarcaciones__pagination button:disabled {
   background-color: #a38c6a;
   cursor: auto;
+}
+@media (max-width: 1366px) {
+  .App__init__contTable__tablaMarcaciones {
+    width: 65%;
+  }
 }
 
 @keyframes rotate {

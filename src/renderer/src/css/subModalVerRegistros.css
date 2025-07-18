@@ -1,4 +1,4 @@
-.App__init__contTable__tablaMarcaciones__modalRegistros {
+.App__init__contTable__tablaMarcaciones__modalRegistros__active__subModal {
   opacity: 0;
   visibility: hidden;
   position: absolute;
@@ -14,7 +14,7 @@
   height: 100%;
   transition: all 0.5s;
 }
-.App__init__contTable__tablaMarcaciones__modalRegistros__contDatos {
+.App__init__contTable__tablaMarcaciones__modalRegistros__active__subModal__contDatos {
   position: absolute;
   top: 0;
   right: -500px;
@@ -24,7 +24,7 @@
   box-shadow: 1px 1px 20px 3px #3a3a3a;
   transition: all 0.5s;
 }
-.App__init__contTable__tablaMarcaciones__modalRegistros__contDatos__header {
+.App__init__contTable__tablaMarcaciones__modalRegistros__active__subModal__contDatos__header {
   width: 90%;
   margin: auto;
   height: 10vh;
@@ -32,34 +32,44 @@
   flex-direction: column;
   align-items: center;
 }
-.App__init__contTable__tablaMarcaciones__modalRegistros__contDatos__header h2 {
+.App__init__contTable__tablaMarcaciones__modalRegistros__active__subModal__contDatos__header h2 {
   height: 30px;
   color: #ddd;
 }
-.App__init__contTable__tablaMarcaciones__modalRegistros__contDatos__header h2 b {
+.App__init__contTable__tablaMarcaciones__modalRegistros__active__subModal__contDatos__header h2 b {
   font-weight: bold;
-  color: #dd8702;
+  color: #fff;
 }
-.App__init__contTable__tablaMarcaciones__modalRegistros__contDatos__header span {
+.App__init__contTable__tablaMarcaciones__modalRegistros__active__subModal__contDatos__header span {
   width: 90%;
   margin-top: 5px;
   font-weight: bold;
   color: #ddd;
 }
-.App__init__contTable__tablaMarcaciones__modalRegistros__contDatos__header span b {
+.App__init__contTable__tablaMarcaciones__modalRegistros__active__subModal__contDatos__header span b {
+  color: #dd8702;
+  font-weight: 500;
+}
+.App__init__contTable__tablaMarcaciones__modalRegistros__active__subModal__contDatos__footer {
+  width: 85%;
+  margin-left: 50px;
+  overflow: auto !important;
+}
+.App__init__contTable__tablaMarcaciones__modalRegistros__active__subModal__contDatos__footer b {
+  display: inline-block;
+  margin: 10px 0 10px 0 !important;
   color: #dd8702;
   font-weight: bold;
 }
-.App__init__contTable__tablaMarcaciones__modalRegistros__contDatos__body {
+.App__init__contTable__tablaMarcaciones__modalRegistros__active__subModal__body {
   margin: auto;
   width: 90%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  height: 80vh;
 }
-.App__init__contTable__tablaMarcaciones__modalRegistros__active {
+.App__init__contTable__tablaMarcaciones__modalRegistros__active__subModal__active {
   opacity: 1;
   visibility: visible;
   position: absolute;
@@ -75,7 +85,7 @@
   height: 100%;
   transition: all 0.5s;
 }
-.App__init__contTable__tablaMarcaciones__modalRegistros__active__contDatos {
+.App__init__contTable__tablaMarcaciones__modalRegistros__active__subModal__active__contDatos {
   position: absolute;
   top: 0;
   right: 0;
@@ -86,4 +96,4 @@
   transition: all 0.5s;
 }
 
-/*# sourceMappingURL=modalVerRegistros.css.map */
+/*# sourceMappingURL=subModalVerRegistros.css.map */

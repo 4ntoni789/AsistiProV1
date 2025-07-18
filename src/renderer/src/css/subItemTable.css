@@ -1,6 +1,7 @@
 .App__init__tablaMarcaciones__body__item__contRegistros {
-  background-color: #777;
+  background-color: #666;
   border-radius: 5px;
+  height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,12 +9,31 @@
   opacity: 1;
   visibility: inherit;
   transition: all 0.3s;
+  cursor: pointer;
+  border-left: 4px solid #dd8702;
 }
-.App__init__tablaMarcaciones__body__item__contRegistros h5 {
-  width: 30%;
+.App__init__tablaMarcaciones__body__item__contRegistros__noMark {
+  background-color: #666;
+  border-radius: 5px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 95%;
+  opacity: 1;
+  visibility: inherit;
+  transition: all 0.3s;
+  cursor: pointer;
+  border-left: 4px solid #ad0606;
+}
+.App__init__tablaMarcaciones__body__item__contRegistros__noMark:hover {
+  background-color: #ad0606;
+}
+.App__init__tablaMarcaciones__body__item__contRegistros:hover {
+  background-color: #dd8702;
 }
 .App__init__tablaMarcaciones__body__item__contRegistros__active {
-  background-color: #777;
+  background-color: #666;
   border-radius: 5px;
   margin: 10px 0 10px 0px;
   display: flex;
@@ -24,10 +44,6 @@
   opacity: 1;
   visibility: visible;
   transition: all 0.3s;
-}
-.App__init__tablaMarcaciones__body__item__contRegistros__active h5:nth-child(2) {
-  width: 60%;
-  text-align: center;
 }
 .App__init__tablaMarcaciones__body__item__contRegistros__active__cont {
   width: 100%;
@@ -41,7 +57,7 @@
   transition: color 0.5s;
 }
 .App__init__tablaMarcaciones__body__item__contRegistros__active__cont svg:hover {
-  color: #dd8702;
+  color: #333;
 }
 .App__init__tablaMarcaciones__body__item__contRegistros__active__cont h5 {
   width: 30%;

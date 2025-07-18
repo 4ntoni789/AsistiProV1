@@ -1,10 +1,9 @@
-/* HTML: <div class="loader"></div> */
 .loader2 {
   width: 50px;
   aspect-ratio: 1;
   border-radius: 50%;
   padding: 3px;
-  background: radial-gradient(farthest-side, #ffa516 95%, rgba(0, 0, 0, 0)) 50% 0/12px 12px no-repeat, radial-gradient(farthest-side, rgba(0, 0, 0, 0) calc(100% - 5px), #ffa516 calc(100% - 4px)) content-box;
+  background: radial-gradient(farthest-side, #dd8702 95%, rgba(0, 0, 0, 0)) 50% 0/12px 12px no-repeat, radial-gradient(farthest-side, rgba(0, 0, 0, 0) calc(100% - 5px), #dd8702 calc(100% - 4px)) content-box;
   animation: l6 2s infinite;
 }
 

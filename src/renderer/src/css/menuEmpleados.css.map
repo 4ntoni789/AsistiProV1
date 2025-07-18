@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["../scss/menuEmpleados.scss"],"names":[],"mappings":"AAAA;EACI;EACA;EACA;;AAEA;EACI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACI;EACA;;AAGJ;EACI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA","file":"menuEmpleados.css"}
+{"version":3,"sourceRoot":"","sources":["../scss/menuEmpleados.scss","../scss/_variables.scss"],"names":[],"mappings":"AACA;EACI;EACA;EACA;;AAEA;EACI,kBCPS;EDQT;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACI;EACA,kBClBW;;ADqBf;EACI,kBCtBW;EDuBX;EACA;EACA;EACA;EACA;EACA;EACA;EACA","file":"menuEmpleados.css"}

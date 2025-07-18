@@ -319,6 +319,12 @@
                 /* creates padding around scroll thumb */
             }
 
+            @media (max-width:1366px) {
+                &{
+                    height: 66vh;
+                }
+            }
+
         }
         &__pagination {
             text-align: end;
@@ -348,6 +354,13 @@
                 }
             }
 
+        }
+
+        @media (max-width: 1366px) {
+
+            & {
+               width: 65%;
+            }
         }
 
     }

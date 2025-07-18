@@ -1,10 +1,11 @@
+@import './variables';
 .App__dashboard__contPageOutlet__PageUsers__newUser__btnControl {
     display: flex;
     justify-content: center;
     align-items: end;
 
     &__btn {
-        background-color: #dd8702;
+        background-color: $color-principal;
         border: none;
         margin-right: 10px;
         height: 40px;
@@ -16,11 +17,11 @@
 
         &:hover {
             height: 50px;
-            background-color: #c47601;
+            background-color: $color-principal-hover;
         }
 
         &__active {
-            background-color: #c47601;
+            background-color: $color-principal-hover;
             border: none;
             margin-right: 10px;
             height: 50px;

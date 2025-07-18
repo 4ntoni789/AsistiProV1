@@ -1,9 +1,11 @@
+@import './variables';
+
 .App__dashboard {
 
     &__contMenu {
         height: 100vh;
         width: 100px;
-        background-color: #333;
+        background-color: $color-secundario;
         position: relative;
         // left: -150px;
         transition: all .5s;
@@ -21,14 +23,14 @@
                 position: absolute;
                 right: -15px;
                 top: 50vh;
-                background-color: #333;
-                border: 5px solid #333;
+                background-color: $color-secundario;
+                border: 5px solid $color-secundario;
                 border-radius: 100%;
                 text-align: center;
                 transition: all .5s;
 
                 &:hover {
-                    color: #dd8702;
+                    color: $color-principal;
                 }
 
                 svg {
@@ -96,7 +98,7 @@
                 align-items: center;
                 position: absolute;
                 bottom: 15px;
-                // border: 1px solid #dd8702;
+                // border: 1px solid $color-principal;
                 border-radius: 10px;
 
                 &__userLenght {
@@ -104,7 +106,7 @@
                         color: #fff;
                         text-decoration: underline;
                         width: 40px;
-                        background-color: #dd8702;
+                        background-color: $color-principal;
                         text-align: center;
                         border-radius: 5px;
                     }
@@ -147,7 +149,7 @@
                     transition: all .5s;
 
                     &:hover {
-                        color: #dd8702;
+                        color: $color-principal;
                     }
                 }
             }
@@ -159,8 +161,8 @@
 
     &__contMenu__active {
         height: 100vh;
-        width: 25%;
-        background-color: #333;
+        width: 12%;
+        background-color: $color-secundario;
         padding-left: 10px;
         position: relative;
         left: 0px;
@@ -175,12 +177,12 @@
                 position: absolute;
                 right: -15px;
                 top: 50vh;
-                border: 5px solid #333;
+                border: 5px solid $color-secundario;
                 border-radius: 100%;
                 transition: all .5s;
 
                 &:hover {
-                    color: #dd8702;
+                    color: $color-principal;
                 }
 
                 svg {
@@ -247,7 +249,7 @@
                 }
 
                 &__activeBtn {
-                    background-color: #dd8702;
+                    background-color: $color-principal;
                     transition: background color .5s;
                 }
 
@@ -260,7 +262,7 @@
                 align-items: center;
                 position: absolute;
                 bottom: 10px;
-                border: 1px solid #dd8702;
+                border: 1px solid $color-principal;
                 border-radius: 10px;
 
                 &__userLenght {
@@ -268,7 +270,7 @@
                         color: #fff;
                         text-decoration: underline;
                         width: 40px;
-                        background-color: #dd8702;
+                        background-color: $color-principal;
                         text-align: center;
                         border-radius: 5px;
                     }
@@ -299,17 +301,17 @@
                     transition: all .5s;
 
                     &:hover {
-                        color: #dd8702;
+                        color: $color-principal;
                     }
                 }
             }
         }
 
 
-        @media (min-width: 1400px) {
+        @media (max-width: 1366px) {
 
             & {
-                width: 11%;
+                width: 20%;
             }
         }
     }

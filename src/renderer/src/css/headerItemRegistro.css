@@ -1,0 +1,28 @@
+.App__init__contTable__tablaMarcaciones__modalRegistros__active__subModal__body__contItemRegistro__header {
+  border-radius: 5px;
+  height: 20px;
+  margin: 5px 0 5px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 95%;
+  opacity: 1;
+  visibility: inherit;
+  transition: all 0.3s;
+  cursor: pointer;
+  border-left: 4px solid transparent;
+  color: #dd8702;
+}
+.App__init__contTable__tablaMarcaciones__modalRegistros__active__subModal__body__contItemRegistro__header__textRegistro {
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+}
+.App__init__contTable__tablaMarcaciones__modalRegistros__active__subModal__body__contItemRegistro__header__textRegistro h5 {
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+  width: 25%;
+}
+
+/*# sourceMappingURL=headerItemRegistro.css.map */

@@ -1,0 +1,53 @@
+.App__init__contTable__tablaMarcaciones__modalRegistros__active__subModal__body__contItemRegistro {
+  background-color: #666;
+  border-radius: 5px;
+  height: 60px;
+  margin: 5px 0 5px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 95%;
+  opacity: 1;
+  visibility: inherit;
+  transition: all 0.3s;
+  border-left: 4px solid #dd8702;
+}
+.App__init__contTable__tablaMarcaciones__modalRegistros__active__subModal__body__contItemRegistro__error {
+  background-color: #666;
+  border-radius: 5px;
+  height: 60px;
+  margin: 5px 0 5px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 95%;
+  opacity: 1;
+  visibility: inherit;
+  transition: all 0.3s;
+  border-left: 4px solid #ad0606;
+}
+.App__init__contTable__tablaMarcaciones__modalRegistros__active__subModal__body__contItemRegistro__normal {
+  background-color: #666;
+  border-radius: 5px;
+  height: 60px;
+  margin: 5px 0 5px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 95%;
+  opacity: 1;
+  visibility: inherit;
+  transition: all 0.3s;
+  border-left: 4px solid #11c02e;
+}
+.App__init__contTable__tablaMarcaciones__modalRegistros__active__subModal__body__contItemRegistro__textRegistro {
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+}
+.App__init__contTable__tablaMarcaciones__modalRegistros__active__subModal__body__contItemRegistro__textRegistro h5 {
+  text-align: center;
+  width: 25%;
+}
+
+/*# sourceMappingURL=itemRegistro.css.map */

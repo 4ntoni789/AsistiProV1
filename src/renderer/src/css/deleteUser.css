@@ -14,7 +14,7 @@
   transition: all 0.5s;
 }
 .App__dashboard__contPageOutlet__PageUsers__deleteUser__contDeleteUser {
-  background-color: #222;
+  background-color: #1b1b1f;
   width: 25%;
   border-radius: 10px;
   position: relative;

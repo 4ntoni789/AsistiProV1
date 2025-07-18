@@ -1,9 +1,11 @@
+@import './variables';
+
 .App__dashboard__errorSpam {
 
     width: 30%;
     height: 60px;
     border-radius: 0px 0px 50px 50px;
-    background-color: #dd8702;
+    background-color: $color-principal;
     position: absolute;
     top: -80px;
     left: 40%;
@@ -18,7 +20,7 @@
         width: 30%;
         height: 60px;
         border-radius: 0px 0px 50px 50px;
-        background-color: #dd8702;
+        background-color: $color-principal;
         position: absolute;
         text-align: center;
         top: 0px;
@@ -38,7 +40,7 @@
     width: 30%;
     height: 60px;
     border-radius: 0px 0px 50px 50px;
-    background-color: #11c02e;
+    background-color: $color-submit;
     position: absolute;
     top: 00px;
     left: 40%;
@@ -54,7 +56,7 @@
     width: 30%;
     height: 60px;
     border-radius: 0px 0px 50px 50px;
-    background-color: #ad0606;
+    background-color: $color-error-2;
     position: absolute;
     top: 00px;
     left: 40%;

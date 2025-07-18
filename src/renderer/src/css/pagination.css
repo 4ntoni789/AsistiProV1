@@ -1,0 +1,24 @@
+.App__init__contTable__tablaMarcaciones__modalRegistros__contDatos__pagination {
+  text-align: end;
+  margin-right: 20px;
+}
+.App__init__contTable__tablaMarcaciones__modalRegistros__contDatos__pagination span {
+  margin: 0 10px 0 10px;
+}
+.App__init__contTable__tablaMarcaciones__modalRegistros__contDatos__pagination button {
+  border-radius: 100px;
+  border: none;
+  background-color: transparent !important;
+  color: #fa9601;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+.App__init__contTable__tablaMarcaciones__modalRegistros__contDatos__pagination button:hover {
+  background-color: #fa9601;
+}
+.App__init__contTable__tablaMarcaciones__modalRegistros__contDatos__pagination button:disabled {
+  background-color: #a38c6a;
+  cursor: auto;
+}
+
+/*# sourceMappingURL=pagination.css.map */

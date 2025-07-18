@@ -1,0 +1,58 @@
+@import './variables';
+
+.App__init__contTable__tablaMarcaciones__modalRegistros__active__subModal__body__contItemRegistro {
+    background-color: $color-item-header;
+    border-radius: 5px;
+    height: 60px;
+    margin: 5px 0 5px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    opacity: 1;
+    visibility: inherit;
+    transition: all .3s;
+    border-left: 4px solid $color-principal;
+
+
+    &__error {
+        background-color: $color-item-header;
+        border-radius: 5px;
+        height: 60px;
+        margin: 5px 0 5px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 95%;
+        opacity: 1;
+        visibility: inherit;
+        transition: all .3s;
+        border-left: 4px solid $color-error-2;
+    }
+
+    &__normal {
+        background-color: $color-item-header;
+        border-radius: 5px;
+        height: 60px;
+        margin: 5px 0 5px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 95%;
+        opacity: 1;
+        visibility: inherit;
+        transition: all .3s;
+        border-left: 4px solid $color-submit;
+    }
+
+    &__textRegistro {
+        display: flex;
+        width: 90%;
+        justify-content: space-between;
+
+        h5 {
+            text-align: center;
+            width: 25%;
+        }
+    }
+}

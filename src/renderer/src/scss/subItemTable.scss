@@ -1,7 +1,26 @@
+@import './variables';
+
 .App__init__tablaMarcaciones__body__item__contRegistros {
-        background-color: #777;
+    background-color: $color-item-header;
+    border-radius: 5px;
+    height: 60px;
+
+    // margin: -30px 0 10px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    opacity: 1;
+    visibility: inherit;
+    transition: all .3s;
+    cursor: pointer;
+    border-left: 4px solid $color-principal;
+
+    &__noMark {
+        background-color: $color-item-header;
         border-radius: 5px;
-        
+        height: 60px;
+
         // margin: -30px 0 10px 0px;
         display: flex;
         justify-content: center;
@@ -10,118 +29,118 @@
         opacity: 1;
         visibility: inherit;
         transition: all .3s;
+        cursor: pointer;
+        border-left: 4px solid $color-error-2;
+
+         &:hover {
+        background-color: $color-error-2;
+    }
+    }
+
+    &:hover {
+        background-color: $color-principal;
+    }
 
 
-        h5 {
-            width: 30%;
-        }
+    &__active {
+        background-color: $color-item-header;
+        border-radius: 5px;
+        margin: 10px 0 10px 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 95%;
+        opacity: 1;
+        visibility: visible;
+        transition: all .3s;
 
-
-        &__active {
-            background-color: #777;
-            border-radius: 5px;
-            margin: 10px 0 10px 0px;
+        &__cont {
+            width: 100%;
+            height: 30px;
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
-            width: 95%;
-            opacity: 1;
-            visibility: visible;
-            transition: all .3s;
 
-            h5:nth-child(2) {
-                width: 60%;
-                text-align: center;
+            svg {
+                cursor: pointer;
+                transition: color .5s;
+
+                &:hover {
+                    color: $color-secundario;
+                }
             }
 
+            h5 {
+                width: 30%;
+            }
+        }
 
-            &__cont {
+        &__marcaciones {
+            display: none;
+            width: 100%;
+
+            &__active {
                 width: 100%;
                 height: 30px;
+                border-radius: 0 0 5px 5px;
+                background-color: #dd8702;
                 display: flex;
-                justify-content: center;
+                justify-content: space-around;
                 align-items: center;
-
-                svg {
-                    cursor: pointer;
-                    transition: color .5s;
-
-                    &:hover {
-                        color: #dd8702;
-                    }
-                }
-
-                h5 {
-                    width: 30%;
-                }
             }
 
-            &__marcaciones {
+            &__horario {
                 display: none;
                 width: 100%;
 
                 &__active {
                     width: 100%;
-                    height: 30px;
                     border-radius: 0 0 5px 5px;
                     background-color: #dd8702;
                     display: flex;
-                    justify-content: space-around;
+                    flex-direction: column;
+                    // justify-content: space-evenly;
                     align-items: center;
+                    // padding-top:10px;
                 }
 
-                &__horario {
-                    display: none;
+                &__contItem {
                     width: 100%;
+                    margin: 5px;
+                    background-color: #666;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
 
-                    &__active {
-                        width: 100%;
-                        border-radius: 0 0 5px 5px;
-                        background-color: #dd8702;
-                        display: flex;
-                        flex-direction: column;
-                        // justify-content: space-evenly;
-                        align-items: center;
-                        // padding-top:10px;
+                    &__dia {
+                        width: 100px;
                     }
 
-                    &__contItem {
-                        width: 100%;
-                        margin: 5px;
-                        background-color: #666;
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
+                    &__salida {
+                        width: 100px;
+                    }
 
-                        &__dia {
-                            width: 100px;
-                        }
+                    &__entrada {
+                        width: 100px;
+                    }
 
-                        &__salida {
-                            width: 100px;
-                        }
+                    &__options {
+                        width: 20px;
 
-                        &__entrada {
-                            width: 100px;
-                        }
+                        svg {
+                            cursor: pointer;
+                            transition: color .5s;
 
-                        &__options {
-                            width: 20px;
-
-                            svg {
-                                cursor: pointer;
-                                transition: color .5s;
-
-                                &:hover {
-                                    color: #dd8702;
-                                }
+                            &:hover {
+                                color: #dd8702;
                             }
                         }
                     }
                 }
-
-
             }
+
+
         }
     }
+}

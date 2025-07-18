@@ -1,3 +1,5 @@
+@import './variables';
+
 .App__init__marcacionesEnDirecto__body__item {
     position: relative;
     background-color: #555;
@@ -14,7 +16,7 @@
     animation: slideDownFade 0.5s ease-out;
 
     &:hover {
-        border: 1px solid #dd8702;
+        border: 1px solid $color-principal;
     }
 
 
@@ -30,7 +32,7 @@
 
         svg {
             font-size: 400%;
-            color: #dd8702;
+            color: $color-principal;
         }
     }
 
@@ -38,7 +40,7 @@
         width: 70%;
 
         b {
-            color: #dd8702;
+            color: $color-principal;
             font-weight: 600;
         }
 
