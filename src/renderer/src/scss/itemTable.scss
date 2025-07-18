@@ -1,15 +1,18 @@
 .App__init__tablaMarcaciones__body__item {
-    background-color: #555;
+    background-color: #444;
     display: flex;
     flex-direction: column;
     width: 95%;
+    height: 70px;
     align-self: center;
-    border-radius: 10px;
+    border-radius: 5px;
     text-align: center;
     position: relative;
-    margin: 10px 0 10px 0;
+    margin: 10px 0 0px 0;
     padding-left: 30px;
+    border: 1px solid transparent;
     animation: aparecer 1s forwards;
+    transition: all .5s;
 
 
     svg {
@@ -24,16 +27,39 @@
     }
 
     &__header {
-        margin: 10px 0 10px 0;
+        margin: auto;
         width: 100%;
         display: flex;
+        // align-items: center;
 
         h4 {
+            transition: all .5s;
+            font-weight: 500;
             width: 30%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            white-space: nowrap;
+
         }
 
         h4:first-child {
             cursor: pointer;
+            width: 400px !important;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            
+
+            svg {
+                font-size: 50px;
+            }
+
+
+            &:hover {
+                color: #dd8702;
+            }
+
             // text-align: left;
         }
     }
@@ -77,132 +103,7 @@
             margin: 0 5px 0 5px;
         }
     }
-
-    &__contRegistros {
-        background-color: #777;
-        border-radius: 5px;
-        margin: -30px 0 10px 0px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 95%;
-        opacity: 0;
-        visibility: inherit;
-        transition: all .3s;
-
-
-        h5 {
-            width: 30% ;
-        }
-
-
-        &__active {
-            background-color: #777;
-            border-radius: 5px;
-            margin: 10px 0 10px 0px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            width: 95%;
-            opacity: 1;
-            visibility: visible;
-            transition: all .3s;
-
-            h5:nth-child(2) {
-                width: 60%;
-                text-align: center;
-            }
-
-
-            &__cont {
-                width: 100%;
-                height: 30px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-
-                svg {
-                    cursor: pointer;
-                    transition: color .5s;
-
-                    &:hover {
-                        color: #dd8702;
-                    }
-                }
-                h5{
-                    width: 30%;
-                }
-            }
-
-            &__marcaciones {
-                display: none;
-                width: 100%;
-
-                &__active {
-                    width: 100%;
-                    height: 30px;
-                    border-radius: 0 0 5px 5px;
-                    background-color: #dd8702;
-                    display: flex;
-                    justify-content: space-around;
-                    align-items: center;
-                }
-
-                &__horario {
-                    display: none;
-                    width: 100%;
-
-                    &__active {
-                        width: 100%;
-                        border-radius: 0 0 5px 5px;
-                        background-color: #dd8702;
-                        display: flex;
-                        flex-direction: column;
-                        // justify-content: space-evenly;
-                        align-items: center;
-                        // padding-top:10px;
-                    }
-
-                    &__contItem {
-                        width: 100%;
-                        margin: 5px;
-                        background-color: #666;
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-
-                        &__dia {
-                            width: 100px;
-                        }
-
-                        &__salida {
-                            width: 100px;
-                        }
-
-                        &__entrada {
-                            width: 100px;
-                        }
-
-                        &__options{
-                            width: 20px;
-                            
-                            svg{
-                                cursor: pointer;
-                                transition: color .5s;
-
-                                &:hover{
-                                    color: #dd8702;
-                                }
-                            }
-                        }
-                    }
-                }
-
-
-            }
-        }
-    }
+    
 }
 
 @keyframes aparecer {

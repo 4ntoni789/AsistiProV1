@@ -1,13 +1,13 @@
 .App__init__tablaMarcaciones__body__itemHeader {
-  background-color: #dd8702;
+  background-color: #666;
   display: flex;
   width: 95%;
   height: 80px;
   align-self: center;
-  border-radius: 10px;
+  border-radius: 5px;
   text-align: center;
   position: relative;
-  margin: 10px 0 10px 0;
+  margin: 10px 0 0px 0;
   padding-left: 30px;
   animation: aparecer 1s forwards;
 }
@@ -18,8 +18,9 @@
   align-items: center;
 }
 .App__init__tablaMarcaciones__body__itemHeader__header h4 {
-  font-weight: 600;
+  font-weight: bold;
   width: 30%;
+  font-size: 17px;
 }
 
 /*# sourceMappingURL=itemTableHeader.css.map */

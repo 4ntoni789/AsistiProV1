@@ -1,0 +1,102 @@
+.App__init__tablaMarcaciones__body__item__contRegistros {
+  background-color: #777;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 95%;
+  opacity: 1;
+  visibility: inherit;
+  transition: all 0.3s;
+}
+.App__init__tablaMarcaciones__body__item__contRegistros h5 {
+  width: 30%;
+}
+.App__init__tablaMarcaciones__body__item__contRegistros__active {
+  background-color: #777;
+  border-radius: 5px;
+  margin: 10px 0 10px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 95%;
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.3s;
+}
+.App__init__tablaMarcaciones__body__item__contRegistros__active h5:nth-child(2) {
+  width: 60%;
+  text-align: center;
+}
+.App__init__tablaMarcaciones__body__item__contRegistros__active__cont {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.App__init__tablaMarcaciones__body__item__contRegistros__active__cont svg {
+  cursor: pointer;
+  transition: color 0.5s;
+}
+.App__init__tablaMarcaciones__body__item__contRegistros__active__cont svg:hover {
+  color: #dd8702;
+}
+.App__init__tablaMarcaciones__body__item__contRegistros__active__cont h5 {
+  width: 30%;
+}
+.App__init__tablaMarcaciones__body__item__contRegistros__active__marcaciones {
+  display: none;
+  width: 100%;
+}
+.App__init__tablaMarcaciones__body__item__contRegistros__active__marcaciones__active {
+  width: 100%;
+  height: 30px;
+  border-radius: 0 0 5px 5px;
+  background-color: #dd8702;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.App__init__tablaMarcaciones__body__item__contRegistros__active__marcaciones__horario {
+  display: none;
+  width: 100%;
+}
+.App__init__tablaMarcaciones__body__item__contRegistros__active__marcaciones__horario__active {
+  width: 100%;
+  border-radius: 0 0 5px 5px;
+  background-color: #dd8702;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.App__init__tablaMarcaciones__body__item__contRegistros__active__marcaciones__horario__contItem {
+  width: 100%;
+  margin: 5px;
+  background-color: #666;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.App__init__tablaMarcaciones__body__item__contRegistros__active__marcaciones__horario__contItem__dia {
+  width: 100px;
+}
+.App__init__tablaMarcaciones__body__item__contRegistros__active__marcaciones__horario__contItem__salida {
+  width: 100px;
+}
+.App__init__tablaMarcaciones__body__item__contRegistros__active__marcaciones__horario__contItem__entrada {
+  width: 100px;
+}
+.App__init__tablaMarcaciones__body__item__contRegistros__active__marcaciones__horario__contItem__options {
+  width: 20px;
+}
+.App__init__tablaMarcaciones__body__item__contRegistros__active__marcaciones__horario__contItem__options svg {
+  cursor: pointer;
+  transition: color 0.5s;
+}
+.App__init__tablaMarcaciones__body__item__contRegistros__active__marcaciones__horario__contItem__options svg:hover {
+  color: #dd8702;
+}
+
+/*# sourceMappingURL=subItemTable.css.map */

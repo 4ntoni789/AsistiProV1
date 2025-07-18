@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import '../../css/newUsers.css';
 import { capitalizarCadaPalabra } from '@renderer/scripts/upper';
-import BuscadorMunicipios from '../BuscadorMunicipios';
+import SearchMunicipios from '../SearchMunicipios';
 import { Opcion } from '@renderer/interface';
 
 function NewEmpleado() {
@@ -109,7 +109,7 @@ function NewEmpleado() {
             <option value="otro">Otro</option>
           </select>
           {
-            nacionalidad == 'colombiano' ? <BuscadorMunicipios seleccionado={municipio} setSeleccionado={setMunicipio} disable={!activeNewEmpleado} />
+            nacionalidad == 'colombiano' ? <SearchMunicipios seleccionado={municipio} setSeleccionado={setMunicipio} disable={!activeNewEmpleado} />
               :
               nacionalidad == 'otro' ? <>
                 <label htmlFor='lNacimiento'>Lugar de nacimiento</label>

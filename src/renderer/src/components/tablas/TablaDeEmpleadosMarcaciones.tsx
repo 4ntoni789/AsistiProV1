@@ -1,12 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import '../../css/tablaDeMarcaciones.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowsRotate, faCalendar, faCalendarXmark, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
+import { faArrowsRotate, faCalendar, faCalendarXmark, faChevronLeft, faChevronRight, faEllipsisVertical, faMagnifyingGlass, faPlus } from '@fortawesome/free-solid-svg-icons';
 import ItemTable from '../items/ItemTable';
 
 import ItemTableHeader from '../items/ItemTableHeader';
 import MenuEmpleado from '../modal/SubMenuEmpleado';
+import ButtonStyle from '../ButtonStyle';
+import { ActiveSubMenuNewEmpleado } from '@renderer/actions/actionsLogin';
+import ModalViewRegistros from '../modal/ModalViewRegistros';
 
 function TablaMarcaciones() {
   const spam = useSelector((state: any) => state.menuAccions.errorSpam);
@@ -20,6 +23,7 @@ function TablaMarcaciones() {
   const [searchTerm, setSearchTerm] = useState('');
   const itemsPerPage = 10;
   const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
+  const dispatch = useDispatch();
   // const [activeOptions, setActiveOptions] = useState<boolean>(false);
 
   useEffect(() => {
@@ -74,7 +78,6 @@ function TablaMarcaciones() {
     setCurrentPage(1);
   };
 
-
   const [isOpen, setIsOpen] = useState(false);
   const buttonRef = useRef<HTMLSpanElement | null>(null);
 
@@ -103,13 +106,18 @@ function TablaMarcaciones() {
     <div className='App__init__contTable__tablaMarcaciones'>
       <h2>Empleados y marcaciones</h2>
       <div className='App__init__contTable__tablaMarcaciones__header'>
-        <input
-          type='search'
-          placeholder='Buscar por nombre o por id '
-          value={searchTerm}
-          onChange={handleSearch}
-        />
+
+        <div className="App__init__contTable__tablaMarcaciones__header__search-container">
+          <span className="App__init__contTable__tablaMarcaciones__header__search-container__search-icon"><FontAwesomeIcon icon={faMagnifyingGlass} /></span>
+          <input type="search" className="App__init__contTable__tablaMarcaciones__header__search-container__search-input" value={searchTerm}
+            onChange={handleSearch}
+            placeholder="Buscar por nombre o por id..." />
+        </div>
+
         <div className='App__init__contTable__tablaMarcaciones__header__contBtn'>
+          <span title='Nuevo empleado' onClick={() => dispatch(ActiveSubMenuNewEmpleado({ user: {}, activeNewEmpleado: true }))}>
+            <FontAwesomeIcon icon={faPlus} />
+          </span>
           <span>
             <FontAwesomeIcon className={clickLoad ? 'App__init__contTable__tablaMarcaciones__header__contBtn__btnLoad__active' :
               'App__init__contTable__tablaMarcaciones__header__contBtn__btnLoad'} icon={faArrowsRotate} onClick={() => setClickLoad(true)} />
@@ -131,33 +139,34 @@ function TablaMarcaciones() {
         {currentItems.map((item, index) => (
           <ItemTable clickLoad={clickLoad} key={index} item={item} contrato={userContrato.filter((item2) => (item2.id_empleado == item.id_empleado))} />
         ))}
-        <div className='App__init__contTable__tablaMarcaciones__body__pagination'>
-          <button
-            onClick={() => {
-              setClickLoad(true);
-              setCurrentPage((prev) => prev - 1);
-            }}
-            disabled={currentPage === 1}
-          >
-            Anterior
-          </button>
+      </div>
+      <div className='App__init__contTable__tablaMarcaciones__pagination'>
+        <button
+          onClick={() => {
+            setClickLoad(true);
+            setCurrentPage((prev) => prev - 1);
+          }}
+          disabled={currentPage === 1}
+        >
+          <FontAwesomeIcon icon={faChevronLeft} />
+        </button>
 
-          <span>
-            Página {currentPage} de {totalPages}
-          </span>
+        <span>
+           {currentPage} de {totalPages}
+        </span>
 
-          <button
-            onClick={() => {
-              setClickLoad(true);
-              setCurrentPage((prev) => prev + 1);
-            }}
-            disabled={currentPage === totalPages}
-          >
-            Siguiente
-          </button>
-        </div>
+        <button
+          onClick={() => {
+            setClickLoad(true);
+            setCurrentPage((prev) => prev + 1);
+          }}
+          disabled={currentPage === totalPages}
+        >
+          <FontAwesomeIcon icon={faChevronRight} />
+        </button>
       </div>
       <MenuEmpleado />
+      <ModalViewRegistros/>
     </div>
   );
 }

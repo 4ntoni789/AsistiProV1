@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { obtenerSemanaSiEsLunes } from '@renderer/scripts/calcularLunesYDomingo';
 import { ActiveErrorSpam } from '@renderer/actions/actionsLogin';
-import ContenedorReportes from '@renderer/components/ContenedorReportes';
+import ContainerReportes from '@renderer/components/ContainerReportes';
 import FormularioReportSeleccionado from '@renderer/components/FormularioReportSeleccionado';
 import { obtenerRangoDelMesSiEsPrimerDia } from '@renderer/scripts/calcularInicio&FinDeMes';
 
@@ -110,7 +110,7 @@ function Reportes(props) {
 
   return (
     <div className='App__init__puntoVenta'>
-      <ContenedorReportes seleted={seleted} setSeleted={setSeleted} />
+      <ContainerReportes seleted={seleted} setSeleted={setSeleted} />
       <br />
       <div className='App__init__puntoVenta__encabezado'>
         <h2>Generador de reporte</h2>

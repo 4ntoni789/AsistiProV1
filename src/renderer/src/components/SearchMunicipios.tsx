@@ -4,7 +4,7 @@ import Select from "react-select";
 import '../css/buscadorMunicipios.css';
 import { Opcion } from "@renderer/interface";
 
-const BuscadorMunicipios = ({ seleccionado, setSeleccionado, disable = false }) => {
+const SearchMunicipios = ({ seleccionado, setSeleccionado, disable = false }) => {
   const [inputValue, setInputValue] = useState("");
 
   const maxResultados = 50;
@@ -74,4 +74,4 @@ const BuscadorMunicipios = ({ seleccionado, setSeleccionado, disable = false }) 
   );
 };
 
-export default BuscadorMunicipios;
+export default SearchMunicipios;

@@ -1,6 +1,7 @@
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
+import '../../css/subItemTable.css'
 
 function SubItemTable({ registro, activeItem }) {
   const [activeSubItem, setActiveSubItem] = useState<boolean>(false);
@@ -11,7 +12,6 @@ function SubItemTable({ registro, activeItem }) {
         <h5>{registro.fecha}</h5>
         <h5>{registro.dia_semana}</h5>
         <h5>{registro.nombre_dispositivo}</h5>
-        <FontAwesomeIcon icon={activeSubItem ? faChevronUp : faChevronDown} onClick={() => setActiveSubItem(!activeSubItem)} title={`Mostrar registro del dia ${registro.fecha}`} />
       </div>
       <div className={activeSubItem ? 'App__init__tablaMarcaciones__body__item__contRegistros__active__marcaciones__active' :
         'App__init__tablaMarcaciones__body__item__contRegistros__active__marcaciones'}>

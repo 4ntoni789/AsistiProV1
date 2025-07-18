@@ -1,0 +1,56 @@
+.App__init__contTable__tablaMarcaciones__modalRegistros {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(99, 99, 99, 0.5);
+    /* Fondo blanco semitransparente */
+    backdrop-filter: blur(10px);
+    /* Desenfoca el fondo con 10px */
+    -webkit-backdrop-filter: blur(10px);
+    width: 100%;
+    z-index: 100;
+    height: 100%;
+    transition: all .5s;
+
+    &__contDatos {
+        
+        position: absolute;
+        top: 0;
+        right: -500px;
+        width: 50%;
+        height: 100%;
+        background-color: #000;
+        box-shadow: 1px 1px 20px 3px #3a3a3a;
+        transition: all .5s;
+    }
+
+    &__active {
+        opacity: 1;
+        visibility: visible;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba(99, 99, 99, 0.5);
+        /* Fondo blanco semitransparente */
+        backdrop-filter: blur(10px);
+        /* Desenfoca el fondo con 10px */
+        -webkit-backdrop-filter: blur(10px);
+        width: 100%;
+        z-index: 100;
+        height: 100%;
+        transition: all .5s;
+
+        &__contDatos {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background-color: #333;
+            box-shadow: 1px 1px 20px 3px #3a3a3a;
+            transition: all .5s;
+        }
+    }
+}

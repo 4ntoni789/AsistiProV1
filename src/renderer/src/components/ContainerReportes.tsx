@@ -3,7 +3,7 @@ import { typeReports } from '../typeReport/index'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
-function ContenedorReportes({ seleted, setSeleted }) {
+function ContainerReportes({ seleted, setSeleted }) {
   return (
     <>
       <div className='App__init__puntoVenta__encabezado'>
@@ -38,4 +38,4 @@ function ContenedorReportes({ seleted, setSeleted }) {
   );
 }
 
-export default ContenedorReportes;
+export default ContainerReportes;

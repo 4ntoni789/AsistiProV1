@@ -13,32 +13,8 @@ function Empleados(props) {
   const dispatch = useDispatch();
   const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
 
-
-  // useEffect(() => {
-  //   const intervalo = setInterval(async () => {
-  //     try {
-  //       const response = await fetch('/api/accesos', {
-  //         headers: {
-  //           'x-id-usuario': userId
-  //         }
-  //       });
-  //       if (!response.ok) throw new Error('Error en la respuesta del servidor');
-
-  //     } catch (err) {
-  //       console.error('Error al obtener accesos:', err);
-  //     }
-  //   }, 500)
-  //   return () => clearInterval(intervalo);
-  // }, [])
-
   return (
     <div className='App__init'>
-      <div className='App__init__encabezado'>
-        <h2>Empleados</h2>
-        <div className='App__init__encabezado__btnEmpleados'>
-          <ButtonStyle funtion={() => dispatch(ActiveSubMenuNewEmpleado({ user: {}, activeNewEmpleado: true }))} disabled={false} nameBtn='Nuevo Empleado' />
-        </div>
-      </div>
       <div className='App__init__contTable'>
         <TablaDeMarcaciones />
         <MarcacionesEnDirecto />

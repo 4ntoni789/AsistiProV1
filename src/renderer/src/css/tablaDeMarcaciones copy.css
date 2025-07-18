@@ -5,7 +5,7 @@
 .App__init__contTable__tablaMarcaciones {
   background-color: #333;
   width: 75%;
-  height: 100vh;
+  height: 85vh;
   margin-top: 40px;
   border-radius: 10px;
   padding-bottom: 30px;
@@ -15,62 +15,20 @@
   border-radius: 10px 10px 0 0;
   margin: 0px 0 10px 0px;
   padding: 15px 0 15px 30px;
-  font-weight: bold;
-  color: #dd8702;
+  background-color: #dd8702;
 }
 .App__init__contTable__tablaMarcaciones__header {
-  width: 95%;
+  width: 100%;
   padding: 10px 0 10px 30px;
   display: flex;
-  align-items: center;
-  margin: auto;
   position: relative;
 }
-.App__init__contTable__tablaMarcaciones__header__search-container {
-  position: relative;
-  display: inline-block;
-  width: 70%;
-}
-.App__init__contTable__tablaMarcaciones__header__search-container__search-icon {
-  position: absolute;
-  top: 50%;
-  left: 12px;
-  transform: translateY(-50%);
-  font-size: 16px;
-  color: gray;
-  pointer-events: none;
-}
-.App__init__contTable__tablaMarcaciones__header__search-container__search-input {
-  width: 100%;
-  padding: 10px 10px 10px 36px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  transition: border-color 0.3s ease;
-  font-size: 15px;
-  font-family: sans-serif;
-  font-weight: 600;
-  background-color: #333;
-  color: #fff;
-}
-.App__init__contTable__tablaMarcaciones__header__search-container__search-input:focus {
-  outline: none;
-  border-color: #dd8702;
-}
-.App__init__contTable__tablaMarcaciones__header__search-container__search-input::-webkit-search-cancel-button {
-  -webkit-appearance: none;
-  appearance: none;
-  height: 1em;
-  width: 1em;
+.App__init__contTable__tablaMarcaciones__header input {
+  height: 30px;
+  border-radius: 5px;
   border: none;
-  border-radius: 50%;
-  background: #dd8702 url("data:image/svg+xml;utf8,<svg viewBox='0 0 20 20' fill='white' xmlns='http://www.w3.org/2000/svg'><path d='M6 6L14 14M6 14L14 6' stroke='white' stroke-width='2' stroke-linecap='round'/></svg>") center center no-repeat;
-  background-size: 90%;
-  cursor: pointer;
-  transition: all 0.5s;
-}
-.App__init__contTable__tablaMarcaciones__header__search-container__search-input::-webkit-search-cancel-button:hover {
-  background-color: #6d4100;
+  width: 25%;
+  padding-left: 10px;
 }
 .App__init__contTable__tablaMarcaciones__header span {
   display: inline-block;
@@ -79,23 +37,10 @@
 .App__init__contTable__tablaMarcaciones__header__contBtn {
   position: absolute;
   right: 30px;
-  width: 100px;
+  width: 50px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-}
-.App__init__contTable__tablaMarcaciones__header__contBtn__btnMore {
-  background-color: #dd8702;
-  border: none;
-  height: 30px !important;
-  width: 60px !important;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-  margin: 0% !important;
-  padding: 0 !important;
-  border-radius: 100%;
 }
 .App__init__contTable__tablaMarcaciones__header__contBtn__contOptions {
   background-color: #555;
@@ -236,7 +181,7 @@
 .App__init__contTable__tablaMarcaciones__body {
   position: relative;
   width: 100%;
-  height: 77vh;
+  height: 82%;
   padding-left: 30px;
   overflow: auto;
   display: flex;
@@ -259,25 +204,24 @@
   border: 3px solid #dd8702;
   /* creates padding around scroll thumb */
 }
-.App__init__contTable__tablaMarcaciones__pagination {
-  text-align: end;
-  margin-right: 20px;
+.App__init__contTable__tablaMarcaciones__body__pagination {
+  margin: 0px 0 0 30px;
 }
-.App__init__contTable__tablaMarcaciones__pagination span {
+.App__init__contTable__tablaMarcaciones__body__pagination span {
   margin: 0 10px 0 10px;
 }
-.App__init__contTable__tablaMarcaciones__pagination button {
+.App__init__contTable__tablaMarcaciones__body__pagination button {
   border-radius: 100px;
   border: none;
-  background-color: transparent !important;
-  color: #fa9601;
+  background-color: #dd8702;
+  color: #Fff;
   cursor: pointer;
   transition: all 0.5s;
 }
-.App__init__contTable__tablaMarcaciones__pagination button:hover {
+.App__init__contTable__tablaMarcaciones__body__pagination button:hover {
   background-color: #fa9601;
 }
-.App__init__contTable__tablaMarcaciones__pagination button:disabled {
+.App__init__contTable__tablaMarcaciones__body__pagination button:disabled {
   background-color: #a38c6a;
   cursor: auto;
 }
@@ -291,4 +235,4 @@
   }
 }
 
-/*# sourceMappingURL=tablaDeMarcaciones.css.map */
+/*# sourceMappingURL=tablaDeMarcaciones%20copy.css.map */

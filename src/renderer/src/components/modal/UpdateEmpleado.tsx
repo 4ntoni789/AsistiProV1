@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import SwitchButtonEdit from '../SwitchButtonEdit';
-import BuscadorMunicipios from '../BuscadorMunicipios';
+import BuscadorMunicipios from '../SearchMunicipios';
 import { Opcion } from '@renderer/interface';
 
 function UpdateEmpleado(props) {
