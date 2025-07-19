@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import '../../css/subModalVerRegistros.css';
 import ItemRegistro from '../subItem/SubItemRegistro';
 import HeaderItemRegistro from '../HeaderItemRegistro';
-import { WorkScheduleBar } from '../WorkScheduleBar';
+import { WorkScheduleBarDoble } from '../WorkScheduleBarDoble';
 
 function SubModalViewRegistros({ registros, setActiveModal, activeModal }) {
   const modalRef = useRef<HTMLDivElement>(null);
@@ -26,15 +26,27 @@ function SubModalViewRegistros({ registros, setActiveModal, activeModal }) {
           <HeaderItemRegistro />
           {
             registros != undefined ? registros[0]?.registros.length < 1 ? <span>No hay Registros</span> : registros[0]?.registros.map((i, index) => (
-              <ItemRegistro registro={i} pVenta={registros != undefined ? registros[0]?.nombre_dispositivo : null} />
+              <ItemRegistro key={index} registro={i} pVenta={registros != undefined ? registros[0]?.nombre_dispositivo : null} />
             )) : 'Cargando...'
           }
 
         </div>
-        
+
         <div className='App__init__contTable__tablaMarcaciones__modalRegistros__active__subModal__contDatos__footer'>
           <span><b>Total de marcaciones: {registros != undefined ? registros[0]?.registros.length : 0}</b></span>
-          <WorkScheduleBar />
+          <WorkScheduleBarDoble
+            registros={registros != undefined ? registros[0]?.registros : null}
+            // allowedStartEntrada={7}
+            // allowedEndEntrada={9}
+
+            // allowedStartSalida={17.2}
+            // allowedEndSalida={18}
+
+            // earlyExit={false}
+            // breakStart={12}
+            // breakEnd={13.5}
+            // graceMinutes={0}
+          />
 
         </div>
       </div>
