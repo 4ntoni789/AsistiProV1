@@ -33,9 +33,7 @@ function SubModalViewRegistros({ registros, setActiveModal, activeModal }) {
         </div>
         
         <div className='App__init__contTable__tablaMarcaciones__modalRegistros__active__subModal__contDatos__footer'>
-          <span><b>Total de marcaciones: {registros != undefined ? registros[0].registros.length : 0}</b></span>
-          <WorkScheduleBar />
-          <span><b>Horario:</b></span>
+          <span><b>Total de marcaciones: {registros != undefined ? registros[0]?.registros.length : 0}</b></span>
           <WorkScheduleBar />
 
         </div>
