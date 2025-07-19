@@ -1,7 +1,6 @@
-import React from 'react';
 import '../../css/itemTableHeader.css'
 
-function ItemTableHeader(props) {
+function ItemTableHeader({}) {
   return (
     <div className='App__init__tablaMarcaciones__body__itemHeader'>
       <div className='App__init__tablaMarcaciones__body__itemHeader__header'>
