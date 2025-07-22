@@ -1,47 +1,24 @@
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import SwitchButtonEdit from '../SwitchButtonEdit';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
-import { ActiveErrorSpam, ActiveSubMenuUpdatePuntoVenta, ActiveSubMenuUpdateRole } from '@renderer/actions/actionsLogin';
+import { ActiveSubMenuUpdatePuntoVenta, Fetch_update_punto_venta } from '@renderer/actions/actionsPuntoDeVenta';
+import { AppDispatch } from '@renderer/store';
+import { UserDataType } from '@renderer/typesTS';
 
 function UpdatePuntoVenta(props) {
-  const userData = useSelector((state: any) => state.loginAccess.userLogin);
+  const userData = useSelector((state: UserDataType) => state.loginAccess.userLogin);
   const { register, handleSubmit, reset } = useForm();
   const [activeEdition, setActiveEdition] = useState<boolean>(true);
   const activeUpdatePuntoVenta = useSelector((state: any) => state.menuAccions.subMenuUpdatePuntoVenta);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
 
   const onSubmit = async (dataInput) => {
-    try {
-      const response = await fetch(`/api/punto-venta/${activeUpdatePuntoVenta.user.id_pv}`, {
-        method: 'PUT',
-        headers: {
-          'x-id-usuario': userId,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          nombre: dataInput.nombre,
-          direccion: dataInput.direccion,
-          numero_serie_dispositivo: dataInput.numero_serie_dispositivo,
-          reqUser: userData
-        }),
-      });
-      const result = await response.json();
-      if (response.ok) {
-        dispatch(ActiveErrorSpam({ msg: result.message, active: true, typeError: 'submit' }));
-        dispatch(ActiveSubMenuUpdatePuntoVenta({ user: {}, subMenuUpdatePuntoVenta: false }))
-      } else {
-        throw new Error(result.error);
-      }
-    } catch (error) {
-      dispatch(ActiveErrorSpam({ msg: 'Error al actualizar este punto de venta', active: true, typeError: 'Error' }));
-      console.log('Ocurrió un error al actualizar este punto de venta');
-    }
+    dispatch(Fetch_update_punto_venta(dataInput, activeUpdatePuntoVenta, userId, userData));
   }
-
 
   useEffect(() => {
     setActiveEdition(true);

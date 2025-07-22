@@ -1,45 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import '../css/marcacionesEnDirecto.css';
-import ItemTable from './items/ItemTable';
 import ItemMarcacionDirecto from './items/ItemMarcacionDirecto';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch } from '@renderer/store';
+import { obtenerDatos } from '@renderer/scripts/obtenerDatosFetch';
+import { Fetch_accesos_ayer, Fetch_accesos_dia } from '@renderer/actions/actionsAccesos';
 
-function MarcacionesEnDirecto(props) {
+function MarcacionesEnDirecto({}) {
   const [dataUser, setDataUser] = useState<any[]>();
   const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
   const [switchBtn, setSwitchBtn] = useState(false);
+  const dispatch = useDispatch<AppDispatch>()
 
   useEffect(() => {
     setDataUser([]);
     const intervalo = setInterval(async () => {
-      try {
-        if (!switchBtn) {
-          const response = await fetch('/api/accesos-dia', {
-            headers: {
-              'x-id-usuario': userId
-            }
-          });
-          if (response.ok) {
-            const data = await response.json();
-            setDataUser(data);
-          } else {
-            throw new Error('Error en la respuesta del servidor');
-          }
-        } else {
-          const response = await fetch('/api/accesos-ayer', {
-            headers: {
-              'x-id-usuario': userId
-            }
-          });
-          if (response.ok) {
-            const data = await response.json();
-            setDataUser(data);
-          } else {
-            throw new Error('Error en la respuesta del servidor');
-          }
-        }
-      } catch (err) {
-        console.error('Error al obtener accesos:', err);
+      if (!switchBtn) {
+        obtenerDatos(null, dispatch(Fetch_accesos_dia(userId)), setDataUser);
+      } else {
+        obtenerDatos(null, dispatch(Fetch_accesos_ayer(userId)), setDataUser);
       }
     }, 500)
     return () => clearInterval(intervalo);

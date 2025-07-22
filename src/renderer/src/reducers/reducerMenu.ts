@@ -3,21 +3,27 @@ import { ACTIVEDARKMODE, ACTIVEDELETEUSER, ACTIVEERRORSPAM, ACTIVEMENU, ACTIVEME
 const initalState: object = {
     menuActive: true,
     subMenuActive: false,
-    subMenuNewUsers: false,
     darkMode: true,
-    deleteUser: {
-        user: {},
-        subMenuDeleteUser: false,
-        typeRemove: ''
-    },
     errorSpam: {
         msg: '',
         active: false,
         typeError: ''
     },
+    subMenuNewUsers: {
+        user:{},
+        subMenuNewUsers: false,
+        loading: false
+    },
+    deleteUser: {
+        user: {},
+        subMenuDeleteUser: false,
+        typeRemove: '',
+        loading: false
+    },
     subMenuUpdateUser: {
         user: {},
-        subMenuUpdateUser: false
+        subMenuUpdateUser: false,
+        loading: false
     },
     subMenuNewEmpleado: {
         user: {},
@@ -70,7 +76,7 @@ const initalState: object = {
     subMenuVerAccesos: {
         user: {},
         subMenuVerAccesos: false,
-        accesos:[]
+        accesos: []
     }
 }
 

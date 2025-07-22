@@ -3,8 +3,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useRef, useState } from 'react';
 import '../css/subMenu.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { ActiveSubMenu, ActiveSubMenuDeleteUsers, Logout } from '@renderer/actions/actionsLogin';
+import { Logout } from '@renderer/actions/actionsLogin';
 import { NavLink } from 'react-router';
+import { ActiveSubMenu } from '@renderer/actions/actionsMenu';
+import { ActiveSubMenuDeleteUsers } from '@renderer/actions/actionsUsers';
 
 function SubMenu(props) {
   const dispatch = useDispatch();

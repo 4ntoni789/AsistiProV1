@@ -1,29 +1,24 @@
-import { ActiveSubMenuDeleteUsers, ActiveSubMenuNewRole, ActiveSubMenuUpdateRole } from '@renderer/actions/actionsLogin';
+
+import { ActiveSubMenuNewRole, ActiveSubMenuUpdateRole, Fetch_roles } from '@renderer/actions/actionsRoles';
+import { ActiveSubMenuDeleteUsers } from '@renderer/actions/actionsUsers';
 import ButtonStyle from '@renderer/components/ButtonStyle';
 import NewRole from '@renderer/components/modal/NewRole';
 import UpdateRole from '@renderer/components/modal/UpdateRole';
-import React, { useEffect, useState } from 'react';
+import { obtenerDatos } from '@renderer/scripts/obtenerDatosFetch';
+import { AppDispatch } from '@renderer/store';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-function Roles(props) {
+function Roles({ }) {
   const userData = useSelector((state: any) => state.loginAccess.validationAccess);
   const spam = useSelector((state: any) => state.menuAccions.errorSpam);
   const [userRoles, setUserRoles] = useState<[any]>();
   const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    fetch('/api/roles', {
-      headers: {
-        'x-id-usuario': userId
-      }
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setUserRoles(data);
-      })
-      .catch((err) => console.error('Error:', err));
+    obtenerDatos(null, dispatch(Fetch_roles(userId)), setUserRoles);
   }, [userData == true, spam.active]);
 
   return (

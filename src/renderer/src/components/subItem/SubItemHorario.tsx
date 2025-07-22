@@ -1,6 +1,7 @@
 import { faEllipsisVertical, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { ActiveSubMenuDeleteUsers, ActiveSubMenuPuntoVenta } from '@renderer/actions/actionsLogin';
+import {  ActiveSubMenuPuntoVenta } from '@renderer/actions/actionsLogin';
+import { ActiveSubMenuDeleteUsers } from '@renderer/actions/actionsUsers';
 import { extraerHora } from '@renderer/scripts/extraerHora';
 import { useDispatch } from 'react-redux';
 

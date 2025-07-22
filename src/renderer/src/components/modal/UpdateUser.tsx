@@ -1,58 +1,31 @@
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { ActiveErrorSpam, ActiveSubMenuUpdateUsers } from '@renderer/actions/actionsLogin';
+import { ActiveErrorSpam } from '@renderer/actions/actionsLogin';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import '../../css/newUsers.css';
 import SwitchButtonEdit from '../SwitchButtonEdit';
+import { ActiveSubMenuUpdateUsers, Fetch_update_user } from '@renderer/actions/actionsUsers';
+import { obtenerDatos } from '@renderer/scripts/obtenerDatosFetch';
+import { Fetch_roles } from '@renderer/actions/actionsRoles';
+import { AppDispatch } from '@renderer/store';
+import { UserDataType } from '@renderer/typesTS';
 
 function UpdateUser(props) {
   const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
   const [activeEdition, setActiveEdition] = useState<boolean>(true);
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit } = useForm();
   const activeUpdateUser = useSelector((state: any) => state.menuAccions.subMenuUpdateUser);
-  const userData = useSelector((state: any) => state.loginAccess.userLogin);
+  const userData = useSelector((state: UserDataType) => state.loginAccess.userLogin);
   const [userRoles, setUserRoles] = useState<any>();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   const onSubmit = async (dataInput) => {
-    try {
-      const response = await fetch(`/api/usuarios/${activeUpdateUser.user.id_usuario}`, {
-        method: 'PUT',
-        headers: {
-          'x-id-usuario': userId,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          nombre_usuario: dataInput.nombre_usuario,
-          id_rol: dataInput.id_rol,
-          email: dataInput.email,
-          reqUser: userData
-        }),
-      });
-
-      const result = await response.json();
-      if (!response.ok) throw new Error(result.error);
-      dispatch(ActiveErrorSpam({ msg: 'Usuario actualizado', active: true, typeError: 'submit' }));
-      dispatch(ActiveSubMenuUpdateUsers({ user: {}, subMenuUpdateUser: false }));
-    } catch (error) {
-      dispatch(ActiveErrorSpam({ msg: 'Error al actualizar el usuario', active: true, typeError: 'Error' }));
-      console.log('Ocurrió un error al actualizar el usuario');
-    }
+    dispatch(Fetch_update_user(dataInput, userData, activeUpdateUser, userId));
   }
   useEffect(() => {
-    setActiveEdition(true);
-    fetch('/api/roles', {
-      headers: {
-        'x-id-usuario': userId
-      }
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setUserRoles(data);
-      })
-      .catch((err) => console.error('Error:', err));
+    obtenerDatos(null, dispatch(Fetch_roles(userId)), setUserRoles);
   }, [activeUpdateUser.subMenuUpdateUser == true]);
 
   return (

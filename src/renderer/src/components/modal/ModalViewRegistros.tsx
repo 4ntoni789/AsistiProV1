@@ -1,20 +1,18 @@
 import React, { useRef, useState } from 'react';
 import '../../css/modalVerRegistros.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { ActiveMenuVerAccesos } from '@renderer/actions/actionsLogin';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft, faChevronRight, faXmark } from '@fortawesome/free-solid-svg-icons';
 import SubItemTable from '../subItem/SubItemTable';
-import ItemTableHeader from '../items/ItemTableHeader';
 import Pagination from '../Pagination';
 import { AnimatePresence, motion } from 'framer-motion';
 import SubModalViewRegistros from './SubModalViewRegistros';
+import { AppDispatch } from '@renderer/store';
+import { ActiveMenuVerAccesos } from '@renderer/actions/actionsAccesos';
 
 function ModalViewRegistros(props) {
   const [activeItem, setActiveItem] = useState(false);
   const [direccion, setDireccion] = useState<"siguiente" | "anterior">("siguiente");
   const activeVerAccesos = useSelector((state: any) => state.menuAccions.subMenuVerAccesos);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const [paginaActual, setPaginaActual] = useState(1);
   const registrosPorPagina = 7;
   const totalPaginas = Math.ceil(activeVerAccesos.accesos.registros?.length / registrosPorPagina);

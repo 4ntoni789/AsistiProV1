@@ -3,83 +3,41 @@ import '../../css/newUsers.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeLowVision, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { ActiveErrorSpam, ActiveSubMenuNewUsers } from '@renderer/actions/actionsLogin';
 import { useEffect, useState } from 'react';
+import { ActiveSubMenuNewUsers, Fetch_new_user } from '@renderer/actions/actionsUsers';
+import { UserDataType } from '@renderer/typesTS';
+import { AppDispatch } from '@renderer/store';
+import { Fetch_roles } from '@renderer/actions/actionsRoles';
+import { obtenerDatos } from '@renderer/scripts/obtenerDatosFetch';
 
 function NewUser() {
-  const activeNewUsers = useSelector((state: any) => state.menuAccions.subMenuNewUsers);
-  const userData = useSelector((state: any) => state.loginAccess.userLogin);
+  const activeNewUsers = useSelector((state: any) => state.menuAccions.subMenuNewUsers.subMenuNewUsers);
+  // const loading = useSelector((state: any) => state.menuAccions.subMenuNewUsers);
+  const userData = useSelector((state: UserDataType) => state.loginAccess.userLogin);
   const [userActiveCheck, setUserActiveCheck] = useState<string>('inactivo');
   const [userRoles, setUserRoles] = useState<any>();
   const { register, handleSubmit, reset } = useForm();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const [showPass, setShowPass] = useState<boolean>(true);
   const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
 
-  const [typeErrorPass, setTypeErrorPass] = useState<{ activeError: boolean, typeError: string }>({
-    activeError: false,
-    typeError: ''
-  });
+  const [typeErrorPass, setTypeErrorPass] = useState<{ activeError: boolean, typeError: string }>();
 
   const onSubmit = async (dataInput) => {
-    try {
-      const response = await fetch('/api/usuarios', {
-        method: 'POST',
-        headers: {
-          'x-id-usuario': userId,
-          'Content-Type': 'application/json'
-        }
-        ,
-        body: JSON.stringify({
-          nombre_usuario: dataInput.nombre_usuario,
-          password: dataInput.contrasena,
-          id_rol: dataInput.id_rol,
-          estado: userActiveCheck,
-          email: dataInput.email,
-          reqUser: userData
-        }),
-      });
-
-      const result = await response.json();
-      if (response.ok) {
-        dispatch(ActiveErrorSpam({ msg: result.message, active: true, typeError: 'submit' }));
-        reset();
-        dispatch(ActiveSubMenuNewUsers(false));
-        setTypeErrorPass({
-          activeError: false,
-          typeError: ''
-        });
-      } else {
-        setTypeErrorPass({
-          activeError: true,
-          typeError: result.message
-        });
-        dispatch(ActiveErrorSpam({ msg: result.message, active: true, typeError: 'Error' }));
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      console.log('Ocurrió un error al crear el usuario');
-    }
+    obtenerDatos(dataInput, dispatch(Fetch_new_user(dataInput, userId, userData, userActiveCheck, reset)), setTypeErrorPass);
   }
 
   useEffect(() => {
-    fetch('/api/roles', {
-      headers: {
-        'x-id-usuario': userId
-      }
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setUserRoles(data);
-      })
-      .catch((err) => console.error('Error:', err));
+    obtenerDatos(null,dispatch(Fetch_roles(userId)),setUserRoles);
   }, [activeNewUsers == true]);
 
   return (
     <div className={activeNewUsers ? 'App__dashboard__contPageOutlet__PageUsers__newUser__active' : 'App__dashboard__contPageOutlet__PageUsers__newUser'}>
       <form className='App__dashboard__contPageOutlet__PageUsers__newUser__form' onSubmit={handleSubmit(onSubmit)}>
         <div className='App__dashboard__contPageOutlet__PageUsers__newUser__form__close'>
-          <FontAwesomeIcon icon={faXmark} onClick={() => dispatch(ActiveSubMenuNewUsers(false))} />
+          <FontAwesomeIcon icon={faXmark} onClick={() => dispatch(ActiveSubMenuNewUsers({
+            subMenuNewUsers: false
+          }))} />
         </div>
         <div className='App__dashboard__contPageOutlet__PageUsers__newUser__form__contInputs'>
           <h2>Nuevo usuario</h2>
@@ -93,9 +51,9 @@ function NewUser() {
               <input id='contrasena' type={showPass ? "password" : "text"} {...register('contrasena', { required: true })} placeholder='Nueva contraseña' />
               <FontAwesomeIcon icon={showPass ? faEye : faEyeLowVision} onClick={() => setShowPass(!showPass)} />
             </div>
-            <div className={typeErrorPass.activeError ? 'App__dashboard__contPageOutlet__PageUsers__newUser__form__contInputs__contForm__passInvalid__active'
+            <div className={typeErrorPass?.activeError ? 'App__dashboard__contPageOutlet__PageUsers__newUser__form__contInputs__contForm__passInvalid__active'
               : 'App__dashboard__contPageOutlet__PageUsers__newUser__form__contInputs__contForm__passInvalid'}>
-              <span>{typeErrorPass.typeError}</span>
+              <span>{typeErrorPass?.typeError}</span>
             </div>
           </div>
           <label htmlFor='id_rol'>Rol</label>

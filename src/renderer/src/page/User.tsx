@@ -1,14 +1,13 @@
-import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import '../css/user.css';
 import ButtonStyle from '@renderer/components/ButtonStyle';
-import { ActiveSubMenuDeleteUsers, ActiveSubMenuUpdatePass, ActiveSubMenuUpdateUsers } from '@renderer/actions/actionsLogin';
-import UpdateUser from '@renderer/components/modal/UpdateUser';
 import UpdateSingleUser from '@renderer/components/modal/UpdateSingleUser';
 import UpdatePass from '@renderer/components/modal/UpdatePass';
 import BtnDarkMode from '@renderer/components/BtnDarkMode';
+import { ActiveSubMenuDeleteUsers, ActiveSubMenuUpdateUsers } from '@renderer/actions/actionsUsers';
+import { ActiveSubMenuUpdatePass } from '@renderer/actions/actionsUser';
 
-function Usuario(props) {
+function Usuario({}) {
   const dataUser = useSelector((state: any) => state.loginAccess.userLogin);
   const dispatch = useDispatch();
 

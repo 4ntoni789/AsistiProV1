@@ -19,7 +19,28 @@ export interface Props {
   breakEnd: number;
 }
 
-
 export interface Props2 {
   registros?: Array<object>;
+}
+
+
+export type InicialStateLogin = {
+  userLogin: object,
+  validationAccess: boolean,
+  activeError: boolean
+}
+
+export type UserDataType = {
+  loginAccess: {
+    userLogin: {
+      correo: string,
+      estado: string,
+      id_rol: number,
+      id_usuario: number,
+      nombre_usuario: string,
+      type_role: string
+    },
+    validationAccess: boolean,
+    activeError: boolean
+  }
 }

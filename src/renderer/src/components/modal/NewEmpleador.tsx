@@ -1,47 +1,22 @@
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { ActiveErrorSpam, ActiveSubMenuNewEmpleador } from '@renderer/actions/actionsLogin';
-import React from 'react';
+import { ActiveSubMenuNewEmpleador, Fetch_new_empleador } from '@renderer/actions/actionsEmpleadores';
+import { AppDispatch } from '@renderer/store';
+import { UserDataType } from '@renderer/typesTS';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 
-function NewEmpleador(props) {
+function NewEmpleador({}) {
   const activeNewRole = useSelector((state: any) => state.menuAccions.subMenuNewEmpleador);
-  const userData = useSelector((state: any) => state.loginAccess.userLogin);
+  const userData = useSelector((state: UserDataType) => state.loginAccess.userLogin);
   const { register, handleSubmit, reset } = useForm();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
 
   const onSubmit = async (dataInput) => {
-    try {
-      const response = await fetch('/api/empleador', {
-        method: 'POST',
-        headers: {
-          'x-id-usuario': userId,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          nombre_empleador: dataInput.nombre_empleador,
-          nit: dataInput.nit_empleador,
-          direccion_empleador: dataInput.direccion_empleador,
-          reqUser: userData
-        }),
-      });
-
-      const result = await response.json();
-      if (response.ok) {
-        dispatch(ActiveSubMenuNewEmpleador({ user: {}, subMenuNewEmpleador: false }));
-        dispatch(ActiveErrorSpam({ msg: result.message, active: true, typeError: 'submit' }));
-        reset();
-      } else {
-        dispatch(ActiveErrorSpam({ msg: result.error, active: true, typeError: 'error' }));
-        throw new Error(result.error)
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      console.log('Ocurrió un error al crear este empleador');
-    }
+    dispatch(Fetch_new_empleador(dataInput, userId, userData, reset));
   }
+
   return (
     <div className={activeNewRole.subMenuNewEmpleador ? 'App__dashboard__contPageOutlet__PageUsers__newUser__active' : 'App__dashboard__contPageOutlet__PageUsers__newUser'}>
       <form className='App__dashboard__contPageOutlet__PageUsers__newUser__form' onSubmit={handleSubmit(onSubmit)}>

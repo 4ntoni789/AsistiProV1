@@ -16,7 +16,7 @@ export default defineConfig({
       }
     },
     plugins: [react()],
-
+    base: './',
     server: {
       proxy: {
         '/api': 'http://192.168.2.93:5000'

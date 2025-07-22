@@ -1,13 +1,15 @@
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { ActiveErrorSpam, ActiveSubMenuNewEmpleado, ActiveSubMenuNewUsers } from '@renderer/actions/actionsLogin';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import '../../css/newUsers.css';
-import { capitalizarCadaPalabra } from '@renderer/scripts/upper';
 import SearchMunicipios from '../SearchMunicipios';
 import { Opcion } from '@renderer/interface';
+import { ActiveSubMenuNewEmpleado, Fetch_new_empleado } from '@renderer/actions/actionsEmpleados';
+import { AppDispatch } from '@renderer/store';
+import { obtenerDatos } from '@renderer/scripts/obtenerDatosFetch';
+import { Fetch_cargos } from '@renderer/actions/actionsCargos';
 
 function NewEmpleado() {
   const [nacionalidad, setNacionalidad] = useState<string>('');
@@ -16,58 +18,18 @@ function NewEmpleado() {
   const activeNewEmpleado = useSelector((state: any) => state.menuAccions.subMenuNewEmpleado.activeNewEmpleado);
   const [userRoles, setUserCargo] = useState<any>();
   const { register, handleSubmit, reset } = useForm();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const [lNacimiento, setLNacimiento] = useState<string>('');
   const [nacionalidadText, setNacionalidadText] = useState<string>('');
   const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
 
 
   const onSubmit = async (dataInput) => {
-    try {
-      const response = await fetch('/api/empleados', {
-        method: 'POST',
-        headers: {
-          'x-id-usuario': userId,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          nombre_usuario: capitalizarCadaPalabra(dataInput.nombre_usuario),
-          apellido: capitalizarCadaPalabra(dataInput.apellidos),
-          cedula: dataInput.cedula,
-          telefono: dataInput.telefono,
-          email: dataInput.email,
-          sexo: dataInput.sexo,
-          lugar_nacimiento: municipio?.label,
-          fecha_nacimiento: dataInput.fecha_nacimiento,
-          direccion: dataInput.direccion,
-          reqUser: userData
-        }),
-      });
-
-      const result = await response.json();
-      if (!response.ok) throw new Error(result.error);
-      // console.log(result.message);
-      dispatch(ActiveErrorSpam({ msg: 'Empleado creado', active: true, typeError: 'submit' }));
-      reset();
-      dispatch(ActiveSubMenuNewEmpleado({ user: {}, activeNewEmpleado: false }))
-    } catch (error) {
-      dispatch(ActiveErrorSpam({ msg: 'Error al crear el Empleado', active: true, typeError: 'Error' }));
-      console.error('Error:', error);
-      console.log('Ocurrió un error al crear el empleado');
-    }
+    dispatch(Fetch_new_empleado(dataInput, userId, userData, municipio, reset));
   }
 
   useEffect(() => {
-    fetch('/api/cargos', {
-      headers: {
-        'x-id-usuario': userId
-      }
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setUserCargo(data);
-      })
-      .catch((err) => console.error('Error:', err));
+    obtenerDatos(null,dispatch(Fetch_cargos(userId)),setUserCargo);
   }, [activeNewEmpleado == true]);
 
   useEffect(() => {
@@ -97,7 +59,7 @@ function NewEmpleado() {
           <label htmlFor='telefono'>Telefono</label>
           <input id='telefono' type="number" {...register('telefono', { required: true, minLength: 10 })} placeholder='Numero de telefono' />
           <label htmlFor='email'>Correo electronico</label>
-          <input id='email' type="text" {...register('email', { required: true })} placeholder='Correo electronico' />
+          <input id='email' type="email" {...register('email', { required: true })} placeholder='Correo electronico' />
           <label htmlFor='direccion'>Dirección de residencial</label>
           <input id='direccion' type="text" {...register('direccion', { required: true })} placeholder='Dirección de residencial' />
           <label htmlFor='fecha_nacimiento'>Fecha de nacimiento</label>
@@ -129,10 +91,6 @@ function NewEmpleado() {
           <button type='submit'>Registrar</button>
           <br />
         </div>
-        {/* <label>
-                    <input type="checkbox" onClick={(e: any) => e.target.checked ? setUserActiveCheck('activo') : setUserActiveCheck('inactivo')} {...register('estado')} />
-                    Activo
-                </label> */}
       </form>
     </div>
   );

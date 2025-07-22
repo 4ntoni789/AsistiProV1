@@ -1,40 +1,23 @@
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import SwitchButtonEdit from '../SwitchButtonEdit';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
-import { ActiveErrorSpam, ActiveSubMenuUpdateRole } from '@renderer/actions/actionsLogin';
+import { ActiveSubMenuUpdateRole, Fetch_update_role } from '@renderer/actions/actionsRoles';
+import { UserDataType } from '@renderer/typesTS';
+import { AppDispatch } from '@renderer/store';
 
 function UpdateRole(props) {
-  const userData = useSelector((state: any) => state.loginAccess.userLogin);
+  const userData = useSelector((state: UserDataType) => state.loginAccess.userLogin);
   const { register, handleSubmit, reset } = useForm();
   const [activeEdition, setActiveEdition] = useState<boolean>(true);
   const activeUpdateRole = useSelector((state: any) => state.menuAccions.subMenuUpdateRole);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
 
   const onSubmit = async (dataInput) => {
-    try {
-      const response = await fetch(`/api/rol/${activeUpdateRole.user.item.id_rol}`, {
-        method: 'PUT',
-        headers: {
-          'x-id-usuario': userId,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          nombre_rol: dataInput.nombre_rol,
-          reqUser: userData
-        }),
-      });
-      const result = await response.json();
-      if (!response.ok) throw new Error(result.error);
-      dispatch(ActiveErrorSpam({ msg: 'rol actualizado', active: true, typeError: 'submit' }));
-      dispatch(ActiveSubMenuUpdateRole({ user: {}, subMenuUpdateRole: false }));
-    } catch (error) {
-      dispatch(ActiveErrorSpam({ msg: 'Error al actualizar este rol', active: true, typeError: 'Error' }));
-      console.log('Ocurrió un error al actualizar este rol');
-    }
+    dispatch(Fetch_update_role(dataInput, userId, activeUpdateRole, userData));
   }
 
 

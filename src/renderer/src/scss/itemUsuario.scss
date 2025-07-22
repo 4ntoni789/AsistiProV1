@@ -1,0 +1,104 @@
+@import './variables';
+
+.App__dashboard__contPageOutlet__PageUsers__contUsers__table__usuario {
+    background-color: $color-terceario;
+    height: 220px;
+    width: 90%;
+    border-radius: 5px;
+    margin: 5px 0 5px 0;
+    border: 1px solid $color-principal;
+
+    &__cont {
+
+        h2 {
+            color: $color-principal;
+            display: flex;
+            align-items: center;
+            position: relative;
+
+            svg {
+                font-size: 50px;
+                margin-right: 10px;
+            }
+
+            span {
+                color: $color-item-header;
+                position: absolute;
+                top: 0;
+                right: 10px;
+                font-size: 13px;
+            }
+
+        }
+
+        &__body {
+            width: 80%;
+            margin: auto;
+
+            h3 {
+                color: $colo-text-claro;
+                font-weight: 400;
+
+                b{
+                    font-weight: bold;
+                    
+                }
+            }
+
+            &__active {
+                color: $color-submit !important;
+            }
+
+            &__noActive {
+                color: $color-error-2 !important;
+            }
+        }
+
+        &__footer {
+            position: relative;
+            display: flex;
+            height: 30px;
+
+            &__contBtn1{
+                // width: 50%;
+                display: flex;
+                justify-content: flex-end;
+                align-items: end;
+                position: absolute;
+                left: 83%;
+                top: -15px;
+            }
+
+            &__contBtn2 {
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+                width: 10%;
+                position: absolute;
+                right: 0;
+
+            }
+
+            svg {
+                cursor: pointer;
+            }
+
+            svg:nth-child(1) {
+                transition: all .5s;
+
+                &:hover {
+                    color: $color-principal;
+                }
+            }
+
+            svg:nth-child(2) {
+                transition: all .5s;
+
+                &:hover {
+                    color: $color-error-2;
+                }
+            }
+
+        }
+    }
+}

@@ -12,19 +12,35 @@
   align-items: center;
 }
 .App__dashboard__contPageOutlet__PageUsers__contUsers {
-  width: 80%;
+  width: 90%;
+  height: 90vh;
   background-color: #333;
   border-radius: 5px;
   padding: 20px;
   animation: aparecer 1s forwards;
 }
+.App__dashboard__contPageOutlet__PageUsers__contUsers h2 {
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+  margin: 0px 0 10px 0px;
+  padding: 15px 0 15px 30px;
+  font-weight: bold;
+  color: #dd8702;
+}
 .App__dashboard__contPageOutlet__PageUsers__contUsers__contBtnNewUser {
   margin: 0px 0 10px 0;
-  width: 100%;
+  width: 90%;
   text-align: end;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
 }
-.App__dashboard__contPageOutlet__PageUsers__contUsers__contBtnNewUser__btn {
-  min-width: 60px;
+.App__dashboard__contPageOutlet__PageUsers__contUsers__contBtnNewUser button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  width: 150px;
   height: 40px;
   border-radius: 100px;
   border: none;
@@ -32,17 +48,26 @@
   font-size: 14px;
   cursor: pointer;
   transition: all 0.5s;
-}
-.App__dashboard__contPageOutlet__PageUsers__contUsers__contBtnNewUser__btn:hover {
   background-color: #dd8702;
-  color: #fff;
 }
-.App__dashboard__contPageOutlet__PageUsers__contUsers__contBtnNewUser__btn:hover:disabled:hover {
-  color: #444;
-  background-color: rgba(239, 239, 239, 0.3019607843);
+.App__dashboard__contPageOutlet__PageUsers__contUsers__contBtnNewUser button svg {
+  margin-left: 10px;
+  color: #fff;
+  font-size: 20px;
+  transition: all 0.5s;
+}
+.App__dashboard__contPageOutlet__PageUsers__contUsers__contBtnNewUser button:disabled {
+  background-color: #666;
+  color: #333;
+}
+.App__dashboard__contPageOutlet__PageUsers__contUsers__contBtnNewUser button:disabled svg {
+  color: #333;
 }
 .App__dashboard__contPageOutlet__PageUsers__contUsers__table {
-  max-height: 300px;
+  max-height: 80%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
   overflow: auto;
 }
 .App__dashboard__contPageOutlet__PageUsers__contUsers table,

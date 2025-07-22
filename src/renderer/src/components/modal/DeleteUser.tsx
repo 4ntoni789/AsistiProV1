@@ -3,7 +3,7 @@ import '../../css/deleteUser.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { ActiveErrorSpam, ActiveSubMenu, ActiveSubMenuDeleteUsers, Logout } from '@renderer/actions/actionsLogin';
+import { ActiveErrorSpam,Logout } from '@renderer/actions/actionsLogin';
 import { DeleteUserAs } from '@renderer/scripts/deleteUser';
 import { DeleteEmpleadoAs } from '@renderer/scripts/deleteEmpleadoAs';
 import { DesactivateContrato } from '@renderer/scripts/desactivateContrato';
@@ -13,6 +13,7 @@ import { DeletePuntoVenta } from '@renderer/scripts/deletePuntoVenta';
 import { DeleteEmpleador } from '@renderer/scripts/deleteEmpleador';
 import { extraerHora } from '@renderer/scripts/extraerHora';
 import { DeleteHorario } from '@renderer/scripts/deleteHorario';
+import { ActiveSubMenuDeleteUsers } from '@renderer/actions/actionsUsers';
 
 function DeleteUser() {
   const activeDeleteUsers = useSelector((state: any) => state.menuAccions.deleteUser);

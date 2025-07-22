@@ -1,6 +1,8 @@
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { ActiveErrorSpam, ActiveSubMenuNewRole } from '@renderer/actions/actionsLogin';
+import { ActiveErrorSpam, } from '@renderer/actions/actionsLogin';
+import { ActiveSubMenuNewRole, Fetch_new_role } from '@renderer/actions/actionsRoles';
+import { AppDispatch } from '@renderer/store';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,37 +11,13 @@ function NewRole(props) {
   const activeNewRole = useSelector((state: any) => state.menuAccions.subMenuNewRole);
   const userData = useSelector((state: any) => state.loginAccess.userLogin);
   const { register, handleSubmit, reset } = useForm();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
 
   const onSubmit = async (dataInput) => {
-    try {
-      const response = await fetch('/api/rol', {
-        method: 'POST',
-        headers: {
-          'x-id-usuario': userId,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          nombre_rol: dataInput.nombre_rol,
-          reqUser: userData
-        }),
-      });
-
-      const result = await response.json();
-      if (response.ok) {
-        dispatch(ActiveErrorSpam({ msg: result.message, active: true, typeError: 'submit' }));
-        reset();
-        dispatch(ActiveSubMenuNewRole({ user: {}, subMenuNewRole: false }));
-      } else {
-        dispatch(ActiveErrorSpam({ msg: result.message, active: true, typeError: 'submit' }));
-        throw new Error(result.error);
-      }
-    } catch (error) {
-      dispatch(ActiveErrorSpam({ msg: 'Error al crear este rol', active: true, typeError: 'Error' }));
-      console.error('Error:', error);
-    }
+    dispatch(Fetch_new_role(dataInput, userId, userData, reset));
   }
+  
   return (
     <div className={activeNewRole.subMenuNewRole ? 'App__dashboard__contPageOutlet__PageUsers__newUser__active' : 'App__dashboard__contPageOutlet__PageUsers__newUser'}>
       <form className='App__dashboard__contPageOutlet__PageUsers__newUser__form' onSubmit={handleSubmit(onSubmit)}>

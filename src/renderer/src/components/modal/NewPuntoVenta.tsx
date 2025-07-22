@@ -1,47 +1,21 @@
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { ActiveErrorSpam, ActiveSubMenuNewPuntoVenta } from '@renderer/actions/actionsLogin';
-import React, { useEffect } from 'react';
+import { ActiveSubMenuNewPuntoVenta, Fetch_new_punto_venta } from '@renderer/actions/actionsPuntoDeVenta';
+import { AppDispatch } from '@renderer/store';
+import { UserDataType } from '@renderer/typesTS';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 
-function NewPuntoVenta(props) {
-  const userData = useSelector((state: any) => state.loginAccess.userLogin);
+function NewPuntoVenta({ }) {
+  const userData = useSelector((state: UserDataType) => state.loginAccess.userLogin);
   const activeNewEmpleado = useSelector((state: any) => state.menuAccions.subMenuNewPuntoVenta);
   // const [userRoles, setUserCargo] = useState<any>();
   const { register, handleSubmit, reset } = useForm();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
 
   const onSubmit = async (dataInput) => {
-    try {
-      const response = await fetch('/api/punto-venta', {
-        method: 'POST',
-        headers: {
-          'x-id-usuario': userId,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          nombre: dataInput.nombre,
-          direccion: dataInput.direccion,
-          numero_serie_dispositivo: dataInput.numero_serie_dispositivo,
-          reqUser: userData
-        }),
-      });
-
-      const result = await response.json();
-      if (response.ok) {
-        dispatch(ActiveSubMenuNewPuntoVenta({ user: {}, subMenuNewPuntoVenta: false }));
-        dispatch(ActiveErrorSpam({ msg: result.message, active: true, typeError: 'submit' }));
-        reset();
-      } else {
-        dispatch(ActiveErrorSpam({ msg: result.error, active: true, typeError: 'Error' }));
-        throw new Error(result.error);
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      console.log('Ocurrió un error al crear el empleado');
-    }
+    dispatch(Fetch_new_punto_venta(dataInput, userId, userData, reset));
   }
 
   return (
@@ -68,10 +42,6 @@ function NewPuntoVenta(props) {
           <br />
           <br />
         </div>
-        {/* <label>
-                    <input type="checkbox" onClick={(e: any) => e.target.checked ? setUserActiveCheck('activo') : setUserActiveCheck('inactivo')} {...register('estado')} />
-                    Activo
-                </label> */}
       </form>
     </div>
   );

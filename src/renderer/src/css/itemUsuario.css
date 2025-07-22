@@ -1,0 +1,80 @@
+.App__dashboard__contPageOutlet__PageUsers__contUsers__table__usuario {
+  background-color: #1b1b1f;
+  height: 220px;
+  width: 90%;
+  border-radius: 5px;
+  margin: 5px 0 5px 0;
+  border: 1px solid #dd8702;
+}
+.App__dashboard__contPageOutlet__PageUsers__contUsers__table__usuario__cont h2 {
+  color: #dd8702;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.App__dashboard__contPageOutlet__PageUsers__contUsers__table__usuario__cont h2 svg {
+  font-size: 50px;
+  margin-right: 10px;
+}
+.App__dashboard__contPageOutlet__PageUsers__contUsers__table__usuario__cont h2 span {
+  color: #666;
+  position: absolute;
+  top: 0;
+  right: 10px;
+  font-size: 13px;
+}
+.App__dashboard__contPageOutlet__PageUsers__contUsers__table__usuario__cont__body {
+  width: 80%;
+  margin: auto;
+}
+.App__dashboard__contPageOutlet__PageUsers__contUsers__table__usuario__cont__body h3 {
+  color: #bbb;
+  font-weight: 400;
+}
+.App__dashboard__contPageOutlet__PageUsers__contUsers__table__usuario__cont__body h3 b {
+  font-weight: bold;
+}
+.App__dashboard__contPageOutlet__PageUsers__contUsers__table__usuario__cont__body__active {
+  color: #11c02e !important;
+}
+.App__dashboard__contPageOutlet__PageUsers__contUsers__table__usuario__cont__body__noActive {
+  color: #ad0606 !important;
+}
+.App__dashboard__contPageOutlet__PageUsers__contUsers__table__usuario__cont__footer {
+  position: relative;
+  display: flex;
+  height: 30px;
+}
+.App__dashboard__contPageOutlet__PageUsers__contUsers__table__usuario__cont__footer__contBtn1 {
+  display: flex;
+  justify-content: flex-end;
+  align-items: end;
+  position: absolute;
+  left: 83%;
+  top: -15px;
+}
+.App__dashboard__contPageOutlet__PageUsers__contUsers__table__usuario__cont__footer__contBtn2 {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 10%;
+  position: absolute;
+  right: 0;
+}
+.App__dashboard__contPageOutlet__PageUsers__contUsers__table__usuario__cont__footer svg {
+  cursor: pointer;
+}
+.App__dashboard__contPageOutlet__PageUsers__contUsers__table__usuario__cont__footer svg:nth-child(1) {
+  transition: all 0.5s;
+}
+.App__dashboard__contPageOutlet__PageUsers__contUsers__table__usuario__cont__footer svg:nth-child(1):hover {
+  color: #dd8702;
+}
+.App__dashboard__contPageOutlet__PageUsers__contUsers__table__usuario__cont__footer svg:nth-child(2) {
+  transition: all 0.5s;
+}
+.App__dashboard__contPageOutlet__PageUsers__contUsers__table__usuario__cont__footer svg:nth-child(2):hover {
+  color: #ad0606;
+}
+
+/*# sourceMappingURL=itemUsuario.css.map */

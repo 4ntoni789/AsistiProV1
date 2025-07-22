@@ -1,15 +1,14 @@
-import { faBan, faCalendar, faChevronCircleLeft, faChevronCircleRight, faEllipsisVertical, faEye, faFileContract, faFolder, faHome, faImagePortrait, faPencil, faPerson, faShop, faStore, faTrash, faUser } from '@fortawesome/free-solid-svg-icons';
+import {  faCalendar, faChevronCircleLeft, faChevronCircleRight, faEye, faFileContract, faFolder, faHome, faImagePortrait, faStore } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { ActivatedMenu } from '@renderer/actions/actionsLogin';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router';
 import logo from '../../img/AsistiPropng.png';
 import logo2 from '../../img/AsistiProMinPng.png';
 import '../../css/menu.css';
-import { useEffect, useRef, useState } from 'react';
-import BtnDarkMode from '../BtnDarkMode';
+import { useEffect } from 'react';
+import { ActivatedMenu } from '@renderer/actions/actionsMenu';
 
-function Menu(props) {
+function Menu({}) {
   const dispatch = useDispatch();
   const menuActive = useSelector((state: any) => state.menuAccions.menuActive);
   const dataUser = useSelector((state: any) => state.loginAccess.userLogin);

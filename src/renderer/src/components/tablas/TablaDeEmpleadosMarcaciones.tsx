@@ -7,9 +7,14 @@ import ItemTable from '../items/ItemTable';
 
 import ItemTableHeader from '../items/ItemTableHeader';
 import MenuEmpleado from '../modal/SubMenuEmpleado';
-import ButtonStyle from '../ButtonStyle';
-import { ActiveSubMenuNewEmpleado } from '@renderer/actions/actionsLogin';
+import { } from '@renderer/actions/actionsLogin';
 import ModalViewRegistros from '../modal/ModalViewRegistros';
+import { ActiveSubMenuNewEmpleado, Fetch_empleados } from '@renderer/actions/actionsEmpleados';
+import { obtenerDatos } from '@renderer/scripts/obtenerDatosFetch';
+import { Fetch_contratos } from '@renderer/actions/actionsContratos';
+import { AppDispatch } from '@renderer/store';
+import Buscandor from '../Buscandor';
+import Paginacion from '../Paginacion';
 
 function TablaMarcaciones() {
   const spam = useSelector((state: any) => state.menuAccions.errorSpam);
@@ -23,38 +28,19 @@ function TablaMarcaciones() {
   const [searchTerm, setSearchTerm] = useState('');
   const itemsPerPage = 10;
   const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   // const [activeOptions, setActiveOptions] = useState<boolean>(false);
 
   useEffect(() => {
-    fetch('/api/contratos', {
-      headers: {
-        'x-id-usuario': userId
-      }
+    obtenerDatos(null, dispatch(Fetch_contratos(userId)), setUserContrato);
+    obtenerDatos(null, dispatch(Fetch_empleados(userId)), setAccesos);
+  
+    if (clickLoad) {
+      const interval = setTimeout(() => {
+        setClickLoad(false);
+      }, 1000);
+      () => clearInterval(interval);
     }
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        setUserContrato(data);
-      })
-      .catch((err) => console.error('Error:', err));
-
-    fetch('/api/empleados', {
-      headers: {
-        'x-id-usuario': userId
-      }
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setAccesos(data);
-        if (clickLoad) {
-          const interval = setTimeout(() => {
-            setClickLoad(false);
-          }, 1000);
-          () => clearInterval(interval);
-        }
-      })
-      .catch((err) => console.error('Error:', err));
   }, [userData == true, clickLoad == true, activeNewEmpleado, activeDeleteUsers, spam]);
 
   const filteredAccesos = accesos.filter((item) =>
@@ -106,14 +92,7 @@ function TablaMarcaciones() {
     <div className='App__init__contTable__tablaMarcaciones'>
       <h2>Empleados y marcaciones</h2>
       <div className='App__init__contTable__tablaMarcaciones__header'>
-
-        <div className="App__init__contTable__tablaMarcaciones__header__search-container">
-          <span className="App__init__contTable__tablaMarcaciones__header__search-container__search-icon"><FontAwesomeIcon icon={faMagnifyingGlass} /></span>
-          <input type="search" className="App__init__contTable__tablaMarcaciones__header__search-container__search-input" value={searchTerm}
-            onChange={handleSearch}
-            placeholder="Buscar por nombre o por id..." />
-        </div>
-
+        <Buscandor searchTerm={searchTerm} handleSearch={handleSearch}/>
         <div className='App__init__contTable__tablaMarcaciones__header__contBtn'>
           <span title='Nuevo empleado' onClick={() => dispatch(ActiveSubMenuNewEmpleado({ user: {}, activeNewEmpleado: true }))}>
             <FontAwesomeIcon icon={faPlus} />
@@ -140,33 +119,9 @@ function TablaMarcaciones() {
           <ItemTable clickLoad={clickLoad} key={index} item={item} contrato={userContrato.filter((item2) => (item2.id_empleado == item.id_empleado))} />
         ))}
       </div>
-      <div className='App__init__contTable__tablaMarcaciones__pagination'>
-        <button
-          onClick={() => {
-            setClickLoad(true);
-            setCurrentPage((prev) => prev - 1);
-          }}
-          disabled={currentPage === 1}
-        >
-          <FontAwesomeIcon icon={faChevronLeft} />
-        </button>
-
-        <span>
-           {currentPage} de {totalPages}
-        </span>
-
-        <button
-          onClick={() => {
-            setClickLoad(true);
-            setCurrentPage((prev) => prev + 1);
-          }}
-          disabled={currentPage === totalPages}
-        >
-          <FontAwesomeIcon icon={faChevronRight} />
-        </button>
-      </div>
+      <Paginacion setClickLoad={setClickLoad} setCurrentPage={setCurrentPage} currentPage={currentPage} totalPages={totalPages}/>
       <MenuEmpleado />
-      <ModalViewRegistros/>
+      <ModalViewRegistros />
     </div>
   );
 }

@@ -1,15 +1,15 @@
 import { useDispatch, useSelector } from 'react-redux';
 import '../css/errorLogin.css';
 import { useEffect } from 'react';
-import { ErrorLoginSpam } from '@renderer/actions/actionsLogin';
+import { ErrorLogin } from '@renderer/actions/actionsLogin';
 
-function ErrorLogin(props) {
+function ErrorLoginSpan(props) {
   const userData = useSelector((state: any) => state.loginAccess.activeError);
   const dispatch = useDispatch();
   useEffect(() => {
     if (userData) {
       setTimeout(() => {
-        dispatch(ErrorLoginSpam(false));
+        dispatch(ErrorLogin(false));
       }, 2000)
     }
   }, [userData])
@@ -21,4 +21,4 @@ function ErrorLogin(props) {
   );
 }
 
-export default ErrorLogin;
+export default ErrorLoginSpan;

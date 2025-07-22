@@ -1,6 +1,6 @@
 import Login from '@renderer/page/Login';
 import { useEffect } from 'react';
-import { Route, BrowserRouter as Router, Routes } from 'react-router';
+import { Route, HashRouter as Router, Routes } from 'react-router';
 import ProtectiveRoute from './ProtectiveRoute';
 import { useSelector } from 'react-redux';
 import Dashboard from '@renderer/page/Dashboard';
@@ -26,15 +26,15 @@ function Enrutado(props) {
             <Route path='dashboard' element={<Dashboard />} >
               <Route path='init' element={<Inicio />} />
               <Route path='users' element={<Users />} />
-              <Route path='pSale' element={<PuntoVenta/>} />
+              <Route path='pSale' element={<PuntoVenta />} />
               <Route path='employe' element={<Empleados />} />
               <Route path='ausentismo' element={<h2>Ausentismo</h2>} />
-              <Route path='report' element={<Reportes/>} />
+              <Route path='report' element={<Reportes />} />
               <Route path='roles' element={<Roles />} />
               <Route path='cargos' element={<Cargos />} />
               <Route path='contracts' element={<h2>Contratos</h2>} />
-              <Route path='empleadores' element={<Empleadores/>} />
-              <Route path='user' element={<User/>} />
+              <Route path='empleadores' element={<Empleadores />} />
+              <Route path='user' element={<User />} />
             </Route >
           </Route>
         </Routes>

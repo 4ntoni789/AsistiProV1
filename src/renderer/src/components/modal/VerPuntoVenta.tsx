@@ -1,62 +1,31 @@
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { ActiveSubMenuPuntoVenta } from '@renderer/actions/actionsLogin';
-import React, { useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ItemHorario from '../ItemHorario';
+import { ActiveSubMenuPuntoVenta } from '@renderer/actions/actionsPuntoDeVenta';
+import { obtenerDatos } from '@renderer/scripts/obtenerDatosFetch';
+import { AppDispatch } from '@renderer/store';
+import { Fetch_cargos } from '@renderer/actions/actionsCargos';
+import { Fetch_horario } from '@renderer/actions/actionsHorario';
 
 function VerPuntoVenta(props) {
   const activeMenuPuntoVenta = useSelector((state: any) => state.menuAccions.subMenuPuntoVenta);
   const activeModalDelete = useSelector((state: any) => state.menuAccions.deleteUser);
-  const userData = useSelector((state: any) => state.loginAccess.userLogin);
+  // const userData = useSelector((state: any) => state.loginAccess.userLogin);
   const [horario, setHorario] = useState<any>({});
   // const { register, handleSubmit, reset } = useForm();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
   const [userCargo, setUserCargo] = useState<[]>([]);
 
   useEffect(() => {
-    fetch('/api/horarios', {
-      headers: {
-        'x-id-usuario': userId
-      }
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        const resultado = data
-          .filter((item: any) => item.id_pv === activeMenuPuntoVenta.user?.item?.id_pv)
-          .reduce((acc: any[], curr: any) => {
-            const existente = acc.find(g => g.turno === curr.turno && g.cargo === curr.id_cargo);
+    obtenerDatos(null, dispatch(Fetch_horario(userId, activeMenuPuntoVenta)), setHorario);
 
-            if (existente) {
-              existente.horarios.push(curr);
-            } else {
-              acc.push({
-                turno: curr.turno,
-                cargo: curr.id_cargo,
-                horarios: [curr]
-              });
-            }
-            return acc;
-          }, []);
-
-        setHorario(resultado);
-      })
-      .catch((err) => console.error('Error:', err));
   }, [activeMenuPuntoVenta.subMenuPuntoVenta == true, activeModalDelete]);
 
   useEffect(() => {
-    fetch('/api/cargos', {
-      headers: {
-        'x-id-usuario': userId
-      }
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setUserCargo(data);
-      })
-      .catch((err) => console.error('Error:', err));
+    obtenerDatos(null, dispatch(Fetch_cargos(userId)), setUserCargo);
   }, [activeMenuPuntoVenta.subMenuPuntoVenta == true]);
 
 

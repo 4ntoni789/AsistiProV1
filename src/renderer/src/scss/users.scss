@@ -1,3 +1,5 @@
+@import './variables';
+
 .App__dashboard__contPageOutlet {
     width: 78%;
     display: flex;
@@ -12,19 +14,38 @@
         align-items: center;
 
         &__contUsers {
-            width: 80%;
-            background-color: #333;
+            width: 90%;
+            height: 90vh;
+            background-color: $color-secundario;
             border-radius: 5px;
             padding: 20px;
             animation: aparecer 1s forwards;
 
+           h2 {
+            width: 100%;
+            border-radius: 10px 10px 0 0;
+            margin: 00px 0 10px 0px;
+            padding: 15px 0 15px 30px;
+            font-weight: bold;
+            color: #dd8702;
+            // background-color: #dd8702;
+        }
+
+
             &__contBtnNewUser {
                 margin: 0px 0 10px 0;
-                width: 100%;
+                width: 90%;
                 text-align: end;
+                margin: auto;
+                display: flex;
+                justify-content: space-between;
 
-                &__btn {
-                    min-width: 60px;
+                button {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: #fff;
+                    width: 150px;
                     height: 40px;
                     border-radius: 100px;
                     border: none;
@@ -32,25 +53,34 @@
                     font-size: 14px;
                     cursor: pointer;
                     transition: all .5s;
+                    background-color: $color-principal;
 
-                    &:hover {
-                        background-color: #dd8702;
+                    svg {
+                        margin-left: 10px;
                         color: #fff;
+                        font-size: 20px;
+                        transition: all .5s;
 
-                        &:disabled {
+                       
+                    }
 
-                            &:hover {
-                                color: #444;
-                                background-color: #efefef4d;
-                            }
+                    &:disabled {
+                        background-color: $color-item-header;
+                        color: $color-secundario;
+                        svg{
+                            color: $color-secundario;
                         }
+
                     }
 
                 }
             }
 
             &__table {
-                max-height: 300px;
+                max-height:80%;
+                display: flex;
+                justify-content: space-around;
+                flex-wrap: wrap;
                 overflow: auto;
             }
 

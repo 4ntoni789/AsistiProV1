@@ -1,4 +1,6 @@
-import { ActiveSubMenuDeleteUsers, ActiveSubMenuEmpleado } from '@renderer/actions/actionsLogin';
+import { ActiveSubMenuEmpleado } from '@renderer/actions/actionsEmpleados';
+import { } from '@renderer/actions/actionsLogin';
+import { ActiveSubMenuDeleteUsers } from '@renderer/actions/actionsUsers';
 import { formatearFecha } from '@renderer/scripts/convertirFecha';
 import { formatearNumero } from '@renderer/scripts/formatearNumero';
 import React, { useState } from 'react';

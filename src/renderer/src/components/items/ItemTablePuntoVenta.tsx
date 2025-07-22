@@ -3,7 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import '../../css/itemTablePuntoVenta.css';
-import { ActiveSubMenuDeleteUsers, ActiveSubMenuPuntoVenta, ActiveSubMenuUpdatePuntoVenta } from '@renderer/actions/actionsLogin';
+import { ActiveSubMenuDeleteUsers } from '@renderer/actions/actionsUsers';
+import { ActiveSubMenuPuntoVenta, ActiveSubMenuUpdatePuntoVenta } from '@renderer/actions/actionsPuntoDeVenta';
 
 function ItemTablePuntoVenta({ item, clickLoad }) {
   const [activeItem, setActiveItem] = useState(false);

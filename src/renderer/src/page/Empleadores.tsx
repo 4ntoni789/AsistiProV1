@@ -1,32 +1,25 @@
-import { faEllipsisVertical, faPencil, faTrash } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { ActiveSubMenuDeleteUsers, ActiveSubMenuNewEmpleador, ActiveSubMenuUpdateEmpleador } from '@renderer/actions/actionsLogin';
 import ButtonStyle from '@renderer/components/ButtonStyle';
 import NewEmpleador from '@renderer/components/modal/NewEmpleador';
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import '../css/empleadores.css';
 import UpdateEmpleador from '@renderer/components/modal/UpdateEmpleador';
+import { ActiveSubMenuDeleteUsers } from '@renderer/actions/actionsUsers';
+import { ActiveSubMenuNewEmpleador, ActiveSubMenuUpdateEmpleador, Fetch_empleadores } from '@renderer/actions/actionsEmpleadores';
+import { AppDispatch } from '@renderer/store';
+import { obtenerDatos } from '@renderer/scripts/obtenerDatosFetch';
+import { UserDataType } from '@renderer/typesTS';
 
-function Empleadores(props) {
-  const userData = useSelector((state: any) => state.loginAccess.validationAccess);
-    const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
-  
+function Empleadores({ }) {
+  const userData = useSelector((state: UserDataType) => state.loginAccess.validationAccess);
+  const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
+
   const spam = useSelector((state: any) => state.menuAccions.errorSpam);
   const [empleadores, setEmpleadores] = useState<[object]>();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    fetch('/api/empleadores', {
-      headers: {
-        'x-id-usuario': userId
-      }
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setEmpleadores(data)
-      })
-      .catch((err) => console.error('Error:', err));
+    obtenerDatos(null,dispatch(Fetch_empleadores(userId)),setEmpleadores);
   }, [userData == true, spam.active]);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -99,7 +92,7 @@ function Empleadores(props) {
         </div>
       </div>
       <NewEmpleador />
-      <UpdateEmpleador/>
+      <UpdateEmpleador />
     </div>
   );
 }

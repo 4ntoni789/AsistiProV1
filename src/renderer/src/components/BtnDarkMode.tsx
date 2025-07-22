@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import '../css/btnDarkMode.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { ActiveDarkMode } from '@renderer/actions/actionsLogin';

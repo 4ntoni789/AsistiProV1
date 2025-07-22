@@ -1,4 +1,4 @@
-export const VALIDATIONLOGI = 'VALIDATIONLOGI';
+export const SUBMITLOGIN = 'SUBMITLOGIN';
 export const LOGOUT = 'LOGOUT';
 export const ERRORLOGIN = 'ERRORLOGIN';
 

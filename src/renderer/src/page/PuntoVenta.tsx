@@ -3,10 +3,8 @@ import TablaPuntoVenta from '@renderer/components/tablas/TablaPuntoVenta';
 import { useDispatch, useSelector } from 'react-redux';
 import '../css/puntoVenta.css';
 import NewPuntoVenta from '@renderer/components/modal/NewPuntoVenta';
-import { ActiveSubMenuNewPuntoVenta } from '@renderer/actions/actionsLogin';
 import UpdatePuntoVenta from '@renderer/components/modal/UpdatePuntoVenta';
-import SubMenuPuntoVenta from '@renderer/components/modal/SubMenuPuntoVenta';
-
+import { ActiveSubMenuNewPuntoVenta } from '@renderer/actions/actionsPuntoDeVenta';
 function PuntoVenta(props) {
   const type_role = useSelector((state: any) => state.loginAccess.userLogin.type_role);
   const dispatch = useDispatch();

@@ -1,48 +1,25 @@
 import { useDispatch, useSelector } from 'react-redux';
 import logo from '../img/AsistiProPng.png';
-import { ErrorLoginSpam, ValidationData } from '@renderer/actions/actionsLogin';
+import { ValidationData } from '@renderer/actions/actionsLogin';
 import { useForm } from 'react-hook-form';
 import { DataLogin } from '@renderer/typesTS';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeLowVision } from '@fortawesome/free-solid-svg-icons';
+import { AppDispatch } from '@renderer/store';
 
 function FormLogin() {
   // const [datos, setDatos] = useState();
   const userData = useSelector((state: any) => state.loginAccess.validationAccess);
   const { register, handleSubmit, reset } = useForm<DataLogin>();
   const [disableInput, setDisableInput] = useState<boolean>(false);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   const [showPass, setShowPass] = useState<boolean>(true);
 
-  const onSubmit = async (dataInput: DataLogin) => {
-    dispatch(ErrorLoginSpam(false));
-
-    try {
-      const response = await fetch('/api/validation', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          nombre_usuario: dataInput.nombre_usuario,
-          contrasena: dataInput.contrasena,
-        }),
-      });
-
-      const result = await response.json();
-      if (result.success) {
-        dispatch(ValidationData(result.user));
-        reset();
-      } else {
-        dispatch(ErrorLoginSpam(true));
-      }
-
-    } catch (error) {
-      console.error('Error:', error);
-    }
+  const onSubmit = (dataInput: DataLogin) => {
+    dispatch(ValidationData(dataInput, reset));
   }
 
   useEffect(() => {

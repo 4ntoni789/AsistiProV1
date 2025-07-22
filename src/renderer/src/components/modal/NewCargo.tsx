@@ -1,44 +1,22 @@
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { ActiveErrorSpam, ActiveSubMenuNewCargo } from '@renderer/actions/actionsLogin';
+import { ActiveSubMenuNewCargo, Fet_new_cargo } from '@renderer/actions/actionsCargos';
+import { ActiveErrorSpam } from '@renderer/actions/actionsLogin';
+import { AppDispatch } from '@renderer/store';
+import { UserDataType } from '@renderer/typesTS';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 
 function NewCargo(props) {
   const activeNewCargo = useSelector((state: any) => state.menuAccions.subMenuNewCargo);
-  const userData = useSelector((state: any) => state.loginAccess.userLogin);
+  const userData = useSelector((state: UserDataType) => state.loginAccess.userLogin);
   const { register, handleSubmit, reset } = useForm();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
 
   const onSubmit = async (dataInput) => {
-    try {
-      const response = await fetch('/api/cargo', {
-        method: 'POST',
-        headers: {
-          'x-id-usuario': userId,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          nombre_cargo: dataInput.nombre_cargo,
-          reqUser: userData
-        }),
-      });
-
-      const result = await response.json();
-      if (response.ok) {
-        dispatch(ActiveSubMenuNewCargo({ user: {}, subMenuNewCargo: false }));
-        dispatch(ActiveErrorSpam({ msg: result.message, active: true, typeError: 'submit' }));
-        reset();
-      } else {
-        dispatch(ActiveErrorSpam({ msg: result.error, active: true, typeError: 'Error' }));
-        throw new Error(result.error)
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      console.log('Ocurrió un error al crear este cargo');
-    }
+    dispatch(Fet_new_cargo(dataInput, userId, userData, reset));
   }
 
   return (

@@ -1,12 +1,15 @@
 import { faArrowsRotate, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import ItemTableHeader from '../items/ItemTableHeader';
 import ItemTable from '../items/ItemTable';
 import '../../css/tablaPuntoVenta.css';
 import ItemTablePuntoVenta from '../items/ItemTablePuntoVenta';
 import SubMenuPuntoVenta from '../modal/SubMenuPuntoVenta';
+import { obtenerDatos } from '@renderer/scripts/obtenerDatosFetch';
+import { AppDispatch } from '@renderer/store';
+import { Fetch_Punto_venta } from '@renderer/actions/actionsPuntoDeVenta';
 
 function TablaPuntoVenta(props) {
   const spam = useSelector((state: any) => state.menuAccions.errorSpam);
@@ -20,24 +23,17 @@ function TablaPuntoVenta(props) {
   const [searchTerm, setSearchTerm] = useState('');
   const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
   const itemsPerPage = 7;
+  const dispatch = useDispatch<AppDispatch>()
 
   useEffect(() => {
-    fetch('/api/puntos-venta', {
-      headers: {
-        'x-id-usuario': userId
-      }
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setPuntosVenta(data);
-        if (clickLoad) {
-          const interval = setTimeout(() => {
-            setClickLoad(false);
-          }, 1000);
-          () => clearInterval(interval);
-        }
-      })
-      .catch((err) => console.error('Error:', err));
+    obtenerDatos(null, dispatch(Fetch_Punto_venta(userId)), setPuntosVenta);
+
+    if (clickLoad) {
+      const interval = setTimeout(() => {
+        setClickLoad(false);
+      }, 1000);
+      () => clearInterval(interval);
+    }
   }, [userData == true, clickLoad == true, activeNewEmpleado, activeDeleteUsers, spam]);
 
   const filteredAccesos = puntosVenta.filter((item) =>

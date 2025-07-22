@@ -1,8 +1,10 @@
-import { ActiveSubMenuDeleteUsers, ActiveSubMenuNewCargo, ActiveSubMenuUpdateCargo } from '@renderer/actions/actionsLogin';
+import { ActiveSubMenuNewCargo, ActiveSubMenuUpdateCargo, Fetch_cargos } from '@renderer/actions/actionsCargos';
+import { ActiveSubMenuDeleteUsers } from '@renderer/actions/actionsUsers';
 import ButtonStyle from '@renderer/components/ButtonStyle';
 import NewCargo from '@renderer/components/modal/NewCargo';
 import UpdateCargo from '@renderer/components/modal/UpdateCargo';
-import SwitchButton from '@renderer/components/SwitchButton';
+import { obtenerDatos } from '@renderer/scripts/obtenerDatosFetch';
+import { AppDispatch } from '@renderer/store';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -11,19 +13,10 @@ function Cargos(props) {
   const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
   const spam = useSelector((state: any) => state.menuAccions.errorSpam);
   const [userCargo, setUserCargo] = useState<[object]>();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    fetch('/api/cargos', {
-      headers: {
-        'x-id-usuario': userId
-      }
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setUserCargo(data)
-      })
-      .catch((err) => console.error('Error:', err));
+    obtenerDatos(null, dispatch(Fetch_cargos(userId)), setUserCargo);
   }, [userData == true, spam.active]);
 
   return (

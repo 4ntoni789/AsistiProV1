@@ -1,6 +1,4 @@
 import { useSelector } from 'react-redux';
-import UpdateEmpleado from './UpdateEmpleado';
-import UpdateEmpleadoContrato from './UpdateEmpleadoContrato';
 import { useEffect, useState } from 'react';
 import VerPuntoVenta from './VerPuntoVenta';
 import NewHorario from './NewHorario';

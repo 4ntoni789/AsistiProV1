@@ -1,8 +1,8 @@
 import FormLogin from '@renderer/components/FormLogin';
 import '../css/loginPage.css';
 import { useSelector } from 'react-redux';
-import ErrorLogin from '@renderer/components/ErrorLogin';
 import banner from '../img/Group.png';
+import ErrorLoginSpan from '@renderer/components/ErrorLogin';
 
 
 function Login() {
@@ -12,7 +12,7 @@ function Login() {
     <div className='App__loginPage'>
       <div className={userData ? 'App__loginPage__cont__success' : 'App__loginPage__cont'}>
         <FormLogin />
-        <ErrorLogin />
+        <ErrorLoginSpan />
       </div>
       <div className={userData ? 'App__loginPage__contBanner__success' : 'App__loginPage__contBanner'}>
         <div className='App__loginPage__contBanner__banner'>

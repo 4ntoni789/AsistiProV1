@@ -1,12 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
 import '../../css/itemTable.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown, faChevronLeft, faChevronRight, faChevronUp, faFingerprint, faPerson, faUser } from '@fortawesome/free-solid-svg-icons';
-import SubItemTable from '../subItem/SubItemTable';
+import {faFingerprint, faUser } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch } from 'react-redux';
-import { ActiveMenuVerAccesos, ActiveSubMenuEmpleado } from '@renderer/actions/actionsLogin';
 import { convertirEnPunto } from '@renderer/scripts/convertirCaracterPunto';
-import ModalVerRegistros from '../modal/ModalViewRegistros';
+import { ActiveSubMenuEmpleado } from '@renderer/actions/actionsEmpleados';
+import { ActiveMenuVerAccesos } from '@renderer/actions/actionsAccesos';
 
 function ItemTable({ item, clickLoad, contrato }) {
   // const [activeSubMenuEmpleado, setActiveSubMenuEmpleado] = useState(false);

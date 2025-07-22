@@ -2,20 +2,22 @@ import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import SwitchButtonEdit from './SwitchButtonEdit';
-import { ActiveErrorSpam, ActiveSubMenuPuntoVenta } from '@renderer/actions/actionsLogin';
+import { ActiveErrorSpam } from '@renderer/actions/actionsLogin';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleQuestion } from '@fortawesome/free-solid-svg-icons';
 import { WorkScheduleBar } from './WorkScheduleBar';
-import { Props } from '@renderer/typesTS';
+import { Props, UserDataType } from '@renderer/typesTS';
 import { horaToDecimal } from '@renderer/scripts/horaDecimal';
+import { Fetch_new_horario } from '@renderer/actions/actionsHorario';
+import { AppDispatch } from '@renderer/store';
 
 
 function FormNewHorario(userCargo) {
   const puntoVenta = useSelector((state: any) => state.menuAccions.subMenuPuntoVenta);
   const [activeEdition, setActiveEdition] = useState(true);
   const { register, handleSubmit, reset } = useForm();
-  const userData = useSelector((state: any) => state.loginAccess.userLogin);
-  const dispatch = useDispatch();
+  const userData = useSelector((state: UserDataType) => state.loginAccess.userLogin);
+  const dispatch = useDispatch<AppDispatch>();
   const turnos = [1, 2, 3, 4];
   const diaSemana = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
   const [semana, setSemana] = useState<string>('');
@@ -36,50 +38,7 @@ function FormNewHorario(userCargo) {
   })
 
   const onSubmit = async (dataInput) => {
-    if (semana == 'dias_especificos' || semana == 'toda_semana') {
-      if (almacenDiasSemana.length > 0) {
-        try {
-          const response = await fetch(`/api/horario`, {
-            method: 'POST',
-            headers: {
-              'x-id-usuario': userId,
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              hora_entrada: dataInput.hora_entrada,
-              hora_valida_entrada: dataInput.hora_valida_entrada,
-              hora_valida_entrada_hasta:dataInput.hora_valida_entrada_hasta,
-              hora_salida_descanso: dataInput.hora_salida_descanso,
-              hora_regreso_descanso: dataInput.hora_regreso_descanso,
-              hora_salida: dataInput.hora_salida,
-              hora_valida_salida: dataInput.hora_valida_salida,
-              hora_valida_salida_hasta: dataInput.hora_valida_salida_hasta,
-              margen: dataInput.margen,
-              turno: dataInput.turno,
-              cargo: dataInput.cargo,
-              semana: almacenDiasSemana,
-              id_pv: puntoVenta.user.item.id_pv,
-              reqUser: userData
-            }),
-          });
-          const result = await response.json();
-          if (response.ok) {
-            dispatch(ActiveSubMenuPuntoVenta({ user: {}, subMenuPuntoVenta: false }));
-            dispatch(ActiveErrorSpam({ msg: result.message, active: true, typeError: 'submit' }));
-            reset();
-          } else {
-            dispatch(ActiveErrorSpam({ msg: result.message, active: true, typeError: 'error' }));
-            throw new Error(result.message);
-          }
-        } catch (error) {
-          console.log(error)
-        }
-      } else {
-        dispatch(ActiveErrorSpam({ msg: 'Seleciona los dias que este horario va a tener', active: true, typeError: 'error' }));
-      }
-    } else {
-      dispatch(ActiveErrorSpam({ msg: 'Seleciona los dias que este horario va a tener', active: true, typeError: 'error' }));
-    }
+    dispatch(Fetch_new_horario(dataInput, puntoVenta, almacenDiasSemana, userData, semana, userId, reset));
   }
 
   const check = (e, item) => {

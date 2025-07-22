@@ -1,39 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
 import '../css/switchButton.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { ActiveErrorSpam } from '@renderer/actions/actionsLogin';
+import { AppDispatch } from '@renderer/store';
+import { Fetch_activate_user } from '@renderer/actions/actionsUsers';
+import { UserDataType } from '@renderer/typesTS';
 
 function SwitchButton({ estado, disabled }) {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const [btnActive, setBtnActive] = useState<boolean>(estado.estado == 'activo' ? true : false);
-  const userData = useSelector((state: any) => state.loginAccess.userLogin);
+  const userData = useSelector((state: UserDataType) => state.loginAccess.userLogin);
   const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
+
   const handlerToggle = async () => {
-    try {
-      const response = await fetch(`/api/usuarios-active/${estado.id_usuario}`, {
-        method: 'PUT',
-        headers: {
-          'x-id-usuario': userId,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          estado: btnActive == true ? 'inactivo' : 'activo',
-          reqUser: userData
-        }),
-      });
-
-      const result = await response.json();
-      if (!response.ok) throw new Error(result.error);
-      if (!btnActive) {
-        dispatch(ActiveErrorSpam({ msg: `Usuario ${!btnActive ? 'activo' : 'inactivo'}`, active: true, typeError: 'submit' }))
-
-      } else {
-        dispatch(ActiveErrorSpam({ msg: `Usuario ${!btnActive ? 'activo' : 'inactivo'}`, active: true, typeError: 'error' }))
-      }
-
-    } catch (error) {
-      dispatch(ActiveErrorSpam({ msg: `Ocurrió un error al activar el usuario`, active: true, typeError: 'error' }))
-    }
+    dispatch(Fetch_activate_user(userId, estado, userData, btnActive))
   }
 
   return (
@@ -48,7 +27,7 @@ function SwitchButton({ estado, disabled }) {
           </label>
         </div>
           :
-          <div className={btnActive ? 'toggle__active' : 'toggle'}>
+          <div className={btnActive ? 'toggle__active' : 'toggle'} title={btnActive ? 'Desactivar' : 'Activar'}>
             <label className={btnActive ? 'toggle__label__active' : 'toggle__label'}>
               <input type='checkbox' onClick={() => {
                 setBtnActive(!btnActive);

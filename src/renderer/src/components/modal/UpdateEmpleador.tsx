@@ -1,43 +1,23 @@
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { ActiveErrorSpam, ActiveSubMenuUpdateEmpleador } from '@renderer/actions/actionsLogin';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import SwitchButtonEdit from '../SwitchButtonEdit';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
+import { ActiveSubMenuUpdateEmpleador, Fetch_update_empleador } from '@renderer/actions/actionsEmpleadores';
+import { UserDataType } from '@renderer/typesTS';
+import { AppDispatch } from '@renderer/store';
 
-function UpdateEmpleador(props) {
-  const userData = useSelector((state: any) => state.loginAccess.userLogin);
+function UpdateEmpleador({ }) {
+  const userData = useSelector((state: UserDataType) => state.loginAccess.userLogin);
   const { register, handleSubmit, reset } = useForm();
   const [activeEdition, setActiveEdition] = useState<boolean>(true);
   const activeUpdateEmpleador = useSelector((state: any) => state.menuAccions.subMenuUpdateEmpleador);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
 
   const onSubmit = async (dataInput) => {
-    try {
-      const response = await fetch(`/api/empleador/${activeUpdateEmpleador.user.item.id_empleador}`, {
-        method: 'PUT',
-        headers: {
-          'x-id-usuario': userId,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          nombre_empleador: dataInput.nombre_empleador,
-          nit: dataInput.nit,
-          direccion_empleador: dataInput.direccion,
-          reqUser: userData
-        }),
-      });
-
-      const result = await response.json();
-      if (!response.ok) throw new Error(result.error);
-      dispatch(ActiveErrorSpam({ msg: 'Empleador actualizado', active: true, typeError: 'submit' }));
-      dispatch(ActiveSubMenuUpdateEmpleador({ user: {}, subMenuUpdateCargo: false }));
-    } catch (error) {
-      dispatch(ActiveErrorSpam({ msg: 'Error al actualizar este Empleador', active: true, typeError: 'Error' }));
-      console.log('Ocurrió un error al actualizar este Empleador');
-    }
+    dispatch(Fetch_update_empleador(dataInput, userId, activeUpdateEmpleador, userData));
   }
 
 

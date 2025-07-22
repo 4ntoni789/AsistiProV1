@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
 import '../../css/itemMarcacionDirecto.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown, faChevronUp, faClock, faFingerprint, faStopwatch } from '@fortawesome/free-solid-svg-icons';
+import { faFingerprint, faStopwatch } from '@fortawesome/free-solid-svg-icons';
 import { tiempoTranscurrido } from '@renderer/scripts/tiempoTranscurrido';
 
 interface Props {

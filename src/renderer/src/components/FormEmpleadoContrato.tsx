@@ -1,13 +1,14 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import SwitchButtonEdit from './SwitchButtonEdit';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { calcularFechaFinal } from '@renderer/scripts/calcularFecha';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronCircleDown, faChevronCircleUp } from '@fortawesome/free-solid-svg-icons';
-import { ActiveErrorSpam, ActiveSubMenuEmpleado } from '@renderer/actions/actionsLogin';
+import { ActiveErrorSpam } from '@renderer/actions/actionsLogin';
 import { formatearNumero } from '@renderer/scripts/formatearNumero';
 import { limpiarNumero } from '@renderer/scripts/limpiarNumero';
+import { ActiveSubMenuEmpleado } from '@renderer/actions/actionsEmpleados';
 
 function FormEmpleadoContrato({ activeEdition, setActiveEdition, userCargo, activeNewEmpleado, empleadores }) {
   const { register, handleSubmit, reset } = useForm();

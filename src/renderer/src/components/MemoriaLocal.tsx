@@ -1,8 +1,10 @@
-import { ActivatedMenu, ActiveDarkMode } from '@renderer/actions/actionsLogin';
-import React, { useEffect } from 'react';
+import { ActiveDarkMode } from '@renderer/actions/actionsLogin';
+import { ActivatedMenu } from '@renderer/actions/actionsMenu';
+
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-function MemoriaLocal(props) {
+function MemoriaLocal() {
     const dataUser = useSelector((state: any) => state.loginAccess.userLogin);
     const dispatch = useDispatch();
 
@@ -25,6 +27,10 @@ function MemoriaLocal(props) {
             dispatch(ActiveDarkMode(memoriaUi.darkMode))
         }
     }, [dataUser])
+    return (
+        <>
+        </>
+    )
 }
 
 export default MemoriaLocal;

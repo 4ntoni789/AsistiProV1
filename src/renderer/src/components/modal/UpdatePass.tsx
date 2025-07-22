@@ -1,17 +1,20 @@
 import { faEye, faEyeLowVision, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { ActiveErrorSpam, ActiveSubMenuUpdatePass, ActiveSubMenuUpdateUsers } from '@renderer/actions/actionsLogin';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import SwitchButtonEdit from '../SwitchButtonEdit';
+import { ActiveSubMenuUpdatePass, Fetch_update_pass } from '@renderer/actions/actionsUser';
+import { obtenerDatos } from '@renderer/scripts/obtenerDatosFetch';
+import { AppDispatch } from '@renderer/store';
+import { UserDataType } from '@renderer/typesTS';
 
-function UpdatePass(props) {
+function UpdatePass({ }) {
   const [activeEdition, setActiveEdition] = useState<boolean>(true);
   const { register, handleSubmit, reset } = useForm();
   const activeUpdateUser = useSelector((state: any) => state.menuAccions.subMenuUpdatePass);
-  const userData = useSelector((state: any) => state.loginAccess.userLogin);
-  const dispatch = useDispatch();
+  const userData = useSelector((state: UserDataType) => state.loginAccess.userLogin);
+  const dispatch = useDispatch<AppDispatch>();
   const [showPass, setShowPass] = useState<boolean>(true);
   const [typeErrorPass, setTypeErrorPass] = useState<{ activeError: boolean, typeError: string }>({
     activeError: false,
@@ -20,34 +23,7 @@ function UpdatePass(props) {
   const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
 
   const onSubmit = async (dataInput) => {
-    const response = await fetch(`/api/single-usuario-put-pass/${activeUpdateUser.user.id_usuario}`, {
-      method: 'PUT',
-      headers: {
-        'x-id-usuario': userId,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        password: dataInput.contrasena,
-        reqUser: userData
-      }),
-    });
-
-    const result = await response.json();
-    if (response.ok) {
-      dispatch(ActiveErrorSpam({ msg: result.message, active: true, typeError: 'submit' }));
-      dispatch(ActiveSubMenuUpdatePass({ user: {}, subMenuUpdatePass: false }));
-      reset()
-      setTypeErrorPass({
-        activeError: false,
-        typeError: ''
-      });
-    } else {
-      setTypeErrorPass({
-        activeError: true,
-        typeError: result.message
-      });
-
-    }
+    obtenerDatos(null, dispatch(Fetch_update_pass(dataInput, userId, userData, activeUpdateUser, reset)), setTypeErrorPass)
   }
 
   useEffect(() => {

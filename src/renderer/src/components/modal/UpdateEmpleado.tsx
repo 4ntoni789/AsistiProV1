@@ -1,69 +1,36 @@
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { ActiveErrorSpam, ActiveSubMenuDeleteUsers, ActiveSubMenuEmpleado } from '@renderer/actions/actionsLogin';
-import React, { useEffect, useState } from 'react';
+import { ActiveErrorSpam } from '@renderer/actions/actionsLogin';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import SwitchButtonEdit from '../SwitchButtonEdit';
 import BuscadorMunicipios from '../SearchMunicipios';
 import { Opcion } from '@renderer/interface';
+import { ActiveSubMenuDeleteUsers } from '@renderer/actions/actionsUsers';
+import { ActiveSubMenuEmpleado, Fet_update_empleado } from '@renderer/actions/actionsEmpleados';
+import { Fetch_cargos } from '@renderer/actions/actionsCargos';
+import { AppDispatch } from '@renderer/store';
+import { obtenerDatos } from '@renderer/scripts/obtenerDatosFetch';
 
-function UpdateEmpleado(props) {
+function UpdateEmpleado({ }) {
   const activeNewEmpleado = useSelector((state: any) => state.menuAccions.subMenuEmpleado);
   const [municipio, setMunicipio] = useState<Opcion | null>(activeNewEmpleado.user.lugar_nacimiento);
   const userData = useSelector((state: any) => state.loginAccess.userLogin);
   const [activeEdition, setActiveEdition] = useState(true);
   const [userCargo, setUserCargo] = useState<any>();
   const { register, handleSubmit, reset } = useForm();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
 
   const onSubmit = async (dataInput) => {
-    try {
-      const response = await fetch(`/api/empleados/${activeNewEmpleado.user.id_empleado}`, {
-        method: 'PUT',
-        headers: {
-          'x-id-usuario': userId
-        }
-        ,
-        body: JSON.stringify({
-          nombres: dataInput.nombre_usuario,
-          apellidos: dataInput.apellidos,
-          cedula: dataInput.cedula,
-          telefono: dataInput.telefono,
-          correo: dataInput.email,
-          sexo: dataInput.sexo,
-          lugar_nacimiento: municipio?.label,
-          fecha_nacimiento: dataInput.fecha_nacimiento,
-          direccion: dataInput.direccion,
-          reqUser: userData
-        }),
-      });
-
-      const result = await response.json();
-      if (!response.ok) throw new Error(result.error);
-      dispatch(ActiveSubMenuEmpleado({ user: {}, subMenuEmpleado: false }));
-      reset();
-      dispatch(ActiveErrorSpam({ msg: 'Empleado actualizado', active: true, typeError: 'submit' }));
-    } catch (error) {
-      dispatch(ActiveSubMenuEmpleado({ user: {}, subMenuEmpleado: false }));
-      dispatch(ActiveErrorSpam({ msg: 'Error al actualizar el empleado', active: true, typeError: 'Error' }));
-      console.log('Ocurrió un error al actualizar el empleado');
-    }
+    console.log(activeNewEmpleado.user.id_empleado)
+    dispatch(Fet_update_empleado(dataInput, activeNewEmpleado, userId, userData, municipio, reset));
   }
 
   useEffect(() => {
     setActiveEdition(true);
-    fetch('/api/cargos', {
-      headers: {
-        'x-id-usuario': userId
-      }
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setUserCargo(data);
-      })
-      .catch((err) => console.error('Error:', err));
+    obtenerDatos(null, dispatch(Fetch_cargos(userId)), setUserCargo);
   }, [activeNewEmpleado.subMenuEmpleado == true]);
 
   return (

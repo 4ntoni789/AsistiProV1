@@ -1,6 +1,7 @@
-import { ERRORLOGIN, LOGOUT, VALIDATIONLOGI } from "@renderer/type";
+import { ERRORLOGIN, LOGOUT, SUBMITLOGIN } from "@renderer/type";
+import { InicialStateLogin } from "@renderer/typesTS";
 
-const initalState: object = {
+const initalState: InicialStateLogin = {
   userLogin: {},
   validationAccess: false,
   activeError: false
@@ -8,7 +9,7 @@ const initalState: object = {
 
 export default function accesoLogin(state = initalState, action: any) {
   switch (action.type) {
-    case VALIDATIONLOGI: {
+    case SUBMITLOGIN: {
       return {
         ...state,
         userLogin: action.value,
