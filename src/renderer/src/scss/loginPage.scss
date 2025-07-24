@@ -65,6 +65,8 @@
                     }
                 }
 
+                
+
                 button {
                     border-radius: 5px;
                     border: none;
@@ -88,6 +90,17 @@
                         transition: all .5s;
                         color: #fff;
                     }
+                }
+
+                &__showPassLogin{
+                    position: relative;
+                    svg{
+                        position: absolute;
+                        right: 5px;
+                        top: 20%;
+                        color: $color-principal;
+                    }
+                    
                 }
 
             }

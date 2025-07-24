@@ -1,0 +1,39 @@
+@import './variables';
+
+.btn_style {
+    margin: 5px 0 5px 0;
+    background-color: $colo-text-claro;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    color: $color-text-blanco;
+    transition: all .5s;
+
+    &:hover {
+        background-color: $color-principal;
+    }
+
+    &:disabled {
+        background-color: $colo-text-claro;
+        color: $color-text-disable;
+
+    }
+}
+
+
+.btn_style__remove {
+    margin: 5px 0 5px 0;
+
+    background-color: $color-principal;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    color: $color-text-blanco;
+    transition: all .5s;
+
+    &:hover {
+        background-color: $color-error-2;
+    }
+}

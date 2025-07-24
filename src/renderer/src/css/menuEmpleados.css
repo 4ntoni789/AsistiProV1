@@ -1,9 +1,104 @@
-.App__dashboard__contPageOutlet__PageUsers__newUser__btnControl {
+.App__dashboard__contPageOutlet__PageUsers__menuUser {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(99, 99, 99, 0.5019607843);
+  /* Fondo blanco semitransparente */
+  backdrop-filter: blur(10px);
+  /* Desenfoca el fondo con 10px */
+  -webkit-backdrop-filter: blur(10px);
+  width: 100%;
+  z-index: 100;
+  height: 100%;
+  transition: all 0.5s;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuUser__form {
+  position: absolute;
+  top: 0;
+  right: -75%;
+  width: 50%;
+  height: 100%;
+  background-color: rgba(99, 99, 99, 0.5019607843);
+  box-shadow: 1px 1px 20px 3px #3a3a3a;
+  transition: all 0.5s;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuUser__form__active {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100vh;
+  background-color: #333;
+  box-shadow: 1px 1px 20px 3px #3a3a3a;
+  transition: all 0.5s;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuUser__form__dataUser {
+  position: absolute;
+  left: -50%;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #dd8702;
+  width: 50%;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 5px 0 10px rgba(0, 0, 0, 0.5);
+}
+.App__dashboard__contPageOutlet__PageUsers__menuUser__form__dataUser h2 {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  color: #fff;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuUser__form__dataUser span {
+  width: 80%;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuUser__form__dataUser span b {
+  font-weight: bold;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuUser__form__contInputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 80%;
+  margin: auto;
+  padding-top: 5px;
+  min-height: 100vh;
+  overflow: auto;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuUser__form__contInputs__check {
+  width: 99%;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuUser__form__contInputs__check h2 {
+  padding: 0 !important;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuUser__form__contInputs__check div {
+  margin: 0;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuUser__form__btnClose {
+  position: absolute;
+  left: 10px;
+  font-size: 30px;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuUser__form__btnClose svg {
+  cursor: pointer;
+  transition: all 0.5s;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuUser__form__btnClose svg:hover {
+  color: #dd8702;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuUser__btnControl {
   display: flex;
   justify-content: center;
   align-items: end;
 }
-.App__dashboard__contPageOutlet__PageUsers__newUser__btnControl__btn {
+.App__dashboard__contPageOutlet__PageUsers__menuUser__btnControl__btn {
   background-color: #dd8702;
   border: none;
   margin-right: 10px;
@@ -14,11 +109,11 @@
   border-bottom: 1px solid #000;
   transition: all 0.5s;
 }
-.App__dashboard__contPageOutlet__PageUsers__newUser__btnControl__btn:hover {
+.App__dashboard__contPageOutlet__PageUsers__menuUser__btnControl__btn:hover {
   height: 50px;
   background-color: #c47601;
 }
-.App__dashboard__contPageOutlet__PageUsers__newUser__btnControl__btn__active {
+.App__dashboard__contPageOutlet__PageUsers__menuUser__btnControl__btn__active {
   background-color: #c47601;
   border: none;
   margin-right: 10px;
@@ -28,6 +123,33 @@
   cursor: pointer;
   border-bottom: 1px solid #000;
   transition: all 0.5s;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuUser__active {
+  opacity: 1;
+  visibility: visible;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(99, 99, 99, 0.5019607843);
+  /* Fondo blanco semitransparente */
+  backdrop-filter: blur(10px);
+  /* Desenfoca el fondo con 10px */
+  -webkit-backdrop-filter: blur(10px);
+  width: 100%;
+  z-index: 100;
+  height: 100%;
+  transition: all 0.5s;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuUser__active__form {
+  position: absolute;
+  top: 0;
+  right: -500px;
+  width: 50%;
+  height: 100%;
+  background-color: rgba(99, 99, 99, 0.5019607843);
+  box-shadow: 1px 1px 20px 3px #3a3a3a;
+  transition: all 0.5s;
+  overflow-y: auto;
 }
 
 /*# sourceMappingURL=menuEmpleados.css.map */

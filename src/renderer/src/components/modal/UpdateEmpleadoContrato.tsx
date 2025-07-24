@@ -1,56 +1,32 @@
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
 import Loader from '../Loader';
 import DataUser from '../DataUser';
 import FormEmpleadoContrato from '../FormEmpleadoContrato';
 import { ActiveSubMenuEmpleado } from '@renderer/actions/actionsEmpleados';
+import { Fetch_contratos } from '@renderer/actions/actionsContratos';
+import { obtenerDatosPrimerCoincidencia } from '@renderer/scripts/obtenerDatosFetchPrimer';
+import { AppDispatch } from '@renderer/store';
+import { obtenerDatos } from '@renderer/scripts/obtenerDatosFetch';
+import { Fetch_cargos } from '@renderer/actions/actionsCargos';
+import { Fetch_empleadores } from '@renderer/actions/actionsEmpleadores';
+import '../../css/updateEmpleadoContrato.css';
 
-function UpdateEmpleadoContrato({}) {
+function UpdateEmpleadoContrato({ activeSubModal }: { activeSubModal: boolean }) {
   const activeNewEmpleado = useSelector((state: any) => state.menuAccions.subMenuEmpleado);
   const [activeEdition, setActiveEdition] = useState(true);
   const [userCargo, setUserCargo] = useState<any>();
   const [userContrato, setUserContrato] = useState<any>();
   const [empleadores, setEmpleadores] = useState<[object]>([{}]);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
 
   useEffect(() => {
-    fetch('/api/contratos', {
-      headers: {
-        'x-id-usuario': userId
-      }
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setUserContrato(data.filter((item) => (item.id_empleado == activeNewEmpleado.user.id_empleado)))
-      })
-      .catch((err) => console.error('Error:', err));
-
-    fetch('/api/cargos', {
-      headers: {
-        'x-id-usuario': userId
-      }
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setUserCargo(data);
-      })
-      .catch((err) => console.error('Error:', err));
-
-    fetch('/api/empleadores', {
-      headers: {
-        'x-id-usuario': userId
-      }
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setEmpleadores(data);
-      })
-      .catch((err) => console.error('Error:', err));
+    obtenerDatosPrimerCoincidencia(dispatch(Fetch_contratos(userId)), setUserContrato, activeNewEmpleado.user.id_empleado);
+    obtenerDatos(null, dispatch(Fetch_cargos(userId)), setUserCargo);
+    obtenerDatos(null, dispatch(Fetch_empleadores(userId)), setEmpleadores);
   }, [activeNewEmpleado.subMenuEmpleado == true]);
 
   const contFilter = userContrato?.find((c, i) => {
@@ -61,8 +37,9 @@ function UpdateEmpleadoContrato({}) {
 
   return (
     <>
-      <div className='App__dashboard__contPageOutlet__PageUsers__newUser__form'>
-        <div className='App__dashboard__contPageOutlet__PageUsers__newUser__form__close'>
+      <div className={!activeSubModal && activeNewEmpleado.subMenuEmpleado ? 'App__dashboard__contPageOutlet__PageUsers__menuUser__contDataUser__active'
+        : 'App__dashboard__contPageOutlet__PageUsers__menuUser__contDataUser'}>
+        <div className='App__dashboard__contPageOutlet__PageUsers__menuUser__contDataUser__close'>
           <FontAwesomeIcon icon={faXmark} onClick={() => {
             dispatch(ActiveSubMenuEmpleado({ user: {}, subMenuEmpleado: false }));
           }} />

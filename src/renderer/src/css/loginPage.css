@@ -73,6 +73,15 @@
   transition: all 0.5s;
   color: #fff;
 }
+.App__loginPage__cont__contForm__form__showPassLogin {
+  position: relative;
+}
+.App__loginPage__cont__contForm__form__showPassLogin svg {
+  position: absolute;
+  right: 5px;
+  top: 20%;
+  color: #dd8702;
+}
 .App__loginPage__contBanner {
   width: 60%;
   background-color: #333;

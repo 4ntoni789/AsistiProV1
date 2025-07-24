@@ -5,14 +5,14 @@ import { useForm } from 'react-hook-form';
 import { calcularFechaFinal } from '@renderer/scripts/calcularFecha';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronCircleDown, faChevronCircleUp } from '@fortawesome/free-solid-svg-icons';
-import { ActiveErrorSpam } from '@renderer/actions/actionsLogin';
 import { formatearNumero } from '@renderer/scripts/formatearNumero';
-import { limpiarNumero } from '@renderer/scripts/limpiarNumero';
-import { ActiveSubMenuEmpleado } from '@renderer/actions/actionsEmpleados';
+import { Fetch_new_contrato } from '@renderer/actions/actionsContratos';
+import { UserDataType } from '@renderer/typesTS';
+import { AppDispatch } from '@renderer/store';
 
 function FormEmpleadoContrato({ activeEdition, setActiveEdition, userCargo, activeNewEmpleado, empleadores }) {
   const { register, handleSubmit, reset } = useForm();
-  const userData = useSelector((state: any) => state.loginAccess.userLogin);
+  const userData = useSelector((state: UserDataType) => state.loginAccess.userLogin);
   const [date, setDate] = useState<number>(1);
   const [dateInput, setDateInput] = useState<string>('');
   const [dateFin, setDateFin] = useState<any>('');
@@ -20,43 +20,11 @@ function FormEmpleadoContrato({ activeEdition, setActiveEdition, userCargo, acti
   const [contrato, setContrato] = useState<string>('');
   const [valorSalario, setValorSalario] = useState<string>('');
   const inputRef = useRef<HTMLInputElement>(null);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
 
   const onSubmit = async (dataInput) => {
-    try {
-      const response = await fetch(`/api/contrato`, {
-        method: 'POST',
-        headers: {
-          'x-id-usuario': userId,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          tipo_contrato: dataInput.tContrato,
-          fecha_inicio: dataInput.fInicio,
-          fecha_fin: dataInput.tContrato == 'Fijo' ? dateFin : null,
-          meses: date,
-          cantidad_prorrogas: 0,
-          estado: dataInput.estado,
-          id_empleado: activeNewEmpleado.user.id_empleado,
-          id_cargo: dataInput.cargo,
-          salario: limpiarNumero(valorSalario),
-          empleador: dataInput.empleador,
-          reqUser: userData
-        }),
-      });
-
-      const result = await response.json();
-      if (response.ok) {
-        dispatch(ActiveSubMenuEmpleado({ user: {}, subMenuEmpleado: false }));
-        dispatch(ActiveErrorSpam({ msg: result.message, active: true, typeError: 'submit' }));
-      } else {
-        dispatch(ActiveErrorSpam({ msg: result.error, active: true, typeError: 'error' }));
-        throw new Error(result.error);
-      }
-    } catch (error) {
-      console.log('Ocurrió un error al crear este contrato');
-    }
+    dispatch(Fetch_new_contrato(dataInput, userId, date, dateFin, activeNewEmpleado, userData, valorSalario))
   }
 
   useEffect(() => {

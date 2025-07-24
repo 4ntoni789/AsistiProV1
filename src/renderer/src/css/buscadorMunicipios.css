@@ -1,5 +1,9 @@
 .App__dashboard__contPageOutlet__PageUsers__newUser__form__contInputs__selectMunicipio {
-  width: 60%;
+  width: 100%;
+}
+.App__dashboard__contPageOutlet__PageUsers__newUser__form__contInputs__selectMunicipio select {
+  color: #f0a !important;
+  position: absolute;
 }
 .App__dashboard__contPageOutlet__PageUsers__newUser__form__contInputs__selectMunicipio label {
   width: 100% !important;

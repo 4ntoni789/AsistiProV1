@@ -30,7 +30,6 @@ const SearchMunicipios = ({ seleccionado, setSeleccionado, disable = false }) =>
 
   return (
     <div className="App__dashboard__contPageOutlet__PageUsers__newUser__form__contInputs__selectMunicipio">
-      <label>Lugar de nacimiento y nacionalidad</label>
       <Select
         options={opcionesFiltradas}
         value={seleccionado}
@@ -42,22 +41,28 @@ const SearchMunicipios = ({ seleccionado, setSeleccionado, disable = false }) =>
         styles={{
           control: (base, state) => ({
             ...base,
-            backgroundColor: state.isDisabled ? "#333" : "#fff",
-            borderColor: state.isDisabled ? "#666" : "orange",
-            color: "#333",
+            backgroundColor: state.isDisabled ? "#ccc" : "#333",
+            borderColor: state.isDisabled ? "#666" : "#fff",
+            color: "#fff",
             cursor: state.isDisabled ? "not-allowed" : "default",
             boxShadow: state.isFocused ? "0 0 0 1px orange" : "none",
             "&:hover": {
               borderColor: state.isDisabled ? "#666" : "darkorange"
             },
+            borderRadius: '10px',
+            padding: '.5rem'
           }),
           singleValue: (base, state) => ({
             ...base,
-            color: state.isDisabled ? "#999" : "#333",
+            color: state.isDisabled ? "#999" : "#fff", 
           }),
           placeholder: (base, state) => ({
             ...base,
             color: state.isDisabled ? "#888" : "#aaa",
+          }),
+          input: (base) => ({
+            ...base,
+            color: "#fff",
           }),
           menu: (base) => ({
             ...base,
@@ -70,6 +75,7 @@ const SearchMunicipios = ({ seleccionado, setSeleccionado, disable = false }) =>
           }),
         }}
       />
+
     </div >
   );
 };

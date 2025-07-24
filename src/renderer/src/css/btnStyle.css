@@ -1,0 +1,33 @@
+.btn_style {
+  margin: 5px 0 5px 0;
+  background-color: #bbb;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #fff;
+  transition: all 0.5s;
+}
+.btn_style:hover {
+  background-color: #dd8702;
+}
+.btn_style:disabled {
+  background-color: #bbb;
+  color: #969696;
+}
+
+.btn_style__remove {
+  margin: 5px 0 5px 0;
+  background-color: #dd8702;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #fff;
+  transition: all 0.5s;
+}
+.btn_style__remove:hover {
+  background-color: #ad0606;
+}
+
+/*# sourceMappingURL=btnStyle.css.map */

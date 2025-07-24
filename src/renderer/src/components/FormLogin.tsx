@@ -38,7 +38,7 @@ function FormLogin() {
       </div>
       <form className='App__loginPage__cont__contForm__form' onSubmit={handleSubmit(onSubmit)}>
         <input type="text" {...register('nombre_usuario', { required: true, disabled: disableInput })} placeholder='Nombre de usuario o correo' />
-        <div className='App__dashboard__contPageOutlet__PageUsers__newUser__form__contInputs__contForm__showPassLogin'>
+        <div className='App__loginPage__cont__contForm__form__showPassLogin'>
           <input id='contrasena' type={showPass ? "password" : "text"} {...register('contrasena', { required: true, disabled: disableInput })} placeholder='Contraseña' />
           <FontAwesomeIcon icon={showPass ? faEye : faEyeLowVision} onClick={() => setShowPass(!showPass)} />
         </div>
