@@ -2,12 +2,12 @@ import React from 'react';
 import '../css/workScheduleBar.css';
 import { Props } from '@renderer/typesTS';
 
-export const WorkScheduleBar: React.FC<Props> = ({ start, end, allowedStartEntrada, allowedEndEntrada, allowedStartSalida, allowedEndSalida, earlyExit, breakStart, breakEnd, graceMinutes }) => {
-  const percentPerHour = 100 / 24; // Preciso: 4.166666666666667
+export const WorkScheduleBar: React.FC<Props> = ({ start, end, allowedStartEntrada, allowedEndEntrada, allowedStartSalida, allowedEndSalida, earlyExit, breakStart, breakEnd, graceMinutes }: any) => {
+  const percentPerHour = 100 / 24;
 
-  const grace = (graceMinutes ?? 10) / 60; // ejemplo: 10 minutos = 0.1667 horas
+  const grace = (graceMinutes ?? 10) / 60; 
 
-  const adjustedStartMin = start - grace; // margen antes de la entrada
+  const adjustedStartMin = start - grace;
   const adjustedEndMax = end + grace;
 
   return (
@@ -31,7 +31,7 @@ export const WorkScheduleBar: React.FC<Props> = ({ start, end, allowedStartEntra
           style={{
             left: `${allowedStartEntrada * percentPerHour}%`,
             width: `${(allowedEndEntrada - allowedStartEntrada) * percentPerHour}%`
-          }}
+          }} title='Entrada valida'
         ></div>
 
         <div
@@ -39,10 +39,10 @@ export const WorkScheduleBar: React.FC<Props> = ({ start, end, allowedStartEntra
           style={{
             left: `${allowedStartSalida * percentPerHour}%`,
             width: `${(allowedEndSalida - allowedStartSalida) * percentPerHour}%`
-          }}
+          }} title='Salida valida'
         ></div>
 
-        
+
 
         {/* Tiempo de trabajo */}
         {earlyExit && (
@@ -51,7 +51,7 @@ export const WorkScheduleBar: React.FC<Props> = ({ start, end, allowedStartEntra
             style={{
               left: `${adjustedStartMin * percentPerHour}%`,
               width: `${(adjustedEndMax - adjustedStartMin) * percentPerHour}%`
-            }}
+            }} title='Margen permitido'
           ></div>
         )}
         {breakStart !== undefined && breakEnd !== undefined && (
@@ -60,7 +60,7 @@ export const WorkScheduleBar: React.FC<Props> = ({ start, end, allowedStartEntra
             style={{
               left: `${breakStart * percentPerHour}%`,
               width: `${(breakEnd - breakStart) * percentPerHour}%`
-            }}
+            }} title='Descanso'
           ></div>
         )}
         <div
@@ -68,7 +68,7 @@ export const WorkScheduleBar: React.FC<Props> = ({ start, end, allowedStartEntra
           style={{
             left: `${start * percentPerHour}%`,
             width: `${(end - start) * percentPerHour}%`
-          }}
+          }} title='Tiempo trabajado'
         ></div>
       </div>
 

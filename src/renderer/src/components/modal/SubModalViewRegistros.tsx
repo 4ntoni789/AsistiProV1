@@ -13,6 +13,7 @@ function SubModalViewRegistros({ registros, setActiveModal, activeModal }) {
     }
   };
 
+
   return (
     <div ref={modalRef} className={activeModal ? 'App__init__contTable__tablaMarcaciones__modalRegistros__active__subModal__active'
       : 'App__init__contTable__tablaMarcaciones__modalRegistros__active__subModal'} onClick={handleClickOutside}>
@@ -29,23 +30,12 @@ function SubModalViewRegistros({ registros, setActiveModal, activeModal }) {
               <ItemRegistro key={index} registro={i} pVenta={registros != undefined ? registros[0]?.nombre_dispositivo : null} />
             )) : 'Cargando...'
           }
-
         </div>
 
         <div className='App__init__contTable__tablaMarcaciones__modalRegistros__active__subModal__contDatos__footer'>
           <span><b>Total de marcaciones: {registros != undefined ? registros[0]?.registros.length : 0}</b></span>
           <WorkScheduleBarDoble
             registros={registros != undefined ? registros[0]?.registros : null}
-            // allowedStartEntrada={7}
-            // allowedEndEntrada={9}
-
-            // allowedStartSalida={17.2}
-            // allowedEndSalida={18}
-
-            // earlyExit={false}
-            // breakStart={12}
-            // breakEnd={13.5}
-            // graceMinutes={0}
           />
 
         </div>

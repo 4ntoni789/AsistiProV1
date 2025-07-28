@@ -1,6 +1,54 @@
 .App__dashboard__contPageOutlet__PageUsers__menuUser__contDataUser {
-  opacity: 0;
-  display: none;
+  position: absolute;
+  top: 0;
+  right: -75%;
+  width: 50%;
+  height: 100%;
+  background-color: rgba(99, 99, 99, 0.5019607843);
+  box-shadow: 1px 1px 20px 3px #3a3a3a;
+  transition: all 0.5s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuUser__contDataUser__btnClose {
+  position: absolute;
+  left: 10px;
+  top: 0;
+  font-size: 30px;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuUser__contDataUser__btnClose svg {
+  cursor: pointer;
+  transition: all 0.5s;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuUser__contDataUser__btnClose svg:hover {
+  color: #dd8702;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuUser__contDataUser__active {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100vh;
+  background-color: #333;
+  box-shadow: 1px 1px 20px 3px #3a3a3a;
+  transition: all 0.5s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuUser__contDataUser__contInfo {
+  width: 50%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuUser__contDataUser__contInfo span b {
+  font-weight: bold;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuUser__contDataUser__contInfo__contBtn {
+  display: flex;
+  flex-direction: column;
 }
 
 /*# sourceMappingURL=updateEmpleadoContrato.css.map */

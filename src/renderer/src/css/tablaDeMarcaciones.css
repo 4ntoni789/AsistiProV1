@@ -235,10 +235,9 @@
 }
 .App__init__contTable__tablaMarcaciones__body {
   position: relative;
-  width: 100%;
+  width: 100% !important;
   height: 77vh;
   padding-left: 30px;
-  overflow: auto;
   display: flex;
   flex-direction: column;
 }
@@ -258,6 +257,11 @@
   /* roundness of the scroll thumb */
   border: 3px solid #dd8702;
   /* creates padding around scroll thumb */
+}
+.App__init__contTable__tablaMarcaciones__body__contItems {
+  width: 95%;
+  margin: auto;
+  margin-top: 0px !important;
 }
 @media (max-width: 1366px) {
   .App__init__contTable__tablaMarcaciones__body {

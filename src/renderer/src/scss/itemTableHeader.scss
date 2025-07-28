@@ -13,30 +13,43 @@
     text-align: center;
     position: relative;
     margin: 10px 0 0px 0;
-    padding-left: 30px;
-    animation: aparecer 1s forwards;
+    // padding-left: 30px;
+    // animation: aparecer 1s forwards;
 
 
     &__header {
         margin: 10px 0 10px 0;
         width: 100%;
         display: flex;
+        justify-content: space-around;
         align-items: center;
 
         h4 {
-            font-weight: bold;
+            transition: all .5s;
+            font-weight: 500;
             width: 30%;
-            font-size: 17px;
-
-            @media (min-width: 1366px) {
-
-                & {
-                    text-align: center;
-                    font-size: 15px;
-                    width: 25% !important;
-                }
-            }
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            white-space: nowrap;
         }
+
+        h4:first-child {
+            text-align: center !important;
+            width: 450px !important;
+            display: flex;
+            // justify-content: flex-start;
+            align-items: center;
+
+
+            svg {
+                font-size: 50px;
+            }
+
+            // text-align: left;
+        }
+
+
 
     }
 }

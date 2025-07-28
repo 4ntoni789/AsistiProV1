@@ -99,6 +99,7 @@
         &__btnClose {
             position: absolute;
             left: 10px;
+            top: 0;
             font-size: 30px;
 
             svg {
@@ -114,32 +115,36 @@
 
 
     &__btnControl {
-        display: flex;
-        justify-content: center;
-        align-items: end;
+        top: 0;
+        position: absolute;
+        height: 60px;
 
         &__btn {
+            position: relative;
+            top: -20px;
             background-color: $color-principal;
             border: none;
             margin-right: 10px;
-            height: 40px;
-            border-radius: 10px 10px 0 0;
+            height: 60px;
+            border-radius: 0px 0px 10px 10px;
             color: #fff;
             cursor: pointer;
             border-bottom: 1px solid #000;
             transition: all .5s;
 
             &:hover {
-                height: 50px;
+                top: 0px;
                 background-color: $color-principal-hover;
             }
 
             &__active {
+                position: relative;
+                top: 0px;
                 background-color: $color-principal-hover;
                 border: none;
                 margin-right: 10px;
-                height: 50px;
-                border-radius: 10px 10px 0 0;
+                height: 60px;
+                border-radius: 0px 0px 10px 10px;
                 color: #fff;
                 cursor: pointer;
                 border-bottom: 1px solid #000;

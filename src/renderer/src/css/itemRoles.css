@@ -1,0 +1,97 @@
+.App__init__tablaMarcaciones__body__item__role {
+  background-color: #444;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 70px;
+  align-self: center;
+  border-radius: 5px;
+  text-align: center;
+  position: relative;
+  margin: 10px 0 0px 0;
+  padding-left: 30px;
+  border: 1px solid transparent;
+  transition: all 0.5s;
+}
+.App__init__tablaMarcaciones__body__item__role__header {
+  margin: auto;
+  width: 100%;
+  display: flex;
+}
+.App__init__tablaMarcaciones__body__item__role__header__contVerRegistros {
+  position: absolute;
+  top: -3px;
+  right: 3px;
+}
+.App__init__tablaMarcaciones__body__item__role__header__contVerRegistros svg {
+  font-size: 15px;
+  cursor: pointer;
+  transition: color 0.5s;
+}
+.App__init__tablaMarcaciones__body__item__role__header__contVerRegistros svg:hover {
+  color: #dd8702;
+}
+.App__init__tablaMarcaciones__body__item__role__header h4 {
+  transition: all 0.5s;
+  font-weight: 500;
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+}
+.App__init__tablaMarcaciones__body__item__role__header h4:first-child {
+  width: 400px !important;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.App__init__tablaMarcaciones__body__item__role__header h4:first-child svg {
+  font-size: 50px;
+  margin-right: 10px;
+}
+.App__init__tablaMarcaciones__body__item__role__footer {
+  display: none;
+}
+.App__init__tablaMarcaciones__body__item__role__footer button {
+  background-color: #dd8702;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+}
+.App__init__tablaMarcaciones__body__item__role__footer button svg {
+  font-size: 30px;
+}
+.App__init__tablaMarcaciones__body__item__role__footer span {
+  margin: 0 5px 0 5px;
+}
+.App__init__tablaMarcaciones__body__item__role__footer__active {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+.App__init__tablaMarcaciones__body__item__role__footer__active button {
+  background-color: #dd8702;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+}
+.App__init__tablaMarcaciones__body__item__role__footer__active button svg {
+  font-size: 30px;
+}
+.App__init__tablaMarcaciones__body__item__role__footer__active span {
+  margin: 0 5px 0 5px;
+}
+
+@keyframes aparecer {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+/*# sourceMappingURL=itemRoles.css.map */

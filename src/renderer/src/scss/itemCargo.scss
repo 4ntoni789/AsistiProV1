@@ -1,0 +1,124 @@
+@import './variables';
+
+.App__init__tablaMarcaciones__body__item__cargo {
+    background-color: $color-item;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 70px;
+    align-self: center;
+    border-radius: 5px;
+    text-align: center;
+    position: relative;
+    margin: 10px 0 0px 0;
+    padding-left: 30px;
+    border: 1px solid transparent;
+    // animation: aparecer 1s forwards;
+    transition: all .5s;
+
+
+
+    &__header {
+        margin: auto;
+        width: 100%;
+        display: flex;
+
+
+        // align-items: center;
+        &__contVerRegistros {
+            position: absolute;
+            top: -3px;
+            right: 3px;
+
+            svg {
+                font-size: 15px;
+                cursor: pointer;
+                transition: color .5s;
+
+                &:hover {
+                    color: $color-principal;
+                }
+            }
+
+        }
+
+        h4 {
+            transition: all .5s;
+            font-weight: 500;
+            width: 30%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            white-space: nowrap;
+
+        }
+
+        h4:first-child {
+            width: 400px !important;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+
+
+            svg {
+                font-size: 50px;
+                margin-right: 10px;
+            }
+
+            // text-align: left;
+        }
+    }
+
+    &__footer {
+        display: none;
+
+        button {
+            background-color: $color-principal;
+            border-radius: 100px;
+            border: none;
+            cursor: pointer;
+
+            svg {
+                font-size: 30px;
+            }
+        }
+
+        span {
+            margin: 0 5px 0 5px;
+        }
+    }
+
+    &__footer__active {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 5px;
+
+        button {
+            background-color: $color-principal;
+            border-radius: 100px;
+            border: none;
+            cursor: pointer;
+
+            svg {
+                font-size: 30px;
+            }
+        }
+
+        span {
+            margin: 0 5px 0 5px;
+        }
+    }
+
+}
+
+@keyframes aparecer {
+    0% {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    100% {
+        opacity: 1;
+        visibility: visible;
+    }
+}

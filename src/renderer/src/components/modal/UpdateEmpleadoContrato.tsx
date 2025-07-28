@@ -1,11 +1,7 @@
-import { faXmark } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Loader from '../Loader';
 import DataUser from '../DataUser';
 import FormEmpleadoContrato from '../FormEmpleadoContrato';
-import { ActiveSubMenuEmpleado } from '@renderer/actions/actionsEmpleados';
 import { Fetch_contratos } from '@renderer/actions/actionsContratos';
 import { obtenerDatosPrimerCoincidencia } from '@renderer/scripts/obtenerDatosFetchPrimer';
 import { AppDispatch } from '@renderer/store';
@@ -37,20 +33,12 @@ function UpdateEmpleadoContrato({ activeSubModal }: { activeSubModal: boolean })
 
   return (
     <>
-      <div className={!activeSubModal && activeNewEmpleado.subMenuEmpleado ? 'App__dashboard__contPageOutlet__PageUsers__menuUser__contDataUser__active'
-        : 'App__dashboard__contPageOutlet__PageUsers__menuUser__contDataUser'}>
-        <div className='App__dashboard__contPageOutlet__PageUsers__menuUser__contDataUser__close'>
-          <FontAwesomeIcon icon={faXmark} onClick={() => {
-            dispatch(ActiveSubMenuEmpleado({ user: {}, subMenuEmpleado: false }));
-          }} />
-        </div>
-        {
-          userContrato == undefined ? <Loader /> : userContrato?.length > 0 && contFilter?.estado == 'Activo' ?
-            <DataUser userContrato={userContrato} userCargo={userCargo} activeNewEmpleado={activeNewEmpleado} activeEdition={activeEdition} empleadores={empleadores} />
-            : <FormEmpleadoContrato activeEdition={activeEdition} setActiveEdition={setActiveEdition} userCargo={userCargo} activeNewEmpleado={activeNewEmpleado}
-              empleadores={empleadores} />
-        }
-      </div>
+      {
+        userContrato?.length > 0 && contFilter?.estado == 'Activo' ?
+          <DataUser activeSubModal={!activeSubModal} userContrato={userContrato} userCargo={userCargo} activeNewEmpleado={activeNewEmpleado} activeEdition={activeEdition} empleadores={empleadores} />
+          : <FormEmpleadoContrato userCargo={userCargo} activeNewEmpleado={activeNewEmpleado}
+            empleadores={empleadores} activeSubModal={!activeSubModal} />
+      }
     </>
   );
 }

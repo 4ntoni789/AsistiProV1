@@ -11,16 +11,83 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import ItemUsuario from '@renderer/components/items/ItemUsuario';
 import { obtenerDatos } from '@renderer/scripts/obtenerDatosFetch';
 import Buscandor from '@renderer/components/Buscandor';
-import Paginacion from '@renderer/components/Paginacion';
+import Pagination from '@renderer/components/Pagination';
+import { AnimatePresence, motion } from 'framer-motion';
+import TablaDeUsuarios from '@renderer/components/tablas/TablaDeUsuarios';
 
 function Users() {
-  const [dataUsers, setDataUsers] = useState<any>();
+  const [dataUsers, setDataUsers] = useState<any>([]);
   const spam = useSelector((state: any) => state.menuAccions.errorSpam);
   const userData = useSelector((state: UserDataType) => state.loginAccess);
   // const activeNewUsers = useSelector((state: any) => state.menuAccions);
   const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
   const dispatch = useDispatch<AppDispatch>();
 
+  const [searchTerm, setSearchTerm] = useState('');
+  const [paginaActual, setPaginaActual] = useState(1);
+  const itemsPerPage = window.innerWidth <= 1366 ? 2 : 3;
+
+  const [direccion, setDireccion] = useState<'siguiente' | 'anterior' | 'busqueda'>('busqueda');
+
+  const filteredAccesos = dataUsers?.filter((item) =>
+    (item.nombre_usuario || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
+    (item.correo || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
+    (item.type_role || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
+    (item.id_usuario || '').toString().includes(searchTerm)
+  );
+
+
+  const totalPages = Math.ceil(filteredAccesos.length / itemsPerPage);
+
+  const indexOfLastItem = paginaActual * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = filteredAccesos.slice(indexOfFirstItem, indexOfLastItem);
+
+  const variants = {
+    enter: (dir: 'siguiente' | 'anterior') => ({
+      x: dir === 'siguiente' ? 20 : -20,
+      opacity: 0
+    }),
+    center: {
+      x: 0,
+      opacity: 1
+    },
+    exit: (dir: 'siguiente' | 'anterior') => ({
+      x: dir === 'siguiente' ? -20 : 20,
+      opacity: 0
+    })
+  };
+
+  const containerVariants = {
+    hidden: {},
+    show: {
+      transition: {
+        staggerChildren: 0.05,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: -10 },
+    show: { opacity: 1, y: 0 },
+  };
+
+  const handleAnterior = () => {
+    if (paginaActual > 1) setPaginaActual(prev => prev - 1);
+    setDireccion('anterior');
+  };
+
+  const handleSiguiente = () => {
+    if (paginaActual < totalPages) setPaginaActual(prev => prev + 1);
+    setDireccion('siguiente');
+  };
+
+
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value);
+    setDireccion('busqueda');
+    setPaginaActual(1);
+  };
   useEffect(() => {
     obtenerDatos(null, dispatch(Fetch_user(userId)), setDataUsers);
   }, [userData.validationAccess, spam.active]);
@@ -30,7 +97,7 @@ function Users() {
       <div className='App__dashboard__contPageOutlet__PageUsers__contUsers'>
         <h2>Usuarios</h2>
         <div className='App__dashboard__contPageOutlet__PageUsers__contUsers__contBtnNewUser'>
-          <Buscandor searchTerm={null} handleSearch={null} />
+          <Buscandor searchTerm={searchTerm} handleSearch={handleSearch} />
           <button disabled={userData.userLogin.type_role == 'Administrador' ? false : true} onClick={() => dispatch(ActiveSubMenuNewUsers({
             subMenuNewUsers: true
           }))} title='Nuevo usuario'>
@@ -38,24 +105,9 @@ function Users() {
             <FontAwesomeIcon icon={faPlus} />
           </button>
         </div>
-        <div className='App__dashboard__contPageOutlet__PageUsers__contUsers__table'>
-
-
-          {
-            dataUsers?.map((item, i) => (
-              item.nombre_usuario == userData.userLogin.nombre_usuario ? null :
-                <ItemUsuario key={i} nombre_usuario={item.nombre_usuario}
-                  id_usuario={item.id_usuario}
-                  correo={item.correo}
-                  role={item.type_role}
-                  estado={item.estado}
-                  item={item}
-                />
-            ))
-          }
-
-        </div>
-      <Paginacion />
+        <TablaDeUsuarios direccion={direccion} paginaActual={paginaActual} variants={variants} currentItems={currentItems} searchTerm={searchTerm}
+          containerVariants={containerVariants} itemVariants={itemVariants} />
+        <Pagination paginaActual={paginaActual} totalPaginas={totalPages} handleAnterior={handleAnterior} handleSiguiente={handleSiguiente} />
       </div>
       <NewUser />
       <UpdateUser />

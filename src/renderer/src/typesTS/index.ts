@@ -17,6 +17,11 @@ export interface Props {
   graceMinutes: number;
   breakStart: number;
   breakEnd: number;
+
+  horaInicioSinFormatear?: string | any,
+  horaFinSinFormatear?: string | any,
+  horaInicioAlmuerzoSinFormatear?: string | any,
+  horaFinAlmuerzoSinFormatear?: string | any,
 }
 
 export interface Props2 {

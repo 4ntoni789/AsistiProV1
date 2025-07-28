@@ -9,8 +9,10 @@ import { formatearNumero } from '@renderer/scripts/formatearNumero';
 import { Fetch_new_contrato } from '@renderer/actions/actionsContratos';
 import { UserDataType } from '@renderer/typesTS';
 import { AppDispatch } from '@renderer/store';
+import '../css/formEmpleadoContrato.css';
+import Alerta from './Alerta';
 
-function FormEmpleadoContrato({ activeEdition, setActiveEdition, userCargo, activeNewEmpleado, empleadores }) {
+function FormEmpleadoContrato({ userCargo, activeNewEmpleado, empleadores, activeSubModal }) {
   const { register, handleSubmit, reset } = useForm();
   const userData = useSelector((state: UserDataType) => state.loginAccess.userLogin);
   const [date, setDate] = useState<number>(1);
@@ -24,11 +26,12 @@ function FormEmpleadoContrato({ activeEdition, setActiveEdition, userCargo, acti
   const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
 
   const onSubmit = async (dataInput) => {
-    dispatch(Fetch_new_contrato(dataInput, userId, date, dateFin, activeNewEmpleado, userData, valorSalario))
+    dispatch(Fetch_new_contrato(dataInput, userId, date, dateFin, activeNewEmpleado, userData, valorSalario, reset));
+    setValorSalario('');
   }
 
   useEffect(() => {
-    if (activeEdition == false && contrato == 'Fijo') {
+    if (contrato == 'Fijo') {
       setDateFin(calcularFechaFinal(dateInput, date))
       if (date > 12) {
         setDate(12);
@@ -38,19 +41,19 @@ function FormEmpleadoContrato({ activeEdition, setActiveEdition, userCargo, acti
         }
       }
     }
-  }, [date, dateInput])
+  }, [date, dateInput]);
 
   return (
-    <form className='App__dashboard__contPageOutlet__PageUsers__newUser__form__contratoNotFound' onSubmit={handleSubmit(onSubmit)}>
-      <h2>Este usuario no tiene contrato</h2>
-      <div className='App__dashboard__contPageOutlet__PageUsers__newUser__form__contratoNotFound__contInputs__check'>
-        <label htmlFor="">Registrar contrato:</label>
-        <SwitchButtonEdit activeEdition={activeEdition} setActiveEdition={() => setActiveEdition(!activeEdition)} />
-      </div>
-      <div className={!activeEdition ? 'App__dashboard__contPageOutlet__PageUsers__newUser__form__contratoNotFound__contInputs__active' : 'App__dashboard__contPageOutlet__PageUsers__newUser__form__contratoNotFound__contInputs'}>
-        <br />
-        <label htmlFor='tContrato'>Tipo de contrato</label>
-        <select id='tContrato' {...register('tContrato', { required: true, disabled: activeEdition })} onChange={(e) => setContrato(e.target.value)}>
+    <form className={activeSubModal && activeNewEmpleado.subMenuEmpleado ? 'App__dashboard__contPageOutlet__PageUsers__menuUser__contDataUser__contratoNotFound__active' :
+      'App__dashboard__contPageOutlet__PageUsers__menuUser__contDataUser__contratoNotFound'
+    }
+      onSubmit={handleSubmit(onSubmit)}>
+      <Alerta reactiveAlert={activeSubModal} />
+
+      <div className={'App__dashboard__contPageOutlet__PageUsers__menuUser__contDataUser__contratoNotFound__contInputs'}>
+        <h2>Registrar contrato:</h2>
+
+        <select className='input_style' id='tContrato' {...register('tContrato', { required: true, })} onChange={(e) => setContrato(e.target.value)}>
           <option value=''>--Escoge un tipo de contrato--</option>
           {
             typeContrato?.map((item, i) => (
@@ -59,33 +62,31 @@ function FormEmpleadoContrato({ activeEdition, setActiveEdition, userCargo, acti
           }
         </select>
         <label htmlFor='fInicio'>Fecha inicio de contrato</label>
-        <input id='fInicio' type="date" {...register('fInicio', { required: true, disabled: activeEdition })} placeholder='Fecha de inicio'
+        <input className='input_style' id='fInicio' type="date" {...register('fInicio', { required: true, })} placeholder='Fecha de inicio'
           onChange={(e) => setDateInput(e.target.value)} />
         {
           contrato == 'Fijo' ? <>
             <label htmlFor='fFin'>Fecha finalización de contrato</label>
-            <input id='fFin' type="date" {...register('fFin', { required: true, disabled: true })} placeholder='Fecha de fin' value={dateFin} />
+            <input className='input_style' id='fFin' type="date" {...register('fFin', { required: true, disabled: true })} placeholder='Fecha de fin' value={dateFin} />
           </> : null
         }
         {
           contrato == 'Fijo' ? <>
-            <label htmlFor='meses'>Meses del contrato</label>
-            <div className='App__dashboard__contPageOutlet__PageUsers__newUser__form__contratoNotFound__contInputs__contBtn'>
+            <div className='App__dashboard__contPageOutlet__PageUsers__menuUser__contDataUser__contratoNotFound__contInputs__contBtn'>
+              <label htmlFor='meses'>Meses del contrato:</label>
               <span><FontAwesomeIcon onClick={() => setDate(date + 1)} icon={faChevronCircleUp} /></span>
               <span>{date}</span>
               <span><FontAwesomeIcon onClick={() => setDate(date - 1)} icon={faChevronCircleDown} /></span>
             </div>
           </> : null
         }
-        <label htmlFor='estado'>Estado</label>
-        <select id='estado' {...register('estado', { required: true, disabled: activeEdition })}>
+        <select className='input_style' id='estado' {...register('estado', { required: true, })}>
           <option value='Activo'>Activo</option>
         </select>
-        <label htmlFor='salario'>Salario</label>
-        <input id='salario' type="text" {...register('salario', { required: true, disabled: activeEdition })} value={valorSalario}
+        <input className='input_style' id='salario' type="text" {...register('salario', { required: true, })} value={valorSalario}
           onChange={(e) => setValorSalario(formatearNumero(e.target.value))} placeholder='Salario' />
-        <label htmlFor='cargo'>Cargo</label>
-        <select id='cargo' {...register('cargo', { required: true, disabled: activeEdition })}>
+
+        <select className='input_style' id='cargo' {...register('cargo', { required: true, })}>
           <option value=''>--Escoge un cargo--</option>
           {
             userCargo?.map((item, i) => (
@@ -93,8 +94,8 @@ function FormEmpleadoContrato({ activeEdition, setActiveEdition, userCargo, acti
             ))
           }
         </select>
-        <label htmlFor='empleador'>Empleador</label>
-        <select id='empledaor' {...register('empleador', { required: true, disabled: activeEdition })}>
+
+        <select className='input_style' id='empledaor' {...register('empleador', { required: true, })}>
           <option value=''>--Escoge un empleador--</option>
           {
             empleadores?.map((item, i) => (
@@ -102,7 +103,7 @@ function FormEmpleadoContrato({ activeEdition, setActiveEdition, userCargo, acti
             ))
           }
         </select>
-        <button type='submit' disabled={activeEdition}>Registrar</button>
+        <button className='btn_style' type='submit'>Registrar</button>
       </div>
     </form>
   );

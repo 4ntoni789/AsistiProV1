@@ -1,4 +1,7 @@
 export const horaToDecimal = (hora: string): number => {
-    const [h, m] = hora.split(':').map(Number);
-    return h + m / 60;
+    if (hora != undefined) {
+        const [h, m] = hora.split(':').map(Number);
+        return h + m / 60;
+    }
+    return 0
 }

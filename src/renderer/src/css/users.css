@@ -64,11 +64,10 @@
   color: #333;
 }
 .App__dashboard__contPageOutlet__PageUsers__contUsers__table {
-  max-height: 80%;
+  height: calc(100% - (20% + 1px));
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  overflow: auto;
 }
 .App__dashboard__contPageOutlet__PageUsers__contUsers table,
 .App__dashboard__contPageOutlet__PageUsers__contUsers th,

@@ -1,0 +1,71 @@
+.App__dashboard__contPageOutlet__PageUsers__contCargos {
+  width: 90%;
+  height: 90vh;
+  background-color: #333;
+  border-radius: 5px;
+  padding: 20px;
+  animation: aparecer 1s forwards;
+}
+.App__dashboard__contPageOutlet__PageUsers__contCargos h2 {
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+  margin: 0px 0 10px 0px;
+  padding: 15px 0 15px 30px;
+  font-weight: bold;
+  color: #dd8702;
+}
+.App__dashboard__contPageOutlet__PageUsers__contCargos__contBtnNewCargo {
+  margin: 0px 0 10px 0;
+  width: 95%;
+  text-align: end;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+.App__dashboard__contPageOutlet__PageUsers__contCargos__contBtnNewCargo button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  width: 150px;
+  height: 40px;
+  border-radius: 100px;
+  border: none;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.5s;
+  background-color: #dd8702;
+}
+.App__dashboard__contPageOutlet__PageUsers__contCargos__contBtnNewCargo button svg {
+  margin-left: 10px;
+  color: #fff;
+  font-size: 20px;
+  transition: all 0.5s;
+}
+.App__dashboard__contPageOutlet__PageUsers__contCargos__contBtnNewCargo button:disabled {
+  background-color: #666;
+  color: #333;
+}
+.App__dashboard__contPageOutlet__PageUsers__contCargos__contBtnNewCargo button:disabled svg {
+  color: #333;
+}
+.App__dashboard__contPageOutlet__PageUsers__contCargos__table {
+  width: 100% !important;
+  height: calc(100% - (20% + 1px));
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.App__dashboard__contPageOutlet__PageUsers__contCargos__table__contItem {
+  width: 95%;
+}
+.App__dashboard__contPageOutlet__PageUsers__contCargos table,
+.App__dashboard__contPageOutlet__PageUsers__contCargos th,
+.App__dashboard__contPageOutlet__PageUsers__contCargos td {
+  text-align: center;
+  border: 1px solid rgba(255, 255, 245, 0.8588235294);
+}
+
+/*# sourceMappingURL=cargos.css.map */

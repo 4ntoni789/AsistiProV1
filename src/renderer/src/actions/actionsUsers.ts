@@ -10,7 +10,7 @@ export const ActiveSubMenuNewUsers = (value: any) => {
     }
 };
 
-export const Fetch_new_user = (dataInput:any, userId:string, userData, userActiveCheck:string, reset: () => void) => {
+export const Fetch_new_user = (dataInput: any, userId: string, userData, userActiveCheck: string, reset: () => void) => {
     return async (dispatch: any): Promise<{ activeError: boolean; typeError: string } | undefined> => {
         dispatch(ActiveSubMenuNewUsers({
             loading: true
@@ -153,11 +153,12 @@ export const Fetch_user = (userId: string) => {
                     'x-id-usuario': userId
                 }
             });
-
             const result = await response.json();
+            const userFilter = result.filter((user) => user.id_usuario != userId);
+            console.log(result)
 
             if (response.ok) {
-                return result;
+                return userFilter;
             } else {
                 console.error('Error en la petición:', result);
                 return null;

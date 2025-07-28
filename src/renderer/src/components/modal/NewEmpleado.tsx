@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import '../../css/newEmpleado.css';
 import '../../css/inputStyle.css';
 import '../../css/btnStyle.css';
+import '../../css/scrolBar.css';
 import SearchMunicipios from '../SearchMunicipios';
 import { Opcion } from '@renderer/interface';
 import { ActiveSubMenuNewEmpleado, Fetch_new_empleado } from '@renderer/actions/actionsEmpleados';
@@ -52,7 +53,7 @@ function NewEmpleado() {
 
   return (
     <div ref={modalRef} className={activeNewEmpleado ? 'App__dashboard__contPageOutlet__PageUsers__newEmpleado__active' : 'App__dashboard__contPageOutlet__PageUsers__newEmpleado'} onClick={handleClickOutside}>
-      <form className={activeNewEmpleado ? 'App__dashboard__contPageOutlet__PageUsers__newEmpleado__active__form' : 'App__dashboard__contPageOutlet__PageUsers__newEmpleado__form'} onSubmit={handleSubmit(onSubmit)}>
+      <form className={activeNewEmpleado ? 'App__dashboard__contPageOutlet__PageUsers__newEmpleado__active__form scrollBar' : 'App__dashboard__contPageOutlet__PageUsers__newEmpleado__form'} onSubmit={handleSubmit(onSubmit)}>
         <div className='App__dashboard__contPageOutlet__PageUsers__newEmpleado__form__close'>
           <FontAwesomeIcon icon={faXmark} onClick={() => {
             dispatch(ActiveSubMenuNewEmpleado({ user: {}, activeNewEmpleado: false }));

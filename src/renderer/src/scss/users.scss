@@ -21,15 +21,15 @@
             padding: 20px;
             animation: aparecer 1s forwards;
 
-           h2 {
-            width: 100%;
-            border-radius: 10px 10px 0 0;
-            margin: 00px 0 10px 0px;
-            padding: 15px 0 15px 30px;
-            font-weight: bold;
-            color: #dd8702;
-            // background-color: #dd8702;
-        }
+            h2 {
+                width: 100%;
+                border-radius: 10px 10px 0 0;
+                margin: 00px 0 10px 0px;
+                padding: 15px 0 15px 30px;
+                font-weight: bold;
+                color: #dd8702;
+                // background-color: #dd8702;
+            }
 
 
             &__contBtnNewUser {
@@ -61,13 +61,14 @@
                         font-size: 20px;
                         transition: all .5s;
 
-                       
+
                     }
 
                     &:disabled {
                         background-color: $color-item-header;
                         color: $color-secundario;
-                        svg{
+
+                        svg {
                             color: $color-secundario;
                         }
 
@@ -77,11 +78,11 @@
             }
 
             &__table {
-                max-height:80%;
+                height: calc(100% - (20% - -1px));
                 display: flex;
                 justify-content: space-around;
                 flex-wrap: wrap;
-                overflow: auto;
+                // overflow: auto;
             }
 
             table,

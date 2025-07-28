@@ -30,10 +30,10 @@ export const Fetch_contratos = (userId) => {
     };
 }
 
-export const Fetch_new_contrato = (dataInput: any, userId: string, date: number, dateFin: Date, activeNewEmpleado, userData: any, valorSalario: string) => {
+export const Fetch_new_contrato = (dataInput: any, userId: string, date: number, dateFin: Date, activeNewEmpleado, userData: any, valorSalario: string, reset: () => void) => {
     return async (dispatch) => {
         try {
-            const response = await fetch(`/api/contrato`, {
+            const response = await fetch(`${apiUrl}/api/contrato`, {
                 method: 'POST',
                 headers: {
                     'x-id-usuario': userId,
@@ -58,6 +58,7 @@ export const Fetch_new_contrato = (dataInput: any, userId: string, date: number,
             if (response.ok) {
                 dispatch(ActiveSubMenuEmpleado({ user: {}, subMenuEmpleado: false }));
                 dispatch(ActiveErrorSpam({ msg: result.message, active: true, typeError: 'submit' }));
+                reset();
             } else {
                 dispatch(ActiveErrorSpam({ msg: result.error, active: true, typeError: 'error' }));
                 throw new Error(result.error);
@@ -72,7 +73,7 @@ export const Fetch_generar_contrato = (activeNewEmpleado: any, userCargo: any, c
     return async () => {
         setLoader(true);
 
-        const response = await fetch('/api/generar-contrato', {
+        const response = await fetch(`${apiUrl}/api/generar-contrato`, {
             method: 'POST',
             headers: {
                 'x-id-usuario': userId,

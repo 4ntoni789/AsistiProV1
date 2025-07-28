@@ -2,9 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import '../../css/tablaDeMarcaciones.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowsRotate, faCalendar, faCalendarXmark, faChevronLeft, faChevronRight, faEllipsisVertical, faMagnifyingGlass, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faArrowsRotate, faCalendar, faCalendarXmark, faEllipsisVertical, faPlus } from '@fortawesome/free-solid-svg-icons';
 import ItemTable from '../items/ItemTable';
-
 import ItemTableHeader from '../items/ItemTableHeader';
 import MenuEmpleado from '../modal/SubMenuEmpleado';
 import { } from '@renderer/actions/actionsLogin';
@@ -14,7 +13,9 @@ import { obtenerDatos } from '@renderer/scripts/obtenerDatosFetch';
 import { Fetch_contratos } from '@renderer/actions/actionsContratos';
 import { AppDispatch } from '@renderer/store';
 import Buscandor from '../Buscandor';
-import Paginacion from '../Paginacion';
+import { ordenarPorNombre } from '@renderer/scripts/ordenarPorNombre';
+import Pagination from '../Pagination';
+import { AnimatePresence, motion } from 'framer-motion';
 
 function TablaMarcaciones() {
   const spam = useSelector((state: any) => state.menuAccions.errorSpam);
@@ -24,26 +25,14 @@ function TablaMarcaciones() {
   const activeDeleteUsers = useSelector((state: any) => state.menuAccions.deleteUser.activeDeleteUsers);
   const [clickLoad, setClickLoad] = useState<boolean>(false);
   const [accesos, setAccesos] = useState<any[]>([]);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [paginaActual, setPaginaActual] = useState(1);
   const [searchTerm, setSearchTerm] = useState('');
-  const itemsPerPage = 10;
+  const itemsPerPage = window.innerWidth <= 1366 ? 5 : 8;
   const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
   const dispatch = useDispatch<AppDispatch>();
-  // const [activeOptions, setActiveOptions] = useState<boolean>(false);
+  const [direccion, setDireccion] = useState<'siguiente' | 'anterior' | 'busqueda'>('busqueda');
 
-  useEffect(() => {
-    obtenerDatos(null, dispatch(Fetch_contratos(userId)), setUserContrato);
-    obtenerDatos(null, dispatch(Fetch_empleados(userId)), setAccesos);
-  
-    if (clickLoad) {
-      const interval = setTimeout(() => {
-        setClickLoad(false);
-      }, 1000);
-      () => clearInterval(interval);
-    }
-  }, [userData == true, clickLoad == true, activeNewEmpleado, activeDeleteUsers, spam]);
-
-  const filteredAccesos = accesos.filter((item) =>
+  const filteredAccesos = ordenarPorNombre(accesos).filter((item) =>
     (item.nombres || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
     (item.apellidos || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
     (item.cedula || '').toString().includes(searchTerm) ||
@@ -54,15 +43,70 @@ function TablaMarcaciones() {
 
   const totalPages = Math.ceil(filteredAccesos.length / itemsPerPage);
 
-  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfLastItem = paginaActual * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredAccesos.slice(indexOfFirstItem, indexOfLastItem);
+  // const [activeOptions, setActiveOptions] = useState<boolean>(false);
+
+  const variants = {
+    enter: (dir: 'siguiente' | 'anterior') => ({
+      x: dir === 'siguiente' ? 20 : -20,
+      opacity: 0
+    }),
+    center: {
+      x: 0,
+      opacity: 1
+    },
+    exit: (dir: 'siguiente' | 'anterior') => ({
+      x: dir === 'siguiente' ? -20 : 20,
+      opacity: 0
+    })
+  };
+
+  const containerVariants = {
+    hidden: {},
+    show: {
+      transition: {
+        staggerChildren: 0.05,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: -10 },
+    show: { opacity: 1, y: 0 },
+  };
+
+  const handleAnterior = () => {
+    if (paginaActual > 1) setPaginaActual(prev => prev - 1);
+    setDireccion('anterior');
+  };
+
+  const handleSiguiente = () => {
+    if (paginaActual < totalPages) setPaginaActual(prev => prev + 1);
+    setDireccion('siguiente');
+  };
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
     setClickLoad(true);
-    setCurrentPage(1);
+    setDireccion('busqueda');
+    setPaginaActual(1);
   };
+
+  useEffect(() => {
+    obtenerDatos(null, dispatch(Fetch_contratos(userId)), setUserContrato);
+    obtenerDatos(null, dispatch(Fetch_empleados(userId)), setAccesos);
+
+    if (clickLoad) {
+      const interval = setTimeout(() => {
+        setClickLoad(false);
+      }, 1000);
+      () => clearInterval(interval);
+    }
+  }, [userData == true, clickLoad == true, activeNewEmpleado, activeDeleteUsers, spam]);
+
+
 
   const [isOpen, setIsOpen] = useState(false);
   const buttonRef = useRef<HTMLSpanElement | null>(null);
@@ -92,7 +136,7 @@ function TablaMarcaciones() {
     <div className='App__init__contTable__tablaMarcaciones'>
       <h2>Empleados y marcaciones</h2>
       <div className='App__init__contTable__tablaMarcaciones__header'>
-        <Buscandor searchTerm={searchTerm} handleSearch={handleSearch}/>
+        <Buscandor searchTerm={searchTerm} handleSearch={handleSearch} />
         <div className='App__init__contTable__tablaMarcaciones__header__contBtn'>
           <span title='Nuevo empleado' onClick={() => dispatch(ActiveSubMenuNewEmpleado({ user: {}, activeNewEmpleado: true }))}>
             <FontAwesomeIcon icon={faPlus} />
@@ -115,11 +159,52 @@ function TablaMarcaciones() {
       </div>
       <div className='App__init__contTable__tablaMarcaciones__body'>
         <ItemTableHeader />
-        {currentItems.map((item, index) => (
-          <ItemTable clickLoad={clickLoad} key={index} item={item} contrato={userContrato.filter((item2) => (item2.id_empleado == item.id_empleado))} />
-        ))}
+        <AnimatePresence mode='wait'>
+          {
+            (direccion === 'siguiente' || direccion === 'anterior') ? (
+              <motion.div
+                key={`pagina-${paginaActual}`} // fuerza re-render en paginación
+                custom={direccion}
+                variants={variants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ duration: 0.3 }}
+                className="App__init__contTable__tablaMarcaciones__body__contItems"
+              >
+                {currentItems.map((item, index) => (
+                  <ItemTable clickLoad={clickLoad} key={index} item={item} contrato={userContrato?.filter((item2) => item2.id_empleado === item.id_empleado)} />
+                ))}
+              </motion.div>
+            ) : (
+              <motion.div
+                key={`busqueda-${searchTerm}`}
+                variants={containerVariants}
+                initial="hidden"
+                animate="show"
+                exit="exit"
+                className="App__init__contTable__tablaMarcaciones__body__contItems"
+              >
+                {currentItems.map((item, index) => (
+                  <motion.div
+                    key={index}
+                    variants={itemVariants}
+                    transition={{ duration: 0.3, delay: index * 0.05 }}
+                  >
+                    <ItemTable
+                      clickLoad={clickLoad}
+                      item={item}
+                      contrato={userContrato?.filter((item2) => item2.id_empleado === item.id_empleado)}
+                    />
+                  </motion.div>
+                ))}
+              </motion.div>
+            )
+          }
+        </AnimatePresence>
       </div>
-      <Paginacion setClickLoad={setClickLoad} setCurrentPage={setCurrentPage} currentPage={currentPage} totalPages={totalPages}/>
+      <Pagination paginaActual={paginaActual} totalPaginas={totalPages} handleAnterior={handleAnterior} handleSiguiente={handleSiguiente} />
+
       <MenuEmpleado />
       <ModalViewRegistros />
     </div>

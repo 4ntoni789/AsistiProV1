@@ -43,7 +43,7 @@ function createWindow(): void {
 
         if (url.startsWith('file://') && url.includes('/api/')) {
           const apiPath = url.split('/api/')[1]
-          const newUrl = `http://192.168.2.93:5000/api/${apiPath}`
+          const newUrl = `http://10.147.17.37:5000/api/${apiPath}`
           callback({ redirectURL: newUrl })
         } else {
           callback({})

@@ -3,9 +3,12 @@
 .App__dashboard__contPageOutlet__PageUsers__contUsers__table__usuario {
     background-color: $color-terceario;
     height: 220px;
-    width: 90%;
+    width: 95%;
     border-radius: 5px;
-    margin: 5px 0 5px 0;
+    margin: 5px auto 5px auto;
+    // margin: auto;
+    // margin-top: ;
+    // margin: auto !important;
     border: 1px solid $color-principal;
 
     &__cont {

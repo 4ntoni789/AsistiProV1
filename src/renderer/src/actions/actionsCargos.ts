@@ -7,7 +7,6 @@ export const Fetch_cargos = (userId: string) => {
     return async () => {
         try {
             const response = await fetch(`${apiUrl}/api/cargos`, {
-                method: 'GET',
                 headers: {
                     'x-id-usuario': userId
                 }

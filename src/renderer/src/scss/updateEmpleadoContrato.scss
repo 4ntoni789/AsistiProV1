@@ -1,12 +1,66 @@
-.App__dashboard__contPageOutlet__PageUsers__menuUser__contDataUser {
-    opacity: 0;
-    display: none;
+@import './variables';
 
-    &__dataUser {}
+.App__dashboard__contPageOutlet__PageUsers__menuUser__contDataUser {
+    position: absolute;
+    top: 0;
+    right: -75%;
+    width: 50%;
+    height: 100%;
+    background-color: $color-secundario-transparent2;
+    box-shadow: 1px 1px 20px 3px #3a3a3a;
+    transition: all .5s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &__btnClose {
+        position: absolute;
+        left: 10px;
+        top: 0;
+        font-size: 30px;
+
+        svg {
+            cursor: pointer;
+            transition: all .5s;
+
+            &:hover {
+                color: $color-principal;
+            }
+        }
+    }
+
 
     &__active {
-        // background-color: #f0a !important;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 50%;
+        height: 100vh;
+        background-color: $color-secundario;
+        box-shadow: 1px 1px 20px 3px #3a3a3a;
+        transition: all .5s;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
 
+    }
+
+    &__contInfo {
+        width: 50%;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+
+        span {
+            b {
+                font-weight: bold;
+            }
+        }
+
+        &__contBtn {
+            display: flex;
+            flex-direction: column;
+        }
     }
 
 

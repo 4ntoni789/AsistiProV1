@@ -1,0 +1,90 @@
+@import './variables';
+.App__dashboard__contPageOutlet__PageUsers__contCargos {
+    width: 90%;
+    height: 90vh;
+    background-color: $color-secundario;
+    border-radius: 5px;
+    padding: 20px;
+    animation: aparecer 1s forwards;
+
+    h2 {
+        width: 100%;
+        border-radius: 10px 10px 0 0;
+        margin: 00px 0 10px 0px;
+        padding: 15px 0 15px 30px;
+        font-weight: bold;
+        color: #dd8702;
+        // background-color: #dd8702;
+    }
+
+
+    &__contBtnNewCargo {
+        margin: 0px 0 10px 0;
+        width: 95%;
+        text-align: end;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+
+        button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            width: 150px;
+            height: 40px;
+            border-radius: 100px;
+            border: none;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all .5s;
+            background-color: $color-principal;
+
+            svg {
+                margin-left: 10px;
+                color: #fff;
+                font-size: 20px;
+                transition: all .5s;
+
+
+            }
+
+            &:disabled {
+                background-color: $color-item-header;
+                color: $color-secundario;
+
+                svg {
+                    color: $color-secundario;
+                }
+
+            }
+
+        }
+    }
+
+    &__table {
+        width: 100% !important;
+                height: calc(100% - (20% - -1px));
+
+        text-align: center;
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       
+       
+
+        &__contItem{
+        width: 95%;
+        }
+    }
+
+    table,
+    th,
+    td {
+
+        text-align: center;
+        border: 1px solid #fffff5db;
+    }
+
+}

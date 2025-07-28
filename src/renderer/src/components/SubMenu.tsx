@@ -1,14 +1,14 @@
-import { faAddressCard, faArrowRightToBracket, faChartGantt, faGear, faRightToBracket, faUser, faUserTie } from '@fortawesome/free-solid-svg-icons';
+import { faAddressCard, faArrowRightToBracket, faChartGantt, faGear, faUser, faUserTie } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import '../css/subMenu.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { Logout } from '@renderer/actions/actionsLogin';
+
 import { NavLink } from 'react-router';
 import { ActiveSubMenu } from '@renderer/actions/actionsMenu';
 import { ActiveSubMenuDeleteUsers } from '@renderer/actions/actionsUsers';
 
-function SubMenu(props) {
+function SubMenu({ }) {
   const dispatch = useDispatch();
   const menuActive = useSelector((state: any) => state.menuAccions.subMenuActive);
   const buttonRef = useRef<any | null>(null);
@@ -34,7 +34,7 @@ function SubMenu(props) {
   }, [menuActive]);;
 
   return (
-    <div className='App__dashboard__subMenu'>
+    <div className={menuActive ? 'App__dashboard__subMenu__active' : 'App__dashboard__subMenu'}>
       <div className='App__dashboard__subMenu__btn' title='Opciones'>
         <FontAwesomeIcon icon={faGear} ref={buttonRef} onClick={() => dispatch(ActiveSubMenu(!menuActive))} />
       </div>

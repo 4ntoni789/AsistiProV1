@@ -1,9 +1,9 @@
 .App__dashboard__contPageOutlet__PageUsers__contUsers__table__usuario {
   background-color: #1b1b1f;
   height: 220px;
-  width: 90%;
+  width: 95%;
   border-radius: 5px;
-  margin: 5px 0 5px 0;
+  margin: 5px auto 5px auto;
   border: 1px solid #dd8702;
 }
 .App__dashboard__contPageOutlet__PageUsers__contUsers__table__usuario__cont h2 {

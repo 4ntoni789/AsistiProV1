@@ -1,0 +1,50 @@
+.App__dashboard__contPageOutlet__PageUsers__menuUser__contDataUser__contratoNotFound {
+  position: absolute;
+  top: 0;
+  right: -75%;
+  width: 50%;
+  height: 100%;
+  background-color: rgba(99, 99, 99, 0.5019607843);
+  box-shadow: 1px 1px 20px 3px #3a3a3a;
+  transition: all 0.5s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuUser__contDataUser__contratoNotFound__contInputs {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuUser__contDataUser__contratoNotFound__contInputs__contBtn {
+  display: flex;
+  align-items: center;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuUser__contDataUser__contratoNotFound__contInputs__contBtn span {
+  font-size: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuUser__contDataUser__contratoNotFound__contInputs__contBtn span svg {
+  font-size: 30px;
+  margin: 0 10px 0 10px;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuUser__contDataUser__contratoNotFound__active {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100vh;
+  background-color: #333;
+  box-shadow: 1px 1px 20px 3px #3a3a3a;
+  transition: all 0.5s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/*# sourceMappingURL=formEmpleadoContrato.css.map */

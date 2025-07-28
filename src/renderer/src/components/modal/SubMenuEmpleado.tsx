@@ -19,6 +19,7 @@ function MenuEmpleado({ }) {
 
   const handleClickOutside = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target === modalRef.current) {
+      setVerEmpleadosOContrato(false);
       dispatch(ActiveSubMenuEmpleado({ user: {}, subMenuEmpleado: false }));
     }
   };
@@ -26,7 +27,7 @@ function MenuEmpleado({ }) {
   return (
     <div className={activeNewEmpleado.subMenuEmpleado ? 'App__dashboard__contPageOutlet__PageUsers__menuUser__active' : 'App__dashboard__contPageOutlet__PageUsers__menuUser'}
       ref={modalRef} onClick={handleClickOutside}>
-      <div className='App__dashboard__contPageOutlet__PageUsers__newUser__btnControl'>
+      <div className='App__dashboard__contPageOutlet__PageUsers__menuUser__btnControl'>
         <button className={verEmpleadosOContrato ? 'App__dashboard__contPageOutlet__PageUsers__menuUser__btnControl__btn__active' : 'App__dashboard__contPageOutlet__PageUsers__menuUser__btnControl__btn'}
           onClick={() => setVerEmpleadosOContrato(true)}>Datos del empleado</button>
         <button className={verEmpleadosOContrato ? 'App__dashboard__contPageOutlet__PageUsers__menuUser__btnControl__btn' : 'App__dashboard__contPageOutlet__PageUsers__menuUser__btnControl__btn__active'}

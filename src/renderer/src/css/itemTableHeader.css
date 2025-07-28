@@ -8,26 +8,31 @@
   text-align: center;
   position: relative;
   margin: 10px 0 0px 0;
-  padding-left: 30px;
-  animation: aparecer 1s forwards;
 }
 .App__init__tablaMarcaciones__body__itemHeader__header {
   margin: 10px 0 10px 0;
   width: 100%;
   display: flex;
+  justify-content: space-around;
   align-items: center;
 }
 .App__init__tablaMarcaciones__body__itemHeader__header h4 {
-  font-weight: bold;
+  transition: all 0.5s;
+  font-weight: 500;
   width: 30%;
-  font-size: 17px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
 }
-@media (min-width: 1366px) {
-  .App__init__tablaMarcaciones__body__itemHeader__header h4 {
-    text-align: center;
-    font-size: 15px;
-    width: 25% !important;
-  }
+.App__init__tablaMarcaciones__body__itemHeader__header h4:first-child {
+  text-align: center !important;
+  width: 450px !important;
+  display: flex;
+  align-items: center;
+}
+.App__init__tablaMarcaciones__body__itemHeader__header h4:first-child svg {
+  font-size: 50px;
 }
 
 /*# sourceMappingURL=itemTableHeader.css.map */
