@@ -1,27 +1,35 @@
-import { faEllipsisVertical, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faRotate, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {  ActiveSubMenuPuntoVenta } from '@renderer/actions/actionsLogin';
 import { ActiveSubMenuDeleteUsers } from '@renderer/actions/actionsUsers';
 import { extraerHora } from '@renderer/scripts/extraerHora';
 import { useDispatch } from 'react-redux';
+import '../../css/subItemHorario.css';
+import { calcularHorasTrabajadas } from '@renderer/scripts/calcularHorasTrabajadas';
+import { formatearHoraHorario } from '@renderer/scripts/formatearHoraHorario';
 
-function SubItemHorario({ item }) {
+function SubItemHorario({ item, rHorario, restHorario }) {
   const dispatch = useDispatch();
 
   return (
-    <div className='App__init__tablaMarcaciones__body__item__contRegistros__active__marcaciones__horario__contItem'>
-      <span className='App__init__tablaMarcaciones__body__item__contRegistros__active__marcaciones__horario__contItem__dia'>Dia: {item.dia_semana}</span>
-      <span className='App__init__tablaMarcaciones__body__item__contRegistros__active__marcaciones__horario__contItem__entrada'>Entrada: {extraerHora(item.hora_entrada)}</span>
-      <span className='App__init__tablaMarcaciones__body__item__contRegistros__active__marcaciones__horario__contItem__salida'>Salida: {extraerHora(item.hora_salida)}</span>
-      <span className='App__init__tablaMarcaciones__body__item__contRegistros__active__marcaciones__horario__contItem__options'>
-        <FontAwesomeIcon  icon={faTrash} onClick={() => {
-          dispatch(ActiveSubMenuDeleteUsers({
-          user: item,
-          activeDeleteUsers: true,
-          typeRemove: 'Horario'
-        }));
-        }} title='Eliminar' />
-      </span>
+    <div className='App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__form__horarios__itemHorario__horarios__item'>
+      <span >Dia: <b>{item.dia_semana}</b> Horas a trabajar:<b> {calcularHorasTrabajadas(formatearHoraHorario(item.hora_entrada), formatearHoraHorario(item.hora_salida), formatearHoraHorario(item.hora_salida_descanso),
+        formatearHoraHorario(item.hora_regreso_descanso))}</b></span>
+      <span >Entrada: <b>{extraerHora(item.hora_entrada)}</b> Salida: <b>{extraerHora(item.hora_salida)}</b></span>
+
+      <span >Descanso: <b>{extraerHora(item.hora_salida_descanso)}</b> Regreso descanso: <b>{extraerHora(item.hora_regreso_descanso)}</b></span>
+
+      <span >Entrada valida: <b>{extraerHora(item.hora_valida_entrada)} / {extraerHora(item.hora_valida_entrada_hasta)}</b></span>
+      <span >Salida valida: <b>{extraerHora(item.hora_valida_salida)} / {extraerHora(item.hora_valida_salida_hasta)}</b></span>
+      {
+        rHorario === null ?
+          <FontAwesomeIcon icon={faTrash} onClick={() => {
+            dispatch(ActiveSubMenuDeleteUsers({
+              user: item,
+              activeDeleteUsers: true,
+              typeRemove: 'Horario'
+            }));
+          }} title='Eliminar' /> : <FontAwesomeIcon icon={faRotate} title='Eliminar' onClick={restHorario} />
+      }
     </div>
   );
 }

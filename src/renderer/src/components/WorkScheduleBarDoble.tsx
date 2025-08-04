@@ -58,7 +58,6 @@ export const WorkScheduleBarDoble: React.FC<Props2> = ({ registros }: any) => {
     const existeSalida: any = tipes.filter((reg2: any) => reg2.tipo == 'Salida' || reg2.tipo == 'Salida temprana');
 
     if (existeDescansoSalida.length > 0 && existeDescansoEntrada.length > 0) {
-      console.log(existeDescansoSalida[0].reg?.hora)
       setValoresLineaTiempo((prev) => ({
         ...prev,
         breakStart: horaToDecimal(existeDescansoSalida[0].reg?.hora),
@@ -70,7 +69,6 @@ export const WorkScheduleBarDoble: React.FC<Props2> = ({ registros }: any) => {
     }
 
     if (existeEntrada.length > 0 && existeSalida.length > 0) {
-      console.log(existeEntrada[0].reg?.hora)
 
       setValoresLineaTiempo((prev) => ({
         ...prev,
@@ -98,7 +96,7 @@ export const WorkScheduleBarDoble: React.FC<Props2> = ({ registros }: any) => {
       <div className='ruler'>
         {Array.from({ length: 13 }).map((_, i) => {
           const hour = i * 2;
-          const label = hour === 24 ? '24:00' : hour.toString().padStart(2, '0');
+          const label = hour === 24 ? '24' : hour.toString().padStart(2, '0');
           return (
             <div key={hour} className='rulerMark'>
               {label}
@@ -134,7 +132,7 @@ export const WorkScheduleBarDoble: React.FC<Props2> = ({ registros }: any) => {
             <div className='ruler'>
               {Array.from({ length: 13 }).map((_, i) => {
                 const hour = i * 2;
-                const label = hour === 24 ? '24:00' : hour.toString().padStart(2, '0');
+                const label = hour === 24 ? '24' : hour.toString().padStart(2, '0');
                 return (
                   <div key={hour} className='rulerMark'>
                     {label}

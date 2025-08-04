@@ -9,7 +9,6 @@ import { ActiveSubMenuEmpleado, Fet_update_empleado } from '@renderer/actions/ac
 import { Fetch_cargos } from '@renderer/actions/actionsCargos';
 import { AppDispatch } from '@renderer/store';
 import { obtenerDatos } from '@renderer/scripts/obtenerDatosFetch';
-import '../../css/menuEmpleados.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 

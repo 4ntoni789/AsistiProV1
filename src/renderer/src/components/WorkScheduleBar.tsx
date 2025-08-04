@@ -1,11 +1,15 @@
 import React from 'react';
 import '../css/workScheduleBar.css';
 import { Props } from '@renderer/typesTS';
+import { decimalToHora } from '@renderer/scripts/revertirMinutoAHora';
+import { calcularHorasTrabajadas } from '@renderer/scripts/calcularHorasTrabajadas';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBriefcase } from '@fortawesome/free-solid-svg-icons';
 
 export const WorkScheduleBar: React.FC<Props> = ({ start, end, allowedStartEntrada, allowedEndEntrada, allowedStartSalida, allowedEndSalida, earlyExit, breakStart, breakEnd, graceMinutes }: any) => {
   const percentPerHour = 100 / 24;
 
-  const grace = (graceMinutes ?? 10) / 60; 
+  const grace = (graceMinutes ?? 10) / 60;
 
   const adjustedStartMin = start - grace;
   const adjustedEndMax = end + grace;
@@ -15,7 +19,7 @@ export const WorkScheduleBar: React.FC<Props> = ({ start, end, allowedStartEntra
       <div className='ruler'>
         {Array.from({ length: 13 }).map((_, i) => {
           const hour = i * 2;
-          const label = hour === 24 ? '24:00' : hour.toString().padStart(2, '0');
+          const label = hour === 24 ? '24' : hour.toString().padStart(2, '0');
           return (
             <div key={hour} className='rulerMark'>
               {label}
@@ -78,6 +82,7 @@ export const WorkScheduleBar: React.FC<Props> = ({ start, end, allowedStartEntra
         <div><span className="box blue"></span>Tiempo de trabajo</div>
         <div><span className="box striped"></span>Salida tardía/anticipada permitida</div>
         <div><span className="box gray"></span>Descanso</div>
+        <div><span className='box'><FontAwesomeIcon icon={faBriefcase}/></span>Horas a trabajara: {calcularHorasTrabajadas(decimalToHora(start), decimalToHora(end), decimalToHora(breakStart), decimalToHora(breakEnd))}</div>
       </div>
     </div>
   );

@@ -8,11 +8,9 @@ import { AppDispatch } from '@renderer/store';
 import { UserDataType } from '@renderer/typesTS';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import ItemUsuario from '@renderer/components/items/ItemUsuario';
 import { obtenerDatos } from '@renderer/scripts/obtenerDatosFetch';
 import Buscandor from '@renderer/components/Buscandor';
 import Pagination from '@renderer/components/Pagination';
-import { AnimatePresence, motion } from 'framer-motion';
 import TablaDeUsuarios from '@renderer/components/tablas/TablaDeUsuarios';
 
 function Users() {

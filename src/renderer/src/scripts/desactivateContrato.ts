@@ -1,7 +1,9 @@
+const apiUrl = import.meta.env.VITE_API_URL;
+
 export const DesactivateContrato = async (activeDeleteUsers, userData) => {
   let ress;
   try {
-    const response = await fetch(`/api/contrato/${activeDeleteUsers.user.id_contrato}`, {
+    const response = await fetch(`${apiUrl}/api/contrato/${activeDeleteUsers.user.id_contrato}`, {
       method: 'PUT',
       headers: {
         'x-id-usuario': userData.id_usuario,

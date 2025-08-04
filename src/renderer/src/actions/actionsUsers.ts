@@ -155,7 +155,6 @@ export const Fetch_user = (userId: string) => {
             });
             const result = await response.json();
             const userFilter = result.filter((user) => user.id_usuario != userId);
-            console.log(result)
 
             if (response.ok) {
                 return userFilter;

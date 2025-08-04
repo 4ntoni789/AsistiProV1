@@ -1,4 +1,4 @@
-import { faBars, faChevronDown, faChevronLeft, faChevronRight, faChevronUp, faEllipsis, faEllipsisVertical, faPencil, faShop, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faEllipsisVertical, faPencil, faShop, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -6,8 +6,7 @@ import '../../css/itemTablePuntoVenta.css';
 import { ActiveSubMenuDeleteUsers } from '@renderer/actions/actionsUsers';
 import { ActiveSubMenuPuntoVenta, ActiveSubMenuUpdatePuntoVenta } from '@renderer/actions/actionsPuntoDeVenta';
 
-function ItemTablePuntoVenta({ item, clickLoad }) {
-  const [activeItem, setActiveItem] = useState(false);
+function ItemTablePuntoVenta({ item }) {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const buttonRef = useRef<any | null>(null);

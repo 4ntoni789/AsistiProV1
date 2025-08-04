@@ -7,8 +7,9 @@ import { ActiveSubMenuPuntoVenta } from '@renderer/actions/actionsPuntoDeVenta';
 import { obtenerDatos } from '@renderer/scripts/obtenerDatosFetch';
 import { Fetch_cargos } from '@renderer/actions/actionsCargos';
 import { AppDispatch } from '@renderer/store';
+import '../../css/newHorario.css';
 
-function NewHorario(props) {
+function NewHorario({ activeSubModal }: { activeSubModal: boolean }) {
   const activeMenuPuntoVenta = useSelector((state: any) => state.menuAccions.subMenuPuntoVenta);
   const [userCargo, setUserCargo] = useState<[]>([]);
   const dispatch = useDispatch<AppDispatch>();
@@ -20,12 +21,14 @@ function NewHorario(props) {
 
   return (
     <>
-      <div className='App__dashboard__contPageOutlet__PageUsers__newUser__form'>
-        <div className='App__dashboard__contPageOutlet__PageUsers__newUser__form__close'>
+      <div className={!activeSubModal && activeMenuPuntoVenta.subMenuPuntoVenta ?
+        'App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__newHorario__active'
+        : 'App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__newHorario'}>
+        <div className='App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__newHorario__btnClose'>
           <FontAwesomeIcon icon={faXmark} onClick={() => dispatch((ActiveSubMenuPuntoVenta({ user: {}, subMenuPuntoVenta: false })))} />
         </div>
         <FormNewHorario userCargo={userCargo} />
-      </div>
+      </div >
     </>
   );
 }

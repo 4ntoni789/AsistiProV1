@@ -33,7 +33,6 @@ function MenuEmpleado({ }) {
         <button className={verEmpleadosOContrato ? 'App__dashboard__contPageOutlet__PageUsers__menuUser__btnControl__btn' : 'App__dashboard__contPageOutlet__PageUsers__menuUser__btnControl__btn__active'}
           onClick={() => setVerEmpleadosOContrato(false)}>Datos laborales</button>
       </div>
-
       <UpdateEmpleado activeSubModal={verEmpleadosOContrato} />
 
       <UpdateEmpleadoContrato activeSubModal={verEmpleadosOContrato} />

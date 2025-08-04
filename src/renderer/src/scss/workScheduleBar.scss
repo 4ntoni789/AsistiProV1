@@ -4,16 +4,18 @@ $border-color: #444;
 $valid-time-color: #f4b942;
 $work-time-color: #4da6ff;
 $early-exit-stripe-light: #b3d9ff;
-$descanso:#00ff6a;
+$descanso: #00ff6a;
 
 .timeline-container {
-  width: 100%;
+  width: 95%;
   padding: 10px;
+  margin: auto !important;
   background: $background;
   color: white;
   font-size: 12px;
   font-family: sans-serif;
   border-radius: 5px;
+  transition: all .5s;
 
   .ruler {
     display: flex;
@@ -48,12 +50,14 @@ $descanso:#00ff6a;
     z-index: 3;
     background-color: $descanso;
     opacity: 0.5;
+    transition: all .5s;
   }
 
 
   .box.gray {
     background-color: $descanso;
     opacity: 0.5;
+    transition: all .5s;
   }
 
 
@@ -66,6 +70,8 @@ $descanso:#00ff6a;
         rgb(255, 104, 77) 5px,
         rgba(255, 255, 255, 0.1) 5px,
         rgba(255, 255, 255, 0.1) 10px);
+    transition: all .5s;
+
   }
 
 
@@ -75,12 +81,16 @@ $descanso:#00ff6a;
     background: $timeline-bg;
     border: 1px solid $border-color;
     width: 100%;
+    transition: all .5s;
+
 
     .valid-time {
       position: absolute;
       height: 100%;
       background-color: $valid-time-color;
       z-index: 1;
+      transition: all .5s;
+
     }
 
     .work-time {
@@ -88,6 +98,8 @@ $descanso:#00ff6a;
       height: 100%;
       background-color: $work-time-color;
       z-index: 2;
+      transition: all .5s;
+
     }
   }
 
@@ -96,6 +108,11 @@ $descanso:#00ff6a;
     flex-direction: column;
     gap: 8px;
     margin-top: 12px;
+
+    div {
+      display: flex;
+      width: 100%;
+    }
 
     .box {
       display: inline-block;

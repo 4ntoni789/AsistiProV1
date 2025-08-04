@@ -1,0 +1,40 @@
+.App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__form__horarios__itemHorario__horarios__item {
+  position: relative;
+  background-color: #666;
+  border-radius: 5px;
+  margin: 5px auto 5px auto;
+  padding: 0 10px 0 10px;
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__form__horarios__itemHorario__horarios__item span {
+  width: 50%;
+  text-align: left;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__form__horarios__itemHorario__horarios__item span:nth-child(1) b {
+  font-weight: bold;
+  color: #dd8702;
+}
+@media (max-width: 1366px) {
+  .App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__form__horarios__itemHorario__horarios__item span {
+    width: auto;
+  }
+}
+.App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__form__horarios__itemHorario__horarios__item span b {
+  font-weight: bold;
+  color: #fff;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__form__horarios__itemHorario__horarios__item svg {
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  cursor: pointer;
+  transition: color 0.5s;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__form__horarios__itemHorario__horarios__item svg:hover {
+  color: #dd8702;
+}
+
+/*# sourceMappingURL=subItemHorario.css.map */

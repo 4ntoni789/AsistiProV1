@@ -7,13 +7,13 @@ import BtnDarkMode from '@renderer/components/BtnDarkMode';
 import { ActiveSubMenuDeleteUsers, ActiveSubMenuUpdateUsers } from '@renderer/actions/actionsUsers';
 import { ActiveSubMenuUpdatePass } from '@renderer/actions/actionsUser';
 
-function Usuario({}) {
+function Usuario({ }) {
   const dataUser = useSelector((state: any) => state.loginAccess.userLogin);
   const dispatch = useDispatch();
 
   return (
     <div className='App__dashboard__contPageOutlet__user'>
-      <BtnDarkMode/>
+      <BtnDarkMode />
       <div className='App__dashboard__contPageOutlet__user__view'>
         <div className='App__dashboard__contPageOutlet__user__view__userLenght'>
           <h2>{dataUser.nombre_usuario[0].toUpperCase()}</h2>
@@ -30,23 +30,27 @@ function Usuario({}) {
         <span>Estado de este usuario: <b>{dataUser.estado}</b></span>
         <span>Rol de este usuario: <b>{dataUser.type_role}</b></span>
 
-        <ButtonStyle disabled={false} nameBtn='Editar información' funtion={() => dispatch(ActiveSubMenuUpdateUsers({
+        <button className='btn_style' onClick={() => dispatch(ActiveSubMenuUpdateUsers({
           user: dataUser,
           subMenuUpdateUser: true
-        }))} />
-        <ButtonStyle disabled={false} nameBtn='Cambiar contraseña' funtion={() => dispatch(ActiveSubMenuUpdatePass({
+        }))} >Editar información</button>
+
+        <button className='btn_style' onClick={() => dispatch(ActiveSubMenuUpdatePass({
           user: dataUser,
           subMenuUpdatePass: true
-        }))} />
-        <ButtonStyle disabled={false} nameBtn='Cerrar sesión' funtion={() =>
+        }))}>
+          Cambiar contraseña
+        </button>
+
+        <button className='btn_style' onClick={() =>
           dispatch(ActiveSubMenuDeleteUsers({
             user: {},
             activeDeleteUsers: true,
             typeRemove: 'Logout'
-          }))} />
+          }))}>Cerrar sesión</button>
       </div>
       <UpdateSingleUser />
-      <UpdatePass/>
+      <UpdatePass />
     </div>
   );
 }

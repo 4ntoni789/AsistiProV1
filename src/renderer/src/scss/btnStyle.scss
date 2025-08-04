@@ -1,7 +1,8 @@
 @import './variables';
 
 .btn_style {
-    margin: 5px 0 5px 0;
+    width: 90%;
+    margin: 2px auto 2px auto;
     background-color: $colo-text-claro;
     height: 40px;
     border: none;
@@ -23,8 +24,9 @@
 
 
 .btn_style__remove {
-    margin: 5px 0 5px 0;
+    margin: 2px auto 2px auto;
 
+    width: 90%;
     background-color: $color-principal;
     height: 40px;
     border: none;

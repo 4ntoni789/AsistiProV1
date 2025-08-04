@@ -1,0 +1,173 @@
+@charset "UTF-8";
+.App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__newHorario {
+  position: absolute;
+  top: 0;
+  right: -75%;
+  width: 50%;
+  height: 100%;
+  background-color: rgba(99, 99, 99, 0.5019607843);
+  box-shadow: 1px 1px 20px 3px #3a3a3a;
+  transition: all 0.5s;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__newHorario__active {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100vh;
+  background-color: #333;
+  box-shadow: 1px 1px 20px 3px #3a3a3a;
+  transition: all 0.5s;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__newHorario__dataUser {
+  position: absolute;
+  left: -40%;
+  top: 0;
+  height: 100vh;
+  background-color: #dd8702;
+  width: 50%;
+  box-shadow: 5px 0 10px rgba(0, 0, 0, 0.5);
+}
+.App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__newHorario__dataUser h2 {
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+  margin: 0px 0 10px 0px;
+  padding: 15px 0 15px 0px;
+  font-weight: bold;
+  color: #ffffff;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__newHorario__dataUser span {
+  width: 80%;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__newHorario__dataUser span b {
+  font-weight: bold;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__newHorario__dataUser__contcheck {
+  width: 95%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 20px auto 0 auto;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__newHorario__dataUser__contcheck__checkDia {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  margin: 5px 0 5px 0;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__newHorario__dataUser__contcheck__checkDia label {
+  width: 65px;
+  display: inline-block !important;
+  margin: 0 10px 0 0;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__newHorario__dataUser__contcheck__checkDia input[type=checkbox] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 30px;
+  height: 30px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  position: relative;
+  outline: none;
+  cursor: pointer;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__newHorario__dataUser__contcheck__checkDia input[type=checkbox]:checked {
+  background-color: #4CAF50;
+  border-color: #4CAF50;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__newHorario__dataUser__contcheck__checkDia input[type=checkbox]:checked::before {
+  content: "✓";
+  /* Símbolo de verificación */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 16px;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__newHorario__dataUser__contcheck__checkDia input[type=checkbox]:focus {
+  border-color: #ccc;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__newHorario__dataUser__formNewHorario {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__newHorario__dataUser__formNewHorario__contInput {
+  height: 100vh;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.5s;
+  overflow: auto;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__newHorario__dataUser__formNewHorario__contInput__contDobleTime {
+  width: 95%;
+  margin: 0 auto 0 auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__newHorario__dataUser__formNewHorario__contInput__contDobleTime input {
+  width: 35%;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__newHorario__dataUser__formNewHorario__contInput__contDobleTime__label {
+  width: 20% !important;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__newHorario__dataUser__formNewHorario__contInput h2 {
+  width: 90%;
+  border-radius: 10px 10px 0 0;
+  margin: 0px auto 10px auto;
+  padding: 15px 0 15px 0px;
+  font-weight: bold;
+  color: #dd8702;
+  text-align: left;
+}
+@media (max-width: 1366px) {
+  .App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__newHorario__dataUser__formNewHorario__contInput h2 {
+    display: none;
+  }
+}
+.App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__newHorario__dataUser__formNewHorario__contInput__label {
+  width: 85% !important;
+  margin: 0 auto 0 auto;
+  text-align: left;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__newHorario__dataUser__btnObtenerHorario {
+  position: absolute;
+  left: -30px;
+  height: 40px;
+  width: 40px;
+  border: none;
+  border-radius: 100%;
+  background-color: #dd8702;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  transition: all 0.5s;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__newHorario__dataUser__btnObtenerHorario:hover {
+  background-color: #c47601;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__newHorario__btnClose {
+  position: absolute;
+  left: 10px;
+  top: 0;
+  font-size: 30px;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__newHorario__btnClose svg {
+  cursor: pointer;
+  transition: all 0.5s;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__newHorario__btnClose svg:hover {
+  color: #dd8702;
+}
+
+/*# sourceMappingURL=newHorario.css.map */
