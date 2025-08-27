@@ -33,6 +33,7 @@ function TablaMarcaciones() {
   const [direccion, setDireccion] = useState<'siguiente' | 'anterior' | 'busqueda'>('busqueda');
 
   const filteredAccesos = ordenarPorNombre(accesos).filter((item) =>
+    (item.id_empleado || '').toString().includes(searchTerm) ||
     (item.nombres || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
     (item.apellidos || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
     (item.cedula || '').toString().includes(searchTerm) ||
@@ -94,6 +95,7 @@ function TablaMarcaciones() {
     setPaginaActual(1);
   };
 
+
   useEffect(() => {
     obtenerDatos(null, dispatch(Fetch_contratos(userId)), setUserContrato);
     obtenerDatos(null, dispatch(Fetch_empleados(userId)), setAccesos);
@@ -105,8 +107,6 @@ function TablaMarcaciones() {
       () => clearInterval(interval);
     }
   }, [userData == true, clickLoad == true, activeNewEmpleado, activeDeleteUsers, spam]);
-
-
 
   const [isOpen, setIsOpen] = useState(false);
   const buttonRef = useRef<HTMLSpanElement | null>(null);
@@ -129,7 +129,7 @@ function TablaMarcaciones() {
     return () => {
       document.removeEventListener('mousedown', handleClick);
     };
-  }, [isOpen]);;
+  }, [isOpen]);
 
 
   return (
@@ -142,19 +142,12 @@ function TablaMarcaciones() {
             <FontAwesomeIcon icon={faPlus} />
           </span>
           <span>
-            <FontAwesomeIcon className={clickLoad ? 'App__init__contTable__tablaMarcaciones__header__contBtn__btnLoad__active' :
+            <FontAwesomeIcon title='Recargar' className={clickLoad ? 'App__init__contTable__tablaMarcaciones__header__contBtn__btnLoad__active' :
               'App__init__contTable__tablaMarcaciones__header__contBtn__btnLoad'} icon={faArrowsRotate} onClick={() => setClickLoad(true)} />
           </span>
-          <span ref={buttonRef}>
-            <FontAwesomeIcon icon={faEllipsisVertical} onClick={() => setIsOpen(!isOpen)} />
+          <span>
+            <FontAwesomeIcon icon={faCalendarXmark} title='Sin contrato' />
           </span>
-
-          <div className={isOpen ? 'App__init__contTable__tablaMarcaciones__header__contBtn__contOptions__active' :
-            'App__init__contTable__tablaMarcaciones__header__contBtn__contOptions'}>
-            <span><FontAwesomeIcon icon={faCalendar} /> Fecha de inicio</span>
-            <span><FontAwesomeIcon icon={faCalendar} /> Fecha de fin</span>
-            <span><FontAwesomeIcon icon={faCalendarXmark} /> Sin contrato</span>
-          </div>
         </div>
       </div>
       <div className='App__init__contTable__tablaMarcaciones__body'>
@@ -204,9 +197,6 @@ function TablaMarcaciones() {
         </AnimatePresence>
       </div>
       <Pagination paginaActual={paginaActual} totalPaginas={totalPages} handleAnterior={handleAnterior} handleSiguiente={handleSiguiente} />
-
-      <MenuEmpleado />
-      <ModalViewRegistros />
     </div>
   );
 }

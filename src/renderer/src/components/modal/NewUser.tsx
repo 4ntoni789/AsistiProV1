@@ -44,7 +44,7 @@ function NewUser() {
           <label htmlFor='nombre_usuario'>Nombre completo</label>
           <input id='nombre_usuario' type="text" {...register('nombre_usuario', { required: true })} placeholder='Nombre completo' />
           <label htmlFor='email'>Correo electronico</label>
-          <input id='email' type="text" {...register('email', { required: true })} placeholder='Correo electronico' />
+          <input id='email' type="email" {...register('email', { required: true })} placeholder='Correo electronico' />
           <div className='App__dashboard__contPageOutlet__PageUsers__newUser__form__contInputs__contForm'>
             <label htmlFor='contrasena'>Contraseña</label>
             <div className='App__dashboard__contPageOutlet__PageUsers__newUser__form__contInputs__contForm__showPass'>

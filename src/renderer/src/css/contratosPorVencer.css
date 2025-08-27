@@ -1,0 +1,51 @@
+.App__dashboard__contPageOutlet__PageUsers__contratosPorVencer {
+  width: 20%;
+  background-color: #333;
+  margin-top: 60px;
+  border-radius: 10px;
+  height: 100vh;
+  animation: aparecer 1s forwards;
+}
+.App__dashboard__contPageOutlet__PageUsers__contratosPorVencer__contContratosPorVencer {
+  position: relative;
+  height: 87vh;
+  overflow: auto;
+}
+@media (max-width: 1366px) {
+  .App__dashboard__contPageOutlet__PageUsers__contratosPorVencer__contContratosPorVencer {
+    height: 82%;
+  }
+}
+.App__dashboard__contPageOutlet__PageUsers__contratosPorVencer__contContratosPorVencer::-webkit-scrollbar {
+  width: 12px;
+  /* width of the entire scrollbar */
+}
+.App__dashboard__contPageOutlet__PageUsers__contratosPorVencer__contContratosPorVencer::-webkit-scrollbar-track {
+  background: #444;
+  border-radius: 10px;
+  /* color of the tracking area */
+}
+.App__dashboard__contPageOutlet__PageUsers__contratosPorVencer__contContratosPorVencer::-webkit-scrollbar-thumb {
+  background-color: #dd8702;
+  /* color of the scroll thumb */
+  border-radius: 20px;
+  /* roundness of the scroll thumb */
+  border: 3px solid #dd8702;
+  /* creates padding around scroll thumb */
+}
+.App__dashboard__contPageOutlet__PageUsers__contratosPorVencer h2 {
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+  margin: 0px 0 0px 0px;
+  padding: 15px 0 15px 0px;
+  font-weight: bold;
+  color: #dd8702;
+  text-align: center;
+}
+@media (max-width: 1366px) {
+  .App__dashboard__contPageOutlet__PageUsers__contratosPorVencer {
+    width: 30%;
+  }
+}
+
+/*# sourceMappingURL=contratosPorVencer.css.map */

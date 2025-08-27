@@ -1,8 +1,10 @@
 .App__init__contTable__tablaMarcaciones__modalRegistros__contDatos__pagination {
   text-align: end;
   margin-right: 20px;
+  margin-top: -3px;
 }
 .App__init__contTable__tablaMarcaciones__modalRegistros__contDatos__pagination span {
+  display: inline-block;
   margin: 0 10px 0 10px;
 }
 .App__init__contTable__tablaMarcaciones__modalRegistros__contDatos__pagination button {

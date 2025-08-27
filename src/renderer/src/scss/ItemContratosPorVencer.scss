@@ -1,0 +1,82 @@
+@import './variables';
+
+.App__dashboard__contPageOutlet__PageUsers__contratosPorVencer__contContratosPorVencer__itemContratosPorVencer {
+    position: relative;
+    background-color: $color-item-claro;
+    border-radius: 5px;
+    width: 90%;
+    margin: 10px auto 10px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // flex-direction: column;
+    max-height: 130px;
+    transition: all .5s;
+    border: 1px solid transparent;
+    cursor: pointer;
+    animation: slideDownFade 0.5s ease-out;
+    padding: 5px;
+
+    &:hover {
+        border: 1px solid $color-principal;
+    }
+
+
+    h5 {
+        margin: 0 0 0 5px;
+    }
+
+    h5:last-child {
+        font-size: 10px;
+        bottom: 0;
+        right: 0;
+        position: absolute;
+    }
+
+    &__ico {
+        width: 30%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        svg {
+            font-size: 400%;
+            color: $color-principal;
+        }
+    }
+
+    &__info {
+        width: 70%;
+
+        b {
+            color:$color-secundario;
+            font-weight: 600;
+            text-decoration: underline;
+        }
+
+        span {
+            font-weight: bold;
+        }
+    }
+
+}
+
+.item-destacado {
+    background: linear-gradient(270deg, #ff6b6b, #ffd93d, #6bcbee);
+    background-size: 600% 600%;
+    animation: gradienteAnimado 6s ease infinite, slideDownFade 0.5s ease-out;
+}
+
+@keyframes gradienteAnimado {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}

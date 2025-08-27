@@ -1,5 +1,4 @@
 import Login from '@renderer/page/Login';
-import { useEffect } from 'react';
 import { Route, HashRouter as Router, Routes } from 'react-router';
 import ProtectiveRoute from './ProtectiveRoute';
 import { useSelector } from 'react-redux';
@@ -13,8 +12,10 @@ import PuntoVenta from '@renderer/page/PuntoVenta';
 import Empleadores from '@renderer/page/Empleadores';
 import User from '@renderer/page/User';
 import Reportes from '@renderer/page/Reportes';
+import Contruccion from '@renderer/components/Construccion';
+import Contratos from '@renderer/page/Contratos';
 
-function Enrutado(props) {
+function Enrutado({}) {
   const userData = useSelector((state: any) => state.loginAccess.validationAccess);
 
   return (
@@ -28,11 +29,11 @@ function Enrutado(props) {
               <Route path='users' element={<Users />} />
               <Route path='pSale' element={<PuntoVenta />} />
               <Route path='employe' element={<Empleados />} />
-              <Route path='ausentismo' element={<h2>Ausentismo</h2>} />
+              <Route path='ausentismo' element={<Contruccion title={'Ausentismo en construccion....'}/>} />
               <Route path='report' element={<Reportes />} />
               <Route path='roles' element={<Roles />} />
               <Route path='cargos' element={<Cargos />} />
-              <Route path='contracts' element={<h2>Contratos</h2>} />
+              <Route path='contracts' element={<Contratos/>} />
               <Route path='empleadores' element={<Empleadores />} />
               <Route path='user' element={<User />} />
             </Route >

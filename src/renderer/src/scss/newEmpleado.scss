@@ -48,8 +48,13 @@
             margin: auto;
             width: 80%;
 
+            label{
+                margin: auto;
+                width: 90%;
+            }
+
             &__header {
-                width: 100%;
+                width: 90%;
                 margin: auto;
                 height: 8vh;
                 display: flex;

@@ -1,0 +1,172 @@
+.App__dashboard__contPageOutlet__PageUsers__contContratos {
+  width: 75%;
+  background-color: #333;
+  height: 100vh;
+  margin-top: 60px;
+  border-radius: 10px;
+  padding-bottom: 30px;
+  animation: aparecer 1s forwards;
+}
+.App__dashboard__contPageOutlet__PageUsers__contContratos__title {
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+  margin: 0px 0 10px 0px;
+  padding: 15px 0 15px 30px;
+  font-weight: bold;
+  color: #dd8702;
+}
+.App__dashboard__contPageOutlet__PageUsers__contContratos__contBtnNewCargo {
+  position: relative;
+  margin: 0px 0 10px 0;
+  width: 95%;
+  text-align: end;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.App__dashboard__contPageOutlet__PageUsers__contContratos__contBtnNewCargo button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  width: auto;
+  height: 40px;
+  border-radius: 100px;
+  border: none;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.5s;
+  background-color: #dd8702;
+}
+.App__dashboard__contPageOutlet__PageUsers__contContratos__contBtnNewCargo button svg {
+  margin-left: 10px;
+  color: #fff;
+  font-size: 20px;
+  transition: all 0.5s;
+}
+.App__dashboard__contPageOutlet__PageUsers__contContratos__contBtnNewCargo button svg:hover {
+  color: #dd8702;
+}
+.App__dashboard__contPageOutlet__PageUsers__contContratos__contBtnNewCargo button:disabled {
+  background-color: #666;
+  color: #333;
+}
+.App__dashboard__contPageOutlet__PageUsers__contContratos__contBtnNewCargo button:disabled svg {
+  color: #333;
+}
+.App__dashboard__contPageOutlet__PageUsers__contContratos__contBtnNewCargo__contBtnActions svg {
+  margin-left: 10px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 20px;
+  transition: all 0.5s;
+}
+.App__dashboard__contPageOutlet__PageUsers__contContratos__contBtnNewCargo__contBtnActions svg:hover {
+  color: #dd8702;
+}
+.App__dashboard__contPageOutlet__PageUsers__contContratos__contBtnNewCargo__contBtnActions__icoActive svg {
+  color: #dd8702 !important;
+  animation: respirar 2s infinite alternate ease-in-out;
+}
+.App__dashboard__contPageOutlet__PageUsers__contContratos__contBtnNewCargo__options {
+  display: flex;
+  flex-direction: column;
+  background-color: #555;
+  position: absolute;
+  top: -7px;
+  right: 0;
+  z-index: 10;
+  min-width: 180px;
+  border-radius: 10px;
+  padding: 5px 5px 5px 0px;
+  box-shadow: 4px 17px 15px -3px rgba(1, 1, 0, 0.3);
+  border: 1px solid #dd8702;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s;
+}
+.App__dashboard__contPageOutlet__PageUsers__contContratos__contBtnNewCargo__options span {
+  display: inline-block !important;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+.App__dashboard__contPageOutlet__PageUsers__contContratos__contBtnNewCargo__options span:hover {
+  transition: all 0.5s;
+  color: #dd8702;
+}
+.App__dashboard__contPageOutlet__PageUsers__contContratos__contBtnNewCargo__options__active {
+  display: flex;
+  flex-direction: column;
+  background-color: #555;
+  position: absolute;
+  top: 7px;
+  right: 0;
+  z-index: 10;
+  min-width: 180px;
+  border-radius: 10px;
+  padding: 5px 5px 5px 0px;
+  box-shadow: 4px 17px 15px -3px rgba(1, 1, 0, 0.3);
+  border: 1px solid #dd8702;
+  visibility: 1;
+  visibility: visible;
+  transition: all 0.5s;
+}
+.App__dashboard__contPageOutlet__PageUsers__contContratos__contBtnNewCargo__options__active span {
+  display: flex;
+  flex-direction: column !important;
+  display: inline-block !important;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+.App__dashboard__contPageOutlet__PageUsers__contContratos__contBtnNewCargo__options__active span:hover {
+  transition: all 0.5s;
+  color: #dd8702;
+}
+.App__dashboard__contPageOutlet__PageUsers__contContratos__table {
+  position: relative;
+  width: 100% !important;
+  height: 80vh;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media (max-width: 1366px) {
+  .App__dashboard__contPageOutlet__PageUsers__contContratos__table {
+    height: 70vh;
+  }
+}
+.App__dashboard__contPageOutlet__PageUsers__contContratos__table__contItem {
+  width: 95%;
+}
+.App__dashboard__contPageOutlet__PageUsers__contContratos table,
+.App__dashboard__contPageOutlet__PageUsers__contContratos th,
+.App__dashboard__contPageOutlet__PageUsers__contContratos td {
+  text-align: center;
+  border: 1px solid rgba(255, 255, 245, 0.8588235294);
+}
+@media (max-width: 1366px) {
+  .App__dashboard__contPageOutlet__PageUsers__contContratos {
+    width: 65%;
+  }
+}
+
+@keyframes respirar {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    /* Se expande */
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/*# sourceMappingURL=contratos.css.map */

@@ -8,7 +8,7 @@
 .App__dashboard__contPageOutlet__PageUsers {
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
 }
 .App__dashboard__contPageOutlet__PageUsers__contUsers {

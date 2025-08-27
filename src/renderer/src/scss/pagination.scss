@@ -1,11 +1,13 @@
 .App__init__contTable__tablaMarcaciones__modalRegistros__contDatos__pagination {
     text-align: end;
     margin-right: 20px;
-
+    margin-top: -3px;
+    
     span {
+        display: inline-block;
         margin: 0 10px 0 10px;
     }
-
+    
     button {
         border-radius: 100px;
         border: none;

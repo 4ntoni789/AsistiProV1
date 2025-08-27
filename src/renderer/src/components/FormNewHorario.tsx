@@ -1,18 +1,19 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleQuestion, faClock } from '@fortawesome/free-solid-svg-icons';
+import { faCircleQuestion, faClock, faRotate, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { WorkScheduleBar } from './WorkScheduleBar';
 import { Props, UserDataType } from '@renderer/typesTS';
 import { horaToDecimal } from '@renderer/scripts/horaDecimal';
 import { Fetch_new_horario } from '@renderer/actions/actionsHorario';
 import { AppDispatch } from '@renderer/store';
 import RHorario from './RHorario';
+import { extraerHora } from '@renderer/scripts/extraerHora';
 
 function FormNewHorario(userCargo) {
   const puntoVenta = useSelector((state: any) => state.menuAccions.subMenuPuntoVenta);
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit, reset, setValue } = useForm();
   const userData = useSelector((state: UserDataType) => state.loginAccess.userLogin);
   const dispatch = useDispatch<AppDispatch>();
   const turnos = [1, 2, 3, 4];
@@ -21,7 +22,7 @@ function FormNewHorario(userCargo) {
   let almacenDiasSemana: any = [];
   const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
   const [rHorario, setRHorario] = useState<boolean>(false);
-  const [dataRHorario, setDataRHorario] = useState<{}>({});
+  const [dataRHorario, setDataRHorario] = useState<any>({});
 
   const [valoresLineaTiempo, setValoresLineaTiempo] = useState<Props>({
     start: 0,
@@ -86,12 +87,38 @@ function FormNewHorario(userCargo) {
   useEffect(() => {
     if (Object.keys(dataRHorario).length > 0, rHorario) {
       setRHorario(false);
+      setValue('hora_entrada', extraerHora(dataRHorario.hora_entrada));
+      setValue('hora_valida_entrada', extraerHora(dataRHorario.hora_valida_entrada));
+      setValue('hora_valida_entrada_hasta', extraerHora(dataRHorario.hora_valida_entrada_hasta));
+      setValue('hora_salida_descanso', extraerHora(dataRHorario.hora_salida_descanso));
+      setValue('hora_regreso_descanso', extraerHora(dataRHorario.hora_regreso_descanso));
+      setValue('hora_salida', extraerHora(dataRHorario.hora_salida));
+      setValue('hora_valida_salida', extraerHora(dataRHorario.hora_valida_salida));
+      setValue('hora_valida_salida_hasta', extraerHora(dataRHorario.hora_valida_salida_hasta));
+      setValue('margen', dataRHorario.margen);
+      setValue('turno', dataRHorario.turno);
+      setValue('cargo', dataRHorario.id_cargo);
+
+      setValoresLineaTiempo({
+        start: horaToDecimal(extraerHora(dataRHorario?.hora_entrada)),
+        end: horaToDecimal(extraerHora(dataRHorario.hora_salida)),
+        allowedStartEntrada: horaToDecimal(extraerHora(dataRHorario.hora_valida_entrada)),
+        allowedStartSalida: horaToDecimal(extraerHora(dataRHorario.hora_valida_entrada_hasta)),
+        allowedEndEntrada: horaToDecimal(extraerHora(dataRHorario.hora_valida_salida)),
+        allowedEndSalida: horaToDecimal(extraerHora(dataRHorario.hora_valida_salida_hasta)),
+        earlyExit: true,
+        breakStart: horaToDecimal(extraerHora(dataRHorario.hora_salida_descanso)),
+        breakEnd: horaToDecimal(extraerHora(dataRHorario.hora_regreso_descanso)),
+        graceMinutes: dataRHorario.margen
+      })
+
     }
   }, [dataRHorario])
 
   useEffect(() => {
-    if(puntoVenta.subMenuPuntoVenta!){
+    if (puntoVenta.subMenuPuntoVenta!) {
       setDataRHorario({});
+      reset();
     }
   }, [puntoVenta.subMenuPuntoVenta])
 
@@ -100,7 +127,14 @@ function FormNewHorario(userCargo) {
       <div className='App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__newHorario__dataUser'>
         <h2>Dias con este horario</h2>
         <button className='App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__newHorario__dataUser__btnObtenerHorario'
-          title='Reutilizar horario' onClick={() => setRHorario(!rHorario)}><FontAwesomeIcon icon={faClock} /></button>
+          title='Reutilizar horario' onClick={() => setRHorario(!rHorario)}>{
+            rHorario ?
+              <div className='rotate' title='Esperando horario...'>
+                < FontAwesomeIcon icon={faRotate} />
+              </div>
+              :
+              < FontAwesomeIcon icon={faClock} />
+          }</button>
         <select className='input_style' id='dia_semana' value={semana} required onChange={(e) => setSemana(e.target.value)}>
           <option>--Dias de la semana--</option>
           <option value='toda_semana'>Toda la semana</option>
@@ -168,7 +202,7 @@ function FormNewHorario(userCargo) {
 
 
           <label className='App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__newHorario__dataUser__formNewHorario__contInput__label' htmlFor='hora_salida_descanso'>Hora de salida de almuerzo</label>
-          <input className='input_style' id='hora_salida_descanso' type="time" {...register('hora_salida_descanso', { required: true, disabled: false })} onChange={(e) => {
+          <input className='input_style' id='hora_salida_descanso' type="time" {...register('hora_salida_descanso', { required: false, disabled: false })} onChange={(e) => {
             setValoresLineaTiempo((prev) => ({
               ...prev,
               breakStart: horaToDecimal(e.target.value)
@@ -176,7 +210,7 @@ function FormNewHorario(userCargo) {
           }} />
 
           <label className='App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__newHorario__dataUser__formNewHorario__contInput__label' htmlFor='hora_regreso_descanso'>Hora de entrada de almuerzo</label>
-          <input className='input_style' id='hora_regreso_descanso' type="time" {...register('hora_regreso_descanso', { required: true, disabled: false })} onChange={(e) => {
+          <input className='input_style' id='hora_regreso_descanso' type="time" {...register('hora_regreso_descanso', { required: false, disabled: false })} onChange={(e) => {
             setValoresLineaTiempo((prev) => ({
               ...prev,
               breakEnd: horaToDecimal(e.target.value)

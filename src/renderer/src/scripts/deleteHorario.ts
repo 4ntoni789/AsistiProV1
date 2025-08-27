@@ -1,7 +1,9 @@
+const apiUrl = import.meta.env.VITE_API_URL;
+
 export const DeleteHorario = async (activeDeleteUsers, userData) => {
     let ress;
     try {
-        const response = await fetch(`/api/horario/${activeDeleteUsers.id_horario}`, {
+        const response = await fetch(`${apiUrl}/api/horario/${activeDeleteUsers.id_horario}`, {
             method: 'DELETE',
             headers: {
                 'x-id-usuario': userData.id_usuario,

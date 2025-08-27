@@ -28,7 +28,7 @@ function SubItemHorario({ item, rHorario, restHorario }) {
               activeDeleteUsers: true,
               typeRemove: 'Horario'
             }));
-          }} title='Eliminar' /> : <FontAwesomeIcon icon={faRotate} title='Eliminar' onClick={restHorario} />
+          }} title='Eliminar' /> : <FontAwesomeIcon icon={faRotate} title='Reutilizar' onClick={restHorario} />
       }
     </div>
   );

@@ -1,0 +1,152 @@
+.App__dashboard__contPageOutlet__PageUsers__contContratos__table__itemHorario {
+  background-color: #444;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 70px;
+  justify-content: center;
+  border-radius: 5px;
+  text-align: center;
+  position: relative;
+  margin: 10px auto 0px auto;
+  padding-left: 30px;
+  border: 1px solid transparent;
+  transition: all 0.5s;
+}
+.App__dashboard__contPageOutlet__PageUsers__contContratos__table__itemHorario__header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.App__dashboard__contPageOutlet__PageUsers__contContratos__table__itemHorario__header__icon {
+  height: 70px;
+  width: 22%;
+  display: flex;
+  align-items: center;
+}
+@media (max-width: 1366px) {
+  .App__dashboard__contPageOutlet__PageUsers__contContratos__table__itemHorario__header__icon {
+    width: 37%;
+  }
+}
+.App__dashboard__contPageOutlet__PageUsers__contContratos__table__itemHorario__header__info {
+  height: 70px;
+  width: 78%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-top: 5px;
+}
+@media (max-width: 1366px) {
+  .App__dashboard__contPageOutlet__PageUsers__contContratos__table__itemHorario__header__info {
+    width: 63%;
+    margin-top: 10px;
+  }
+}
+.App__dashboard__contPageOutlet__PageUsers__contContratos__table__itemHorario__header h4 {
+  transition: all 0.5s;
+  font-weight: 500;
+  width: 20%;
+  display: flex;
+  justify-content: first baseline;
+  align-items: center;
+  white-space: nowrap;
+}
+.App__dashboard__contPageOutlet__PageUsers__contContratos__table__itemHorario__header h4 span {
+  color: #dd8702;
+  font-weight: bold;
+}
+.App__dashboard__contPageOutlet__PageUsers__contContratos__table__itemHorario__header h4:first-child {
+  text-align: center !important;
+  width: 10%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+.App__dashboard__contPageOutlet__PageUsers__contContratos__table__itemHorario__header h4:first-child:hover {
+  color: #dd8702;
+}
+.App__dashboard__contPageOutlet__PageUsers__contContratos__table__itemHorario__header h4:first-child svg {
+  margin-right: 10px;
+  font-size: 40px;
+}
+.App__dashboard__contPageOutlet__PageUsers__contContratos__table__itemHorario__header__contspan {
+  background-color: #666;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: absolute;
+  right: 0px;
+  top: 0;
+  font-size: 15px;
+  border-radius: 5px;
+  border-left: 1px solid #dd8702;
+}
+.App__dashboard__contPageOutlet__PageUsers__contContratos__table__itemHorario__header__contspan__activo {
+  color: #11c02e !important;
+}
+.App__dashboard__contPageOutlet__PageUsers__contContratos__table__itemHorario__header__contspan__inactivo {
+  color: #630603 !important;
+}
+.App__dashboard__contPageOutlet__PageUsers__contContratos__table__itemHorario__header__contspan h4 {
+  display: inline-block;
+  width: auto;
+}
+@media (max-width: 1366px) {
+  .App__dashboard__contPageOutlet__PageUsers__contContratos__table__itemHorario__header__contspan {
+    width: 62%;
+    height: auto;
+    background-color: #666;
+    display: flex;
+    justify-content: space-around;
+    position: absolute;
+    right: 0px;
+    top: 0;
+    font-size: 12px;
+    border-radius: 0 5px 0 5px;
+    border-left: 1px solid #dd8702;
+    border-bottom: 1px solid #dd8702;
+  }
+}
+.App__dashboard__contPageOutlet__PageUsers__contContratos__table__itemHorario__header span {
+  margin-left: 3px;
+}
+.App__dashboard__contPageOutlet__PageUsers__contContratos__table__itemHorario__footer {
+  display: none;
+}
+.App__dashboard__contPageOutlet__PageUsers__contContratos__table__itemHorario__footer button {
+  background-color: #dd8702;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+}
+.App__dashboard__contPageOutlet__PageUsers__contContratos__table__itemHorario__footer button svg {
+  font-size: 30px;
+}
+.App__dashboard__contPageOutlet__PageUsers__contContratos__table__itemHorario__footer span {
+  margin: 0 5px 0 5px;
+}
+.App__dashboard__contPageOutlet__PageUsers__contContratos__table__itemHorario__footer__active {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+.App__dashboard__contPageOutlet__PageUsers__contContratos__table__itemHorario__footer__active button {
+  background-color: #dd8702;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+}
+.App__dashboard__contPageOutlet__PageUsers__contContratos__table__itemHorario__footer__active button svg {
+  font-size: 30px;
+}
+.App__dashboard__contPageOutlet__PageUsers__contContratos__table__itemHorario__footer__active span {
+  margin: 0 5px 0 5px;
+}
+
+/*# sourceMappingURL=itemContrato.css.map */

@@ -2,9 +2,8 @@ import { AppDispatch } from '@renderer/store';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useDispatch } from 'react-redux';
 import ItemTablePuntoVenta from '../items/ItemTablePuntoVenta';
-import SubMenuPuntoVenta from '../modal/SubMenuPuntoVenta';
 
-function TablaPuntoVenta({ direccion, paginaActual, variants, currentItems, searchTerm, containerVariants, itemVariants }) {
+function TablaDePuntoVenta({ direccion, paginaActual, variants, currentItems, searchTerm, containerVariants, itemVariants }) {
   const dispatch = useDispatch<AppDispatch>()
 
   return (
@@ -51,9 +50,8 @@ function TablaPuntoVenta({ direccion, paginaActual, variants, currentItems, sear
           )
         }
       </AnimatePresence>
-      <SubMenuPuntoVenta />
     </div>
   );
 }
 
-export default TablaPuntoVenta;
+export default TablaDePuntoVenta;

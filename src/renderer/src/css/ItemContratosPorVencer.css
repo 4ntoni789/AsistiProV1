@@ -1,0 +1,69 @@
+.App__dashboard__contPageOutlet__PageUsers__contratosPorVencer__contContratosPorVencer__itemContratosPorVencer {
+  position: relative;
+  background-color: #555;
+  border-radius: 5px;
+  width: 90%;
+  margin: 10px auto 10px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-height: 130px;
+  transition: all 0.5s;
+  border: 1px solid transparent;
+  cursor: pointer;
+  animation: slideDownFade 0.5s ease-out;
+  padding: 5px;
+}
+.App__dashboard__contPageOutlet__PageUsers__contratosPorVencer__contContratosPorVencer__itemContratosPorVencer:hover {
+  border: 1px solid #dd8702;
+}
+.App__dashboard__contPageOutlet__PageUsers__contratosPorVencer__contContratosPorVencer__itemContratosPorVencer h5 {
+  margin: 0 0 0 5px;
+}
+.App__dashboard__contPageOutlet__PageUsers__contratosPorVencer__contContratosPorVencer__itemContratosPorVencer h5:last-child {
+  font-size: 10px;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+}
+.App__dashboard__contPageOutlet__PageUsers__contratosPorVencer__contContratosPorVencer__itemContratosPorVencer__ico {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.App__dashboard__contPageOutlet__PageUsers__contratosPorVencer__contContratosPorVencer__itemContratosPorVencer__ico svg {
+  font-size: 400%;
+  color: #dd8702;
+}
+.App__dashboard__contPageOutlet__PageUsers__contratosPorVencer__contContratosPorVencer__itemContratosPorVencer__info {
+  width: 70%;
+}
+.App__dashboard__contPageOutlet__PageUsers__contratosPorVencer__contContratosPorVencer__itemContratosPorVencer__info b {
+  color: #333;
+  font-weight: 600;
+  text-decoration: underline;
+}
+.App__dashboard__contPageOutlet__PageUsers__contratosPorVencer__contContratosPorVencer__itemContratosPorVencer__info span {
+  font-weight: bold;
+}
+
+.item-destacado {
+  background: linear-gradient(270deg, #ff6b6b, #ffd93d, #6bcbee);
+  background-size: 600% 600%;
+  animation: gradienteAnimado 6s ease infinite, slideDownFade 0.5s ease-out;
+}
+
+@keyframes gradienteAnimado {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/*# sourceMappingURL=ItemContratosPorVencer.css.map */

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import '../../css/modalVerRegistros.css';
 import { useDispatch, useSelector } from 'react-redux';
 import SubItemTable from '../subItem/SubItemTable';
@@ -60,6 +60,12 @@ function ModalViewRegistros(props) {
       dispatch(ActiveMenuVerAccesos({ user: {}, subMenuVerAccesos: false, accesos: [] }));
     }
   };
+
+  useEffect(() => {
+    if (activeVerAccesos.subMenuVerAccesos == false) {
+      setPaginaActual(1);
+    }
+  }, [activeVerAccesos.subMenuVerAccesos])
 
   return (
     <div className={activeVerAccesos.subMenuVerAccesos ? 'App__init__contTable__tablaMarcaciones__modalRegistros__active' :

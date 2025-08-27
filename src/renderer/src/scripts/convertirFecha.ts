@@ -3,10 +3,10 @@ export const formatearFecha = (fechaStr) => {
         "ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO",
         "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"
     ];
-
+    
     const fecha = new Date(fechaStr);
-
-    const dia = fecha.getDate() + 1;
+    
+    const dia = fecha.getDate()+1;
     const mes = meses[fecha.getMonth()];
     const año = fecha.getFullYear();
 

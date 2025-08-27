@@ -32,7 +32,8 @@ export interface Props2 {
 export type InicialStateLogin = {
   userLogin: object,
   validationAccess: boolean,
-  activeError: boolean
+  activeError: boolean,
+  loadingLogin:boolean
 }
 
 export type UserDataType = {

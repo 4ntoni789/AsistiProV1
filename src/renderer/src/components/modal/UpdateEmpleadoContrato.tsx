@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import DataUser from '../DataUser';
 import FormEmpleadoContrato from '../FormEmpleadoContrato';
 import { Fetch_contratos } from '@renderer/actions/actionsContratos';
 import { obtenerDatosPrimerCoincidencia } from '@renderer/scripts/obtenerDatosFetchPrimer';
@@ -9,6 +8,7 @@ import { obtenerDatos } from '@renderer/scripts/obtenerDatosFetch';
 import { Fetch_cargos } from '@renderer/actions/actionsCargos';
 import { Fetch_empleadores } from '@renderer/actions/actionsEmpleadores';
 import '../../css/updateEmpleadoContrato.css';
+import DataUser from '../DataUserContrato';
 
 function UpdateEmpleadoContrato({ activeSubModal }: { activeSubModal: boolean }) {
   const activeNewEmpleado = useSelector((state: any) => state.menuAccions.subMenuEmpleado);
@@ -35,7 +35,8 @@ function UpdateEmpleadoContrato({ activeSubModal }: { activeSubModal: boolean })
     <>
       {
         userContrato?.length > 0 && contFilter?.estado == 'Activo' ?
-          <DataUser activeSubModal={!activeSubModal} userContrato={userContrato} userCargo={userCargo} activeNewEmpleado={activeNewEmpleado} activeEdition={activeEdition} empleadores={empleadores} />
+          <DataUser activeSubModal={!activeSubModal} userContrato={userContrato} userCargo={userCargo} activeNewEmpleado={activeNewEmpleado}
+            activeEdition={activeEdition} empleadores={empleadores} />
           : <FormEmpleadoContrato userCargo={userCargo} activeNewEmpleado={activeNewEmpleado}
             empleadores={empleadores} activeSubModal={!activeSubModal} />
       }

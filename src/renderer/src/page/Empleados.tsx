@@ -3,11 +3,10 @@ import TablaDeMarcaciones from '@renderer/components/tablas/TablaDeEmpleadosMarc
 import '../css/inicio.css';
 import '../css/empleados.css';
 import NewEmpleado from '@renderer/components/modal/NewEmpleado';
+import ModalViewRegistros from '@renderer/components/modal/ModalViewRegistros';
+import MenuEmpleado from '@renderer/components/modal/SubMenuEmpleado';
 
-function Empleados({}) {
-  // const type_role = useSelector((state: any) => state.loginAccess.userLogin.type_role);
-  // const dispatch = useDispatch();
-  // const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
+function Empleados({ }) {
 
   return (
     <div className='App__init'>
@@ -16,6 +15,8 @@ function Empleados({}) {
         <MarcacionesEnDirecto />
       </div>
       <NewEmpleado />
+      <MenuEmpleado />
+      <ModalViewRegistros />
     </div>
   );
 }

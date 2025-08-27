@@ -65,7 +65,7 @@
   border: none;
   border-radius: 50%;
   background: #dd8702 url("data:image/svg+xml;utf8,<svg viewBox='0 0 20 20' fill='white' xmlns='http://www.w3.org/2000/svg'><path d='M6 6L14 14M6 14L14 6' stroke='white' stroke-width='2' stroke-linecap='round'/></svg>") center center no-repeat;
-  background-size: 90%;
+  background-size: 100%;
   cursor: pointer;
   transition: all 0.5s;
 }
@@ -78,10 +78,10 @@
 }
 .App__init__contTable__tablaMarcaciones__header__contBtn {
   position: absolute;
-  right: 30px;
-  width: 100px;
+  right: 0px;
+  width: 10%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 .App__init__contTable__tablaMarcaciones__header__contBtn__btnMore {
@@ -279,7 +279,7 @@
   border-radius: 100px;
   border: none;
   background-color: transparent !important;
-  color: #fa9601;
+  color: #e48900;
   cursor: pointer;
   transition: all 0.5s;
 }

@@ -1,7 +1,7 @@
 import { faAddressCard, faArrowRightToBracket, faChartGantt, faGear, faUser, faUserTie } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useRef } from 'react';
-import '../css/subMenu.css';
+import '../../css/subMenu.css';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { NavLink } from 'react-router';

@@ -1,13 +1,12 @@
-import { useDispatch, useSelector } from 'react-redux';
+import {  useSelector } from 'react-redux';
 import '../css/dashboard.css';
 import Menu from '@renderer/components/modal/Menu';
 
 import { Outlet, useNavigate } from 'react-router';
-import { useEffect, useRef } from 'react';
-import SubMenu from '@renderer/components/SubMenu';
+import { useEffect } from 'react';
+import SubMenu from '@renderer/components/modal/SubMenu';
 
 function Dashboard({ }) {
-  const dispatch = useDispatch();
   const menuActive = useSelector((state: any) => state.menuAccions.menuActive);
   const userData = useSelector((state: any) => state.loginAccess.validationAccess);
   const navigate = useNavigate();

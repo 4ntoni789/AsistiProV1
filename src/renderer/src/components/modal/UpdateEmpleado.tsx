@@ -5,7 +5,7 @@ import SwitchButtonEdit from '../SwitchButtonEdit';
 import BuscadorMunicipios from '../SearchMunicipios';
 import { Opcion } from '@renderer/interface';
 import { ActiveSubMenuDeleteUsers } from '@renderer/actions/actionsUsers';
-import { ActiveSubMenuEmpleado, Fet_update_empleado } from '@renderer/actions/actionsEmpleados';
+import { ActiveSubMenuEmpleado, Fetch_update_empleado } from '@renderer/actions/actionsEmpleados';
 import { Fetch_cargos } from '@renderer/actions/actionsCargos';
 import { AppDispatch } from '@renderer/store';
 import { obtenerDatos } from '@renderer/scripts/obtenerDatosFetch';
@@ -23,7 +23,7 @@ function UpdateEmpleado({ activeSubModal }: { activeSubModal: boolean }) {
   const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
 
   const onSubmit = async (dataInput) => {
-    dispatch(Fet_update_empleado(dataInput, activeNewEmpleado, userId, userData, municipio, reset));
+    dispatch(Fetch_update_empleado(dataInput, activeNewEmpleado, userId, userData, municipio, reset));
   }
 
   useEffect(() => {
@@ -80,7 +80,7 @@ function UpdateEmpleado({ activeSubModal }: { activeSubModal: boolean }) {
             }
           </select>
           <button className='btn_style' type='submit' disabled={activeEdition}>Actualizar</button>
-          <button className='btn_style__remove' type='submit' onClick={() => {
+          <button className='btn_style__remove' type='button' onClick={() => {
             dispatch(ActiveSubMenuDeleteUsers({
               user: activeNewEmpleado.user,
               activeDeleteUsers: true,

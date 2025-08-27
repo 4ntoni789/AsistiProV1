@@ -1,10 +1,19 @@
 .App__init__Reporte {
-    background-color: #333;
-    border-radius: 5px;
+    width: 90%;
+    height: 100%;
     display: flex;
-    padding: 10px 0 10px 0;
-    align-items: center;
-    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-between ;
+    animation: aparecer 1s forwards;
+
+    .App__init__Reporte__contReporte {
+        background-color: #333;
+        border-radius: 5px;
+        display: flex;
+        padding: 10px 0 10px 0;
+        align-items: center;
+        flex-wrap: wrap;
+    }
 
     &__tipoReporte {
         background-color: #333;

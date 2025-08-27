@@ -8,11 +8,11 @@ function ItemHorario({ registro, cargos, dataHorario }) {
   const [activeSubItem, setActiveSubItem] = useState<boolean>(false);
   const [dataRHorario, setDataRHorario] = useState<object>({});
 
-  useEffect(()=>{
-    if(Object.keys(dataRHorario).length > 0){
+  useEffect(() => {
+    if (Object.keys(dataRHorario).length > 0) {
       dataHorario(dataRHorario);
     }
-  },[dataRHorario])
+  }, [dataRHorario])
 
   return (
     <div className={'App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__form__horarios__itemHorario'}>
@@ -26,11 +26,12 @@ function ItemHorario({ registro, cargos, dataHorario }) {
         <div className='App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__form__btnClose'>
           <FontAwesomeIcon icon={faArrowLeft} onClick={() => setActiveSubItem(!activeSubItem)} />
         </div>
-        {
+        {activeSubItem
+          ?
           registro.horarios.map((item, i) => (
-            <SubItemHorario restHorario={()=>setDataRHorario(item)} rHorario={dataHorario} key={i} item={item} />
+            <SubItemHorario restHorario={() => setDataRHorario(item)} rHorario={dataHorario} key={i} item={item} />
           ))
-        }
+        : 'Cargando...'}
       </div>
     </div>
   );

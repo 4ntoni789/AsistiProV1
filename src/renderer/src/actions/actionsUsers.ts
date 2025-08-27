@@ -2,7 +2,6 @@ import { ACTIVEDELETEUSER, ACTIVEREGISTERNEWUSER, ACTIVEUPDATEUSER } from "@rend
 import { ActiveErrorSpam } from "./actionsLogin";
 const apiUrl = import.meta.env.VITE_API_URL;
 
-
 export const ActiveSubMenuNewUsers = (value: any) => {
     return {
         type: ACTIVEREGISTERNEWUSER,
@@ -168,3 +167,40 @@ export const Fetch_user = (userId: string) => {
         }
     };
 };
+
+export const Fetch_delete_user = (activeDeleteUsers: any, userData: any) => {
+    return async (dispatch) => {
+        try {
+            await fetch(`${apiUrl}/api/usuarios/${activeDeleteUsers.user.id_usuario}`, {
+                method: 'DELETE',
+                headers: {
+                    'x-id-usuario': userData.id_usuario,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    reqUser: userData
+                }),
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    if (data) {
+                        dispatch(ActiveErrorSpam({ msg: data.message, active: true, typeError: 'submit' }));
+                        dispatch(ActiveSubMenuDeleteUsers({
+                            user: {},
+                            activeDeleteUsers: false
+                        }))
+                    } else {
+                        dispatch(ActiveErrorSpam({ msg: data.message, active: true, typeError: 'error' }));
+                        dispatch(ActiveSubMenuDeleteUsers({
+                            user: {},
+                            activeDeleteUsers: false
+                        }))
+                    }
+                })
+                .catch((err) => console.log('Error:', err));
+        } catch (error) {
+            dispatch(ActiveErrorSpam({ msg: 'Error al eliminar ese usuario', active: true, typeError: 'error' }));
+            console.log(error)
+        }
+    }
+}

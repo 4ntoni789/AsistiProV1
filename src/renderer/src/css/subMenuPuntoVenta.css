@@ -48,10 +48,8 @@
   box-shadow: 5px 0 10px rgba(0, 0, 0, 0.5);
 }
 .App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__form__dataUser h2 {
-  width: 100%;
+  width: 85%;
   border-radius: 10px 10px 0 0;
-  margin: 0px 0 10px 0px;
-  padding: 15px 0 15px 0px;
   font-weight: bold;
   color: #fff;
 }
@@ -75,6 +73,9 @@
   padding-top: 5px;
   min-height: 100vh;
   overflow: auto;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__form__horarios span {
+  text-align: center;
 }
 .App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__form__horarios h2 {
   width: 100%;

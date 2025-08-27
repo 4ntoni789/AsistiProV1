@@ -35,6 +35,7 @@
 .App__init__contTable__tablaMarcaciones__modalRegistros__contDatos__header h2 {
   height: 30px;
   color: #ddd;
+  font-weight: bold;
 }
 .App__init__contTable__tablaMarcaciones__modalRegistros__contDatos__header h2 b {
   font-weight: bold;

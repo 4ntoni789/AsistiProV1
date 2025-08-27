@@ -13,6 +13,7 @@ function SubModalViewRegistros({ registros, setActiveModal, activeModal }) {
     }
   };
 
+
   return (
     <div ref={modalRef} className={activeModal ? 'App__init__contTable__tablaMarcaciones__modalRegistros__active__subModal__active'
       : 'App__init__contTable__tablaMarcaciones__modalRegistros__active__subModal'} onClick={handleClickOutside}>

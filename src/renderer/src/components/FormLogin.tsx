@@ -6,12 +6,13 @@ import { DataLogin } from '@renderer/typesTS';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faEyeLowVision } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faEyeLowVision, faRotate } from '@fortawesome/free-solid-svg-icons';
 import { AppDispatch } from '@renderer/store';
 
 function FormLogin() {
   // const [datos, setDatos] = useState();
   const userData = useSelector((state: any) => state.loginAccess.validationAccess);
+  const loadingDataRest = useSelector((state: any) => state.loginAccess.loadingLogin);
   const { register, handleSubmit, reset } = useForm<DataLogin>();
   const [disableInput, setDisableInput] = useState<boolean>(false);
   const dispatch = useDispatch<AppDispatch>();
@@ -42,7 +43,8 @@ function FormLogin() {
           <input id='contrasena' type={showPass ? "password" : "text"} {...register('contrasena', { required: true, disabled: disableInput })} placeholder='Contraseña' />
           <FontAwesomeIcon icon={showPass ? faEye : faEyeLowVision} onClick={() => setShowPass(!showPass)} />
         </div>
-        <button type='submit' disabled={disableInput}>Iniciar sesión</button>
+        <button className={loadingDataRest ? 'App__loginPage__cont__contForm__form__loadingBoton'
+          : 'App__loginPage__cont__contForm__form__button'} type='submit' disabled={disableInput}><FontAwesomeIcon icon={faRotate} /> Iniciar sesión</button>
       </form>
     </div>
   );

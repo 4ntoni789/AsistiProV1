@@ -1,73 +1,38 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import '../../css/deleteUser.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { ActiveErrorSpam,Logout } from '@renderer/actions/actionsLogin';
-import { DeleteUserAs } from '@renderer/scripts/deleteUser';
-import { DeleteEmpleadoAs } from '@renderer/scripts/deleteEmpleadoAs';
-import { DesactivateContrato } from '@renderer/scripts/desactivateContrato';
-import { DeleteCargo } from '@renderer/scripts/deleteCargo';
-import { DeleteRol } from '@renderer/scripts/deleteRol';
+import { ActiveErrorSpam, Logout } from '@renderer/actions/actionsLogin';
 import { DeletePuntoVenta } from '@renderer/scripts/deletePuntoVenta';
 import { DeleteEmpleador } from '@renderer/scripts/deleteEmpleador';
 import { extraerHora } from '@renderer/scripts/extraerHora';
 import { DeleteHorario } from '@renderer/scripts/deleteHorario';
-import { ActiveSubMenuDeleteUsers } from '@renderer/actions/actionsUsers';
+import { ActiveSubMenuDeleteUsers, Fetch_delete_user } from '@renderer/actions/actionsUsers';
+import { AppDispatch } from '@renderer/store';
+import { Fetch_delete_empleado } from '@renderer/actions/actionsEmpleados';
+import { Fetch_desactivar_contrato } from '@renderer/actions/actionsContratos';
+import { Fetch_delete_cargo } from '@renderer/actions/actionsCargos';
+import { Fetch_delete_role } from '@renderer/actions/actionsRoles';
 
 function DeleteUser() {
   const activeDeleteUsers = useSelector((state: any) => state.menuAccions.deleteUser);
   const [nameDelete, setNameDelete] = useState<string>('');
   const [btnName, setBtnName] = useState<string>('');
   const userData = useSelector((state: any) => state.loginAccess.userLogin);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   const ress = () => {
     if (activeDeleteUsers.typeRemove == 'Usuario') {
-      DeleteUserAs(activeDeleteUsers, userData)
-        .then((data) => {
-          dispatch(ActiveSubMenuDeleteUsers({
-            user: {},
-            activeDeleteUsers: false
-          }))
-          dispatch(ActiveErrorSpam(data))
-        })
+      dispatch(Fetch_delete_user(activeDeleteUsers, userData));
     } else if (activeDeleteUsers.typeRemove == 'Empleado') {
-      DeleteEmpleadoAs(activeDeleteUsers, userData)
-        .then((data) => {
-          dispatch(ActiveSubMenuDeleteUsers({
-            user: {},
-            activeDeleteUsers: false
-          }))
-          dispatch(ActiveErrorSpam(data))
-        })
+      dispatch(Fetch_delete_empleado(activeDeleteUsers, userData));
     } else if (activeDeleteUsers.typeRemove == 'Contrato') {
-      DesactivateContrato(activeDeleteUsers, userData)
-        .then((data) => {
-          dispatch(ActiveSubMenuDeleteUsers({
-            user: {},
-            activeDeleteUsers: false
-          }))
-          dispatch(ActiveErrorSpam(data));
-        })
+      dispatch(Fetch_desactivar_contrato(activeDeleteUsers.user, userData));
     } else if (activeDeleteUsers.typeRemove == 'Cargo') {
-      DeleteCargo(activeDeleteUsers, userData)
-        .then((data) => {
-          dispatch(ActiveSubMenuDeleteUsers({
-            user: {},
-            activeDeleteUsers: false
-          }))
-          dispatch(ActiveErrorSpam(data));
-        })
+      dispatch(Fetch_delete_cargo(activeDeleteUsers, userData));
     } else if (activeDeleteUsers.typeRemove == 'Rol') {
-      DeleteRol(activeDeleteUsers, userData)
-        .then((data) => {
-          dispatch(ActiveSubMenuDeleteUsers({
-            user: {},
-            activeDeleteUsers: false
-          }))
-          dispatch(ActiveErrorSpam(data));
-        })
+      dispatch(Fetch_delete_role(activeDeleteUsers, userData));
     } else if (activeDeleteUsers.typeRemove == 'Logout') {
       dispatch(Logout());
       dispatch(ActiveSubMenuDeleteUsers({

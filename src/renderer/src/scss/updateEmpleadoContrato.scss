@@ -50,6 +50,11 @@
         margin: auto;
         display: flex;
         flex-direction: column;
+        h2{
+            font-weight: bold;
+            color: $color-principal;
+            margin-bottom: 5px;
+        }
 
         span {
             b {
@@ -59,6 +64,7 @@
 
         &__contBtn {
             display: flex;
+            width: 100%;
             flex-direction: column;
         }
     }

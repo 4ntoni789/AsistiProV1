@@ -21,6 +21,9 @@
 .App__dashboard__contPageOutlet__PageUsers__menuUser__contDataUser__contratoNotFound__contInputs__contBtn {
   display: flex;
   align-items: center;
+  width: 50%;
+  margin: auto;
+  margin-top: 10px;
 }
 .App__dashboard__contPageOutlet__PageUsers__menuUser__contDataUser__contratoNotFound__contInputs__contBtn span {
   font-size: 25px;
@@ -31,6 +34,10 @@
 .App__dashboard__contPageOutlet__PageUsers__menuUser__contDataUser__contratoNotFound__contInputs__contBtn span svg {
   font-size: 30px;
   margin: 0 10px 0 10px;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuUser__contDataUser__contratoNotFound__contInputs label {
+  width: 90%;
+  margin: auto;
 }
 .App__dashboard__contPageOutlet__PageUsers__menuUser__contDataUser__contratoNotFound__active {
   position: absolute;

@@ -52,7 +52,7 @@ function VerPuntoVenta({ activeSubModal }: { activeSubModal: boolean }) {
                   <ItemHorario dataHorario={null} cargos={userCargo} key={i} registro={item} />
                 ))
               }
-            </> : <h3>No hay horarios para este punto</h3>
+            </> : <span>No hay horarios para este punto</span>
           }
         </div>
       </form>

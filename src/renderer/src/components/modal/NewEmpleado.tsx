@@ -64,14 +64,29 @@ function NewEmpleado() {
           <div className='App__dashboard__contPageOutlet__PageUsers__newEmpleado__form__contInputs__header'>
             <h2><b>Nuevo Empleado</b></h2>
           </div>
+          <label htmlFor="nombre_usuario">Nombre completo</label>
           <input className='input_style' id='nombre_usuario' type="text" {...register('nombre_usuario', { required: true })} placeholder='Nombre completo' />
+
+          <label htmlFor="apellidos">Apellidos</label>
           <input className='input_style' id='apellidos' type="text" {...register('apellidos', { required: true })} placeholder='Apellidos' />
+
+          <label htmlFor="cedula">Numero de cedula</label>
           <input className='input_style' id='cedula' type="number" {...register('cedula', { required: true, minLength: 7, maxLength: 10 })} placeholder='Numero de cedula' />
+
+          <label htmlFor="telefono">Numero de teléfono</label>
           <input className='input_style' id='telefono' type="number" {...register('telefono', { required: true, minLength: 10 })} placeholder='Numero de telefono' />
+          
+          <label htmlFor="email">Correo electronico</label>
           <input className='input_style' id='email' type="email" {...register('email', { required: true })} placeholder='Correo electronico' />
+
+          <label htmlFor="direccion">Dirección</label>
           <input className='input_style' id='direccion' type="text" {...register('direccion', { required: true })} placeholder='Dirección de residencial' />
+
+          <label htmlFor="fecha_nacimiento">Fecha de nacimiento</label>
           <input className='input_style' id='fecha_nacimiento' type="date" {...register('fecha_nacimiento', { required: true })} placeholder='Fecha de nacimiento' />
-          <select className='input_style' id="" onChange={(e) => setNacionalidad(e.target.value)}>
+
+          <label htmlFor="nacionalidad">Nacionalidad</label>
+          <select className='input_style' id="nacionalidad" onChange={(e) => setNacionalidad(e.target.value)}>
             <option value=''>-- Nacionalidad --</option>
             <option value="colombiano">Colombiano</option>
             <option value="otro">Otro</option>
@@ -80,15 +95,16 @@ function NewEmpleado() {
             nacionalidad == 'colombiano' ? <SearchMunicipios seleccionado={municipio} setSeleccionado={setMunicipio} disable={!activeNewEmpleado} />
               :
               nacionalidad == 'otro' ? <>
-                
+
                 <input className='input_style' id='lNacimiento' type="text" {...register('lNacimiento', { required: true })} placeholder='Lugar de nacimiento'
                   onChange={(e) => setLNacimiento(e.target.value)} />
-                
+
                 <input className='input_style' id='nacionalidadText' type="text" {...register('nacionalidadText', { required: true })} placeholder='Nacionalidad'
                   onChange={(e) => setNacionalidadText(e.target.value)} />
               </> : null
           }
-          
+
+          <label htmlFor="sexo">Sexo</label>
           <select className='input_style' id='sexo' {...register('sexo', { required: true })}>
             <option value=''>-- Sexo --</option>
             <option value='M'>Masculino</option>

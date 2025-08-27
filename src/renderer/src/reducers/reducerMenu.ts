@@ -1,4 +1,4 @@
-import { ACTIVEDARKMODE, ACTIVEDELETEUSER, ACTIVEERRORSPAM, ACTIVEMENU, ACTIVEMENUVERACCESOS, ACTIVENEWEMPLEADO, ACTIVEREGISTERNEWUSER, ACTIVESUBMENUEMPLEADOS, ACTIVESUBMENUNEWCARGO, ACTIVESUBMENUNEWEMPLEADOR, ACTIVESUBMENUNEWROLE, ACTIVESUBMENUNUEWPUNTOVENTA, ACTIVESUBMENUPUNTOVENTA, ACTIVESUBMENUUPDATECARGO, ACTIVESUBMENUUPDATEEMPLEADOR, ACTIVESUBMENUUPDATEPASS, ACTIVESUBMENUUPDATEPUNTOVENTA, ACTIVESUBMENUUPDATEROLE, ACTIVEUPDATEUSER, SUBMENUACTIVE } from "@renderer/type";
+import { ACTIVEDARKMODE, ACTIVEDELETEUSER, ACTIVEERRORSPAM, ACTIVEMENU, ACTIVEMENUVERACCESOS, ACTIVEMENUVERCONTRATO, ACTIVENEWEMPLEADO, ACTIVEREGISTERNEWUSER, ACTIVESUBMENUEMPLEADOS, ACTIVESUBMENUNEWCARGO, ACTIVESUBMENUNEWEMPLEADOR, ACTIVESUBMENUNEWROLE, ACTIVESUBMENUNUEWPUNTOVENTA, ACTIVESUBMENUPUNTOVENTA, ACTIVESUBMENUUPDATECARGO, ACTIVESUBMENUUPDATEEMPLEADOR, ACTIVESUBMENUUPDATEPASS, ACTIVESUBMENUUPDATEPUNTOVENTA, ACTIVESUBMENUUPDATEROLE, ACTIVEUPDATEUSER, SUBMENUACTIVE } from "@renderer/type";
 
 const initalState: object = {
     menuActive: true,
@@ -10,7 +10,7 @@ const initalState: object = {
         typeError: ''
     },
     subMenuNewUsers: {
-        user:{},
+        user: {},
         subMenuNewUsers: false,
         loading: false
     },
@@ -77,6 +77,10 @@ const initalState: object = {
         user: {},
         subMenuVerAccesos: false,
         accesos: []
+    },
+    subMenuVerContrato: {
+        user: {},
+        subMenuVerContrato: false
     }
 }
 
@@ -203,6 +207,12 @@ export default function activeMenu(state = initalState, action: any) {
             return {
                 ...state,
                 subMenuVerAccesos: action.value
+            }
+        }
+        case ACTIVEMENUVERCONTRATO: {
+            return {
+                ...state,
+                subMenuVerContrato: action.value
             }
         }
         default:

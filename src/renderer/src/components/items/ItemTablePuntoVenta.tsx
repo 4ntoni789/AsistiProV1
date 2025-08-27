@@ -28,7 +28,7 @@ function ItemTablePuntoVenta({ item }) {
     return () => {
       document.removeEventListener('mousedown', handleClick);
     };
-  }, [isOpen]);;
+  }, [isOpen]);
 
   return (
     <div className='App__init__tablaPuntoVenta__body__item'>

@@ -32,10 +32,10 @@ function Reportes(props) {
   }, [userData.validationAccess == true, seleted]);
 
   return (
-    <div className='App__init__puntoVenta'>
+    <div className='App__init__Reporte'>
       <ContainerReportes seleted={seleted} setSeleted={setSeleted} />
       <br />
-      <div className='App__init__puntoVenta__encabezado'>
+      <div className='App__init__Reporte__header'>
         <h2>Generador de reporte</h2>
       </div>
       <div className='App__init__Reporte__tipoReporte'>
@@ -89,7 +89,6 @@ function Reportes(props) {
           </select><br />
           <FormularioReportSeleccionado seleted={seleted} register={register} />
           <button disabled={seleted == '' ? true : false}>Generar</button>
-
         </form>
       </div>
     </div >

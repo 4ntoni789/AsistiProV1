@@ -3,7 +3,7 @@
 .App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__newHorario {
     position: absolute;
     top: 0;
-    right: -75%;
+    right: -80%;
     width: 50%;
     height: 100%;
     background-color: $color-secundario-transparent2;
@@ -23,17 +23,17 @@
 
     &__dataUser {
         position: absolute;
-        left: -40%;
+        left: -50%;
         top: 0;
         height: 100vh;
         background-color: $color-principal;
         width: 50%;
         box-shadow: 5px 0 10px rgba(0, 0, 0, 0.5);
-
+        text-align: center;
 
         h2 {
             width: 100%;
-            border-radius: 10px 10px 0 0;
+            text-align: center;
             margin: 00px 0 10px 0px;
             padding: 15px 0 15px 0px;
             font-weight: bold;
@@ -106,15 +106,16 @@
 
         &__formNewHorario {
             height: 100%;
-            width: 100%;
+            width: 80%;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
+            margin: auto;
 
             &__contInput {
                 height: 100vh;
-                width: 80%;
+                width: 100%;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
@@ -135,7 +136,7 @@
                     }
 
                     &__label {
-                        // background-color: #f0a;
+                        text-align: center;
                         width: 20% !important;
                     }
                 }

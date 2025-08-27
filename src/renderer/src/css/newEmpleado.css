@@ -42,8 +42,12 @@
   margin: auto;
   width: 80%;
 }
+.App__dashboard__contPageOutlet__PageUsers__newEmpleado__form__contInputs label {
+  margin: auto;
+  width: 90%;
+}
 .App__dashboard__contPageOutlet__PageUsers__newEmpleado__form__contInputs__header {
-  width: 100%;
+  width: 90%;
   margin: auto;
   height: 8vh;
   display: flex;

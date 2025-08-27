@@ -1,0 +1,29 @@
+
+.rotate{
+    color: #fff;
+    transition: all .5s;
+    svg{
+        animation: rotar 1s infinite linear;
+
+    }
+}
+
+.rotateConstrution{
+    color: #fff;
+    animation: aparecer 1s forwards;
+    transition: all .5s;
+    svg{
+        font-size: 50px;
+        animation: rotar 1s infinite linear;
+
+    }
+}
+
+@keyframes rotar {
+    0%{
+        transform: rotate(180deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}

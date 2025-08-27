@@ -1,5 +1,5 @@
 import ButtonStyle from '@renderer/components/ButtonStyle';
-import TablaPuntoVenta from '@renderer/components/tablas/TablaPuntoVenta';
+
 import { useDispatch, useSelector } from 'react-redux';
 import '../css/puntoVenta.css';
 import NewPuntoVenta from '@renderer/components/modal/NewPuntoVenta';
@@ -11,9 +11,13 @@ import { AppDispatch } from '@renderer/store';
 import { useEffect, useState } from 'react';
 import { obtenerDatos } from '@renderer/scripts/obtenerDatosFetch';
 import Pagination from '@renderer/components/Pagination';
+import { UserDataType } from '@renderer/typesTS';
+import TablaDePuntoVenta from '@renderer/components/tablas/TablaDePuntoVenta';
+import SubMenuPuntoVenta from '@renderer/components/modal/SubMenuPuntoVenta';
+
 function PuntoVenta() {
   const type_role = useSelector((state: any) => state.loginAccess.userLogin.type_role);
-  const userData = useSelector((state: any) => state.loginAccess.validationAccess);
+  const userData = useSelector((state: UserDataType) => state.loginAccess.validationAccess);
   const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
   const spam = useSelector((state: any) => state.menuAccions.errorSpam);
   const [userPuntoVenta, setUserPuntoVenta] = useState<any>([]);
@@ -95,12 +99,13 @@ function PuntoVenta() {
           <Buscandor searchTerm={searchTerm} handleSearch={handleSearch} />
           <ButtonStyle ico={faPlus} funtion={() => dispatch(ActiveSubMenuNewPuntoVenta({ user: {}, subMenuNewPuntoVenta: true }))} disabled={type_role == 'Administrador' ? false : true} nameBtn='Nuevo punto de venta' />
         </div>
-        <TablaPuntoVenta direccion={direccion} paginaActual={paginaActual} variants={variants} currentItems={currentItems} searchTerm={searchTerm}
+        <TablaDePuntoVenta direccion={direccion} paginaActual={paginaActual} variants={variants} currentItems={currentItems} searchTerm={searchTerm}
           containerVariants={containerVariants} itemVariants={itemVariants} />
         <Pagination paginaActual={paginaActual} totalPaginas={totalPages} handleAnterior={handleAnterior} handleSiguiente={handleSiguiente} />
       </div>
       <NewPuntoVenta />
       <UpdatePuntoVenta />
+      <SubMenuPuntoVenta />
     </div>
   );
 }

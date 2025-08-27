@@ -1,5 +1,6 @@
 import { ACTIVESUBMENUNEWCARGO, ACTIVESUBMENUUPDATECARGO } from "@renderer/type";
 import { ActiveErrorSpam } from "./actionsLogin";
+import { ActiveSubMenuDeleteUsers } from "./actionsUsers";
 const apiUrl = import.meta.env.VITE_API_URL;
 
 
@@ -97,6 +98,43 @@ export const Fetch_update_cargo = (dataInput: any, activeUpdateCargo: any, userI
         } catch (error) {
             dispatch(ActiveErrorSpam({ msg: 'Error al actualizar este cargo', active: true, typeError: 'Error' }));
             console.log('Ocurrió un error al actualizar este cargo');
+        }
+    }
+}
+
+export const Fetch_delete_cargo = (activeDeleteUsers: any, userData) => {
+    return async (dispatch) => {
+        try {
+            const response = await fetch(`/api/cargo/${activeDeleteUsers.user.id_cargo}`, {
+                method: 'DELETE',
+                headers: {
+                    'x-id-usuario': userData.id_usuario,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    reqUser: userData
+                }),
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    if (data) {
+                        dispatch(ActiveErrorSpam({ msg: data.message, active: true, typeError: 'submit' }));
+                        dispatch(ActiveSubMenuDeleteUsers({
+                            user: {},
+                            activeDeleteUsers: false
+                        }))
+                    } else {
+                        dispatch(ActiveErrorSpam({ msg: data.message, active: true, typeError: 'error' }));
+                        dispatch(ActiveSubMenuDeleteUsers({
+                            user: {},
+                            activeDeleteUsers: false
+                        }))
+                    }
+                })
+                .catch((err) => console.log('Error:', err));
+        } catch (error) {
+            dispatch(ActiveErrorSpam({ msg: 'Error al eliminar este cargo', active: true, typeError: 'error' }));
+            console.log(error)
         }
     }
 }

@@ -43,11 +43,17 @@
   display: flex;
   flex-direction: column;
 }
+.App__dashboard__contPageOutlet__PageUsers__menuUser__contDataUser__contInfo h2 {
+  font-weight: bold;
+  color: #dd8702;
+  margin-bottom: 5px;
+}
 .App__dashboard__contPageOutlet__PageUsers__menuUser__contDataUser__contInfo span b {
   font-weight: bold;
 }
 .App__dashboard__contPageOutlet__PageUsers__menuUser__contDataUser__contInfo__contBtn {
   display: flex;
+  width: 100%;
   flex-direction: column;
 }
 

@@ -1,0 +1,181 @@
+@import './variables';
+
+.App__dashboard__contPageOutlet__PageUsers__contContratos__table__itemHorario {
+    background-color: $color-item;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 70px;
+    justify-content: center;
+    border-radius: 5px;
+    text-align: center;
+    position: relative;
+    margin: 10px auto 0px auto;
+    padding-left: 30px;
+    border: 1px solid transparent;
+    // animation: aparecer 1s forwards;
+    transition: all .5s;
+
+
+    &__header {
+        // margin: 10px 0 10px 0;
+        width: 100%;
+        display: flex;
+        // justify-content: space-between;
+        // flex-wrap: wrap;
+        align-items: center;
+
+
+        &__icon {
+            height: 70px;
+            width: 22%;
+            display: flex;
+            align-items: center;
+
+            @media (max-width: 1366px) {
+                width: 37%;
+            }
+        }
+
+        &__info {
+            height: 70px;
+            width: 78%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding-top: 5px;
+
+            @media (max-width: 1366px) {
+                width: 63%;
+                margin-top: 10px;
+            }
+        }
+
+        h4 {
+            transition: all .5s;
+            font-weight: 500;
+            width: 20%;
+            display: flex;
+            justify-content: first baseline;
+            align-items: center;
+            white-space: nowrap;
+
+            span {
+                color: $color-principal;
+                font-weight: bold;
+            }
+        }
+
+        h4:first-child {
+            text-align: center !important;
+            width: 10%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            cursor: pointer;
+            transition: all .5s;
+
+            &:hover {
+                color: $color-principal;
+            }
+
+            svg {
+                margin-right: 10px;
+                font-size: 40px;
+            }
+
+        }
+
+        &__contspan {
+            background-color: $color-item-header;
+            width: 50%;
+            height: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            position: absolute;
+            right: 0px;
+            top: 0;
+            font-size: 15px;
+            border-radius: 5px;
+            border-left: 1px solid $color-principal;
+
+            &__activo {
+                color: $color-submit !important;
+            }
+
+            &__inactivo {
+                color: #630603 !important;
+            }
+
+            h4 {
+                display: inline-block;
+                width: auto;
+            }
+
+            @media (max-width: 1366px) {
+                width: 62%;
+                height: auto;
+                background-color: $color-item-header;
+                display: flex;
+                justify-content: space-around;
+                position: absolute;
+                right: 0px;
+                top: 0;
+                font-size: 12px;
+                border-radius: 0 5px 0 5px;
+                border-left: 1px solid $color-principal;
+                border-bottom: 1px solid $color-principal;
+
+            }
+
+
+        }
+
+        span {
+            margin-left: 3px;
+        }
+    }
+
+    &__footer {
+        display: none;
+
+        button {
+            background-color: $color-principal;
+            border-radius: 100px;
+            border: none;
+            cursor: pointer;
+
+            svg {
+                font-size: 30px;
+            }
+        }
+
+        span {
+            margin: 0 5px 0 5px;
+        }
+    }
+
+    &__footer__active {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 5px;
+
+        button {
+            background-color: $color-principal;
+            border-radius: 100px;
+            border: none;
+            cursor: pointer;
+
+            svg {
+                font-size: 30px;
+            }
+        }
+
+        span {
+            margin: 0 5px 0 5px;
+        }
+    }
+
+}

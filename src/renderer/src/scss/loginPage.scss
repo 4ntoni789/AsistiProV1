@@ -65,9 +65,10 @@
                     }
                 }
 
-                
 
-                button {
+
+                &__button {
+                    position: relative;
                     border-radius: 5px;
                     border: none;
                     height: 20px;
@@ -90,19 +91,52 @@
                         transition: all .5s;
                         color: #fff;
                     }
+
+                    svg {
+                        position: absolute;
+                        left: 15%;
+                        top: 15%;
+                        opacity: 0;
+                        visibility: hidden;
+                    }
                 }
 
-                &__showPassLogin{
+                &__showPassLogin {
                     position: relative;
-                    svg{
+
+                    svg {
                         position: absolute;
                         right: 5px;
                         top: 20%;
                         color: $color-principal;
                     }
-                    
+
                 }
 
+
+                &__loadingBoton {
+                    position: relative;
+                    border-radius: 5px;
+                    border: none;
+                    height: 20px;
+                    cursor: pointer;
+                    background-color: $color-principal;
+                    transition: all .5s;
+                    font-weight: bold;
+                    color: #fff;
+                    outline: none;
+                    // animation: rotate 1s infinite;
+
+                    svg {
+                        position: absolute;
+                        left: 15%;
+                        top: 15%;
+                        opacity: 1;
+                        visibility: visible;
+                        animation: rotar .5s infinite linear;
+
+                    }
+                }
             }
         }
     }

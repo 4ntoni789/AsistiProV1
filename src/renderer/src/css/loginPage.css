@@ -52,7 +52,8 @@
   border: 2px solid #ccc;
   background-color: #ccc;
 }
-.App__loginPage__cont__contForm__form button {
+.App__loginPage__cont__contForm__form__button {
+  position: relative;
   border-radius: 5px;
   border: none;
   height: 20px;
@@ -63,15 +64,22 @@
   color: #1b1b1f;
   outline: none;
 }
-.App__loginPage__cont__contForm__form button:hover {
+.App__loginPage__cont__contForm__form__button:hover {
   background-color: #dd8702;
   transition: all 0.5s;
   color: #fff;
 }
-.App__loginPage__cont__contForm__form button:focus {
+.App__loginPage__cont__contForm__form__button:focus {
   background-color: #dd8702;
   transition: all 0.5s;
   color: #fff;
+}
+.App__loginPage__cont__contForm__form__button svg {
+  position: absolute;
+  left: 15%;
+  top: 15%;
+  opacity: 0;
+  visibility: hidden;
 }
 .App__loginPage__cont__contForm__form__showPassLogin {
   position: relative;
@@ -81,6 +89,26 @@
   right: 5px;
   top: 20%;
   color: #dd8702;
+}
+.App__loginPage__cont__contForm__form__loadingBoton {
+  position: relative;
+  border-radius: 5px;
+  border: none;
+  height: 20px;
+  cursor: pointer;
+  background-color: #dd8702;
+  transition: all 0.5s;
+  font-weight: bold;
+  color: #fff;
+  outline: none;
+}
+.App__loginPage__cont__contForm__form__loadingBoton svg {
+  position: absolute;
+  left: 15%;
+  top: 15%;
+  opacity: 1;
+  visibility: visible;
+  animation: rotar 0.5s infinite linear;
 }
 .App__loginPage__contBanner {
   width: 60%;

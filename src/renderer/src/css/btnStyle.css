@@ -1,7 +1,8 @@
 .btn_style {
+  position: relative;
   width: 90%;
   margin: 2px auto 2px auto;
-  background-color: #bbb;
+  background-color: #9b9898;
   height: 40px;
   border: none;
   border-radius: 10px;
@@ -13,8 +14,19 @@
   background-color: #dd8702;
 }
 .btn_style:disabled {
-  background-color: #bbb;
-  color: #969696;
+  background-color: #9b9898;
+  color: #c5c5c5;
+}
+.btn_style span {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-size: 11px;
+  text-align: center;
+  font-weight: bold;
+  background-color: #dd8702;
+  border-radius: 0px 0px 10px 10px;
 }
 
 .btn_style__remove {

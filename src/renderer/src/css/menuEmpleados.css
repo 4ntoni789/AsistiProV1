@@ -48,6 +48,7 @@
   box-shadow: 5px 0 10px rgba(0, 0, 0, 0.5);
 }
 .App__dashboard__contPageOutlet__PageUsers__menuUser__form__dataUser h2 {
+  font-weight: bold;
   margin: 0;
   padding: 0;
   text-align: center;
@@ -74,9 +75,12 @@
   height: 40px;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 10px;
 }
 .App__dashboard__contPageOutlet__PageUsers__menuUser__form__contInputs__check h2 {
   padding: 0 !important;
+  font-weight: bold;
+  color: #dd8702;
 }
 .App__dashboard__contPageOutlet__PageUsers__menuUser__form__contInputs__check div {
   margin: 0;

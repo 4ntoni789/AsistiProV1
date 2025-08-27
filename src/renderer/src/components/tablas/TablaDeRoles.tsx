@@ -1,5 +1,4 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import React from 'react'
 import ItemRol from '../items/ItemRol'
 import ItemHeader from '../items/ItemHeader'
 import { ActiveSubMenuDeleteUsers } from '@renderer/actions/actionsUsers'

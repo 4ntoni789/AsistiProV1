@@ -20,21 +20,30 @@
         flex-direction: column;
         justify-content: center;
 
-        &__contBtn{
+        &__contBtn {
             display: flex;
             // justify-content: center;
             align-items: center;
-            span{
+            width: 50%;
+            margin: auto;
+            margin-top: 10px;
+
+            span {
                 font-size: 25px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
 
-                svg{
+                svg {
                     font-size: 30px;
                     margin: 0 10px 0 10px;
                 }
             }
+        }
+
+        label {
+            width: 90%;
+            margin: auto;
         }
     }
 
