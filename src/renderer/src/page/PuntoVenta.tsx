@@ -1,5 +1,4 @@
 import ButtonStyle from '@renderer/components/ButtonStyle';
-
 import { useDispatch, useSelector } from 'react-redux';
 import '../css/puntoVenta.css';
 import NewPuntoVenta from '@renderer/components/modal/NewPuntoVenta';
@@ -24,7 +23,7 @@ function PuntoVenta() {
   const [searchTerm, setSearchTerm] = useState('');
   const dispatch = useDispatch<AppDispatch>();
   const [paginaActual, setPaginaActual] = useState(1);
-  const itemsPerPage = window.innerWidth <= 1366 ? 5 : 8;
+  const itemsPerPage = window.innerWidth <= 1366 ? 6 : 10;
 
   const [direccion, setDireccion] = useState<'siguiente' | 'anterior' | 'busqueda'>('busqueda');
 

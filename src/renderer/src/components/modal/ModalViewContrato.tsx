@@ -12,6 +12,7 @@ import { Fetch_cargos } from "@renderer/actions/actionsCargos";
 import { Fetch_empleadores } from "@renderer/actions/actionsEmpleadores";
 import { Fetch_empleados } from "@renderer/actions/actionsEmpleados";
 import { obtenerDatosPrimerCoincidencia } from "@renderer/scripts/obtenerDatosFetchPrimer";
+import LoaderItems from "../LoaderItems";
 
 
 function ModalViewContrato() {
@@ -52,54 +53,58 @@ function ModalViewContrato() {
     <div ref={modalRef} className={activeVerContrato.subMenuVerContrato ? 'App__dashboard__contPageOutlet__PageUsers__modalViewContrato__active' :
       'App__dashboard__contPageOutlet__PageUsers__modalViewContrato'} onClick={handleClickOutside}>
       {
-        activeVerContrato.user === null ? <span>cargando...</span>
-          : <div className={activeVerContrato.subMenuVerContrato ? 'App__dashboard__contPageOutlet__PageUsers__menuUser__contDataUser__active' :
-            'App__dashboard__contPageOutlet__PageUsers__menuUser__contDataUser'}>
-            <div className='App__dashboard__contPageOutlet__PageUsers__menuUser__contDataUser__btnClose'>
-              <FontAwesomeIcon icon={faXmark} onClick={() => {
-                dispatch(dispatch(ActiveMenuVerContrato({ user: {}, subMenuVerContrato: false })))
-              }} />
-            </div>
-            <div className='App__dashboard__contPageOutlet__PageUsers__menuUser__contDataUser__contInfo'>
-              <h2>Información laboral</h2>
-              <span>Nombre: <b>{activeVerContrato.user.nombres}</b></span>
-              <span>Empleador: <b>{activeVerContrato.user.nombre_empleador}</b></span>
-              <span>Tipo de contrato: <b>{activeVerContrato.user.tipo_contrato}</b></span>
-              <span>Fecha de inicio: <b>{activeVerContrato.user.fecha_inicio?.toString().split('T')[0]}</b></span>
-              {
-                activeVerContrato.user.fecha_fin ? <span>Fecha de finalización: <b>{activeVerContrato.user.fecha_fin.toString().split('T')[0]}</b></span> : null
-              }
-              <span>Numero de contrato: <b>{activeVerContrato.user.id_contrato}</b></span>
-              <span>Estado: <b>{activeVerContrato.user.estado} ({activeVerContrato.user.estado_contrato})</b></span>
-              <span>Salario: <b>{formatearNumero(String(activeVerContrato.user.salario))}</b></span>
-              {
-                activeVerContrato.user?.tipo_contrato == 'Fijo' || activeVerContrato.user?.tipo_contrato == 'Fijo Manejo y Confianza' ? <>
-                  <span>Prórroga: <b>{activeVerContrato.user.cantidad_prorrogas}</b></span>
-                  <span>Meses: <b>{activeVerContrato.user.meses}</b></span>
-                </> : null
-              }
-              <span>Cargo: <b>{activeVerContrato.user.nombre_cargo}</b></span>
-              <h2>Opciones de contrato</h2>
-              <div className='App__dashboard__contPageOutlet__PageUsers__menuUser__contDataUser__contInfo__contBtn'>
-                {
-                  activeVerContrato.user?.tipo_contrato == 'Fijo' || activeVerContrato.user?.tipo_contrato == 'Fijo Manejo y Confianza' ? <button className='btn_style' type='submit' onClick={() => {
-                    dispatch(Fetch_prorroga_contrato(userData, activeVerContrato.user))
-                  }}>Prórroga {activeVerContrato.user.dias_restantes != undefined ? <span>Prorroga automatica en: {activeVerContrato.user.dias_restantes} dias</span> : null}</button> : null
-                }
-                {
-                  activeVerContrato.user.estado === 'Activo' ? <input type="button" value="Finalizar contrato" className='btn_style' onClick={() => {
-                    dispatch(ActiveMenuVerContrato({ user: {}, subMenuVerContrato: false }))
-                    dispatch(ActiveSubMenuDeleteUsers({ user: activeVerContrato.user, activeDeleteUsers: true, typeRemove: 'Contrato' }));
-                  }} /> : null
-                }
-                <input type="button" value={loader ? 'Generando archivo...' : "Descargar contrato"} disabled={loader} className='btn_style'
-                  onClick={() => GenerarContrato()} />
-              </div>
-            </div>
+        <div className={activeVerContrato.subMenuVerContrato ? 'App__dashboard__contPageOutlet__PageUsers__menuUser__contDataUser__active' :
+          'App__dashboard__contPageOutlet__PageUsers__menuUser__contDataUser'}>
+          <div className='App__dashboard__contPageOutlet__PageUsers__menuUser__contDataUser__btnClose'>
+            <FontAwesomeIcon icon={faXmark} onClick={() => {
+              dispatch(dispatch(ActiveMenuVerContrato({ user: {}, subMenuVerContrato: false })))
+            }} />
           </div>
+          <div className='App__dashboard__contPageOutlet__PageUsers__menuUser__contDataUser__contInfo'>
+            {
+              Object.keys(activeVerContrato.user).length === 0 ? <LoaderItems /> :
+                <>
+                  <h2>Información laboral</h2>
+                  <span>Nombre: <b>{activeVerContrato.user.nombres}</b></span>
+                  <span>Empleador: <b>{activeVerContrato.user.nombre_empleador}</b></span>
+                  <span>Tipo de contrato: <b>{activeVerContrato.user.tipo_contrato}</b></span>
+                  <span>Fecha de inicio: <b>{activeVerContrato.user.fecha_inicio?.toString().split('T')[0]}</b></span>
+                  {
+                    activeVerContrato.user.fecha_fin ? <span>Fecha de finalización: <b>{activeVerContrato.user.fecha_fin.toString().split('T')[0]}</b></span> : null
+                  }
+                  <span>Numero de contrato: <b>{activeVerContrato.user.id_contrato}</b></span>
+                  <span>Estado: <b>{activeVerContrato.user.estado} ({activeVerContrato.user.estado_contrato})</b></span>
+                  <span>Salario: <b>{formatearNumero(String(activeVerContrato.user.salario))}</b></span>
+                  {
+                    activeVerContrato.user?.tipo_contrato == 'Fijo' || activeVerContrato.user?.tipo_contrato == 'Fijo Manejo y Confianza' ? <>
+                      <span>Prórroga: <b>{activeVerContrato.user.cantidad_prorrogas}</b></span>
+                      <span>Meses: <b>{activeVerContrato.user.meses}</b></span>
+                    </> : null
+                  }
+                  <span>Cargo: <b>{activeVerContrato.user.nombre_cargo}</b></span>
+                  <h2>Opciones de contrato</h2>
+                  <div className='App__dashboard__contPageOutlet__PageUsers__menuUser__contDataUser__contInfo__contBtn'>
+                    {
+                      activeVerContrato.user?.tipo_contrato == 'Fijo' || activeVerContrato.user?.tipo_contrato == 'Fijo Manejo y Confianza' ? <button className='btn_style' type='submit' onClick={() => {
+                        dispatch(Fetch_prorroga_contrato(userData, activeVerContrato.user))
+                      }}>Prórroga {activeVerContrato.user.dias_restantes != undefined ? activeVerContrato.user.estado_contrato === 'VIGENTE' ? < span > Prorroga automatica en: {activeVerContrato.user.dias_restantes} dias</span> : null : null}</button> : null
+                    }
+                    {
+                      activeVerContrato.user.estado === 'Activo' ? <input type="button" value="Finalizar contrato" className='btn_style' onClick={() => {
+                        dispatch(ActiveMenuVerContrato({ user: {}, subMenuVerContrato: false }))
+                        dispatch(ActiveSubMenuDeleteUsers({ user: activeVerContrato.user, activeDeleteUsers: true, typeRemove: 'Contrato' }));
+                      }} /> : null
+                    }
+                    <input type="button" value={loader ? 'Generando archivo...' : "Descargar contrato"} disabled={loader} className='btn_style'
+                      onClick={() => GenerarContrato()} />
+                  </div>
+                </>
+            }
+          </div>
+        </div>
       }
-    </div>
+    </div >
   )
 }
 
-export default ModalViewContrato
+export default ModalViewContrato;

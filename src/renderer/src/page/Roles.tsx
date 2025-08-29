@@ -1,4 +1,3 @@
-
 import { ActiveSubMenuNewRole, Fetch_roles } from '@renderer/actions/actionsRoles';
 import ButtonStyle from '@renderer/components/ButtonStyle';
 import NewRole from '@renderer/components/modal/NewRole';

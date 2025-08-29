@@ -16,8 +16,8 @@
         margin: 00px 0 10px 0px;
         padding: 15px 0 15px 30px;
         font-weight: bold;
-        color: #dd8702;
-        // background-color: #dd8702;
+        color: $color-principal;
+        // background-color: $color-principal;
     }
 
 
@@ -118,7 +118,7 @@
 
                 &:hover {
                     transition: all .5s;
-                    color: #dd8702;
+                    color: $color-principal;
                 }
             }
 
@@ -135,7 +135,7 @@
                 // text-align: center;
                 padding: 5px 5px 5px 0px;
                 box-shadow: 4px 17px 15px -3px rgba(1, 1, 0, 0.3);
-                border: 1px solid #dd8702;
+                border: 1px solid $color-principal;
                 visibility: 1;
                 visibility: visible;
                 transition: all .5s;
@@ -149,7 +149,7 @@
 
                     &:hover {
                         transition: all .5s;
-                        color: #dd8702;
+                        color: $color-principal;
                     }
                 }
             }
@@ -157,8 +157,11 @@
     }
 
     &__table {
+        border: 1px solid $color-item-header;
+        border-radius: 5px;
+        margin: 5px auto 0 auto;
         position: relative;
-        width: 100% !important;
+        width: 95% !important;
         height: 80vh;
         text-align: center;
         display: flex;
@@ -171,7 +174,7 @@
         }
 
         &__contItem {
-            width: 95%;
+            width: 98%;
         }
     }
 

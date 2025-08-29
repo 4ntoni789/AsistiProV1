@@ -15,7 +15,7 @@ function TablaDeUsuarios({ direccion, paginaActual, variants, currentItems, sear
               animate="center"
               exit="exit"
               transition={{ duration: 0.3 }}
-              className="App__dashboard__contPageOutlet__PageUsers__contRoles__table__contItem"
+              className="App__dashboard__contPageOutlet__PageUsers__contUsers__table__contItem"
             >
               {
                 currentItems?.map((item: any, i) => (
@@ -26,6 +26,7 @@ function TablaDeUsuarios({ direccion, paginaActual, variants, currentItems, sear
                     estado={item.estado}
                     item={item}
                   />
+                  
                 ))
               }
             </motion.div>
@@ -36,7 +37,7 @@ function TablaDeUsuarios({ direccion, paginaActual, variants, currentItems, sear
               initial="hidden"
               animate="show"
               exit="exit"
-              className="App__dashboard__contPageOutlet__PageUsers__contRoles__table__contItem"
+              className="App__dashboard__contPageOutlet__PageUsers__contUsers__table__contItem"
             >
               {currentItems.map((item, index) => (
                 <motion.div

@@ -8,7 +8,7 @@ function ItemCargo({ item, edit, remove }) {
       <div className='App__init__tablaMarcaciones__body__item__cargo__header'>
         <h4>
           <FontAwesomeIcon icon={faBriefcase} />
-          {item.nombre_cargo}</h4>
+          Cargo: <b> {item.nombre_cargo}</b></h4>
 
         {/* <h4>{contrato[0]?.fecha_fin.toString().split('T')[0]}</h4> */}
         <div className='App__init__tablaMarcaciones__body__item__cargo__header__contVerRegistros'>

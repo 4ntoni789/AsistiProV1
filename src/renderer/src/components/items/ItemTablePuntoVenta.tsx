@@ -35,7 +35,7 @@ function ItemTablePuntoVenta({ item }) {
       <div className='App__init__tablaPuntoVenta__body__item__header'>
         <h4><FontAwesomeIcon onClick={() => dispatch(ActiveSubMenuPuntoVenta({ user: {item}, subMenuPuntoVenta: true }))} icon={faShop} /> {item.nombre}</h4>
         <div className='App__init__tablaPuntoVenta__body__item__header__controls'>
-          <h4>{item.direccion}</h4>
+          <h4>Dirección: <b>{item.direccion}</b></h4>
           {/* <h4>{item.id_pv}</h4> */}
           {/* <h4>{contrato[0]?.fecha_fin.toString().split('T')[0]}</h4> */}
           <FontAwesomeIcon ref={buttonRef} icon={faEllipsisVertical} onClick={() => setIsOpen(!isOpen)} title='Opciones' />

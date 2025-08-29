@@ -16,7 +16,7 @@
         margin: 00px 0 10px 0px;
         padding: 15px 0 15px 30px;
         font-weight: bold;
-        color: #dd8702;
+        color: $color-principal;
         // background-color: #dd8702;
     }
 
@@ -67,18 +67,23 @@
     }
 
     &__table {
-        width: 100% !important;
-        height: calc(80% - (5% - -5px));
-
+        border: 1px solid $color-item-header;
+        border-radius: 5px;
+        margin: 5px auto 0 auto;
+        position: relative;
+        width: 95% !important;
+        height: 80vh;
         text-align: center;
         display: flex;
         flex-direction: column;
         align-items: center;
 
-
+        @media (max-width: 1366px) {
+            height: 70vh;
+        }
 
         &__contItem {
-            width: 95%;
+            width: 98%;
         }
     }
 

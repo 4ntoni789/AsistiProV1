@@ -1,6 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import ItemRol from '../items/ItemRol'
-import ItemHeader from '../items/ItemHeader'
 import { ActiveSubMenuDeleteUsers } from '@renderer/actions/actionsUsers'
 import { AppDispatch } from '@renderer/store'
 import { useDispatch } from 'react-redux'
@@ -11,7 +10,6 @@ function TablaDeRoles({ direccion, paginaActual, variants, currentItems, searchT
 
   return (
     <div className='App__dashboard__contPageOutlet__PageUsers__contRoles__table'>
-      <ItemHeader n1='Rol' n2='' n3='' n4='' n5='' />
       <AnimatePresence mode='wait'>
         {
           (direccion === 'siguiente' || direccion === 'anterior') ? (

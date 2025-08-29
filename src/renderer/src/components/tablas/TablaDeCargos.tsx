@@ -1,5 +1,4 @@
 import { AnimatePresence, motion } from "framer-motion"
-import ItemHeader from "../items/ItemHeader"
 import ItemCargo from "../items/ItemCargo"
 import { ActiveSubMenuDeleteUsers } from "@renderer/actions/actionsUsers"
 import { ActiveSubMenuUpdateCargo } from "@renderer/actions/actionsCargos"
@@ -11,7 +10,6 @@ function TablaDeCargos({ direccion, paginaActual, variants, currentItems, search
 
   return (
     <div className='App__dashboard__contPageOutlet__PageUsers__contCargos__table'>
-      <ItemHeader n1='Cargo' n2='' n3='' n4='' n5='' />
       <AnimatePresence mode='wait'>
         {
           (direccion === 'siguiente' || direccion === 'anterior') ? (

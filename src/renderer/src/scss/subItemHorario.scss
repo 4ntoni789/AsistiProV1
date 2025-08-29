@@ -14,7 +14,7 @@
     // flex-direction: column;
     span {
         width: 50%;
-        text-align: left;
+        text-align: left !important;
 
         &:nth-child(1) {
             // width: 60% !important;

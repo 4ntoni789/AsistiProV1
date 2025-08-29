@@ -1,10 +1,16 @@
 .App__dashboard__contPageOutlet__PageUsers__contUsers__table__usuario {
   background-color: #1b1b1f;
-  height: 220px;
-  width: 95%;
+  height: auto;
+  width: 600px;
   border-radius: 5px;
-  margin: 5px auto 5px auto;
+  margin: 5px 70px 5px 70px;
   border: 1px solid #dd8702;
+}
+@media (max-width: 1366px) {
+  .App__dashboard__contPageOutlet__PageUsers__contUsers__table__usuario {
+    width: 400px;
+    margin: 5px 0 5px 0;
+  }
 }
 .App__dashboard__contPageOutlet__PageUsers__contUsers__table__usuario__cont h2 {
   color: #dd8702;
@@ -24,14 +30,17 @@
   font-size: 13px;
 }
 .App__dashboard__contPageOutlet__PageUsers__contUsers__table__usuario__cont__body {
-  width: 80%;
+  width: 90%;
   margin: auto;
 }
 .App__dashboard__contPageOutlet__PageUsers__contUsers__table__usuario__cont__body h3 {
   color: #9b9898;
   font-weight: 400;
+  text-align: left;
+  font-weight: bold;
 }
 .App__dashboard__contPageOutlet__PageUsers__contUsers__table__usuario__cont__body h3 b {
+  color: #dd8702;
   font-weight: bold;
 }
 .App__dashboard__contPageOutlet__PageUsers__contUsers__table__usuario__cont__body__active {
@@ -50,7 +59,7 @@
   justify-content: flex-end;
   align-items: end;
   position: absolute;
-  left: 83%;
+  left: 70%;
   top: -15px;
 }
 .App__dashboard__contPageOutlet__PageUsers__contUsers__table__usuario__cont__footer__contBtn2 {

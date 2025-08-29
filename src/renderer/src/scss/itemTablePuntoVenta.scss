@@ -1,9 +1,10 @@
 @import './variables';
+
 .App__init__tablaPuntoVenta__body__item {
-    background-color: $color-item-claro;
+    background-color: $color-item;
     display: flex;
     width: 100%;
-    height: 80px;
+    height: 70px;
     align-self: center;
     border-radius: 10px;
     text-align: center;
@@ -20,7 +21,7 @@
         transition: color .5s;
 
         &:hover {
-            color:$color-principal;
+            color: $color-principal;
         }
     }
 
@@ -37,25 +38,40 @@
             align-items: center;
             text-align: left;
 
-            svg{
-                width: 5%;
-                font-size: 30px;
+            svg {
+                width: 10%;
+                font-size: 36px ;
             }
+
         }
 
-        &__controls{
+        &__controls {
             display: flex;
-            width: 30%;
+            width: 50%;
             justify-content: center;
             align-items: center;
-            h4{
+
+            h4 {
                 display: flex;
                 // justify-content: center;
                 align-items: center;
+
+                b {
+                    width: 80%;
+                    color: $color-principal;
+                    font-weight: 600;
+                    display: flex;
+                    justify-content: first baseline;
+                    align-items: center;
+                    text-align: left;
+
+                    margin-left: 10px;
+
+                }
             }
         }
 
-       
+
     }
 
     &__footer {

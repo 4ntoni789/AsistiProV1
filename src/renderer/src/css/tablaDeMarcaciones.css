@@ -14,13 +14,12 @@
   width: 100%;
   border-radius: 10px 10px 0 0;
   margin: 0px 0 10px 0px;
-  padding: 15px 0 15px 30px;
+  padding: 15px 0 5px 30px;
   font-weight: bold;
   color: #dd8702;
 }
 .App__init__contTable__tablaMarcaciones__header {
   width: 95%;
-  padding: 10px 0 10px 30px;
   display: flex;
   align-items: center;
   margin: auto;
@@ -225,21 +224,16 @@
   animation: rotate 0.8s infinite;
   transition: all 1s;
 }
-.App__init__contTable__tablaMarcaciones__headerTable {
-  margin: auto;
-  width: 90%;
-  padding: 10px 0 10px 0px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
 .App__init__contTable__tablaMarcaciones__body {
   position: relative;
-  width: 100% !important;
-  height: 77vh;
-  padding-left: 30px;
+  width: 95%;
+  margin: 5px auto 0 auto;
+  height: 80vh;
+  overflow: auto;
   display: flex;
   flex-direction: column;
+  border: 1px solid #666;
+  border-radius: 5px;
 }
 .App__init__contTable__tablaMarcaciones__body::-webkit-scrollbar {
   width: 12px;
@@ -259,13 +253,13 @@
   /* creates padding around scroll thumb */
 }
 .App__init__contTable__tablaMarcaciones__body__contItems {
-  width: 95%;
+  width: 98%;
   margin: auto;
   margin-top: 0px !important;
 }
 @media (max-width: 1366px) {
   .App__init__contTable__tablaMarcaciones__body {
-    height: 66vh;
+    height: 70vh;
   }
 }
 .App__init__contTable__tablaMarcaciones__pagination {

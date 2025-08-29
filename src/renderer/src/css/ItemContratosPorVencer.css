@@ -17,9 +17,6 @@
 .App__dashboard__contPageOutlet__PageUsers__contratosPorVencer__contContratosPorVencer__itemContratosPorVencer:hover {
   border: 1px solid #dd8702;
 }
-.App__dashboard__contPageOutlet__PageUsers__contratosPorVencer__contContratosPorVencer__itemContratosPorVencer h5 {
-  margin: 0 0 0 5px;
-}
 .App__dashboard__contPageOutlet__PageUsers__contratosPorVencer__contContratosPorVencer__itemContratosPorVencer h5:last-child {
   font-size: 10px;
   bottom: 0;
@@ -37,12 +34,11 @@
   color: #dd8702;
 }
 .App__dashboard__contPageOutlet__PageUsers__contratosPorVencer__contContratosPorVencer__itemContratosPorVencer__info {
-  width: 70%;
+  width: 75%;
 }
 .App__dashboard__contPageOutlet__PageUsers__contratosPorVencer__contContratosPorVencer__itemContratosPorVencer__info b {
-  color: #333;
-  font-weight: 600;
-  text-decoration: underline;
+  color: #dd8702;
+  font-weight: bold;
 }
 .App__dashboard__contPageOutlet__PageUsers__contratosPorVencer__contContratosPorVencer__itemContratosPorVencer__info span {
   font-weight: bold;
@@ -52,6 +48,17 @@
   background: linear-gradient(270deg, #ff6b6b, #ffd93d, #6bcbee);
   background-size: 600% 600%;
   animation: gradienteAnimado 6s ease infinite, slideDownFade 0.5s ease-out;
+}
+.item-destacado .App__dashboard__contPageOutlet__PageUsers__contratosPorVencer__contContratosPorVencer__itemContratosPorVencer__info {
+  width: 75%;
+}
+.item-destacado .App__dashboard__contPageOutlet__PageUsers__contratosPorVencer__contContratosPorVencer__itemContratosPorVencer__info b {
+  color: #333;
+  font-weight: bold;
+  text-decoration: underline;
+}
+.item-destacado .App__dashboard__contPageOutlet__PageUsers__contratosPorVencer__contContratosPorVencer__itemContratosPorVencer__info span {
+  font-weight: bold;
 }
 
 @keyframes gradienteAnimado {

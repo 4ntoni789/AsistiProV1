@@ -5,13 +5,13 @@ import { ActiveMenuVerContrato } from '@renderer/actions/actionsContratos';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '@renderer/store';
 
-function ItemContratosPorVencer({ item }) {
+function ItemContratosPorVencer({ item, index }: { item: any, index: number }) {
   const dispatch = useDispatch<AppDispatch>();
 
   return (
-    <div className='App__dashboard__contPageOutlet__PageUsers__contratosPorVencer__contContratosPorVencer__itemContratosPorVencer item-destacado'
+    <div className={`App__dashboard__contPageOutlet__PageUsers__contratosPorVencer__contContratosPorVencer__itemContratosPorVencer ${index === 0 ? 'item-destacado' : ''}`}
       onClick={() => dispatch(ActiveMenuVerContrato({ user: item, subMenuVerContrato: true }))}
-      title={`Contrato por vencer en: ${item.dias_restantes} dias`}>
+      title={item.estado_contrato === 'VIGENTE' ? `Contrato por vencer en: ${item.dias_restantes} dias` : `Contrato vencido: ${Math.abs(item.dias_restantes)} dias`}>
       <div className='App__dashboard__contPageOutlet__PageUsers__contratosPorVencer__contContratosPorVencer__itemContratosPorVencer__ico'>
         <FontAwesomeIcon icon={faFileContract} />
       </div>
@@ -20,7 +20,11 @@ function ItemContratosPorVencer({ item }) {
         <h5><span>Empleado: <b>{item.nombres}</b></span></h5>
         <h5><span>Estado: <b>{item.estado}</b></span></h5>
         <h5><span>Prórrogas: <b>{item.cantidad_prorrogas}</b></span></h5>
-        <h5><span>Dias restantes: <b>{item.dias_restantes}</b></span></h5>
+        {item.estado_contrato === 'VIGENTE' ?
+          <h5><span>Dias restantes: <b>{item.dias_restantes}</b></span></h5>
+          :
+          <h5><span>Dias vencido: <b>{Math.abs(item.dias_restantes)}</b></span></h5>
+        }
         <h5><span><b>{item.id_contrato}</b></span></h5>
       </div>
     </div>

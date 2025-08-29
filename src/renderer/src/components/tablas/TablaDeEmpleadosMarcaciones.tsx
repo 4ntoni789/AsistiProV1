@@ -2,12 +2,9 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import '../../css/tablaDeMarcaciones.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowsRotate, faCalendar, faCalendarXmark, faEllipsisVertical, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faArrowsRotate, faCalendarXmark, faPlus } from '@fortawesome/free-solid-svg-icons';
 import ItemTable from '../items/ItemTable';
-import ItemTableHeader from '../items/ItemTableHeader';
-import MenuEmpleado from '../modal/SubMenuEmpleado';
 import { } from '@renderer/actions/actionsLogin';
-import ModalViewRegistros from '../modal/ModalViewRegistros';
 import { ActiveSubMenuNewEmpleado, Fetch_empleados } from '@renderer/actions/actionsEmpleados';
 import { obtenerDatos } from '@renderer/scripts/obtenerDatosFetch';
 import { Fetch_contratos } from '@renderer/actions/actionsContratos';
@@ -27,7 +24,7 @@ function TablaMarcaciones() {
   const [accesos, setAccesos] = useState<any[]>([]);
   const [paginaActual, setPaginaActual] = useState(1);
   const [searchTerm, setSearchTerm] = useState('');
-  const itemsPerPage = window.innerWidth <= 1366 ? 5 : 8;
+  const itemsPerPage = window.innerWidth <= 1366 ? 6 : 10;
   const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
   const dispatch = useDispatch<AppDispatch>();
   const [direccion, setDireccion] = useState<'siguiente' | 'anterior' | 'busqueda'>('busqueda');
@@ -151,7 +148,7 @@ function TablaMarcaciones() {
         </div>
       </div>
       <div className='App__init__contTable__tablaMarcaciones__body'>
-        <ItemTableHeader />
+        {/* <ItemTableHeader /> */}
         <AnimatePresence mode='wait'>
           {
             (direccion === 'siguiente' || direccion === 'anterior') ? (

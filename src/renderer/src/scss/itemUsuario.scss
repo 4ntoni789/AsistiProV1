@@ -2,14 +2,17 @@
 
 .App__dashboard__contPageOutlet__PageUsers__contUsers__table__usuario {
     background-color: $color-terceario;
-    height: 220px;
-    width: 95%;
+    height: auto;
+    width: 600px;
     border-radius: 5px;
-    margin: 5px auto 5px auto;
-    // margin: auto;
-    // margin-top: ;
-    // margin: auto !important;
+    margin: 5px 70px 5px 70px;
     border: 1px solid $color-principal;
+
+    @media (max-width: 1366px) {
+        width: 400px;
+        margin: 5px 0 5px 0;
+
+    }
 
     &__cont {
 
@@ -35,16 +38,19 @@
         }
 
         &__body {
-            width: 80%;
+            width: 90%;
             margin: auto;
 
             h3 {
                 color: $colo-text-claro;
                 font-weight: 400;
+                text-align: left;
+                font-weight: bold;
 
-                b{
+
+                b {
+                    color: $color-principal;
                     font-weight: bold;
-                    
                 }
             }
 
@@ -62,13 +68,13 @@
             display: flex;
             height: 30px;
 
-            &__contBtn1{
+            &__contBtn1 {
                 // width: 50%;
                 display: flex;
                 justify-content: flex-end;
                 align-items: end;
                 position: absolute;
-                left: 83%;
+                left: 70%;
                 top: -15px;
             }
 

@@ -7,13 +7,17 @@
   animation: aparecer 1s forwards;
 }
 .App__dashboard__contPageOutlet__PageUsers__contratosPorVencer__contContratosPorVencer {
+  width: 95%;
+  margin: auto;
+  border: 1px solid #666;
+  border-radius: 5px;
   position: relative;
-  height: 87vh;
+  height: 45%;
   overflow: auto;
 }
 @media (max-width: 1366px) {
   .App__dashboard__contPageOutlet__PageUsers__contratosPorVencer__contContratosPorVencer {
-    height: 82%;
+    height: 40%;
   }
 }
 .App__dashboard__contPageOutlet__PageUsers__contratosPorVencer__contContratosPorVencer::-webkit-scrollbar {
@@ -37,7 +41,7 @@
   width: 100%;
   border-radius: 10px 10px 0 0;
   margin: 0px 0 0px 0px;
-  padding: 15px 0 15px 0px;
+  padding: 0px 0 5px 0px;
   font-weight: bold;
   color: #dd8702;
   text-align: center;

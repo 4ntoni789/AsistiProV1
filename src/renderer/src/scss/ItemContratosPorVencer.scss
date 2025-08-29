@@ -22,10 +22,6 @@
     }
 
 
-    h5 {
-        margin: 0 0 0 5px;
-    }
-
     h5:last-child {
         font-size: 10px;
         bottom: 0;
@@ -46,12 +42,11 @@
     }
 
     &__info {
-        width: 70%;
+        width: 75%;
 
         b {
-            color:$color-secundario;
-            font-weight: 600;
-            text-decoration: underline;
+            color: $color-principal;
+            font-weight: bold;
         }
 
         span {
@@ -65,6 +60,22 @@
     background: linear-gradient(270deg, #ff6b6b, #ffd93d, #6bcbee);
     background-size: 600% 600%;
     animation: gradienteAnimado 6s ease infinite, slideDownFade 0.5s ease-out;
+
+    .App__dashboard__contPageOutlet__PageUsers__contratosPorVencer__contContratosPorVencer__itemContratosPorVencer {
+        &__info {
+            width: 75%;
+
+            b {
+                color: $color-secundario;
+                font-weight: bold;
+                text-decoration: underline;
+            }
+
+            span {
+                font-weight: bold;
+            }
+        }
+    }
 }
 
 @keyframes gradienteAnimado {

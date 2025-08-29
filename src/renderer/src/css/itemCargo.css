@@ -40,6 +40,11 @@
   align-items: center;
   white-space: nowrap;
 }
+.App__init__tablaMarcaciones__body__item__cargo__header h4 b {
+  margin-left: 5px;
+  font-weight: bold;
+  color: #dd8702;
+}
 .App__init__tablaMarcaciones__body__item__cargo__header h4:first-child {
   width: 400px !important;
   display: flex;

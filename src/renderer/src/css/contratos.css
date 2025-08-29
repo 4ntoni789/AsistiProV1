@@ -125,8 +125,11 @@
   color: #dd8702;
 }
 .App__dashboard__contPageOutlet__PageUsers__contContratos__table {
+  border: 1px solid #666;
+  border-radius: 5px;
+  margin: 5px auto 0 auto;
   position: relative;
-  width: 100% !important;
+  width: 95% !important;
   height: 80vh;
   text-align: center;
   display: flex;
@@ -139,7 +142,7 @@
   }
 }
 .App__dashboard__contPageOutlet__PageUsers__contContratos__table__contItem {
-  width: 95%;
+  width: 98%;
 }
 .App__dashboard__contPageOutlet__PageUsers__contContratos table,
 .App__dashboard__contPageOutlet__PageUsers__contContratos th,

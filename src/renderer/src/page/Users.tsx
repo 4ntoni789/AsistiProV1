@@ -23,7 +23,7 @@ function Users() {
 
   const [searchTerm, setSearchTerm] = useState('');
   const [paginaActual, setPaginaActual] = useState(1);
-  const itemsPerPage = window.innerWidth <= 1366 ? 2 : 3;
+  const itemsPerPage = window.innerWidth <= 1366 ? 3 : 3;
 
   const [direccion, setDireccion] = useState<'siguiente' | 'anterior' | 'busqueda'>('busqueda');
 

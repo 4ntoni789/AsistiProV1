@@ -10,13 +10,17 @@
 
 
     &__contContratosPorVencer {
+        width: 95%;
+        margin: auto;
+        border: 1px solid $color-item-header;
+        border-radius: 5px;
         position: relative;
-        height: 87vh;
+        height: 45%;
         overflow: auto;
 
 
         @media (max-width: 1366px) {
-            height: 82%;
+            height: 40%;
         }
 
         &::-webkit-scrollbar {
@@ -45,7 +49,7 @@
         width: 100%;
         border-radius: 10px 10px 0 0;
         margin: 00px 0 0px 0px;
-        padding: 15px 0 15px 0px;
+        padding: 0px 0 5px 0px;
         font-weight: bold;
         color: $color-principal;
         text-align: center;

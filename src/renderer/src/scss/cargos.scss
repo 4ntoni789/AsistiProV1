@@ -1,7 +1,8 @@
 @import './variables';
+
 .App__dashboard__contPageOutlet__PageUsers__contCargos {
     width: 90%;
-    height: 90vh;
+    height: 95vh;
     background-color: $color-secundario;
     border-radius: 5px;
     padding: 20px;
@@ -10,10 +11,10 @@
     h2 {
         width: 100%;
         border-radius: 10px 10px 0 0;
-        margin: 00px 0 10px 0px;
-        padding: 15px 0 15px 30px;
+        margin: 00px 0 0px 0px;
+        padding: 5px 0 10px 30px;
         font-weight: bold;
-        color: #dd8702;
+        color: $color-principal;
         // background-color: #dd8702;
     }
 
@@ -64,18 +65,24 @@
     }
 
     &__table {
-        width: 100% !important;
-                height: calc(100% - (20% - -1px));
-
+        border: 1px solid $color-item-header;
+        border-radius: 5px;
+        margin: 5px auto 0 auto;
+        position: relative;
+        width: 95% !important;
+        height: 80vh;
         text-align: center;
-       display: flex;
-       flex-direction: column;
-       align-items: center;
-       
-       
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
-        &__contItem{
-        width: 95%;
+
+        @media (max-width: 1366px) {
+            height: 73vh;
+        }
+
+        &__contItem {
+            width: 98%;
         }
     }
 

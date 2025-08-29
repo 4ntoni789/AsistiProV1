@@ -1,9 +1,11 @@
+@import './variables';
+
 .App__init__contTable {
     display: flex;
     justify-content: space-around;
 
     &__tablaMarcaciones {
-        background-color: #333;
+        background-color: $color-secundario;
         width: 75%;
         height: 100vh;
         // margin: 40px 0 0 80px;
@@ -15,15 +17,15 @@
             width: 100%;
             border-radius: 10px 10px 0 0;
             margin: 00px 0 10px 0px;
-            padding: 15px 0 15px 30px;
+            padding: 15px 0 5px 30px;
             font-weight: bold;
-            color: #dd8702;
-            // background-color: #dd8702;
+            color: $color-principal;
+            // background-color: $color-principal;
         }
 
         &__header {
             width: 95%;
-            padding: 10px 0 10px 30px;
+            // padding: 10px 0 10px 30px;
             display: flex;
             align-items: center;
             margin: auto;
@@ -55,13 +57,13 @@
                     font-size: 15px;
                     font-family: sans-serif;
                     font-weight: 600;
-                    background-color: #333;
+                    background-color: $color-secundario;
                     color: #fff;
 
 
                     &:focus {
                         outline: none;
-                        border-color: #dd8702;
+                        border-color: $color-principal;
                     }
 
                     &::-webkit-search-cancel-button {
@@ -71,7 +73,7 @@
                         width: 1em;
                         border: none;
                         border-radius: 50%;
-                        background: #dd8702 url("data:image/svg+xml;utf8,<svg viewBox='0 0 20 20' fill='white' xmlns='http://www.w3.org/2000/svg'><path d='M6 6L14 14M6 14L14 6' stroke='white' stroke-width='2' stroke-linecap='round'/></svg>") center center no-repeat;
+                        background: $color-principal url("data:image/svg+xml;utf8,<svg viewBox='0 0 20 20' fill='white' xmlns='http://www.w3.org/2000/svg'><path d='M6 6L14 14M6 14L14 6' stroke='white' stroke-width='2' stroke-linecap='round'/></svg>") center center no-repeat;
                         background-size: 100%;
                         cursor: pointer;
                         transition: all .5s;
@@ -99,7 +101,7 @@
                 align-items: center;
 
                 &__btnMore {
-                    background-color: #dd8702;
+                    background-color: $color-principal;
                     border: none;
                     height: 30px !important;
                     width: 60px !important;
@@ -114,7 +116,7 @@
 
 
                 &__contOptions {
-                    background-color: #555;
+                    background-color: $color-item-claro;
                     position: absolute;
                     top: 30px;
                     right: 0;
@@ -124,7 +126,7 @@
                     // text-align: center;
                     padding: 5px 5px 5px 30px;
                     box-shadow: 4px 17px 15px -3px rgba(1, 1, 0, 0.3);
-                    border: 1px solid #dd8702;
+                    border: 1px solid $color-principal;
                     opacity: 0;
                     visibility: hidden;
                     transition: all .5s;
@@ -137,14 +139,14 @@
 
                         &:hover {
                             transition: all .5s;
-                            color: #dd8702;
+                            color: $color-principal;
                         }
                     }
 
                     &__active {
                         display: flex;
                         flex-direction: column;
-                        background-color: #555;
+                        background-color: $color-item-claro;
                         position: absolute;
                         top: 30px;
                         right: 0;
@@ -154,7 +156,7 @@
                         // text-align: center;
                         padding: 5px 5px 5px 30px;
                         box-shadow: 4px 17px 15px -3px rgba(1, 1, 0, 0.3);
-                        border: 1px solid #dd8702;
+                        border: 1px solid $color-principal;
                         visibility: 1;
                         visibility: visible;
                         transition: all .5s;
@@ -168,7 +170,7 @@
 
                             &:hover {
                                 transition: all .5s;
-                                color: #dd8702;
+                                color: $color-principal;
                             }
                         }
                     }
@@ -178,7 +180,7 @@
                 &__contOptionsPuntoVenta {
                     display: flex;
                     flex-direction: column;
-                    background-color: #555;
+                    background-color: $color-item-claro;
                     position: absolute;
                     top: -7px;
                     right: 0;
@@ -188,7 +190,7 @@
                     // text-align: center;
                     padding: 5px 5px 5px 0px;
                     box-shadow: 4px 17px 15px -3px rgba(1, 1, 0, 0.3);
-                    border: 1px solid #dd8702;
+                    border: 1px solid $color-principal;
                     opacity: 0;
                     visibility: hidden;
                     transition: all .5s;
@@ -201,14 +203,14 @@
 
                         &:hover {
                             transition: all .5s;
-                            color: #dd8702;
+                            color: $color-principal;
                         }
                     }
 
                     &__active {
                         display: flex;
                         flex-direction: column;
-                        background-color: #555;
+                        background-color: $color-item-claro;
                         position: absolute;
                         top: 7px;
                         right: 0;
@@ -218,7 +220,7 @@
                         // text-align: center;
                         padding: 5px 5px 5px 0px;
                         box-shadow: 4px 17px 15px -3px rgba(1, 1, 0, 0.3);
-                        border: 1px solid #dd8702;
+                        border: 1px solid $color-principal;
                         visibility: 1;
                         visibility: visible;
                         transition: all .5s;
@@ -232,7 +234,7 @@
 
                             &:hover {
                                 transition: all .5s;
-                                color: #dd8702;
+                                color: $color-principal;
                             }
                         }
                     }
@@ -249,7 +251,7 @@
                         transition: color .5s;
 
                         &:hover {
-                            color: #dd8702;
+                            color: $color-principal;
                         }
                     }
                 }
@@ -260,7 +262,7 @@
                     transition: all 1s;
 
                     &__active {
-                        color: #dd8702;
+                        color: $color-principal;
                         animation: rotate .8s infinite;
                         transition: all 1s;
                     }
@@ -269,35 +271,16 @@
 
         }
 
-        &__headerTable {
-            margin: auto;
-            width: 90%;
-            padding: 10px 0 10px 0px;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-
-            // span {
-            //     display: inline-block;
-            //     text-align: center;
-            //     width: 20%;
-            //     padding-left: 30px;
-
-            //     & {
-            //        padding-left: 90px;
-            //     }
-            // }
-        }
-
         &__body {
             position: relative;
-            width: 100% !important;
-            height: 77vh;
-            padding-left: 30px;
-            // padding-bottom: 30px;
-            // overflow: auto;
+            width: 95%;
+            margin: 5px auto 0 auto;
+            height: 80vh;
+            overflow: auto;
             display: flex;
             flex-direction: column;
+            border: 1px solid $color-item-header;
+            border-radius: 5px;
 
             &::-webkit-scrollbar {
                 width: 12px;
@@ -311,23 +294,23 @@
             }
 
             &::-webkit-scrollbar-thumb {
-                background-color: #dd8702;
+                background-color: $color-principal;
                 /* color of the scroll thumb */
                 border-radius: 20px;
                 /* roundness of the scroll thumb */
-                border: 3px solid #dd8702;
+                border: 3px solid $color-principal;
                 /* creates padding around scroll thumb */
             }
 
             &__contItems {
-                width: 95%;
+                width: 98%;
                 margin: auto;
                 margin-top: 0px !important;
             }
 
             @media (max-width:1366px) {
                 & {
-                    height: 66vh;
+                    height: 70vh;
                 }
             }
 

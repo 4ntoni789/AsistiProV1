@@ -1,6 +1,5 @@
 @import './variables';
-
-.App__init__tablaMarcaciones__body__item__cargo {
+.App__init__tablaMarcaciones__body__item__empleador {
     background-color: $color-item;
     display: flex;
     flex-direction: column;
@@ -51,7 +50,7 @@
             align-items: center;
             white-space: nowrap;
 
-            b {
+            b{
                 margin-left: 5px;
                 font-weight: bold;
                 color: $color-principal;
