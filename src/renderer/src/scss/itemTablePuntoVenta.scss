@@ -19,41 +19,66 @@
         width: 31%;
         cursor: pointer;
         transition: color .5s;
-
-        &:hover {
-            color: $color-principal;
-        }
     }
 
     &__header {
-        margin: 10px 0 10px 0;
         width: 100%;
         display: flex;
 
-        h4 {
-            width: 70%;
-            font-weight: 600;
-            display: flex;
-            justify-content: first baseline;
-            align-items: center;
-            text-align: left;
-
-            svg {
-                width: 10%;
-                font-size: 36px ;
-            }
-
-        }
-
         &__controls {
             display: flex;
-            width: 50%;
+            width: 100%;
             justify-content: center;
             align-items: center;
 
-            h4 {
+
+            h4:first-child {
                 display: flex;
-                // justify-content: center;
+                width: 20%;
+                font-weight: 600;
+                margin: 0 100px 0 0px;
+                justify-content: first baseline;
+                align-items: center;
+                text-align: left;
+                // background-color: #f0a;
+                cursor: pointer;
+                transition: color .5s;
+
+                svg {
+                    width: 30%;
+                    font-size: 36px;
+                }
+
+
+                &:hover {
+                    color: $color-principal;
+                }
+
+            }
+
+            h4:nth-child(2) {
+                width: 50%;
+                display: flex;
+                font-weight: 600;
+                align-items: center;
+
+                b {
+                    width: 80%;
+                    color: $color-principal;
+                    font-weight: 600;
+                    display: flex;
+                    justify-content: first baseline;
+                    align-items: center;
+                    text-align: left;
+                    margin-left: 10px;
+                }
+            }
+
+            h4:last-child {
+                width: 20%;
+                display: flex;
+                justify-content: end;
+                font-weight: 600;
                 align-items: center;
 
                 b {

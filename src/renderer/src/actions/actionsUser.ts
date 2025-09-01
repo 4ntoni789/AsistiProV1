@@ -7,13 +7,15 @@ const apiUrl = import.meta.env.VITE_API_URL;
 export const ActiveSubMenuUpdatePass = (value: any) => ({ type: ACTIVESUBMENUUPDATEPASS, value });
 
 export const Fetch_update_single_user = (dataInput: any, activeUpdateUser: any, userId: string, userData) => {
+    const token = localStorage.getItem("token");
     return async (dispatch) => {
         try {
             const response = await fetch(`${apiUrl}/api/single-usuario/${activeUpdateUser.user.id_usuario}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
-                    'x-id-usuario': userId
+                    'x-id-usuario': userId,
+                    "Authorization": `Bearer ${token}`
                 },
                 body: JSON.stringify({
                     nombre_usuario: dataInput.nombre_usuario,
@@ -37,12 +39,14 @@ export const Fetch_update_single_user = (dataInput: any, activeUpdateUser: any, 
 }
 
 export const Fetch_update_pass = (dataInput: any, userId: string, userData: any, activeUpdateUser: any, reset: () => void) => {
+    const token = localStorage.getItem("token");
     return async (dispatch) => {
         const response = await fetch(`${apiUrl}/api/single-usuario-put-pass/${activeUpdateUser.user.id_usuario}`, {
             method: 'PUT',
             headers: {
                 'x-id-usuario': userId,
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                "Authorization": `Bearer ${token}`
             },
             body: JSON.stringify({
                 password: dataInput.contrasena,

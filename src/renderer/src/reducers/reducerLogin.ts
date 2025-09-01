@@ -15,7 +15,7 @@ export default function accesoLogin(state = initalState, action: any) {
         ...state,
         userLogin: action.value,
         validationAccess: true,
-        loadingLogin: action.value
+        loadingLogin: false
       }
     }
 

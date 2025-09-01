@@ -229,28 +229,10 @@
   width: 95%;
   margin: 5px auto 0 auto;
   height: 80vh;
-  overflow: auto;
   display: flex;
   flex-direction: column;
   border: 1px solid #666;
   border-radius: 5px;
-}
-.App__init__contTable__tablaMarcaciones__body::-webkit-scrollbar {
-  width: 12px;
-  /* width of the entire scrollbar */
-}
-.App__init__contTable__tablaMarcaciones__body::-webkit-scrollbar-track {
-  background: #444;
-  border-radius: 10px;
-  /* color of the tracking area */
-}
-.App__init__contTable__tablaMarcaciones__body::-webkit-scrollbar-thumb {
-  background-color: #dd8702;
-  /* color of the scroll thumb */
-  border-radius: 20px;
-  /* roundness of the scroll thumb */
-  border: 3px solid #dd8702;
-  /* creates padding around scroll thumb */
 }
 .App__init__contTable__tablaMarcaciones__body__contItems {
   width: 98%;

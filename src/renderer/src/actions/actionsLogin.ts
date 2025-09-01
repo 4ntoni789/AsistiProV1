@@ -6,7 +6,7 @@ export const SubmitLogin = (value: object) => {
         type: SUBMITLOGIN,
         value: value
     }
-};
+}
 
 export const LoadingLogin = (value: boolean) => {
     return {
@@ -22,12 +22,16 @@ export const ErrorLogin = (value: boolean) => {
     }
 };
 export const Logout = () => {
+    localStorage.removeItem("token");
     return {
         type: LOGOUT
     }
 };
 
-export const ValidationData = (dataInput: { nombre_usuario: string; contrasena: string }, reset: () => void) => {
+export const ValidationData = (
+    dataInput: { nombre_usuario: string; contrasena: string },
+    reset: () => void
+) => {
     return async (dispatch) => {
         dispatch(ErrorLogin(false));
         dispatch(LoadingLogin(true));
@@ -46,7 +50,12 @@ export const ValidationData = (dataInput: { nombre_usuario: string; contrasena: 
             const result = await response.json();
 
             if (result.success) {
+                // ✅ Guardamos el token en localStorage
+                localStorage.setItem("token", result.token);
+
+                // ✅ Guardamos también los datos del usuario en Redux
                 dispatch(SubmitLogin(result.user));
+
                 reset();
                 dispatch(LoadingLogin(false));
             } else {
@@ -60,6 +69,7 @@ export const ValidationData = (dataInput: { nombre_usuario: string; contrasena: 
         }
     };
 };
+
 
 export const ActiveErrorSpam = (value: any) => ({ type: ACTIVEERRORSPAM, value })
 

@@ -3,17 +3,17 @@ import '../../css/deleteUser.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { ActiveErrorSpam, Logout } from '@renderer/actions/actionsLogin';
-import { DeletePuntoVenta } from '@renderer/scripts/deletePuntoVenta';
-import { DeleteEmpleador } from '@renderer/scripts/deleteEmpleador';
+import { Logout } from '@renderer/actions/actionsLogin';
 import { extraerHora } from '@renderer/scripts/extraerHora';
-import { DeleteHorario } from '@renderer/scripts/deleteHorario';
 import { ActiveSubMenuDeleteUsers, Fetch_delete_user } from '@renderer/actions/actionsUsers';
 import { AppDispatch } from '@renderer/store';
 import { Fetch_delete_empleado } from '@renderer/actions/actionsEmpleados';
 import { Fetch_desactivar_contrato } from '@renderer/actions/actionsContratos';
 import { Fetch_delete_cargo } from '@renderer/actions/actionsCargos';
 import { Fetch_delete_role } from '@renderer/actions/actionsRoles';
+import { Fetch_delete_punto_venta } from '@renderer/actions/actionsPuntoDeVenta';
+import { Fetch_delete_empleador } from '@renderer/actions/actionsEmpleadores';
+import { Fetch_delete_horario } from '@renderer/actions/actionsHorario';
 
 function DeleteUser() {
   const activeDeleteUsers = useSelector((state: any) => state.menuAccions.deleteUser);
@@ -28,7 +28,7 @@ function DeleteUser() {
     } else if (activeDeleteUsers.typeRemove == 'Empleado') {
       dispatch(Fetch_delete_empleado(activeDeleteUsers, userData));
     } else if (activeDeleteUsers.typeRemove == 'Contrato') {
-      dispatch(Fetch_desactivar_contrato(activeDeleteUsers.user, userData));
+      dispatch(Fetch_desactivar_contrato(activeDeleteUsers, userData));
     } else if (activeDeleteUsers.typeRemove == 'Cargo') {
       dispatch(Fetch_delete_cargo(activeDeleteUsers, userData));
     } else if (activeDeleteUsers.typeRemove == 'Rol') {
@@ -41,32 +41,11 @@ function DeleteUser() {
         typeRemove: ''
       }));
     } else if (activeDeleteUsers.typeRemove == 'Punto-venta') {
-      DeletePuntoVenta(activeDeleteUsers.user, userData)
-        .then((data) => {
-          dispatch(ActiveSubMenuDeleteUsers({
-            user: {},
-            activeDeleteUsers: false
-          }))
-          dispatch(ActiveErrorSpam(data));
-        });
+      dispatch(Fetch_delete_punto_venta(activeDeleteUsers, userData));
     } else if (activeDeleteUsers.typeRemove == 'Empleador') {
-      DeleteEmpleador(activeDeleteUsers.user, userData)
-        .then((data) => {
-          dispatch(ActiveSubMenuDeleteUsers({
-            user: {},
-            activeDeleteUsers: false
-          }))
-          dispatch(ActiveErrorSpam(data));
-        });
+      dispatch(Fetch_delete_empleador(activeDeleteUsers, userData));
     } else if (activeDeleteUsers.typeRemove == 'Horario') {
-      DeleteHorario(activeDeleteUsers.user, userData)
-        .then((data) => {
-          dispatch(ActiveSubMenuDeleteUsers({
-            user: {},
-            activeDeleteUsers: false
-          }))
-          dispatch(ActiveErrorSpam(data));
-        });
+      dispatch(Fetch_delete_horario(activeDeleteUsers, userData));
     }
   }
 

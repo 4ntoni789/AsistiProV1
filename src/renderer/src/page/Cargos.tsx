@@ -20,7 +20,7 @@ function Cargos({ }) {
   const [searchTerm, setSearchTerm] = useState('');
   const dispatch = useDispatch<AppDispatch>();
   const [paginaActual, setPaginaActual] = useState(1);
-  const itemsPerPage = window.innerWidth <= 1366 ? 6 : 8;
+  const itemsPerPage = window.innerWidth <= 1366 ? 6 : 10;
 
   const [direccion, setDireccion] = useState<'siguiente' | 'anterior' | 'busqueda'>('busqueda');
 

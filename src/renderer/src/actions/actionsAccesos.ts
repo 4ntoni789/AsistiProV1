@@ -3,11 +3,13 @@ const apiUrl = import.meta.env.VITE_API_URL;
 
 
 export const Fetch_accesos_dia = (userId: string) => {
+    const token = localStorage.getItem("token");
     return async () => {
         try {
             const response = await fetch(`${apiUrl}/api/accesos-dia`, {
                 headers: {
-                    'x-id-usuario': userId
+                    'x-id-usuario': userId,
+                    "Authorization": `Bearer ${token}`
                 }
             });
 
@@ -27,11 +29,13 @@ export const Fetch_accesos_dia = (userId: string) => {
 }
 
 export const Fetch_accesos_ayer = (userId: string) => {
+    const token = localStorage.getItem("token");
     return async () => {
         try {
             const response = await fetch(`${apiUrl}/api/accesos-ayer`, {
                 headers: {
-                    'x-id-usuario': userId
+                    'x-id-usuario': userId,
+                    "Authorization": `Bearer ${token}`
                 }
             });
 

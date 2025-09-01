@@ -3,13 +3,14 @@ import { ActiveErrorSpam } from "./actionsLogin";
 import { ActiveSubMenuDeleteUsers } from "./actionsUsers";
 const apiUrl = import.meta.env.VITE_API_URL;
 
-
 export const Fetch_cargos = (userId: string) => {
+    const token = localStorage.getItem("token");
     return async () => {
         try {
             const response = await fetch(`${apiUrl}/api/cargos`, {
                 headers: {
-                    'x-id-usuario': userId
+                    'x-id-usuario': userId,
+                    "Authorization": `Bearer ${token}`
                 }
             });
 
@@ -36,13 +37,15 @@ export const ActiveSubMenuNewCargo = (value: any) => {
 };
 
 export const Fet_new_cargo = (dataInput: any, userId: string, userData: any, reset: () => void) => {
+    const token = localStorage.getItem("token");
     return async (dispatch) => {
         try {
             const response = await fetch(`${apiUrl}/api/cargo`, {
                 method: 'POST',
                 headers: {
                     'x-id-usuario': userId,
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    "Authorization": `Bearer ${token}`
                 },
                 body: JSON.stringify({
                     nombre_cargo: dataInput.nombre_cargo,
@@ -74,13 +77,15 @@ export const ActiveSubMenuUpdateCargo = (value: any) => {
 };
 
 export const Fetch_update_cargo = (dataInput: any, activeUpdateCargo: any, userId: string, userData: any) => {
+    const token = localStorage.getItem("token");
     return async (dispatch) => {
         try {
             const response = await fetch(`${apiUrl}/api/cargo/${activeUpdateCargo.user.item.id_cargo}`, {
                 method: 'PUT',
                 headers: {
                     'x-id-usuario': userId,
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    "Authorization": `Bearer ${token}`
                 },
                 body: JSON.stringify({
                     nombre_cargo: dataInput.nombre_cargo,
@@ -103,13 +108,15 @@ export const Fetch_update_cargo = (dataInput: any, activeUpdateCargo: any, userI
 }
 
 export const Fetch_delete_cargo = (activeDeleteUsers: any, userData) => {
+    const token = localStorage.getItem("token");
     return async (dispatch) => {
         try {
             const response = await fetch(`/api/cargo/${activeDeleteUsers.user.id_cargo}`, {
                 method: 'DELETE',
                 headers: {
                     'x-id-usuario': userData.id_usuario,
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    "Authorization": `Bearer ${token}`
                 },
                 body: JSON.stringify({
                     reqUser: userData

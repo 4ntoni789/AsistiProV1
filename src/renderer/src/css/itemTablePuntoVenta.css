@@ -17,37 +17,58 @@
   cursor: pointer;
   transition: color 0.5s;
 }
-.App__init__tablaPuntoVenta__body__item svg:hover {
-  color: #dd8702;
-}
 .App__init__tablaPuntoVenta__body__item__header {
-  margin: 10px 0 10px 0;
   width: 100%;
   display: flex;
 }
-.App__init__tablaPuntoVenta__body__item__header h4 {
-  width: 70%;
+.App__init__tablaPuntoVenta__body__item__header__controls {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.App__init__tablaPuntoVenta__body__item__header__controls h4:first-child {
+  display: flex;
+  width: 20%;
+  font-weight: 600;
+  margin: 0 100px 0 0px;
+  justify-content: first baseline;
+  align-items: center;
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.5s;
+}
+.App__init__tablaPuntoVenta__body__item__header__controls h4:first-child svg {
+  width: 30%;
+  font-size: 36px;
+}
+.App__init__tablaPuntoVenta__body__item__header__controls h4:first-child:hover {
+  color: #dd8702;
+}
+.App__init__tablaPuntoVenta__body__item__header__controls h4:nth-child(2) {
+  width: 50%;
+  display: flex;
+  font-weight: 600;
+  align-items: center;
+}
+.App__init__tablaPuntoVenta__body__item__header__controls h4:nth-child(2) b {
+  width: 80%;
+  color: #dd8702;
   font-weight: 600;
   display: flex;
   justify-content: first baseline;
   align-items: center;
   text-align: left;
+  margin-left: 10px;
 }
-.App__init__tablaPuntoVenta__body__item__header h4 svg {
-  width: 10%;
-  font-size: 36px;
-}
-.App__init__tablaPuntoVenta__body__item__header__controls {
+.App__init__tablaPuntoVenta__body__item__header__controls h4:last-child {
+  width: 20%;
   display: flex;
-  width: 50%;
-  justify-content: center;
+  justify-content: end;
+  font-weight: 600;
   align-items: center;
 }
-.App__init__tablaPuntoVenta__body__item__header__controls h4 {
-  display: flex;
-  align-items: center;
-}
-.App__init__tablaPuntoVenta__body__item__header__controls h4 b {
+.App__init__tablaPuntoVenta__body__item__header__controls h4:last-child b {
   width: 80%;
   color: #dd8702;
   font-weight: 600;

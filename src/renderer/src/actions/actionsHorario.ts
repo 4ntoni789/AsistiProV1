@@ -1,14 +1,17 @@
 import { ActiveErrorSpam } from "./actionsLogin";
 import { ActiveSubMenuPuntoVenta } from "./actionsPuntoDeVenta";
+import { ActiveSubMenuDeleteUsers } from "./actionsUsers";
 const apiUrl = import.meta.env.VITE_API_URL;
 
 
 export const Fetch_horario = (userId: string, activeMenuPuntoVenta: any) => {
+    const token = localStorage.getItem("token");
     return async () => {
         try {
             const response = await fetch(`${apiUrl}/api/horarios`, {
                 headers: {
-                    'x-id-usuario': userId
+                    'x-id-usuario': userId,
+                    "Authorization": `Bearer ${token}`
                 }
             });
 
@@ -46,6 +49,7 @@ export const Fetch_horario = (userId: string, activeMenuPuntoVenta: any) => {
 }
 
 export const Fetch_new_horario = (dataInput, puntoVenta, almacenDiasSemana, userData, semana, userId, reset: () => void) => {
+    const token = localStorage.getItem("token");
     return async (dispatch) => {
         if (semana == 'dias_especificos' || semana == 'toda_semana') {
             if (almacenDiasSemana.length > 0) {
@@ -54,7 +58,8 @@ export const Fetch_new_horario = (dataInput, puntoVenta, almacenDiasSemana, user
                         method: 'POST',
                         headers: {
                             'x-id-usuario': userId,
-                            'Content-Type': 'application/json'
+                            'Content-Type': 'application/json',
+                            "Authorization": `Bearer ${token}`
                         },
                         body: JSON.stringify({
                             hora_entrada: dataInput.hora_entrada,
@@ -90,6 +95,45 @@ export const Fetch_new_horario = (dataInput, puntoVenta, almacenDiasSemana, user
             }
         } else {
             dispatch(ActiveErrorSpam({ msg: 'Seleciona los dias que este horario va a tener', active: true, typeError: 'error' }));
+        }
+    }
+}
+
+export const Fetch_delete_horario = (activeDeleteUsers: any, userData: any) => {
+    const token = localStorage.getItem("token");
+    return async (dispatch) => {
+        try {
+            const response = await fetch(`${apiUrl}/api/horario/${activeDeleteUsers.user.id_horario}`, {
+                method: 'DELETE',
+                headers: {
+                    'x-id-usuario': userData.id_usuario,
+                    'Content-Type': 'application/json',
+                    "Authorization": `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    reqUser: userData
+                }),
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    if (data) {
+                        dispatch(ActiveErrorSpam({ msg: data.message, active: true, typeError: 'submit' }));
+                        dispatch(ActiveSubMenuDeleteUsers({
+                            user: {},
+                            activeDeleteUsers: false
+                        }))
+                    } else {
+                        dispatch(ActiveErrorSpam({ msg: data.message, active: true, typeError: 'error' }));
+                        dispatch(ActiveSubMenuDeleteUsers({
+                            user: {},
+                            activeDeleteUsers: false
+                        }))
+                    }
+                })
+                .catch((err) => console.log('Error:', err));
+        } catch (error) {
+            dispatch(ActiveErrorSpam({ msg: 'Error al eliminar este empleador', active: true, typeError: 'error' }));
+            console.log(error)
         }
     }
 }

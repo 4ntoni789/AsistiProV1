@@ -10,6 +10,7 @@ export const ActiveSubMenuNewUsers = (value: any) => {
 };
 
 export const Fetch_new_user = (dataInput: any, userId: string, userData, userActiveCheck: string, reset: () => void) => {
+    const token = localStorage.getItem("token");
     return async (dispatch: any): Promise<{ activeError: boolean; typeError: string } | undefined> => {
         dispatch(ActiveSubMenuNewUsers({
             loading: true
@@ -19,7 +20,8 @@ export const Fetch_new_user = (dataInput: any, userId: string, userData, userAct
                 method: 'POST',
                 headers: {
                     'x-id-usuario': userId,
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    "Authorization": `Bearer ${token}`
                 }
                 ,
                 body: JSON.stringify({
@@ -73,13 +75,15 @@ export const ActiveSubMenuUpdateUsers = (value: any) => {
 };
 
 export const Fetch_update_user = (dataInput: any, userData: any, activeUpdateUser: any, userId: string) => {
+    const token = localStorage.getItem("token");
     return async (dispatch) => {
         try {
             const response = await fetch(`${apiUrl}/api/usuarios/${activeUpdateUser.user.id_usuario}`, {
                 method: 'PUT',
                 headers: {
                     'x-id-usuario': userId,
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    "Authorization": `Bearer ${token}`
                 },
                 body: JSON.stringify({
                     nombre_usuario: dataInput.nombre_usuario,
@@ -104,13 +108,15 @@ export const Fetch_update_user = (dataInput: any, userData: any, activeUpdateUse
 }
 
 export const Fetch_activate_user = (userId: string, estado: { id_usuario: number }, userData: any, btnActive: boolean) => {
+    const token = localStorage.getItem("token");
     return async (dispatch) => {
         try {
             const response = await fetch(`${apiUrl}/api/usuarios-active/${estado.id_usuario}`, {
                 method: 'PUT',
                 headers: {
                     'x-id-usuario': userId,
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    "Authorization": `Bearer ${token}`
                 },
                 body: JSON.stringify({
                     estado: btnActive == true ? 'inactivo' : 'activo',
@@ -144,12 +150,14 @@ export const ActiveSubMenuDeleteUsers = (value: any) => {
 };
 
 export const Fetch_user = (userId: string) => {
+    const token = localStorage.getItem("token");
     return async () => {
         try {
             const response = await fetch(`${apiUrl}/api/usuarios`, {
                 method: 'GET',
                 headers: {
-                    'x-id-usuario': userId
+                    'x-id-usuario': userId,
+                    "Authorization": `Bearer ${token}`
                 }
             });
             const result = await response.json();
@@ -169,13 +177,15 @@ export const Fetch_user = (userId: string) => {
 };
 
 export const Fetch_delete_user = (activeDeleteUsers: any, userData: any) => {
+    const token = localStorage.getItem("token");
     return async (dispatch) => {
         try {
             await fetch(`${apiUrl}/api/usuarios/${activeDeleteUsers.user.id_usuario}`, {
                 method: 'DELETE',
                 headers: {
                     'x-id-usuario': userData.id_usuario,
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    "Authorization": `Bearer ${token}`
                 },
                 body: JSON.stringify({
                     reqUser: userData

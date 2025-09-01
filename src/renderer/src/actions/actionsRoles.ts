@@ -5,12 +5,14 @@ const apiUrl = import.meta.env.VITE_API_URL;
 
 
 export const Fetch_roles = (userId: string) => {
+  const token = localStorage.getItem("token");
   return async (dispatch) => {
     try {
       const response = await fetch(`${apiUrl}/api/roles`, {
         method: 'GET',
         headers: {
-          'x-id-usuario': userId
+          'x-id-usuario': userId,
+          "Authorization": `Bearer ${token}`
         }
       });
 
@@ -37,13 +39,15 @@ export const ActiveSubMenuNewRole = (value: any) => {
 };
 
 export const Fetch_new_role = (dataInput: any, userId: string, userData: any, reset: () => void) => {
+  const token = localStorage.getItem("token");
   return async (dispatch) => {
     try {
       const response = await fetch(`${apiUrl}/api/rol`, {
         method: 'POST',
         headers: {
           'x-id-usuario': userId,
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          "Authorization": `Bearer ${token}`
         },
         body: JSON.stringify({
           nombre_rol: dataInput.nombre_rol,
@@ -75,13 +79,15 @@ export const ActiveSubMenuUpdateRole = (value: any) => {
 };
 
 export const Fetch_update_role = (dataInput: any, userId: string, activeUpdateRole: any, userData: any) => {
+  const token = localStorage.getItem("token");
   return async (dispatch) => {
     try {
       const response = await fetch(`${apiUrl}/api/rol/${activeUpdateRole.user.item.id_rol}`, {
         method: 'PUT',
         headers: {
           'x-id-usuario': userId,
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          "Authorization": `Bearer ${token}`
         },
         body: JSON.stringify({
           nombre_rol: dataInput.nombre_rol,
@@ -103,13 +109,15 @@ export const Fetch_update_role = (dataInput: any, userId: string, activeUpdateRo
 }
 
 export const Fetch_delete_role = (activeDeleteUsers: any, userData: any) => {
+  const token = localStorage.getItem("token");
   return async (dispatch) => {
     try {
       await fetch(`/api/rol/${activeDeleteUsers.user.id_rol}`, {
         method: 'DELETE',
         headers: {
           'x-id-usuario': userData.id_usuario,
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          "Authorization": `Bearer ${token}`
         },
         body: JSON.stringify({
           reqUser: userData

@@ -7,14 +7,17 @@ import { ActiveSubMenuDeleteUsers } from "./actionsUsers";
 import { ACTIVEMENUVERCONTRATO } from "@renderer/type";
 const apiUrl = import.meta.env.VITE_API_URL;
 
+
 export const ActiveMenuVerContrato = (value: any) => ({ type: ACTIVEMENUVERCONTRATO, value: value });
 
 export const Fetch_contratos = (userId) => {
+    const token = localStorage.getItem("token");
     return async () => {
         try {
             const response = await fetch(`${apiUrl}/api/contratos`, {
                 headers: {
-                    'x-id-usuario': userId
+                    'x-id-usuario': userId,
+                    "Authorization": `Bearer ${token}`
                 }
             });
 
@@ -34,11 +37,13 @@ export const Fetch_contratos = (userId) => {
 }
 
 export const Fetch_contratosPorVencer = (userId) => {
+    const token = localStorage.getItem("token");
     return async () => {
         try {
             const response = await fetch(`${apiUrl}/api/contratos-por-vencer`, {
                 headers: {
-                    'x-id-usuario': userId
+                    'x-id-usuario': userId,
+                    "Authorization": `Bearer ${token}`
                 }
             });
 
@@ -58,13 +63,15 @@ export const Fetch_contratosPorVencer = (userId) => {
 }
 
 export const Fetch_new_contrato = (dataInput: any, userId: string, date: number, dateFin: Date, activeNewEmpleado, userData: any, valorSalario: string, reset: () => void) => {
+    const token = localStorage.getItem("token");
     return async (dispatch) => {
         try {
             const response = await fetch(`${apiUrl}/api/contrato`, {
                 method: 'POST',
                 headers: {
                     'x-id-usuario': userId,
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    "Authorization": `Bearer ${token}`
                 },
                 body: JSON.stringify({
                     tipo_contrato: dataInput.tContrato,
@@ -97,6 +104,8 @@ export const Fetch_new_contrato = (dataInput: any, userId: string, date: number,
 }
 
 export const Fetch_generar_contrato = (activeNewEmpleado: any, userCargo: any, contFilter: any, contFilterEmpleador: any, userData: any, setLoader, userId: string) => {
+    const token = localStorage.getItem("token");
+    console.log(contFilter.fecha_fin.toString().split('T')[0]);
     return async () => {
         setLoader(true);
 
@@ -104,7 +113,8 @@ export const Fetch_generar_contrato = (activeNewEmpleado: any, userCargo: any, c
             method: 'POST',
             headers: {
                 'x-id-usuario': userId,
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                "Authorization": `Bearer ${token}`
             },
             body: JSON.stringify({
                 nombre: `${activeNewEmpleado.nombres} ${activeNewEmpleado.apellidos}`,
@@ -136,13 +146,15 @@ export const Fetch_generar_contrato = (activeNewEmpleado: any, userCargo: any, c
 }
 
 export const Fetch_desactivar_contrato = (activeDeleteUsers: any, userData: any) => {
+    const token = localStorage.getItem("token");
     return async (dispatch) => {
         try {
-            await fetch(`${apiUrl}/api/contrato/${activeDeleteUsers.id_contrato}`, {
+            await fetch(`${apiUrl}/api/contrato/${activeDeleteUsers.user.id_contrato}`, {
                 method: 'PUT',
                 headers: {
                     'x-id-usuario': userData.id_usuario,
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    "Authorization": `Bearer ${token}`
                 },
                 body: JSON.stringify({
                     estado: 'Inactivo',
@@ -174,13 +186,15 @@ export const Fetch_desactivar_contrato = (activeDeleteUsers: any, userData: any)
 }
 
 export const Fetch_prorroga_contrato = (userData, activeDeleteUsers) => {
+    const token = localStorage.getItem("token");
     return async (dispatch) => {
         try {
             const response = await fetch(`${apiUrl}/api/contrato-prorroga/${activeDeleteUsers.id_contrato}`, {
                 method: 'PUT',
                 headers: {
                     'x-id-usuario': userData.id_usuario,
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    "Authorization": `Bearer ${token}`
                 },
                 body: JSON.stringify({
                     reqUser: userData

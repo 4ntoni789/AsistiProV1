@@ -1,4 +1,4 @@
-import {  faCalendar, faChevronCircleLeft, faChevronCircleRight, faEye, faFileContract, faFolder, faHome, faImagePortrait, faStore } from '@fortawesome/free-solid-svg-icons';
+import { faCalendar, faChevronCircleLeft, faChevronCircleRight, faEye, faFileContract, faFolder, faHome, faImagePortrait, faStore } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router';
@@ -8,7 +8,7 @@ import '../../css/menu.css';
 import { useEffect } from 'react';
 import { ActivatedMenu } from '@renderer/actions/actionsMenu';
 
-function Menu({}) {
+function Menu({ }) {
   const dispatch = useDispatch();
   const menuActive = useSelector((state: any) => state.menuAccions.menuActive);
   const dataUser = useSelector((state: any) => state.loginAccess.userLogin);
@@ -21,9 +21,9 @@ function Menu({}) {
     const memoriaAnterior = memoriaStr ? JSON.parse(memoriaStr) : {};
 
     const memoriaActualizada = {
-      ...memoriaAnterior, 
-      menuActive,          
-      user: dataUser       
+      ...memoriaAnterior,
+      menuActive,
+      user: dataUser
     };
 
     localStorage.setItem(storageKey, JSON.stringify(memoriaActualizada));
@@ -64,15 +64,16 @@ function Menu({}) {
           }><FontAwesomeIcon icon={faCalendar} /><b>Ausentismo</b></NavLink>
       </div>
 
+      <div className={menuActive ? 'App__dashboard__contMenu__active__menu__btnPage' : 'App__dashboard__contMenu__menu__btnPage'} title='Contratos'>
+        <NavLink to='contracts'
+          className={({ isActive }) => isActive ? "App__dashboard__contMenu__active__menu__btnPage__activeBtn" : ""
+          }><FontAwesomeIcon icon={faFileContract} /><b>Contratos</b></NavLink>
+      </div>
+
       <div className={menuActive ? 'App__dashboard__contMenu__active__menu__btnPage' : 'App__dashboard__contMenu__menu__btnPage'} title='Reportes'>
         <NavLink to='report'
           className={({ isActive }) => isActive ? "App__dashboard__contMenu__active__menu__btnPage__activeBtn" : ""
           }><FontAwesomeIcon icon={faFolder} /><b>Reportes</b></NavLink>
-      </div>
-      <div className={menuActive ? 'App__dashboard__contMenu__active__menu__btnPage' : 'App__dashboard__contMenu__menu__btnPage'}title='Contratos'>
-        <NavLink to='contracts'
-          className={({ isActive }) => isActive ? "App__dashboard__contMenu__active__menu__btnPage__activeBtn" : ""
-          }><FontAwesomeIcon icon={faFileContract} /><b>Contratos</b></NavLink>
       </div>
       {
         menuActive ? <div className='App__dashboard__contMenu__active__menu__footerUser'>

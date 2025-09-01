@@ -5,17 +5,18 @@ import { Opcion } from "@renderer/interface";
 import { ActiveSubMenuDeleteUsers } from "./actionsUsers";
 const apiUrl = import.meta.env.VITE_API_URL;
 
-
 export const ActiveSubMenuNewEmpleado = (value: any) => ({ type: ACTIVENEWEMPLEADO, value });
 
 export const Fetch_new_empleado = (dataInput: any, userId: string, userData: any, municipio: Opcion | null, reset: () => void) => {
+    const token = localStorage.getItem("token");
     return async (dispatch) => {
         try {
             const response = await fetch(`${apiUrl}/api/empleados`, {
                 method: 'POST',
                 headers: {
                     'x-id-usuario': userId,
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    "Authorization": `Bearer ${token}`
                 },
                 body: JSON.stringify({
                     nombre_usuario: capitalizarCadaPalabra(dataInput.nombre_usuario),
@@ -51,12 +52,14 @@ export const Fetch_new_empleado = (dataInput: any, userId: string, userData: any
 export const ActiveSubMenuEmpleado = (value: any) => ({ type: ACTIVESUBMENUEMPLEADOS, value });
 
 export const Fetch_empleados = (userId: string) => {
+    const token = localStorage.getItem("token");
     return async () => {
         try {
             const response = await fetch(`${apiUrl}/api/empleados`, {
                 method: 'GET',
                 headers: {
-                    'x-id-usuario': userId
+                    'x-id-usuario': userId,
+                    "Authorization": `Bearer ${token}`
                 }
             });
 
@@ -76,6 +79,7 @@ export const Fetch_empleados = (userId: string) => {
 }
 
 export const Fetch_update_empleado = (dataInput: any, activeNewEmpleado: any, userId: string, userData: any, municipio: any, reset: () => void) => {
+    const token = localStorage.getItem("token");
     return async (dispatch) => {
         try {
             const response = await fetch(`${apiUrl}/api/empleados/${activeNewEmpleado.user.id_empleado}`, {
@@ -83,6 +87,7 @@ export const Fetch_update_empleado = (dataInput: any, activeNewEmpleado: any, us
                 headers: {
                     'x-id-usuario': userId,
                     'Content-Type': 'application/json',
+                    "Authorization": `Bearer ${token}`
                 }
                 ,
                 body: JSON.stringify({
@@ -116,13 +121,15 @@ export const Fetch_update_empleado = (dataInput: any, activeNewEmpleado: any, us
 }
 
 export const Fetch_delete_empleado = (activeDeleteUsers: any, userData: any) => {
+    const token = localStorage.getItem("token");
     return async (dispatch) => {
         try {
             const response = await fetch(`/api/empleado/${activeDeleteUsers.user.id_empleado}`, {
                 method: 'DELETE',
                 headers: {
                     'x-id-usuario': userData.id_usuario,
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    "Authorization": `Bearer ${token}`
                 },
                 body: JSON.stringify({
                     reqUser: userData

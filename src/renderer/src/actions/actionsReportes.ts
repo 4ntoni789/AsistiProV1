@@ -3,7 +3,9 @@ import { obtenerSemanaSiEsLunes } from "@renderer/scripts/calcularLunesYDomingo"
 import { ActiveErrorSpam } from "./actionsLogin";
 const apiUrl = import.meta.env.VITE_API_URL;
 
+
 export const Fetch_generar_reporte = (dataInput: any, seleted: string, userId: string, userData:any) => {
+    const token = localStorage.getItem("token");
     return async (dispatch) => {
         try {
             const fechaIniSemana: any = obtenerSemanaSiEsLunes(dataInput.fecha_inicio);
@@ -30,7 +32,8 @@ export const Fetch_generar_reporte = (dataInput: any, seleted: string, userId: s
                 method: 'POST',
                 headers: {
                     'x-id-usuario': userId,
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    "Authorization": `Bearer ${token}`
                 },
                 body: JSON.stringify({
                     fecha_ini: dataInput.fecha_inicio,
