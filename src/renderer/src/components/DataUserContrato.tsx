@@ -7,6 +7,7 @@ import { formatearNumero } from '@renderer/scripts/formatearNumero';
 import { AppDispatch } from '@renderer/store';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import DowloadButton from './DowloadButton';
 
 function DataUser({ userContrato, userCargo, activeNewEmpleado, activeEdition, empleadores, activeSubModal }) {
   const dispatch = useDispatch<AppDispatch>();
@@ -69,8 +70,7 @@ function DataUser({ userContrato, userCargo, activeNewEmpleado, activeEdition, e
               dispatch(ActiveSubMenuEmpleado({ user: {}, subMenuEmpleado: false }))
               dispatch(ActiveSubMenuDeleteUsers({ user: contFilter, activeDeleteUsers: true, typeRemove: 'Contrato' }));
             }} />
-            <input type="button" value={loader ? 'Generando archivo...' : "Descargar contrato"} disabled={loader} className='btn_style'
-              onClick={() => GenerarContrato()} />
+            <DowloadButton functionDescargar={GenerarContrato} load={loader} nameButton={'Descargar contrato'} disable={false}/>
           </div>
         </div>
       </div>

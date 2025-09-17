@@ -1,6 +1,6 @@
-import { ACTIVEDARKMODE, ACTIVEDELETEUSER, ACTIVEERRORSPAM, ACTIVEMENU, ACTIVEMENUVERACCESOS, ACTIVEMENUVERCONTRATO, ACTIVENEWEMPLEADO, ACTIVEREGISTERNEWUSER, ACTIVESUBMENUEMPLEADOS, ACTIVESUBMENUNEWCARGO, ACTIVESUBMENUNEWEMPLEADOR, ACTIVESUBMENUNEWROLE, ACTIVESUBMENUNUEWPUNTOVENTA, ACTIVESUBMENUPUNTOVENTA, ACTIVESUBMENUUPDATECARGO, ACTIVESUBMENUUPDATEEMPLEADOR, ACTIVESUBMENUUPDATEPASS, ACTIVESUBMENUUPDATEPUNTOVENTA, ACTIVESUBMENUUPDATEROLE, ACTIVEUPDATEUSER, SUBMENUACTIVE } from "@renderer/type";
+import { ACTIVEDARKMODE, ACTIVEDELETEUSER, ACTIVEERRORSPAM, ACTIVEMENU, ACTIVEMENUVERACCESOS, ACTIVEMENUVERCONTRATO, ACTIVENEWEMPLEADO, ACTIVEREGISTERNEWUSER, ACTIVESUBMENUEMPLEADOS, ACTIVESUBMENUNEWCARGO, ACTIVESUBMENUNEWEMPLEADOR, ACTIVESUBMENUNEWROLE, ACTIVESUBMENUNUEWPUNTOVENTA, ACTIVESUBMENUPUNTOVENTA, ACTIVESUBMENUUPDATECARGO, ACTIVESUBMENUUPDATEEMPLEADOR, ACTIVESUBMENUUPDATEPASS, ACTIVESUBMENUUPDATEPUNTOVENTA, ACTIVESUBMENUUPDATEROLE, ACTIVEUPDATEUSER, LOADINGPUNTOVENTA, NEWNOTIFICACION, REMOTENOTIFICACION, SUBMENUACTIVE } from "@renderer/type";
 
-const initalState: object = {
+const initalState: any = {
     menuActive: true,
     subMenuActive: false,
     darkMode: true,
@@ -59,6 +59,7 @@ const initalState: object = {
     },
     subMenuPuntoVenta: {
         user: {},
+        loading: false,
         subMenuPuntoVenta: false
     },
     subMenuNewEmpleador: {
@@ -81,6 +82,9 @@ const initalState: object = {
     subMenuVerContrato: {
         user: {},
         subMenuVerContrato: false
+    },
+    notificacion: {
+        tipo: []
     }
 }
 
@@ -166,6 +170,15 @@ export default function activeMenu(state = initalState, action: any) {
                 subMenuNewPuntoVenta: action.value
             }
         }
+        case LOADINGPUNTOVENTA: {
+            return {
+                ...state,
+                subMenuPuntoVenta: {
+                    ...state.subMenuPuntoVenta,
+                    loading: action.value
+                }
+            }
+        }
         case ACTIVESUBMENUUPDATEPUNTOVENTA: {
             return {
                 ...state,
@@ -214,6 +227,25 @@ export default function activeMenu(state = initalState, action: any) {
                 ...state,
                 subMenuVerContrato: action.value
             }
+        }
+        case NEWNOTIFICACION: {
+            return {
+                ...state,
+                notificacion: {
+                    ...state.notificacion,
+                    tipo: [...state.notificacion.tipo, action.value]
+                }
+            }
+        }
+        case REMOTENOTIFICACION: {
+            const newNotificacion = state.notificacion.tipo.filter(notifi => notifi.tipo != action.value);
+            return {
+                ...state,
+                notificacion: {
+                    tipo: newNotificacion
+                }
+            }
+
         }
         default:
             return state;

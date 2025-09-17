@@ -23,17 +23,19 @@ function ContratosPorVencer() {
       <h2>Contratos por vencer</h2>
       <div className='App__dashboard__contPageOutlet__PageUsers__contratosPorVencer__contContratosPorVencer'>
         {
-          contratosPorVencer === undefined ? <LoaderItems /> : contratosPorVencer?.proximosAVencer.map((item: any, i: number) => (
-            <ItemContratosPorVencer key={i} item={item} index={i} />
-          ))
+          contratosPorVencer?.length === 0 ? null : contratosPorVencer === undefined
+            ? <LoaderItems /> : contratosPorVencer?.proximosAVencer.map((item: any, i: number) => (
+              <ItemContratosPorVencer key={i} item={item} index={i} />
+            ))
         }
       </div>
       <h2>Contratos vencidos</h2>
       <div className='App__dashboard__contPageOutlet__PageUsers__contratosPorVencer__contContratosPorVencer'>
         {
-          contratosPorVencer === undefined ? <LoaderItems /> : contratosPorVencer?.vencidos.map((item: any, i: number) => (
-            <ItemContratosPorVencer key={i} item={item} index={i+1} />
-          ))
+          contratosPorVencer?.length === 0 ? null : contratosPorVencer === undefined
+            ? <LoaderItems /> : contratosPorVencer?.vencidos.map((item: any, i: number) => (
+              <ItemContratosPorVencer key={i} item={item} index={i + 1} />
+            ))
         }
       </div>
     </div>

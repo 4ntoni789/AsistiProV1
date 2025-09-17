@@ -22,7 +22,7 @@ function Dashboard({ }) {
       <div className={menuActive ? 'App__dashboard__contPageOutlet' : 'App__dashboard__contPageOutlet__active'}>
         <Outlet />
       </div>
-      <SubMenu />
+      {/* <SubMenu /> */}
     </div>
   );
 }

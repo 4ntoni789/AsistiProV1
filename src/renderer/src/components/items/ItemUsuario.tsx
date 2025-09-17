@@ -16,6 +16,8 @@ function ItemUsuario({ nombre_usuario, id_usuario, correo, role, estado, item }:
   return (
     <div className="App__dashboard__contPageOutlet__PageUsers__contUsers__table__usuario">
       <div className="App__dashboard__contPageOutlet__PageUsers__contUsers__table__usuario__cont">
+        <span className={item.enlinea ? "App__dashboard__contPageOutlet__PageUsers__contUsers__table__usuario__cont__online__active"
+          : "App__dashboard__contPageOutlet__PageUsers__contUsers__table__usuario__cont__online"} title="En linea"></span>
         <h2><FontAwesomeIcon icon={faCircleUser} /> {nombre_usuario} <span>{id_usuario}</span></h2>
         <div className="App__dashboard__contPageOutlet__PageUsers__contUsers__table__usuario__cont__body">
           <div>

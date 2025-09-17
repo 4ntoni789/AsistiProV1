@@ -12,6 +12,7 @@ import { Fetch_empleados } from '@renderer/actions/actionsEmpleados';
 import { Fetch_Punto_venta } from '@renderer/actions/actionsPuntoDeVenta';
 import { UserDataType } from '@renderer/typesTS';
 import { Fetch_generar_reporte } from '@renderer/actions/actionsReportes';
+import DownloadButton from '@renderer/components/DowloadButton';
 
 function Reportes(props) {
   const [seleted, setSeleted] = useState<string>('');
@@ -21,9 +22,10 @@ function Reportes(props) {
   const [puntosVenta, setPuntosVenta] = useState<[any]>([{}]);
   const dispatch = useDispatch<AppDispatch>();
   const [empleados, setEmpleados] = useState<[any]>([{}]);
+  const [loader, setLoader] = useState<boolean>(false);
 
   const onSubmit = async (dataInput) => {
-    dispatch(Fetch_generar_reporte(dataInput, seleted, userId, userData))
+    dispatch(Fetch_generar_reporte(dataInput, seleted, userId, userData, setLoader))
   }
 
   useEffect(() => {
@@ -88,7 +90,7 @@ function Reportes(props) {
             <option value='excel'>EXCEL</option>
           </select><br />
           <FormularioReportSeleccionado seleted={seleted} register={register} />
-          <button disabled={seleted == '' ? true : false}>Generar</button>
+          <DownloadButton functionDescargar={null} nameButton={'Generar'} load={loader} disable={seleted == '' ? true : false} />
         </form>
       </div>
     </div >

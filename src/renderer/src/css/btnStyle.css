@@ -3,12 +3,12 @@
   width: 90%;
   margin: 2px auto 2px auto;
   background-color: #9b9898;
-  height: 40px;
   border: none;
   border-radius: 10px;
   cursor: pointer;
   color: #fff;
   transition: all 0.5s;
+  padding: 0.8rem;
 }
 .btn_style:hover {
   background-color: #dd8702;
@@ -17,7 +17,7 @@
   background-color: #9b9898;
   color: #c5c5c5;
 }
-.btn_style span {
+.btn_style__span {
   width: 100%;
   position: absolute;
   bottom: 0;
@@ -26,6 +26,17 @@
   text-align: center;
   font-weight: bold;
   background-color: #dd8702;
+  border-radius: 0px 0px 10px 10px;
+}
+.btn_style__spanVencido {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-size: 11px;
+  text-align: center;
+  font-weight: bold;
+  background-color: #ad0606;
   border-radius: 0px 0px 10px 10px;
 }
 

@@ -15,12 +15,17 @@ export const WorkScheduleBarDoble: React.FC<Props2> = ({ registros }: any) => {
     allowedEndSalida: 0,
     earlyExit: false,
     breakStart: 0,
+    salidaValidaDescanso: 0,
+    salidaValidaDescansoHasta: 0,
     breakEnd: 0,
+    entradaValidaDescanso: 0,
+    entradaValidaDescansoHasta: 0,
     graceMinutes: 0,
     horaInicioSinFormatear: '',
     horaFinSinFormatear: '',
     horaInicioAlmuerzoSinFormatear: '',
     horaFinAlmuerzoSinFormatear: '',
+
   })
 
   useEffect(() => {
@@ -33,7 +38,11 @@ export const WorkScheduleBarDoble: React.FC<Props2> = ({ registros }: any) => {
       allowedEndSalida: 0,
       earlyExit: false,
       breakStart: 0,
+      salidaValidaDescanso: 0,
+      salidaValidaDescansoHasta: 0,
       breakEnd: 0,
+      entradaValidaDescanso: 0,
+      entradaValidaDescansoHasta: 0,
       graceMinutes: 0,
       horaInicioSinFormatear: '',
       horaFinSinFormatear: '',
@@ -80,10 +89,9 @@ export const WorkScheduleBarDoble: React.FC<Props2> = ({ registros }: any) => {
 
     }
 
-  }, [registros])
+  }, [registros]);
 
   const percentPerHour = 100 / 24; // Preciso: 4.166666666666667
-
 
   const adjustedStartMin = horaToDecimal(horario?.entrada) - (horario?.margen / 60); // margen antes de la entrada
   const adjustedEndMax = horaToDecimal(horario?.salida) + (horario?.margen / 60);
@@ -106,15 +114,17 @@ export const WorkScheduleBarDoble: React.FC<Props2> = ({ registros }: any) => {
       </div>
 
       <div className="timeline">
-        {valoresLineaTiempo.breakStart !== undefined && valoresLineaTiempo.breakEnd !== undefined && (
-          <div
-            className="break-time"
-            style={{
-              left: `${valoresLineaTiempo.breakStart * percentPerHour}%`,
-              width: `${(valoresLineaTiempo.breakEnd - valoresLineaTiempo.breakStart) * percentPerHour}%`
-            }} title='Descanso'
-          ></div>
-        )}
+        {valoresLineaTiempo.breakStart === 0 || valoresLineaTiempo.breakEnd === 0 ? null :
+          valoresLineaTiempo.breakStart !== undefined && valoresLineaTiempo.breakEnd !== undefined && (
+            <div
+              className="break-time"
+              style={{
+                left: `${valoresLineaTiempo.breakStart ? valoresLineaTiempo.breakStart * percentPerHour : null}%`,
+                width: `${valoresLineaTiempo.breakEnd ? (valoresLineaTiempo.breakStart ? valoresLineaTiempo.breakEnd - valoresLineaTiempo.breakStart : 0) * percentPerHour : null}%`
+              }} title='Descanso'
+            ></div>
+          )
+        }
         <div
           className={`work-time ${valoresLineaTiempo.earlyExit ? 'early-exit' : ''}`}
           style={{
@@ -167,6 +177,17 @@ export const WorkScheduleBarDoble: React.FC<Props2> = ({ registros }: any) => {
                   }} title='Margen permitido'
                 ></div>
               )}
+
+              {horaToDecimal(horario.salidaValidaDescanso) !== undefined && horaToDecimal(horario.salidaValidaDescansoHasta) !== undefined && (
+                <div
+                  className="break-time-valid"
+                  style={{
+                    left: `${horaToDecimal(horario.salidaValidaDescanso) * percentPerHour}%`,
+                    width: `${(horaToDecimal(horario.salidaValidaDescansoHasta) - horaToDecimal(horario.salidaValidaDescanso)) * percentPerHour}%`
+                  }} title='Salida valida descanso'
+                ></div>
+              )}
+
               {horaToDecimal(horario.salidaAlmuerzo) !== undefined && horaToDecimal(horario.entradaAlmuerzo) !== undefined && (
                 <div
                   className="break-time"
@@ -176,6 +197,17 @@ export const WorkScheduleBarDoble: React.FC<Props2> = ({ registros }: any) => {
                   }} title='Descanso'
                 ></div>
               )}
+
+              {horaToDecimal(horario.entradaValidaDescanso) !== undefined && horaToDecimal(horario.entradaValidaDescansoHasta) !== undefined && (
+                <div
+                  className="break-time-valid"
+                  style={{
+                    left: `${horaToDecimal(horario.entradaValidaDescanso) * percentPerHour}%`,
+                    width: `${(horaToDecimal(horario.entradaValidaDescansoHasta) - horaToDecimal(horario.entradaValidaDescanso)) * percentPerHour}%`
+                  }} title='Entrada valida descanso'
+                ></div>
+              )}
+
               <div
                 className={`work-time ${true ? 'early-exit' : ''}`}
                 style={{
@@ -186,8 +218,6 @@ export const WorkScheduleBarDoble: React.FC<Props2> = ({ registros }: any) => {
             </div>
           </> : null
       }
-
-
 
       {/* Etiquetas */}
       <div className="legend">

@@ -1,0 +1,29 @@
+.contNotificaciones {
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  background-color: transparent;
+  z-index: 9999;
+
+  &__contNotificaciones__contInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-end;
+
+    // transición al mover notificaciones
+    > * {
+      transition: all 0.4s ease;
+    }
+  }
+}
+
+// cuando se cierra, se desvanece y colapsa
+.contNotificaciones__contNotificaciones__contInfo__notificacion.salir {
+  opacity: 0;
+  transform: translateX(50px);
+  height: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}

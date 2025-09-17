@@ -1,12 +1,13 @@
-import  { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import '../css/marcacionesEnDirecto.css';
 import ItemMarcacionDirecto from './items/ItemMarcacionDirecto';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from '@renderer/store';
 import { obtenerDatos } from '@renderer/scripts/obtenerDatosFetch';
 import { Fetch_accesos_ayer, Fetch_accesos_dia } from '@renderer/actions/actionsAccesos';
+import LoaderItems from './LoaderItems';
 
-function MarcacionesEnDirecto({}) {
+function MarcacionesEnDirecto({ }) {
   const [dataUser, setDataUser] = useState<any[]>();
   const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
   const [switchBtn, setSwitchBtn] = useState(false);
@@ -20,9 +21,10 @@ function MarcacionesEnDirecto({}) {
       } else {
         obtenerDatos(null, dispatch(Fetch_accesos_ayer(userId)), setDataUser);
       }
-    }, 500)
+    }, 1000)
     return () => clearInterval(intervalo);
   }, [switchBtn])
+
 
   return (
     <div className='App__init__marcacionesEnDirecto'>
@@ -34,8 +36,8 @@ function MarcacionesEnDirecto({}) {
           : 'App__init__marcacionesEnDirecto__switch__btn'} onClick={() => setSwitchBtn(true)}>Ayer</button>
       </div>
       <div className='App__init__marcacionesEnDirecto__body'>
-        {dataUser?.map((item, index) => (
-          <ItemMarcacionDirecto key={index} item={item} isNew={index === -1} />
+        {dataUser?.length === 0 ? <LoaderItems />: dataUser?.map((item, index) => (
+        <ItemMarcacionDirecto key={index} item={item} isNew={index === -1} />
         ))}
       </div>
     </div>

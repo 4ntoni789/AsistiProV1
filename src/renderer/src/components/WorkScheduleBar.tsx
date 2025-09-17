@@ -6,7 +6,22 @@ import { calcularHorasTrabajadas } from '@renderer/scripts/calcularHorasTrabajad
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBriefcase } from '@fortawesome/free-solid-svg-icons';
 
-export const WorkScheduleBar: React.FC<Props> = ({ start, end, allowedStartEntrada, allowedEndEntrada, allowedStartSalida, allowedEndSalida, earlyExit, breakStart, breakEnd, graceMinutes }: any) => {
+export const WorkScheduleBar: React.FC<Props> = ({
+  start,
+  end,
+  allowedStartEntrada,
+  allowedEndEntrada,
+  allowedStartSalida,
+  allowedEndSalida,
+  earlyExit,
+  breakStart,
+  breakEnd,
+  graceMinutes,
+  salidaValidaDescanso,
+  salidaValidaDescansoHasta,
+  entradaValidaDescanso,
+  entradaValidaDescansoHasta
+}: any) => {
   const percentPerHour = 100 / 24;
 
   const grace = (graceMinutes ?? 10) / 60;
@@ -47,7 +62,6 @@ export const WorkScheduleBar: React.FC<Props> = ({ start, end, allowedStartEntra
         ></div>
 
 
-
         {/* Tiempo de trabajo */}
         {earlyExit && (
           <div
@@ -58,6 +72,17 @@ export const WorkScheduleBar: React.FC<Props> = ({ start, end, allowedStartEntra
             }} title='Margen permitido'
           ></div>
         )}
+
+        {salidaValidaDescanso !== undefined && salidaValidaDescansoHasta !== undefined && (
+          <div
+            className="break-time-valid"
+            style={{
+              left: `${salidaValidaDescanso * percentPerHour}%`,
+              width: `${(salidaValidaDescansoHasta - salidaValidaDescanso) * percentPerHour}%`
+            }} title='Salida valida descanso'
+          ></div>
+        )}
+
         {breakStart !== undefined && breakEnd !== undefined && (
           <div
             className="break-time"
@@ -67,6 +92,17 @@ export const WorkScheduleBar: React.FC<Props> = ({ start, end, allowedStartEntra
             }} title='Descanso'
           ></div>
         )}
+
+        {entradaValidaDescanso !== undefined && entradaValidaDescansoHasta !== undefined && (
+          <div
+            className="break-time-valid"
+            style={{
+              left: `${entradaValidaDescanso * percentPerHour}%`,
+              width: `${(entradaValidaDescansoHasta - entradaValidaDescanso) * percentPerHour}%`
+            }} title='Entrada valida descanso'
+          ></div>
+        )}
+
         <div
           className={`work-time ${earlyExit ? 'early-exit' : ''}`}
           style={{
@@ -82,7 +118,7 @@ export const WorkScheduleBar: React.FC<Props> = ({ start, end, allowedStartEntra
         <div><span className="box blue"></span>Tiempo de trabajo</div>
         <div><span className="box striped"></span>Salida tardía/anticipada permitida</div>
         <div><span className="box gray"></span>Descanso</div>
-        <div><span className='box'><FontAwesomeIcon icon={faBriefcase}/></span>Horas a trabajara: {calcularHorasTrabajadas(decimalToHora(start), decimalToHora(end), decimalToHora(breakStart), decimalToHora(breakEnd))}</div>
+        <div><span className='box'><FontAwesomeIcon icon={faBriefcase} /></span>Horas a trabajara: {calcularHorasTrabajadas(decimalToHora(start), decimalToHora(end), decimalToHora(breakStart), decimalToHora(breakEnd))}</div>
       </div>
     </div>
   );

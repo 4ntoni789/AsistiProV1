@@ -72,3 +72,4 @@ export const Fetch_update_pass = (dataInput: any, userId: string, userData: any,
         }
     }
 }
+

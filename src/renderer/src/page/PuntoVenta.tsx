@@ -34,11 +34,11 @@ function PuntoVenta() {
   );
 
 
-  const totalPages = Math.ceil(filteredAccesos.length / itemsPerPage);
+  const totalPages = Math.ceil(filteredAccesos?.length / itemsPerPage);
 
   const indexOfLastItem = paginaActual * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = filteredAccesos.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = filteredAccesos?.slice(indexOfFirstItem, indexOfLastItem);
 
   const variants = {
     enter: (dir: 'siguiente' | 'anterior') => ({

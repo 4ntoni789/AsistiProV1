@@ -35,9 +35,17 @@
 .timeline-container .break-time {
   position: absolute;
   height: 100%;
-  z-index: 3;
+  z-index: 4;
   background-color: #00ff6a;
-  opacity: 0.5;
+  opacity: 0.8;
+  transition: all 0.5s;
+}
+.timeline-container .break-time-valid {
+  position: absolute;
+  height: 100%;
+  z-index: 3;
+  background-image: repeating-linear-gradient(45deg, #bbff00, #bbff00 5px, rgba(255, 255, 255, 0.3294117647) 5px, rgba(255, 255, 255, 0.8235294118) 10px);
+  opacity: 0.8;
   transition: all 0.5s;
 }
 .timeline-container .box.gray {

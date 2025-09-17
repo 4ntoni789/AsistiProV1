@@ -5,12 +5,13 @@
     width: 90%;
     margin: 2px auto 2px auto;
     background-color: $colo-text-claro;
-    height: 40px;
+    // height: 40px !important;
     border: none;
     border-radius: 10px;
     cursor: pointer;
     color: $color-text-blanco;
     transition: all .5s;
+    padding: .8rem;
 
     &:hover {
         background-color: $color-principal;
@@ -22,7 +23,7 @@
 
     }
 
-    span {
+    &__span {
         width: 100%;
         position: absolute;
         bottom: 0;
@@ -32,7 +33,20 @@
         font-weight: bold;
 
         background-color: $color-principal;
-        border-radius: 0px 0px 10px 10px ;
+        border-radius: 0px 0px 10px 10px;
+    }
+
+    &__spanVencido {
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        font-size: 11px;
+        text-align: center;
+        font-weight: bold;
+        background-color: $color-error-2;
+        border-radius: 0px 0px 10px 10px;
+
     }
 }
 

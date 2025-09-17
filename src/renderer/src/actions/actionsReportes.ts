@@ -4,8 +4,9 @@ import { ActiveErrorSpam } from "./actionsLogin";
 const apiUrl = import.meta.env.VITE_API_URL;
 
 
-export const Fetch_generar_reporte = (dataInput: any, seleted: string, userId: string, userData:any) => {
+export const Fetch_generar_reporte = (dataInput: any, seleted: string, userId: string, userData: any, setLoader) => {
     const token = localStorage.getItem("token");
+    setLoader(true);
     return async (dispatch) => {
         try {
             const fechaIniSemana: any = obtenerSemanaSiEsLunes(dataInput.fecha_inicio);
@@ -67,6 +68,7 @@ export const Fetch_generar_reporte = (dataInput: any, seleted: string, userId: s
                 a.remove();
                 window.URL.revokeObjectURL(url);
             }
+            setLoader(false);
         } catch (error) {
             console.log(error);
         }

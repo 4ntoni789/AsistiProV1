@@ -73,9 +73,8 @@
   border-color: #dd8702;
 }
 .App__init__Reporte__tipoReporte button {
-  width: 150px;
+  width: 200px;
   margin-left: 5%;
-  height: 35px;
   cursor: pointer;
   border-radius: 10px;
   border: none;

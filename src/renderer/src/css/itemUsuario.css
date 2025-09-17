@@ -5,12 +5,33 @@
   border-radius: 5px;
   margin: 5px 70px 5px 70px;
   border: 1px solid #dd8702;
+  position: relative;
 }
 @media (max-width: 1366px) {
   .App__dashboard__contPageOutlet__PageUsers__contUsers__table__usuario {
     width: 400px;
     margin: 5px 0 5px 0;
   }
+}
+.App__dashboard__contPageOutlet__PageUsers__contUsers__table__usuario__cont__online {
+  position: absolute;
+  display: flex;
+  left: 5px;
+  top: 5px;
+  width: 10px;
+  height: 10px;
+  background-color: #ad0606;
+  border-radius: 100%;
+}
+.App__dashboard__contPageOutlet__PageUsers__contUsers__table__usuario__cont__online__active {
+  position: absolute;
+  display: flex;
+  left: 5px;
+  top: 5px;
+  width: 10px;
+  height: 10px;
+  background-color: #11c02e;
+  border-radius: 100%;
 }
 .App__dashboard__contPageOutlet__PageUsers__contUsers__table__usuario__cont h2 {
   color: #dd8702;

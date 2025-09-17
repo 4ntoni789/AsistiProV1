@@ -6,49 +6,51 @@ const apiUrl = import.meta.env.VITE_API_URL;
 
 export const Fetch_horario = (userId: string, activeMenuPuntoVenta: any) => {
     const token = localStorage.getItem("token");
-    return async () => {
-        try {
-            const response = await fetch(`${apiUrl}/api/horarios`, {
-                headers: {
-                    'x-id-usuario': userId,
-                    "Authorization": `Bearer ${token}`
+    return async (dispatch, getState) => {
+        const { loginAccess } = getState();
+        const conexionSse = loginAccess.conexionSse;
+        if (conexionSse) {
+            try {
+                const response = await fetch(`${apiUrl}/api/horarios`, {
+                    headers: {
+                        'x-id-usuario': userId,
+                        "Authorization": `Bearer ${token}`
+                    }
+                });
+                const result = await response.json();
+                if (response.ok) {
+                    const resultado = result
+                        .filter((item: any) => item.id_pv === activeMenuPuntoVenta.user?.item?.id_pv)
+                        .reduce((acc: any[], curr: any) => {
+                            const existente = acc.find(g => g.turno === curr.turno && g.cargo === curr.id_cargo);
+
+                            if (existente) {
+                                existente.horarios.push(curr);
+                            } else {
+                                acc.push({
+                                    turno: curr.turno,
+                                    cargo: curr.id_cargo,
+                                    horarios: [curr]
+                                });
+                            }
+                            return acc;
+                        }, []);
+
+                    return resultado;
+                } else {
+                    console.error('Error en la petición:', result);
+                    return null;
                 }
-            });
-
-            const result = await response.json();
-
-            if (response.ok) {
-                const resultado = result
-                    .filter((item: any) => item.id_pv === activeMenuPuntoVenta.user?.item?.id_pv)
-                    .reduce((acc: any[], curr: any) => {
-                        const existente = acc.find(g => g.turno === curr.turno && g.cargo === curr.id_cargo);
-
-                        if (existente) {
-                            existente.horarios.push(curr);
-                        } else {
-                            acc.push({
-                                turno: curr.turno,
-                                cargo: curr.id_cargo,
-                                horarios: [curr]
-                            });
-                        }
-                        return acc;
-                    }, []);
-
-                return resultado;
-            } else {
-                console.error('Error en la petición:', result);
+            } catch (error) {
+                console.error('Error al hacer la petición:', error);
                 return null;
             }
-        } catch (error) {
-            console.error('Error al hacer la petición:', error);
-            return null;
         }
     }
 
 }
 
-export const Fetch_new_horario = (dataInput, puntoVenta, almacenDiasSemana, userData, semana, userId, reset: () => void) => {
+export const Fetch_new_horario = (dataInput, puntoVenta, almacenDiasSemana, userData, semana, userId, habilitarDescanso, reset: () => void) => {
     const token = localStorage.getItem("token");
     return async (dispatch) => {
         if (semana == 'dias_especificos' || semana == 'toda_semana') {
@@ -65,8 +67,15 @@ export const Fetch_new_horario = (dataInput, puntoVenta, almacenDiasSemana, user
                             hora_entrada: dataInput.hora_entrada,
                             hora_valida_entrada: dataInput.hora_valida_entrada,
                             hora_valida_entrada_hasta: dataInput.hora_valida_entrada_hasta,
-                            hora_salida_descanso: dataInput.hora_salida_descanso,
-                            hora_regreso_descanso: dataInput.hora_regreso_descanso,
+
+                            hora_salida_descanso: habilitarDescanso ? dataInput.hora_salida_descanso : null,
+                            hora_valida_salida_descanso: habilitarDescanso ? dataInput.hora_valida_salida_descanso : null,
+                            hora_valida_salida_descanso_hasta: habilitarDescanso ? dataInput.hora_valida_salida_descanso_hasta : null,
+
+                            hora_regreso_descanso: habilitarDescanso ? dataInput.hora_regreso_descanso : null,
+                            hora_valida_regreso_descanso: habilitarDescanso ? dataInput.hora_valida_regreso_descanso : null,
+                            hora_valida_regreso_descanso_hasta: habilitarDescanso ? dataInput.hora_valida_regreso_descanso_hasta : null,
+
                             hora_salida: dataInput.hora_salida,
                             hora_valida_salida: dataInput.hora_valida_salida,
                             hora_valida_salida_hasta: dataInput.hora_valida_salida_hasta,

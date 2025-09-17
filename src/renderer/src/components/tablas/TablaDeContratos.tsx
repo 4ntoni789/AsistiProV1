@@ -34,7 +34,7 @@ function TablaDeContratos({ direccion, paginaActual, variants, currentItems, sea
               exit="exit"
               className="App__dashboard__contPageOutlet__PageUsers__contContratos__table__contItem"
             >
-              {
+              {currentItems == undefined ? null :
                 currentItems?.length === 0 ? <LoaderItems /> :
                   currentItems.map((item, index) => (
                     <motion.div

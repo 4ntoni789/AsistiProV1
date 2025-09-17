@@ -27,6 +27,11 @@
   font-weight: bold;
   color: #fff;
 }
+.App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__form__horarios__itemHorario__horarios__item__spanSinDescanso {
+  width: 50% !important;
+  background-color: #c52929;
+  border-radius: 5px;
+}
 .App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__form__horarios__itemHorario__horarios__item svg {
   position: absolute;
   bottom: 5px;

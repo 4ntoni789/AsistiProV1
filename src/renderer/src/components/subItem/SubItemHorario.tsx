@@ -16,7 +16,9 @@ function SubItemHorario({ item, rHorario, restHorario }) {
         formatearHoraHorario(item.hora_regreso_descanso))}</b></span>
       <span >Entrada: <b>{extraerHora(item.hora_entrada)}</b> Salida: <b>{extraerHora(item.hora_salida)}</b></span>
 
-      <span >Descanso: <b>{extraerHora(item.hora_salida_descanso)}</b> Regreso descanso: <b>{extraerHora(item.hora_regreso_descanso)}</b></span>
+      {item.hora_salida_descanso ? <span >Descanso: <b>{extraerHora(item.hora_salida_descanso)}</b> Regreso descanso: <b>{extraerHora(item.hora_regreso_descanso)}</b></span>
+        :
+        <span className='App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__form__horarios__itemHorario__horarios__item__spanSinDescanso'><b>Sin Descanso</b></span>}
 
       <span >Entrada valida: <b>{extraerHora(item.hora_valida_entrada)} / {extraerHora(item.hora_valida_entrada_hasta)}</b></span>
       <span >Salida valida: <b>{extraerHora(item.hora_valida_salida)} / {extraerHora(item.hora_valida_salida_hasta)}</b></span>

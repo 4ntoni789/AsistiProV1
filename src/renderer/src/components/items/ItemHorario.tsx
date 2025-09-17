@@ -7,6 +7,15 @@ import '../../css/itemHorario.css';
 function ItemHorario({ registro, cargos, dataHorario }) {
   const [activeSubItem, setActiveSubItem] = useState<boolean>(false);
   const [dataRHorario, setDataRHorario] = useState<object>({});
+  const diasOrden: Record<string, number> = {
+    Lunes: 1,
+    Martes: 2,
+    Miércoles: 3,
+    Jueves: 4,
+    Viernes: 5,
+    Sábado: 6,
+    Domingo: 7,
+  };
 
   useEffect(() => {
     if (Object.keys(dataRHorario).length > 0) {
@@ -28,10 +37,18 @@ function ItemHorario({ registro, cargos, dataHorario }) {
         </div>
         {activeSubItem
           ?
-          registro.horarios.map((item, i) => (
-            <SubItemHorario restHorario={() => setDataRHorario(item)} rHorario={dataHorario} key={i} item={item} />
-          ))
-        : 'Cargando...'}
+          registro.horarios
+            .slice()
+            .sort((a, b) => diasOrden[a.dia_semana] - diasOrden[b.dia_semana])
+            .map((item, i) => (
+              <SubItemHorario
+                restHorario={() => setDataRHorario(item)}
+                rHorario={dataHorario}
+                key={i}
+                item={item}
+              />
+            ))
+          : 'Cargando...'}
       </div>
     </div>
   );

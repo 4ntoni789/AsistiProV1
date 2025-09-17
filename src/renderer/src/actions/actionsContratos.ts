@@ -7,57 +7,64 @@ import { ActiveSubMenuDeleteUsers } from "./actionsUsers";
 import { ACTIVEMENUVERCONTRATO } from "@renderer/type";
 const apiUrl = import.meta.env.VITE_API_URL;
 
-
 export const ActiveMenuVerContrato = (value: any) => ({ type: ACTIVEMENUVERCONTRATO, value: value });
 
 export const Fetch_contratos = (userId) => {
     const token = localStorage.getItem("token");
-    return async () => {
-        try {
-            const response = await fetch(`${apiUrl}/api/contratos`, {
-                headers: {
-                    'x-id-usuario': userId,
-                    "Authorization": `Bearer ${token}`
+    return async (dispatch, getState) => {
+        const { loginAccess } = getState();
+        const conexionSse = loginAccess.conexionSse;
+        if (conexionSse) {
+            try {
+                const response = await fetch(`${apiUrl}/api/contratos`, {
+                    headers: {
+                        'x-id-usuario': userId,
+                        "Authorization": `Bearer ${token}`
+                    }
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    return result;
+                } else {
+                    console.error('Error en la petición:', result);
+                    return null;
                 }
-            });
-
-            const result = await response.json();
-
-            if (response.ok) {
-                return result;
-            } else {
-                console.error('Error en la petición:', result);
+            } catch (error) {
+                console.error('Error al hacer la petición:', error);
                 return null;
             }
-        } catch (error) {
-            console.error('Error al hacer la petición:', error);
-            return null;
         }
     };
 }
 
 export const Fetch_contratosPorVencer = (userId) => {
     const token = localStorage.getItem("token");
-    return async () => {
-        try {
-            const response = await fetch(`${apiUrl}/api/contratos-por-vencer`, {
-                headers: {
-                    'x-id-usuario': userId,
-                    "Authorization": `Bearer ${token}`
+    return async (dispatch, getState) => {
+        const { loginAccess } = getState();
+        const conexionSse = loginAccess.conexionSse;
+        if (conexionSse) {
+            try {
+                const response = await fetch(`${apiUrl}/api/contratos-por-vencer`, {
+                    headers: {
+                        'x-id-usuario': userId,
+                        "Authorization": `Bearer ${token}`
+                    }
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    return result;
+                } else {
+                    console.error('Error en la petición:', result);
+                    return null;
                 }
-            });
-
-            const result = await response.json();
-
-            if (response.ok) {
-                return result;
-            } else {
-                console.error('Error en la petición:', result);
+            } catch (error) {
+                console.error('Error al hacer la petición:', error);
                 return null;
             }
-        } catch (error) {
-            console.error('Error al hacer la petición:', error);
-            return null;
         }
     };
 }
@@ -105,7 +112,6 @@ export const Fetch_new_contrato = (dataInput: any, userId: string, date: number,
 
 export const Fetch_generar_contrato = (activeNewEmpleado: any, userCargo: any, contFilter: any, contFilterEmpleador: any, userData: any, setLoader, userId: string) => {
     const token = localStorage.getItem("token");
-    console.log(contFilter.fecha_fin.toString().split('T')[0]);
     return async () => {
         setLoader(true);
 

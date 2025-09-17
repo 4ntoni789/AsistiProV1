@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion"
 import ItemUsuario from "../items/ItemUsuario"
+import LoaderItems from "../LoaderItems"
 
 function TablaDeUsuarios({ direccion, paginaActual, variants, currentItems, searchTerm, containerVariants, itemVariants }) {
   return (
@@ -26,7 +27,7 @@ function TablaDeUsuarios({ direccion, paginaActual, variants, currentItems, sear
                     estado={item.estado}
                     item={item}
                   />
-                  
+
                 ))
               }
             </motion.div>
@@ -39,21 +40,22 @@ function TablaDeUsuarios({ direccion, paginaActual, variants, currentItems, sear
               exit="exit"
               className="App__dashboard__contPageOutlet__PageUsers__contUsers__table__contItem"
             >
-              {currentItems.map((item, index) => (
-                <motion.div
-                  key={index}
-                  variants={itemVariants}
-                  transition={{ duration: 0.3, delay: index * 0.05 }}
-                >
-                  <ItemUsuario nombre_usuario={item.nombre_usuario}
-                    id_usuario={item.id_usuario}
-                    correo={item.correo}
-                    role={item.type_role}
-                    estado={item.estado}
-                    item={item}
-                  />
-                </motion.div>
-              ))}
+              {currentItems == undefined ? null :
+                currentItems?.length === 0 ? <LoaderItems /> : currentItems.map((item, index) => (
+                  <motion.div
+                    key={index}
+                    variants={itemVariants}
+                    transition={{ duration: 0.3, delay: index * 0.05 }}
+                  >
+                    <ItemUsuario nombre_usuario={item.nombre_usuario}
+                      id_usuario={item.id_usuario}
+                      correo={item.correo}
+                      role={item.type_role}
+                      estado={item.estado}
+                      item={item}
+                    />
+                  </motion.div>
+                ))}
             </motion.div>
           )
         }

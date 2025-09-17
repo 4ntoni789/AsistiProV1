@@ -11,58 +11,62 @@ export const ActiveSubMenuNewUsers = (value: any) => {
 
 export const Fetch_new_user = (dataInput: any, userId: string, userData, userActiveCheck: string, reset: () => void) => {
     const token = localStorage.getItem("token");
-    return async (dispatch: any): Promise<{ activeError: boolean; typeError: string } | undefined> => {
+    return async (dispatch, getState): Promise<{ activeError: boolean; typeError: string } | undefined> => {
         dispatch(ActiveSubMenuNewUsers({
             loading: true
         }))
-        try {
-            const response = await fetch(`${apiUrl}/api/usuarios`, {
-                method: 'POST',
-                headers: {
-                    'x-id-usuario': userId,
-                    'Content-Type': 'application/json',
-                    "Authorization": `Bearer ${token}`
-                }
-                ,
-                body: JSON.stringify({
-                    nombre_usuario: dataInput.nombre_usuario,
-                    password: dataInput.contrasena,
-                    id_rol: dataInput.id_rol,
-                    estado: userActiveCheck,
-                    email: dataInput.email,
-                    reqUser: userData
-                }),
-            });
+        const { loginAccess } = getState();
+        const conexionSse = loginAccess.conexionSse;
+        if (conexionSse) {
+            try {
+                const response = await fetch(`${apiUrl}/api/usuarios`, {
+                    method: 'POST',
+                    headers: {
+                        'x-id-usuario': userId,
+                        'Content-Type': 'application/json',
+                        "Authorization": `Bearer ${token}`
+                    }
+                    ,
+                    body: JSON.stringify({
+                        nombre_usuario: dataInput.nombre_usuario,
+                        password: dataInput.contrasena,
+                        id_rol: dataInput.id_rol,
+                        estado: userActiveCheck,
+                        email: dataInput.email,
+                        reqUser: userData
+                    }),
+                });
 
-            const result = await response.json();
-            if (response.ok) {
-                dispatch(ActiveErrorSpam({ msg: result.message, active: true, typeError: 'submit' }));
-                reset();
-                dispatch(ActiveSubMenuNewUsers({
-                    subMenuNewUsers: false,
-                    loading: false
-                }))
-                return {
-                    activeError: false,
-                    typeError: ''
+                const result = await response.json();
+                if (response.ok) {
+                    dispatch(ActiveErrorSpam({ msg: result.message, active: true, typeError: 'submit' }));
+                    reset();
+                    dispatch(ActiveSubMenuNewUsers({
+                        subMenuNewUsers: false,
+                        loading: false
+                    }))
+                    return {
+                        activeError: false,
+                        typeError: ''
+                    }
+                } else {
+                    const dato: {
+                        activeError: boolean,
+                        typeError: string
+                    } = {
+                        activeError: true,
+                        typeError: result.message
+                    }
+                    dispatch(ActiveSubMenuNewUsers({
+                        subMenuNewUsers: true,
+                        loading: false
+                    }))
+                    return dato
                 }
-            } else {
-                const dato: {
-                    activeError: boolean,
-                    typeError: string
-                } = {
-                    activeError: true,
-                    typeError: result.message
-                }
-                dispatch(ActiveSubMenuNewUsers({
-                    subMenuNewUsers: true,
-                    loading: false
-                }))
-                return dato
+            } catch (error) {
+                console.error('Error:', error);
+                console.log('Ocurrió un error al crear el usuario');
             }
-        } catch (error) {
-            console.error('Error:', error);
-            console.log('Ocurrió un error al crear el usuario');
         }
     }
 }
@@ -151,27 +155,32 @@ export const ActiveSubMenuDeleteUsers = (value: any) => {
 
 export const Fetch_user = (userId: string) => {
     const token = localStorage.getItem("token");
-    return async () => {
-        try {
-            const response = await fetch(`${apiUrl}/api/usuarios`, {
-                method: 'GET',
-                headers: {
-                    'x-id-usuario': userId,
-                    "Authorization": `Bearer ${token}`
-                }
-            });
-            const result = await response.json();
-            const userFilter = result.filter((user) => user.id_usuario != userId);
 
-            if (response.ok) {
-                return userFilter;
-            } else {
-                console.error('Error en la petición:', result);
+    return async (dispatch, getState) => {
+        const { loginAccess } = getState();
+        const conexionSse = loginAccess.conexionSse;
+        if (conexionSse) {
+            try {
+                const response = await fetch(`${apiUrl}/api/usuarios`, {
+                    method: 'GET',
+                    headers: {
+                        'x-id-usuario': userId,
+                        "Authorization": `Bearer ${token}`
+                    }
+                });
+                const result = await response.json();
+                const userFilter = result.filter((user) => user.id_usuario != userId);
+
+                if (response.ok) {
+                    return userFilter;
+                } else {
+                    console.error('Error en la petición:', result);
+                    return null;
+                }
+            } catch (error) {
+                console.error('Error al hacer la petición:', error);
                 return null;
             }
-        } catch (error) {
-            console.error('Error al hacer la petición:', error);
-            return null;
         }
     };
 };

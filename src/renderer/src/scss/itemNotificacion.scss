@@ -1,0 +1,179 @@
+@import './variables';
+
+.contNotificaciones__contNotificaciones__contInfo {
+    margin-bottom: 5px;
+    display: flex;
+
+
+    &__notificacion {
+        min-width: 230px;
+        max-width: 290px;
+        background-color: $color-item-header;
+        border-radius: 5px;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5px;
+        box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.75);
+        border: 1px solid transparent;
+        // Animación por defecto (entrada)
+        animation: slideIn 0.5s ease-in-out forwards;
+
+        &:hover {
+            border: 1px solid $color-principal;
+        }
+
+        &.salir {
+            animation: slideOut 0.5s ease-in-out forwards;
+        }
+
+        &__contIco {
+            font-size: 30px;
+            margin-left: 10px;
+        }
+
+        &__info {
+            display: flex;
+            margin: 10px;
+            height: 100%;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+
+            b {
+                font-size: 12px;
+
+                &:nth-child(1) {
+                    font-weight: bold;
+                }
+
+                &:nth-child(2) {
+                    font-size: 11px;
+                    position: absolute;
+                    display: inline-block;
+                    right: -5px;
+                    top: -5px;
+                    font-weight: bold;
+                    color: $color-principal;
+                }
+            }
+        }
+
+        &__contButtons {
+            min-width: 75px;
+            border-left: 1px solid $colo-text-claro;
+            height: 60px;
+            margin-right: -5px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+
+            button {
+                width: 100%;
+                border: none;
+                font-size: 12px;
+                font-weight: bold;
+                background-color: transparent;
+                height: 100%;
+                transition: all .3s;
+                cursor: pointer;
+                color: $colo-text-claro;
+
+                &:nth-child(1) {
+                    width: 100%;
+                    border-bottom: 1px solid $colo-text-claro;
+                    font-size: 15px;
+                    font-weight: bold;
+                    background-color: transparent;
+                    height: 100%;
+
+                    &:hover {
+                        background-color: $color-error;
+                        border-radius: 0 5px 0 0;
+                        color: #fff;
+                    }
+                }
+
+                &:hover {
+                    background-color: $color-principal;
+                    border-radius: 0 0 5px 0;
+                    color: #fff;
+
+                }
+            }
+        }
+    }
+
+    &__detalles {
+        height: 0px;
+        opacity: 0;
+        visibility: hidden;
+        width: 280px;
+        margin: auto;
+        transform: translatey(-10px);
+        border-radius: 0 0 5px 5px;
+        border-top: 1px solid $colo-text-claro;
+        background-color: $color-item-header;
+        padding: 0 10px 0 10px;
+
+        b {
+            font-size: 12px;
+            opacity: 0;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 5px;
+        }
+
+        &__active {
+            height: 50px;
+            opacity: 1;
+            visibility: visible;
+            width: 280px;
+            margin: auto;
+            transform: translatey(-10px);
+            border-radius: 0 0 5px 5px;
+            border-left: 1px solid $colo-text-claro;
+            border-right: 1px solid $colo-text-claro;
+            border-bottom: 1px solid $colo-text-claro;
+            background-color: $color-item-header;
+            box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.75);
+            padding: 0 10px 0 10px;
+
+
+            b {
+                font-size: 12px;
+                opacity: 1;
+                font-weight: bold;
+                display: inline-block;
+                margin-top: 5px;
+            }
+        }
+    }
+}
+
+// Animaciones
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOut {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+}

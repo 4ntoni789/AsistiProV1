@@ -5,6 +5,7 @@ $valid-time-color: #f4b942;
 $work-time-color: #4da6ff;
 $early-exit-stripe-light: #b3d9ff;
 $descanso: #00ff6a;
+$descanso2: #bbff00;
 
 .timeline-container {
   width: 95%;
@@ -47,12 +48,24 @@ $descanso: #00ff6a;
   .break-time {
     position: absolute;
     height: 100%;
-    z-index: 3;
+    z-index: 4;
     background-color: $descanso;
-    opacity: 0.5;
+    opacity: 0.8;
     transition: all .5s;
   }
 
+  .break-time-valid {
+    position: absolute;
+    height: 100%;
+    z-index: 3;
+    background-image: repeating-linear-gradient(45deg,
+        $descanso2,
+        $descanso2 5px,
+        #ffffff54 5px,
+        #ffffffd2 10px);
+    opacity: 0.8;
+    transition: all .5s;
+  }
 
   .box.gray {
     background-color: $descanso;

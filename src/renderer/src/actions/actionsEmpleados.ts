@@ -53,27 +53,31 @@ export const ActiveSubMenuEmpleado = (value: any) => ({ type: ACTIVESUBMENUEMPLE
 
 export const Fetch_empleados = (userId: string) => {
     const token = localStorage.getItem("token");
-    return async () => {
-        try {
-            const response = await fetch(`${apiUrl}/api/empleados`, {
-                method: 'GET',
-                headers: {
-                    'x-id-usuario': userId,
-                    "Authorization": `Bearer ${token}`
+    return async (dispatch, getState) => {
+        const { loginAccess } = getState();
+        const conexionSse = loginAccess.conexionSse;
+        if (conexionSse) {
+            try {
+                const response = await fetch(`${apiUrl}/api/empleados`, {
+                    method: 'GET',
+                    headers: {
+                        'x-id-usuario': userId,
+                        "Authorization": `Bearer ${token}`
+                    }
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    return result;
+                } else {
+                    console.error('Error en la petición:', result);
+                    return null;
                 }
-            });
-
-            const result = await response.json();
-
-            if (response.ok) {
-                return result;
-            } else {
-                console.error('Error en la petición:', result);
+            } catch (error) {
+                console.error('Error al hacer la petición:', error);
                 return null;
             }
-        } catch (error) {
-            console.error('Error al hacer la petición:', error);
-            return null;
         }
     };
 }

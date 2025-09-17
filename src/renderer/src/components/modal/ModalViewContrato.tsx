@@ -13,6 +13,7 @@ import { Fetch_empleadores } from "@renderer/actions/actionsEmpleadores";
 import { Fetch_empleados } from "@renderer/actions/actionsEmpleados";
 import { obtenerDatosPrimerCoincidencia } from "@renderer/scripts/obtenerDatosFetchPrimer";
 import LoaderItems from "../LoaderItems";
+import DowloadButton from "../DowloadButton";
 
 
 function ModalViewContrato() {
@@ -87,7 +88,9 @@ function ModalViewContrato() {
                     {
                       activeVerContrato.user?.tipo_contrato == 'Fijo' || activeVerContrato.user?.tipo_contrato == 'Fijo Manejo y Confianza' ? <button className='btn_style' type='submit' onClick={() => {
                         dispatch(Fetch_prorroga_contrato(userData, activeVerContrato.user))
-                      }}>Prórroga {activeVerContrato.user.dias_restantes != undefined ? activeVerContrato.user.estado_contrato === 'VIGENTE' ? < span > Prorroga automatica en: {activeVerContrato.user.dias_restantes} dias</span> : null : null}</button> : null
+                      }}>Prórroga {activeVerContrato.user.dias_restantes != undefined ? activeVerContrato.user.estado_contrato === 'VIGENTE' ?
+                        < span className="btn_style__span" > Prorroga automatica en: {activeVerContrato.user.dias_restantes} dias</span> :
+                        < span className="btn_style__spanVencido" > Dias vencido: {Math.abs(activeVerContrato.user.dias_restantes)}</span> : null}</button> : null
                     }
                     {
                       activeVerContrato.user.estado === 'Activo' ? <input type="button" value="Finalizar contrato" className='btn_style' onClick={() => {
@@ -95,8 +98,7 @@ function ModalViewContrato() {
                         dispatch(ActiveSubMenuDeleteUsers({ user: activeVerContrato.user, activeDeleteUsers: true, typeRemove: 'Contrato' }));
                       }} /> : null
                     }
-                    <input type="button" value={loader ? 'Generando archivo...' : "Descargar contrato"} disabled={loader} className='btn_style'
-                      onClick={() => GenerarContrato()} />
+                    <DowloadButton functionDescargar={GenerarContrato} load={loader} nameButton={'Descargar contrato'} disable={false}/>
                   </div>
                 </>
             }

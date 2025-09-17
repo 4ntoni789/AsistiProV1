@@ -5,8 +5,17 @@ import '../css/empleados.css';
 import NewEmpleado from '@renderer/components/modal/NewEmpleado';
 import ModalViewRegistros from '@renderer/components/modal/ModalViewRegistros';
 import MenuEmpleado from '@renderer/components/modal/SubMenuEmpleado';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch } from '@renderer/store';
+import { useEffect } from 'react';
+import { EliminarNotificacion } from '@renderer/actions/actionsNotificacion';
 
 function Empleados({ }) {
+  const dispatch = useDispatch<AppDispatch>();
+  
+  useEffect(() => {
+    dispatch(EliminarNotificacion('nuevas-marcaciones'));
+  });
 
   return (
     <div className='App__init'>

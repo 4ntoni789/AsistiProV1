@@ -1,11 +1,12 @@
-import { ERRORLOGIN, LOADINGLOGIN, LOGOUT, SUBMITLOGIN } from "@renderer/type";
+import { ERRORLOGIN, LOADINGLOGIN, LOGOUT, STATECONEXIONSSE, SUBMITLOGIN } from "@renderer/type";
 import { InicialStateLogin } from "@renderer/typesTS";
 
 const initalState: InicialStateLogin = {
   userLogin: {},
   validationAccess: false,
   activeError: false,
-  loadingLogin: false
+  loadingLogin: false,
+  conexionSse: false
 }
 
 export default function accesoLogin(state = initalState, action: any) {
@@ -37,6 +38,12 @@ export default function accesoLogin(state = initalState, action: any) {
       return {
         ...state,
         loadingLogin: action.value
+      }
+    }
+    case STATECONEXIONSSE: {
+      return {
+        ...state,
+        conexionSse: action.value
       }
     }
     default:

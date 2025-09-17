@@ -13,6 +13,7 @@ import Buscandor from '../Buscandor';
 import { ordenarPorNombre } from '@renderer/scripts/ordenarPorNombre';
 import Pagination from '../Pagination';
 import { AnimatePresence, motion } from 'framer-motion';
+import LoaderItems from '../LoaderItems';
 
 function TablaMarcaciones() {
   const spam = useSelector((state: any) => state.menuAccions.errorSpam);
@@ -43,7 +44,7 @@ function TablaMarcaciones() {
 
   const indexOfLastItem = paginaActual * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = filteredAccesos.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = filteredAccesos?.slice(indexOfFirstItem, indexOfLastItem);
   // const [activeOptions, setActiveOptions] = useState<boolean>(false);
 
   const variants = {
@@ -96,6 +97,7 @@ function TablaMarcaciones() {
   useEffect(() => {
     obtenerDatos(null, dispatch(Fetch_contratos(userId)), setUserContrato);
     obtenerDatos(null, dispatch(Fetch_empleados(userId)), setAccesos);
+
 
     if (clickLoad) {
       const interval = setTimeout(() => {
@@ -163,7 +165,7 @@ function TablaMarcaciones() {
                 className="App__init__contTable__tablaMarcaciones__body__contItems"
               >
                 {currentItems.map((item, index) => (
-                  <ItemTable clickLoad={clickLoad} key={index} item={item} contrato={userContrato?.filter((item2) => item2.id_empleado === item.id_empleado)} />
+                  <ItemTable key={index} item={item} contrato={userContrato?.filter((item2) => item2.id_empleado === item.id_empleado)} />
                 ))}
               </motion.div>
             ) : (
@@ -175,19 +177,20 @@ function TablaMarcaciones() {
                 exit="exit"
                 className="App__init__contTable__tablaMarcaciones__body__contItems"
               >
-                {currentItems.map((item, index) => (
-                  <motion.div
-                    key={index}
-                    variants={itemVariants}
-                    transition={{ duration: 0.3, delay: index * 0.05 }}
-                  >
-                    <ItemTable
-                      clickLoad={clickLoad}
-                      item={item}
-                      contrato={userContrato?.filter((item2) => item2.id_empleado === item.id_empleado)}
-                    />
-                  </motion.div>
-                ))}
+                {currentItems == undefined ? null :
+                  currentItems?.length === 0 ? <LoaderItems /> : currentItems.map((item, index) => (
+                    <motion.div
+                      key={index}
+                      variants={itemVariants}
+                      transition={{ duration: 0.3, delay: index * 0.05 }}
+                    >
+                      <ItemTable
+
+                        item={item}
+                        contrato={userContrato?.filter((item2) => item2.id_empleado === item.id_empleado)}
+                      />
+                    </motion.div>
+                  ))}
               </motion.div>
             )
           }

@@ -17,6 +17,7 @@
         text-align: left !important;
 
         &:nth-child(1) {
+
             // width: 60% !important;
             b {
                 font-weight: bold;
@@ -25,7 +26,7 @@
         }
 
         @media (max-width:1366px) {
-            &{
+            & {
                 width: auto;
             }
         }
@@ -34,6 +35,16 @@
             margin: 0 5px 0 5px;
             font-weight: bold;
             color: #fff;
+        }
+    }
+
+    &__spanSinDescanso {
+        width: 50% !important;
+        background-color: $color-error;
+        border-radius: 5px;
+
+        b {
+            // margin: 0 !important;
         }
     }
 

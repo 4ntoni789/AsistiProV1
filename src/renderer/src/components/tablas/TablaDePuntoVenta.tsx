@@ -2,6 +2,7 @@ import { AppDispatch } from '@renderer/store';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useDispatch } from 'react-redux';
 import ItemTablePuntoVenta from '../items/ItemTablePuntoVenta';
+import LoaderItems from '../LoaderItems';
 
 function TablaDePuntoVenta({ direccion, paginaActual, variants, currentItems, searchTerm, containerVariants, itemVariants }) {
   const dispatch = useDispatch<AppDispatch>()
@@ -23,7 +24,6 @@ function TablaDePuntoVenta({ direccion, paginaActual, variants, currentItems, se
             >
               {
                 currentItems?.map((item: any, i) => (
-
                   <ItemTablePuntoVenta key={i} item={item} />
                 ))
               }
@@ -37,15 +37,16 @@ function TablaDePuntoVenta({ direccion, paginaActual, variants, currentItems, se
               exit="exit"
               className="App__dashboard__contPageOutlet__PageUsers__contPuntoVenta__table__contItem"
             >
-              {currentItems.map((item, index) => (
-                <motion.div
-                  key={index}
-                  variants={itemVariants}
-                  transition={{ duration: 0.3, delay: index * 0.05 }}
-                >
-                  <ItemTablePuntoVenta item={item} />
-                </motion.div>
-              ))}
+              {currentItems == undefined ? null :
+                currentItems?.length === 0 ? <LoaderItems /> : currentItems.map((item, index) => (
+                  <motion.div
+                    key={index}
+                    variants={itemVariants}
+                    transition={{ duration: 0.3, delay: index * 0.05 }}
+                  >
+                    <ItemTablePuntoVenta item={item} />
+                  </motion.div>
+                ))}
             </motion.div>
           )
         }

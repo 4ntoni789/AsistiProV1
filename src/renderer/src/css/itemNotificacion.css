@@ -1,0 +1,154 @@
+.contNotificaciones__contNotificaciones__contInfo {
+  margin-bottom: 5px;
+  display: flex;
+}
+.contNotificaciones__contNotificaciones__contInfo__notificacion {
+  min-width: 230px;
+  max-width: 290px;
+  background-color: #666;
+  border-radius: 5px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.75);
+  border: 1px solid transparent;
+  animation: slideIn 0.5s ease-in-out forwards;
+}
+.contNotificaciones__contNotificaciones__contInfo__notificacion:hover {
+  border: 1px solid #dd8702;
+}
+.contNotificaciones__contNotificaciones__contInfo__notificacion.salir {
+  animation: slideOut 0.5s ease-in-out forwards;
+}
+.contNotificaciones__contNotificaciones__contInfo__notificacion__contIco {
+  font-size: 30px;
+  margin-left: 10px;
+}
+.contNotificaciones__contNotificaciones__contInfo__notificacion__info {
+  display: flex;
+  margin: 10px;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+.contNotificaciones__contNotificaciones__contInfo__notificacion__info b {
+  font-size: 12px;
+}
+.contNotificaciones__contNotificaciones__contInfo__notificacion__info b:nth-child(1) {
+  font-weight: bold;
+}
+.contNotificaciones__contNotificaciones__contInfo__notificacion__info b:nth-child(2) {
+  font-size: 11px;
+  position: absolute;
+  display: inline-block;
+  right: -5px;
+  top: -5px;
+  font-weight: bold;
+  color: #dd8702;
+}
+.contNotificaciones__contNotificaciones__contInfo__notificacion__contButtons {
+  min-width: 75px;
+  border-left: 1px solid #9b9898;
+  height: 60px;
+  margin-right: -5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.contNotificaciones__contNotificaciones__contInfo__notificacion__contButtons button {
+  width: 100%;
+  border: none;
+  font-size: 12px;
+  font-weight: bold;
+  background-color: transparent;
+  height: 100%;
+  transition: all 0.3s;
+  cursor: pointer;
+  color: #9b9898;
+}
+.contNotificaciones__contNotificaciones__contInfo__notificacion__contButtons button:nth-child(1) {
+  width: 100%;
+  border-bottom: 1px solid #9b9898;
+  font-size: 15px;
+  font-weight: bold;
+  background-color: transparent;
+  height: 100%;
+}
+.contNotificaciones__contNotificaciones__contInfo__notificacion__contButtons button:nth-child(1):hover {
+  background-color: #c52929;
+  border-radius: 0 5px 0 0;
+  color: #fff;
+}
+.contNotificaciones__contNotificaciones__contInfo__notificacion__contButtons button:hover {
+  background-color: #dd8702;
+  border-radius: 0 0 5px 0;
+  color: #fff;
+}
+.contNotificaciones__contNotificaciones__contInfo__detalles {
+  height: 0px;
+  opacity: 0;
+  visibility: hidden;
+  width: 280px;
+  margin: auto;
+  transform: translatey(-10px);
+  border-radius: 0 0 5px 5px;
+  border-top: 1px solid #9b9898;
+  background-color: #666;
+  padding: 0 10px 0 10px;
+}
+.contNotificaciones__contNotificaciones__contInfo__detalles b {
+  font-size: 12px;
+  opacity: 0;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 5px;
+}
+.contNotificaciones__contNotificaciones__contInfo__detalles__active {
+  height: 50px;
+  opacity: 1;
+  visibility: visible;
+  width: 280px;
+  margin: auto;
+  transform: translatey(-10px);
+  border-radius: 0 0 5px 5px;
+  border-left: 1px solid #9b9898;
+  border-right: 1px solid #9b9898;
+  border-bottom: 1px solid #9b9898;
+  background-color: #666;
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.75);
+  padding: 0 10px 0 10px;
+}
+.contNotificaciones__contNotificaciones__contInfo__detalles__active b {
+  font-size: 12px;
+  opacity: 1;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 5px;
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes slideOut {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+}
+
+/*# sourceMappingURL=itemNotificacion.css.map */

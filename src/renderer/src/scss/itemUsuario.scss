@@ -7,6 +7,7 @@
     border-radius: 5px;
     margin: 5px 70px 5px 70px;
     border: 1px solid $color-principal;
+    position: relative;
 
     @media (max-width: 1366px) {
         width: 400px;
@@ -15,6 +16,28 @@
     }
 
     &__cont {
+
+        &__online {
+            position: absolute;
+            display: flex;
+            left: 5px;
+            top: 5px;
+            width: 10px;
+            height: 10px;
+            background-color: $color-error-2;
+            border-radius: 100%;
+
+            &__active {
+                position: absolute;
+                display: flex;
+                left: 5px;
+                top: 5px;
+                width: 10px;
+                height: 10px;
+                background-color: $color-submit;
+                border-radius: 100%;
+            }
+        }
 
         h2 {
             color: $color-principal;

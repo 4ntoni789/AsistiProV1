@@ -6,17 +6,23 @@ export type DataLogin = {
 export interface Props {
   registros?: Array<object>;
   start: number;
-  end: number;
   allowedStartEntrada?: number;
   allowedEndEntrada?: number;
 
+  end: number;
   allowedStartSalida?: number;
   allowedEndSalida?: number;
 
   earlyExit: boolean;
   graceMinutes: number;
-  breakStart: number;
-  breakEnd: number;
+
+  breakStart: number | null;
+  salidaValidaDescanso: number | null;
+  salidaValidaDescansoHasta: number | null;
+
+  breakEnd: number | null;
+  entradaValidaDescanso: number | null;
+  entradaValidaDescansoHasta: number | null;
 
   horaInicioSinFormatear?: string | any,
   horaFinSinFormatear?: string | any,
@@ -33,7 +39,8 @@ export type InicialStateLogin = {
   userLogin: object,
   validationAccess: boolean,
   activeError: boolean,
-  loadingLogin:boolean
+  loadingLogin: boolean,
+  conexionSse: boolean
 }
 
 export type UserDataType = {

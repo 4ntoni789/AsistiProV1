@@ -13,6 +13,7 @@ import TablaDeContratos from '@renderer/components/tablas/TablaDeContratos';
 import ContratosPorVencer from '@renderer/components/ContratosPorVencer';
 import ModalViewContrato from '@renderer/components/modal/ModalViewContrato';
 import { procesarStateSearchOptions } from '@renderer/scripts/procesarStateSearchOptions';
+import { EliminarNotificacion } from '@renderer/actions/actionsNotificacion';
 
 function Contratos() {
   const dispatch = useDispatch<AppDispatch>();
@@ -37,7 +38,7 @@ function Contratos() {
     (item.id_empleado || '').toString().includes(searchTerm)
   );
 
-  const totalPages = Math.ceil(filteredAccesos.filter((item) => procesarStateSearchOptions(stateSearchOptions) ?
+  const totalPages = Math.ceil(filteredAccesos?.filter((item) => procesarStateSearchOptions(stateSearchOptions) ?
     item.estado === procesarStateSearchOptions(stateSearchOptions) : item.estado === procesarStateSearchOptions(stateSearchOptions))?.length / itemsPerPage);
 
   const indexOfLastItem = paginaActual * itemsPerPage;
@@ -115,6 +116,10 @@ function Contratos() {
       document.removeEventListener('mousedown', handleClick);
     };
   }, [isOpen]);
+
+  useEffect(()=>{
+    dispatch(EliminarNotificacion('contratos-vencer-vencidos'));
+  })
 
   return (
     <div className='App__dashboard__contPageOutlet__PageUsers'>

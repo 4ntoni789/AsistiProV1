@@ -4,6 +4,7 @@ import { ActiveSubMenuDeleteUsers } from '@renderer/actions/actionsUsers'
 import { AppDispatch } from '@renderer/store'
 import { useDispatch } from 'react-redux'
 import { ActiveSubMenuUpdateRole } from '@renderer/actions/actionsRoles'
+import LoaderItems from '../LoaderItems'
 
 function TablaDeRoles({ direccion, paginaActual, variants, currentItems, searchTerm, containerVariants, itemVariants }) {
   const dispatch = useDispatch<AppDispatch>();
@@ -43,7 +44,7 @@ function TablaDeRoles({ direccion, paginaActual, variants, currentItems, searchT
               exit="exit"
               className="App__dashboard__contPageOutlet__PageUsers__contRoles__table__contItem"
             >
-              {currentItems.map((item, index) => (
+              {currentItems == undefined ? null : currentItems?.length === 0 ? <LoaderItems /> : currentItems.map((item, index) => (
                 <motion.div
                   key={index}
                   variants={itemVariants}

@@ -4,6 +4,7 @@ import { ActiveSubMenuDeleteUsers } from "@renderer/actions/actionsUsers"
 import { ActiveSubMenuUpdateCargo } from "@renderer/actions/actionsCargos"
 import { useDispatch } from "react-redux"
 import { AppDispatch } from "@renderer/store"
+import LoaderItems from "../LoaderItems"
 
 function TablaDeCargos({ direccion, paginaActual, variants, currentItems, searchTerm, containerVariants, itemVariants }) {
   const dispatch = useDispatch<AppDispatch>()
@@ -44,7 +45,7 @@ function TablaDeCargos({ direccion, paginaActual, variants, currentItems, search
               exit="exit"
               className="App__dashboard__contPageOutlet__PageUsers__contRoles__table__contItem"
             >
-              {currentItems.map((item, index) => (
+              {currentItems == undefined ? null : currentItems?.length === 0 ? <LoaderItems /> : currentItems.map((item, index) => (
                 <motion.div
                   key={index}
                   variants={itemVariants}

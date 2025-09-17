@@ -1,6 +1,6 @@
 .input_style {
   width: 90%;
-  margin: 10px auto 10px auto;
+  margin: 5px auto 5px auto;
   border: none;
   outline: none;
   border-radius: 15px;
@@ -12,7 +12,8 @@
 @media (max-width: 1366px) {
   .input_style {
     padding: 0.9em;
-    margin: 2px auto 2px auto;
+    margin: 1px auto 1px auto;
+    border-radius: 10px;
   }
 }
 .input_style:focus {

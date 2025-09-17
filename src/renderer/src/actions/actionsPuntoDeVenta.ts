@@ -1,30 +1,35 @@
-import { ACTIVESUBMENUNUEWPUNTOVENTA, ACTIVESUBMENUPUNTOVENTA, ACTIVESUBMENUUPDATEPUNTOVENTA } from "@renderer/type";
+import { ACTIVESUBMENUNUEWPUNTOVENTA, ACTIVESUBMENUPUNTOVENTA, ACTIVESUBMENUUPDATEPUNTOVENTA, LOADINGPUNTOVENTA } from "@renderer/type";
 import { ActiveErrorSpam } from "./actionsLogin";
 import { ActiveSubMenuDeleteUsers } from "./actionsUsers";
 const apiUrl = import.meta.env.VITE_API_URL;
 
 export const Fetch_Punto_venta = (userId: string) => {
     const token = localStorage.getItem("token");
-    return async () => {
-        try {
-            const response = await fetch(`${apiUrl}/api/puntos-venta`, {
-                headers: {
-                    'x-id-usuario': userId,
-                    "Authorization": `Bearer ${token}`
+    return async (dispatch, getState) => {
+        dispatch(Loading_punto_venta(true));
+        const { loginAccess } = getState();
+        const conexionSse = loginAccess.conexionSse;
+        if (conexionSse) {
+            try {
+                const response = await fetch(`${apiUrl}/api/puntos-venta`, {
+                    headers: {
+                        'x-id-usuario': userId,
+                        "Authorization": `Bearer ${token}`
+                    }
+                });
+
+                const result = await response.json();
+                dispatch(Loading_punto_venta(false));
+                if (response.ok) {
+                    return result;
+                } else {
+                    console.error('Error en la petición:', result);
+                    return null;
                 }
-            });
-
-            const result = await response.json();
-
-            if (response.ok) {
-                return result;
-            } else {
-                console.error('Error en la petición:', result);
+            } catch (error) {
+                console.error('Error al hacer la petición:', error);
                 return null;
             }
-        } catch (error) {
-            console.error('Error al hacer la petición:', error);
-            return null;
         }
     }
 }
@@ -141,3 +146,5 @@ export const Fetch_delete_punto_venta = (activeDeleteUsers: any, userData: any) 
         }
     }
 }
+
+export const Loading_punto_venta = (value: any) => ({ type: LOADINGPUNTOVENTA, value });

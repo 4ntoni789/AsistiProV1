@@ -1,12 +1,11 @@
 import '../../css/itemTable.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFingerprint, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faFileCircleCheck, faFileCircleXmark, faFingerprint, faUser } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch } from 'react-redux';
-import { convertirEnPunto } from '@renderer/scripts/convertirCaracterPunto';
 import { ActiveSubMenuEmpleado } from '@renderer/actions/actionsEmpleados';
 import { ActiveMenuVerAccesos } from '@renderer/actions/actionsAccesos';
 
-function ItemTable({ item, clickLoad, contrato }) {
+function ItemTable({ item, contrato }) {
   // const [activeSubMenuEmpleado, setActiveSubMenuEmpleado] = useState(false);
   const dispatch = useDispatch();
 
@@ -16,27 +15,20 @@ function ItemTable({ item, clickLoad, contrato }) {
     }
   })
 
-
   return (
-    <div className='App__init__tablaMarcaciones__body__item'>
+    <div className={contFilter?.id_contrato ? 'App__init__tablaMarcaciones__body__item' : 'App__init__tablaMarcaciones__body__item__sinContrato'}>
       <div className='App__init__tablaMarcaciones__body__item__header'>
         <h4 onClick={() => {
           dispatch(ActiveSubMenuEmpleado({ user: item, subMenuEmpleado: true }));
-        }}>
+        }} title='Nombre de usuario'>
           <FontAwesomeIcon icon={faUser} />
-          {convertirEnPunto(`${item.nombres} ${item.apellidos}`)}</h4>
-        <h4>{item.cedula}</h4>
+          {`${item.nombres} ${item.apellidos}`}</h4>
+        <h4 title='Cedula'>CC: {item.cedula}</h4>
         {
-          contFilter ? <>
-            <h4>{contFilter.id_contrato}</h4>
-            <h4>{contFilter.fecha_inicio.toString().split('T')[0]}</h4>
-            {
-              contFilter.fecha_fin ? <h4>{contFilter.fecha_fin.toString().split('T')[0]}</h4> : <h4></h4>
-            }
-          </> : <>
-            <h4></h4>
-            <h4></h4>
-            <h4></h4>
+          <>
+            <h4>{contFilter?.id_contrato ? <FontAwesomeIcon icon={faFileCircleCheck} title='Contracto activo' /> : <FontAwesomeIcon icon={faFileCircleXmark} title='Sin contracto' />}</h4>
+            {item?.registros[0] ? <h4>Ultima marcación: {item?.registros[0].nombre_dispositivo}</h4> : <span>Sin marcaciones</span>}
+
           </>
         }
         {/* <h4>{contrato[0]?.fecha_fin.toString().split('T')[0]}</h4> */}
