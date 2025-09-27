@@ -1,0 +1,46 @@
+@import './variables';
+
+.App__dashboard__contPageOutlet__user__contNavegacion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid $color-text-disable;
+    margin-bottom: 20px;
+    height: 10%;
+
+
+    &__option {
+        // background-color: #f0a;
+        margin: 0 10px 0 10px;
+
+        a {
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: $color-text-disable;
+            transition: all .5s;
+            border-bottom: 2px solid transparent;
+
+
+            b {
+                font-weight: 500;
+            }
+
+            svg {
+                font-size: 20px;
+            }
+
+            &:hover {
+                transition: color .5s;
+                color: $color-principal;
+                border-bottom: 2px solid $color-principal;
+
+            }
+        }
+
+        &__activeBtn {
+            color: $color-principal !important;
+            border-bottom: 2px solid $color-principal !important;
+        }
+    }
+}

@@ -25,19 +25,22 @@ function NewPuntoVenta({ }) {
           <FontAwesomeIcon icon={faXmark} onClick={() => {
             dispatch(ActiveSubMenuNewPuntoVenta({ user: {}, subMenuNewPuntoVenta: false }));
             reset();
-          }} />
+          }} tabIndex={activeNewEmpleado.subMenuNewPuntoVenta ? 5 : -1} />
         </div>
         <div className='App__dashboard__contPageOutlet__PageUsers__newUser__form__contInputs'>
           <h2>Nuevo Punto de venta</h2>
           <br />
           <br />
           <label htmlFor='nombre'>Nombre del punto de venta</label>
-          <input id='nombre' type="text" {...register('nombre', { required: true })} placeholder='Nombre del punto de venta' />
+          <input id='nombre' type="text" {...register('nombre', { required: true })} placeholder='Nombre del punto de venta'
+            tabIndex={activeNewEmpleado.subMenuNewPuntoVenta ? 6 : -1} />
           <label htmlFor='direccion'>Dirección</label>
-          <input id='direccion' type="text" {...register('direccion', { required: true })} placeholder='Dirección' />
+          <input id='direccion' type="text" {...register('direccion', { required: true })} placeholder='Dirección'
+            tabIndex={activeNewEmpleado.subMenuNewPuntoVenta ? 7 : -1} />
           <label htmlFor='numero_serie_dispositivo'>Numero de serie del dispositivo</label>
-          <input id='numero_serie_dispositivo' type="text" {...register('numero_serie_dispositivo', { required: true })} placeholder='Numero de serie' />
-          <button type='submit'>Registrar</button>
+          <input id='numero_serie_dispositivo' type="text" {...register('numero_serie_dispositivo', { required: true })} placeholder='Numero de serie'
+            tabIndex={activeNewEmpleado.subMenuNewPuntoVenta ? 8 : -1} />
+          <button tabIndex={activeNewEmpleado.subMenuNewPuntoVenta ? 9 : -1} type='submit'>Registrar</button>
           <br />
           <br />
           <br />

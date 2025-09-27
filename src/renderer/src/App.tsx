@@ -7,10 +7,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import MemoriaLocal from './components/MemoriaLocal'
 import { AppDispatch } from './store'
 import Notificaciones from './components/Notificaciones'
-import { ConnectSse, DesconetarSse, ValidarToken } from './actions/actionsLogin'
-const token = localStorage.getItem("token");
+import { ConnectSse, DesconetarSse, Reconexion, ValidarToken } from './actions/actionsLogin'
 
 function App(): React.JSX.Element {
+  const token = localStorage.getItem("token");
   const userData = useSelector((state: any) => state.loginAccess.validationAccess);
   const userId = useSelector((state: any) => state.loginAccess.userLogin?.id_usuario);
   const sseRef = useRef<EventSource | null>(null);
@@ -22,13 +22,23 @@ function App(): React.JSX.Element {
     dispatch(ValidarToken());
   }, [dispatch, userData]);
 
-  useEffect(() => {     
+  useEffect(() => {
     if (!userData || sseRef.current) return;
     dispatch(ConnectSse(userId, sseRef));
     return () => {
       dispatch(DesconetarSse(sseRef));
     };
   }, [userData, stateConexion]);
+
+  //Reconexion
+  useEffect(() => {
+    const interval = setInterval(() => {
+      dispatch(Reconexion(sseRef));
+    }, 5000)
+    if (stateConexion) {
+      clearInterval(interval);
+    }
+  }, [stateConexion]);
 
   return (
     <>

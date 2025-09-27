@@ -105,7 +105,7 @@ export const ValidarToken = () => {
                 }
             } catch (err) {
                 console.error("Error validando token:", err);
-                dispatch(Logout());
+                // dispatch(Logout());
             }
         }
     }
@@ -113,17 +113,12 @@ export const ValidarToken = () => {
 export const StateConexion = (value: boolean) => ({ type: STATECONEXIONSSE, value });
 
 export const DesconetarSse = (sseRef) => {
-    return (dispatch, getState) => {
+    return (dispatch) => {
         if (sseRef.current) {
             console.log("🔴 Cerrando conexión SSE...");
             sseRef.current.close();
             sseRef.current = null;
-            const { loginAccess } = getState();
-            const conexionSse = loginAccess.conexionSse;
             dispatch(StateConexion(false));
-            if (!conexionSse) {
-                dispatch(Reconexion(sseRef));
-            }
         }
     }
 }
@@ -131,26 +126,23 @@ export const DesconetarSse = (sseRef) => {
 export const Reconexion = (sseRef) => {
     const token = localStorage.getItem("token");
     return (dispatch, getState) => {
-        //reconexion
         const { loginAccess } = getState();
         const conexionSse = loginAccess.conexionSse;
         if (!conexionSse && token && sseRef.current == null) {
-            const interval = setInterval(() => {
-                console.warn('Intentando reconexion...');
-                dispatch(ValidarToken());
-            }, 5000);
-            if (conexionSse) {
-                clearInterval(interval);
+            console.warn('Intentando reconexion...');
+            dispatch(ValidarToken());
+        } else {
+            if (!token) {
+                dispatch(Logout());
             }
         }
     }
 }
 
-
 export const ConnectSse = (userId: string, sseRef: any) => {
     const token = localStorage.getItem("token");
 
-    return async (dispatch) => {
+    return async (dispatch, getState) => {
         const source = new EventSource(
             `${apiUrl}/api/eventos-login?id_usuario=${userId}&token=${token}`
         );
@@ -160,7 +152,11 @@ export const ConnectSse = (userId: string, sseRef: any) => {
         source.addEventListener("ping", (event) => {
             const { ts } = JSON.parse(event.data);
             lastPing = Date.now();
-
+            const { loginAccess } = getState();
+            const conexionSse = loginAccess.conexionSse;
+            if (ts && !conexionSse) {
+                dispatch(StateConexion(true));
+            }
         });
         // 🔹notificaciones personalizadas
         dispatch(ObservadorDeNotificaciones(source));

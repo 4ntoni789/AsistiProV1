@@ -98,7 +98,6 @@ function TablaMarcaciones() {
     obtenerDatos(null, dispatch(Fetch_contratos(userId)), setUserContrato);
     obtenerDatos(null, dispatch(Fetch_empleados(userId)), setAccesos);
 
-
     if (clickLoad) {
       const interval = setTimeout(() => {
         setClickLoad(false);
@@ -138,14 +137,15 @@ function TablaMarcaciones() {
         <Buscandor searchTerm={searchTerm} handleSearch={handleSearch} />
         <div className='App__init__contTable__tablaMarcaciones__header__contBtn'>
           <span title='Nuevo empleado' onClick={() => dispatch(ActiveSubMenuNewEmpleado({ user: {}, activeNewEmpleado: true }))}>
-            <FontAwesomeIcon icon={faPlus} />
+            <FontAwesomeIcon icon={faPlus} tabIndex={2} />
           </span>
           <span>
             <FontAwesomeIcon title='Recargar' className={clickLoad ? 'App__init__contTable__tablaMarcaciones__header__contBtn__btnLoad__active' :
-              'App__init__contTable__tablaMarcaciones__header__contBtn__btnLoad'} icon={faArrowsRotate} onClick={() => setClickLoad(true)} />
+              'App__init__contTable__tablaMarcaciones__header__contBtn__btnLoad'} icon={faArrowsRotate} onClick={() => setClickLoad(true)}
+              tabIndex={3} />
           </span>
           <span>
-            <FontAwesomeIcon icon={faCalendarXmark} title='Sin contrato' />
+            <FontAwesomeIcon icon={faCalendarXmark} title='Sin contrato' tabIndex={4} />
           </span>
         </div>
       </div>

@@ -6,23 +6,35 @@
     border-radius: 5px;
     margin: 5px auto 5px auto;
     padding: 0 10px 0 10px;
-    width: 95%;
+    width: 75%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between !important;
     flex-wrap: wrap;
-
     // flex-direction: column;
+
+    @media (max-width:1366px) {
+        width: 85%;
+    }
+
     span {
-        width: 50%;
+        // width: 50%;
         text-align: left !important;
 
         &:nth-child(1) {
 
-            // width: 60% !important;
             b {
                 font-weight: bold;
                 color: $color-principal;
             }
+        }
+
+        &:nth-child(7) {
+            // background-color: #f0a !important;
+            height: 13px;
+            width: 100% !important;
+            display: flex;
+            justify-content: end;
+            align-items: center;
         }
 
         @media (max-width:1366px) {
@@ -38,6 +50,7 @@
         }
     }
 
+
     &__spanSinDescanso {
         width: 50% !important;
         background-color: $color-error;
@@ -49,11 +62,9 @@
     }
 
     svg {
-        position: absolute;
-        bottom: 5px;
-        right: 10px;
         cursor: pointer;
         transition: color .5s;
+        font-size: 12px;
 
         &:hover {
             color: $color-principal;

@@ -1,0 +1,36 @@
+.App__dashboard__contPageOutlet__user__contNavegacion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2px solid #c5c5c5;
+  margin-bottom: 20px;
+  height: 10%;
+}
+.App__dashboard__contPageOutlet__user__contNavegacion__option {
+  margin: 0 10px 0 10px;
+}
+.App__dashboard__contPageOutlet__user__contNavegacion__option a {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: #c5c5c5;
+  transition: all 0.5s;
+  border-bottom: 2px solid transparent;
+}
+.App__dashboard__contPageOutlet__user__contNavegacion__option a b {
+  font-weight: 500;
+}
+.App__dashboard__contPageOutlet__user__contNavegacion__option a svg {
+  font-size: 20px;
+}
+.App__dashboard__contPageOutlet__user__contNavegacion__option a:hover {
+  transition: color 0.5s;
+  color: #dd8702;
+  border-bottom: 2px solid #dd8702;
+}
+.App__dashboard__contPageOutlet__user__contNavegacion__option__activeBtn {
+  color: #dd8702 !important;
+  border-bottom: 2px solid #dd8702 !important;
+}
+
+/*# sourceMappingURL=navegacionConfiguracion.css.map */

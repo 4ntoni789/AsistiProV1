@@ -66,7 +66,7 @@ function DeleteUser() {
       setNameDelete(`eliminar el ${activeDeleteUsers.typeRemove}: ${activeDeleteUsers.user.nombre_rol}`);
       setBtnName('Eliminar');
     } else if (activeDeleteUsers.typeRemove == 'Logout') {
-      setNameDelete(`cerrar sesion`);
+      setNameDelete(`Cerrar sesión`);
       setBtnName('Cerrar Sesion');
     } else if (activeDeleteUsers.typeRemove == 'Punto-venta') {
       setNameDelete(`eliminar el punto de venta: ${activeDeleteUsers.user.nombre}`);

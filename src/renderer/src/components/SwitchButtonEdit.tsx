@@ -1,5 +1,3 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import '../css/switchButton.css';
 
 function SwitchButtonEdit({activeEdition,setActiveEdition}) {

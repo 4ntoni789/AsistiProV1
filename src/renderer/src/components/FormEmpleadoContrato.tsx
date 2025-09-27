@@ -47,7 +47,7 @@ function FormEmpleadoContrato({ userCargo, activeNewEmpleado, empleadores, activ
       'App__dashboard__contPageOutlet__PageUsers__menuUser__contDataUser__contratoNotFound'
     }
       onSubmit={handleSubmit(onSubmit)}>
-      <Alerta reactiveAlert={activeSubModal} />
+      <Alerta nameAlert='Este empleado no tiene contrato' reactiveAlert={activeSubModal} />
 
       <div className={'App__dashboard__contPageOutlet__PageUsers__menuUser__contDataUser__contratoNotFound__contInputs'}>
         <h2>Registrar contrato:</h2>

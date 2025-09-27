@@ -1,0 +1,57 @@
+@import './variables';
+.App__dashboard__contPageOutlet__user__perfil {
+    
+    animation: aparecer 1s forwards;
+    &__view {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-weight: 600;
+
+        &__userLenght {
+            h2 {
+                width: 60px;
+                height: 60px;
+                font-size: 35px;
+                background-color: $color-principal;
+                text-align: center;
+                border-radius: 100%;
+            }
+        }
+    }
+
+    hr {
+        width: 100%;
+        margin: auto;
+
+    }
+
+    &__opcions {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: first baseline;
+
+        span {
+            b {
+                color: $color-principal;
+                font-weight: bold;
+            }
+        }
+
+        button {
+            width: 100%;
+            margin-top: 10px;
+        }
+    }
+
+    &__ultimoAcceso{
+        
+        table{
+            width: 100%;
+            border: 1px solid #f0a;
+            // background-color: #f0a;
+        }
+    }
+}

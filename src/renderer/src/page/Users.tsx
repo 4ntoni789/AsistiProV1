@@ -98,7 +98,7 @@ function Users() {
           <Buscandor searchTerm={searchTerm} handleSearch={handleSearch} />
           <button disabled={userData.userLogin.type_role == 'Administrador' ? false : true} onClick={() => dispatch(ActiveSubMenuNewUsers({
             subMenuNewUsers: true
-          }))} title='Nuevo usuario'>
+          }))} title='Nuevo usuario' tabIndex={2}>
             Nuevo usuario
             <FontAwesomeIcon icon={faPlus} />
           </button>

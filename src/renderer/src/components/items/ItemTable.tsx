@@ -4,6 +4,7 @@ import { faFileCircleCheck, faFileCircleXmark, faFingerprint, faUser } from '@fo
 import { useDispatch } from 'react-redux';
 import { ActiveSubMenuEmpleado } from '@renderer/actions/actionsEmpleados';
 import { ActiveMenuVerAccesos } from '@renderer/actions/actionsAccesos';
+import { convertirEnPunto } from '@renderer/scripts/convertirCaracterPunto';
 
 function ItemTable({ item, contrato }) {
   // const [activeSubMenuEmpleado, setActiveSubMenuEmpleado] = useState(false);
@@ -22,7 +23,7 @@ function ItemTable({ item, contrato }) {
           dispatch(ActiveSubMenuEmpleado({ user: item, subMenuEmpleado: true }));
         }} title='Nombre de usuario'>
           <FontAwesomeIcon icon={faUser} />
-          {`${item.nombres} ${item.apellidos}`}</h4>
+          {window.innerWidth <= 1366 ? convertirEnPunto(String(`${item.nombres} ${item.apellidos}`)) : `${item.nombres} ${item.apellidos}`}</h4>
         <h4 title='Cedula'>CC: {item.cedula}</h4>
         {
           <>

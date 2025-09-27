@@ -30,6 +30,7 @@ function TablaDeUsuarios({ direccion, paginaActual, variants, currentItems, sear
 
                 ))
               }
+              
             </motion.div>
           ) : (
             <motion.div

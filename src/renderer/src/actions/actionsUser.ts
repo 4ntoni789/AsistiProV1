@@ -32,19 +32,20 @@ export const Fetch_update_single_user = (dataInput: any, activeUpdateUser: any, 
                 throw new Error(result.error);
             }
         } catch (error) {
-            dispatch(ActiveErrorSpam({ msg: 'Error al actualizar el usuario', active: true, typeError: 'Error' }));
+            dispatch(ActiveErrorSpam({ msg: 'Error verifica los campos antes de actualizar', active: true, typeError: 'Error' }));
             console.log('Ocurrió un error al actualizar el usuario');
         }
     }
 }
 
-export const Fetch_update_pass = (dataInput: any, userId: string, userData: any, activeUpdateUser: any, reset: () => void) => {
+export const Fetch_update_pass = (dataInput: any, userData: any, reset: () => void) => {
     const token = localStorage.getItem("token");
+    console.log(userData);
     return async (dispatch) => {
-        const response = await fetch(`${apiUrl}/api/single-usuario-put-pass/${activeUpdateUser.user.id_usuario}`, {
+        const response = await fetch(`${apiUrl}/api/single-usuario-put-pass/${userData.id_usuario}`, {
             method: 'PUT',
             headers: {
-                'x-id-usuario': userId,
+                'x-id-usuario': userData.id_usuario,
                 'Content-Type': 'application/json',
                 "Authorization": `Bearer ${token}`
             },

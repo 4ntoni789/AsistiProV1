@@ -3,7 +3,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import '../css/alerta.css';
 import { useEffect, useState } from 'react';
 
-function Alerta({ reactiveAlert }) {
+type AlertaType = {
+    reactiveAlert: boolean,
+    nameAlert: string
+}
+
+function Alerta({ reactiveAlert, nameAlert }: AlertaType) {
     const [aparecer, setAparecer] = useState<boolean>(true);
 
     useEffect(() => {
@@ -14,7 +19,7 @@ function Alerta({ reactiveAlert }) {
         <div className={aparecer ? 'Alerta__active' : 'Alerta'}>
             <div className='Alerta__text'>
                 <FontAwesomeIcon icon={faCircleExclamation} />
-                <span>Este empleado no tiene contrato</span>
+                <span>{nameAlert}</span>
             </div>
             <div className='Alerta__close' onClick={() => setAparecer(false)}><FontAwesomeIcon icon={faXmark} /></div>
         </div>

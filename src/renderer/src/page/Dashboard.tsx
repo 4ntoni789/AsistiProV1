@@ -4,13 +4,11 @@ import Menu from '@renderer/components/modal/Menu';
 
 import { Outlet, useNavigate } from 'react-router';
 import { useEffect } from 'react';
-import SubMenu from '@renderer/components/modal/SubMenu';
 
 function Dashboard({ }) {
   const menuActive = useSelector((state: any) => state.menuAccions.menuActive);
   const userData = useSelector((state: any) => state.loginAccess.validationAccess);
   const navigate = useNavigate();
-
 
   useEffect(() => {
     navigate('init');
@@ -22,7 +20,6 @@ function Dashboard({ }) {
       <div className={menuActive ? 'App__dashboard__contPageOutlet' : 'App__dashboard__contPageOutlet__active'}>
         <Outlet />
       </div>
-      {/* <SubMenu /> */}
     </div>
   );
 }

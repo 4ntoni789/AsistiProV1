@@ -21,17 +21,23 @@ function SubItemHorario({ item, rHorario, restHorario }) {
         <span className='App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__form__horarios__itemHorario__horarios__item__spanSinDescanso'><b>Sin Descanso</b></span>}
 
       <span >Entrada valida: <b>{extraerHora(item.hora_valida_entrada)} / {extraerHora(item.hora_valida_entrada_hasta)}</b></span>
+      {item.hora_salida_descanso ?
+        <span >Descanso valido: <b>{extraerHora(item.hora_valida_salida_descanso)} / {extraerHora(item.hora_valida_salida_descanso_hasta)}</b>
+          - <b>{extraerHora(item.hora_valida_regreso_descanso)} / {extraerHora(item.hora_valida_regreso_descanso_hasta)}</b></span>
+        :null}
       <span >Salida valida: <b>{extraerHora(item.hora_valida_salida)} / {extraerHora(item.hora_valida_salida_hasta)}</b></span>
-      {
-        rHorario === null ?
-          <FontAwesomeIcon icon={faTrash} onClick={() => {
-            dispatch(ActiveSubMenuDeleteUsers({
-              user: item,
-              activeDeleteUsers: true,
-              typeRemove: 'Horario'
-            }));
-          }} title='Eliminar' /> : <FontAwesomeIcon icon={faRotate} title='Reutilizar' onClick={restHorario} />
-      }
+      <span>
+        {
+          rHorario === null ?
+            <FontAwesomeIcon icon={faTrash} onClick={() => {
+              dispatch(ActiveSubMenuDeleteUsers({
+                user: item,
+                activeDeleteUsers: true,
+                typeRemove: 'Horario'
+              }));
+            }} title='Eliminar' /> : <FontAwesomeIcon icon={faRotate} title='Reutilizar' onClick={restHorario} />
+        }
+      </span>
     </div>
   );
 }

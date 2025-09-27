@@ -25,7 +25,7 @@ function NewHorario({ activeSubModal }: { activeSubModal: boolean }) {
         'App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__newHorario__active'
         : 'App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__newHorario'}>
         <div className='App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__newHorario__btnClose'>
-          <FontAwesomeIcon icon={faXmark} onClick={() => dispatch((ActiveSubMenuPuntoVenta({ user: {}, subMenuPuntoVenta: false })))} />
+          <FontAwesomeIcon tabIndex={activeMenuPuntoVenta.subMenuPuntoVenta ? 1 : -1} icon={faXmark} onClick={() => dispatch((ActiveSubMenuPuntoVenta({ user: {}, subMenuPuntoVenta: false })))} />
         </div>
         <FormNewHorario userCargo={userCargo} />
       </div >

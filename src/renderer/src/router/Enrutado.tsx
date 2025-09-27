@@ -12,10 +12,13 @@ import PuntoVenta from '@renderer/page/PuntoVenta';
 import Empleadores from '@renderer/page/Empleadores';
 import User from '@renderer/page/User';
 import Reportes from '@renderer/page/Reportes';
-import Contruccion from '@renderer/components/Construccion';
 import Contratos from '@renderer/page/Contratos';
+import AnimacionConstruccion from '@renderer/components/AnimacionConstruccion';
+import Perfil from '@renderer/page/Perfil';
+import Seguridad from '@renderer/page/Seguridad';
+import ConfiguracionNotificaciones from '@renderer/page/ConfiguracionNotificaciones';
 
-function Enrutado({}) {
+function Enrutado({ }) {
   const userData = useSelector((state: any) => state.loginAccess.validationAccess);
 
   return (
@@ -29,13 +32,18 @@ function Enrutado({}) {
               <Route path='users' element={<Users />} />
               <Route path='pSale' element={<PuntoVenta />} />
               <Route path='employe' element={<Empleados />} />
-              <Route path='ausentismo' element={<Contruccion title={'Ausentismo en construccion....'}/>} />
+              <Route path='ausentismo' element={<AnimacionConstruccion />} />
               <Route path='report' element={<Reportes />} />
               <Route path='roles' element={<Roles />} />
               <Route path='cargos' element={<Cargos />} />
-              <Route path='contracts' element={<Contratos/>} />
+              <Route path='contracts' element={<Contratos />} />
               <Route path='empleadores' element={<Empleadores />} />
-              <Route path='user' element={<User />} />
+              <Route path='user' element={<User />}>
+                <Route path='perfil' element={<Perfil />} />
+                <Route path='seguridad' element={<Seguridad />} />
+                <Route path='notificaciones' element={<ConfiguracionNotificaciones/>} />
+                <Route path='configuracion' element={<h1>Configuracion</h1>} />
+              </Route>
             </Route >
           </Route>
         </Routes>

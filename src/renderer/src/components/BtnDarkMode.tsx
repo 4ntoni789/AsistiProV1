@@ -7,8 +7,8 @@ const BtnDarkMode = () => {
     const darkMode = useSelector((state: any) => state.menuAccions.darkMode);
     const dataUser = useSelector((state: any) => state.loginAccess.userLogin);
     const dispatch = useDispatch();
-    
-    
+
+
     useEffect(() => {
         const storageKey = `uiOptions${dataUser.id_usuario}`;
         const memoriaStr = localStorage.getItem(storageKey);
@@ -24,9 +24,9 @@ const BtnDarkMode = () => {
 
 
     return (
-        <button
+        <button tabIndex={1}
             className={`toggle-container ${darkMode ? 'dark' : ''}`}
-            onClick={() =>dispatch(ActiveDarkMode(!darkMode)) }
+            onClick={() => dispatch(ActiveDarkMode(!darkMode))}
             aria-label="Toggle dark mode"
         >
             <span className="toggle-circle" />

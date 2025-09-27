@@ -124,7 +124,7 @@ function Menu({ }) {
         </div> :
           <div className='App__dashboard__contMenu__menu__footerUser'>
             <div className='App__dashboard__contMenu__menu__footerUser__userLenght'>
-              <NavLink to='user'
+              <NavLink to='user/perfil'
                 className={({ isActive }) => isActive ? "App__dashboard__contMenu__menu__footerUser__userLenght__activeBtn" : ""
                 } title='Opciones de usuario'>
                 <h2>{dataUser.nombre_usuario[0].toUpperCase()}</h2>

@@ -139,7 +139,7 @@ function Contratos() {
                   </span> :
                   null}
             <span ref={buttonRef}>
-              <FontAwesomeIcon icon={faEllipsisVertical} onClick={() => setIsOpen(!isOpen)} />
+              <FontAwesomeIcon icon={faEllipsisVertical} onClick={() => setIsOpen(!isOpen)} tabIndex={2} />
             </span>
             {/* <FontAwesomeIcon title='Ver contratos fijos' icon={faFileContract} /> */}
             {/* <FontAwesomeIcon title='Ver contratos indefinidos' icon={faFileCircleCheck} /> */}

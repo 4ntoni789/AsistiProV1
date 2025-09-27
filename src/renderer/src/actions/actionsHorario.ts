@@ -50,8 +50,9 @@ export const Fetch_horario = (userId: string, activeMenuPuntoVenta: any) => {
 
 }
 
-export const Fetch_new_horario = (dataInput, puntoVenta, almacenDiasSemana, userData, semana, userId, habilitarDescanso, reset: () => void) => {
+export const Fetch_new_horario = (dataInput, puntoVenta, almacenDiasSemana, userData, semana, userId, habilitarDescanso, reset: () => void, loading) => {
     const token = localStorage.getItem("token");
+    loading(true);
     return async (dispatch) => {
         if (semana == 'dias_especificos' || semana == 'toda_semana') {
             if (almacenDiasSemana.length > 0) {
@@ -92,6 +93,7 @@ export const Fetch_new_horario = (dataInput, puntoVenta, almacenDiasSemana, user
                         dispatch(ActiveSubMenuPuntoVenta({ user: {}, subMenuPuntoVenta: false }));
                         dispatch(ActiveErrorSpam({ msg: result.message, active: true, typeError: 'submit' }));
                         reset();
+                        loading(false);
                     } else {
                         dispatch(ActiveErrorSpam({ msg: result.message, active: true, typeError: 'error' }));
                         throw new Error(result.message);

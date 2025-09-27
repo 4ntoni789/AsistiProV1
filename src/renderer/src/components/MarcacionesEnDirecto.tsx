@@ -11,33 +11,33 @@ function MarcacionesEnDirecto({ }) {
   const [dataUser, setDataUser] = useState<any[]>();
   const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
   const [switchBtn, setSwitchBtn] = useState(false);
-  const dispatch = useDispatch<AppDispatch>()
+  const dispatch = useDispatch<AppDispatch>();
+  const stateConexion = useSelector((state: any) => state.loginAccess.conexionSse);
 
   useEffect(() => {
     setDataUser([]);
     const intervalo = setInterval(async () => {
       if (!switchBtn) {
-        obtenerDatos(null, dispatch(Fetch_accesos_dia(userId)), setDataUser);
+        await obtenerDatos(null, dispatch(Fetch_accesos_dia(userId)), setDataUser);
       } else {
-        obtenerDatos(null, dispatch(Fetch_accesos_ayer(userId)), setDataUser);
+        await obtenerDatos(null, dispatch(Fetch_accesos_ayer(userId)), setDataUser);
       }
     }, 1000)
     return () => clearInterval(intervalo);
-  }, [switchBtn])
-
+  }, [switchBtn, stateConexion === true]);
 
   return (
     <div className='App__init__marcacionesEnDirecto'>
       <h2>Marcaciones en directo</h2>
       <div className='App__init__marcacionesEnDirecto__switch'>
         <button className={!switchBtn ? 'App__init__marcacionesEnDirecto__switch__btn__active'
-          : 'App__init__marcacionesEnDirecto__switch__btn'} onClick={() => setSwitchBtn(false)}>Hoy</button>
+          : 'App__init__marcacionesEnDirecto__switch__btn'} onClick={() => setSwitchBtn(false)} tabIndex={5} >Hoy</button>
         <button className={switchBtn ? 'App__init__marcacionesEnDirecto__switch__btn__active'
-          : 'App__init__marcacionesEnDirecto__switch__btn'} onClick={() => setSwitchBtn(true)}>Ayer</button>
+          : 'App__init__marcacionesEnDirecto__switch__btn'} onClick={() => setSwitchBtn(true)} tabIndex={6} >Ayer</button>
       </div>
       <div className='App__init__marcacionesEnDirecto__body'>
-        {dataUser?.length === 0 ? <LoaderItems />: dataUser?.map((item, index) => (
-        <ItemMarcacionDirecto key={index} item={item} isNew={index === -1} />
+        {dataUser?.length === 0 ? <LoaderItems /> : dataUser?.map((item, index) => (
+          <ItemMarcacionDirecto key={index} item={item} isNew={index === -1} />
         ))}
       </div>
     </div>

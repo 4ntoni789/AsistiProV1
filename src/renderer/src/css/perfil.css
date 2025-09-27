@@ -1,0 +1,42 @@
+.App__dashboard__contPageOutlet__user__perfil {
+  animation: aparecer 1s forwards;
+}
+.App__dashboard__contPageOutlet__user__perfil__view {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+}
+.App__dashboard__contPageOutlet__user__perfil__view__userLenght h2 {
+  width: 60px;
+  height: 60px;
+  font-size: 35px;
+  background-color: #dd8702;
+  text-align: center;
+  border-radius: 100%;
+}
+.App__dashboard__contPageOutlet__user__perfil hr {
+  width: 100%;
+  margin: auto;
+}
+.App__dashboard__contPageOutlet__user__perfil__opcions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: first baseline;
+}
+.App__dashboard__contPageOutlet__user__perfil__opcions span b {
+  color: #dd8702;
+  font-weight: bold;
+}
+.App__dashboard__contPageOutlet__user__perfil__opcions button {
+  width: 100%;
+  margin-top: 10px;
+}
+.App__dashboard__contPageOutlet__user__perfil__ultimoAcceso table {
+  width: 100%;
+  border: 1px solid #f0a;
+}
+
+/*# sourceMappingURL=perfil.css.map */

@@ -1,0 +1,116 @@
+@import './variables';
+
+.App__dashboard__contPageOutlet__user__seguridad {
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    animation: aparecer 1s forwards;
+    overflow-y: auto;
+
+    &__form {
+        &__contInputs {
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+
+            hr {
+                // background-color: #f0a !important;
+                margin: 5px 0 5px 0 !important;
+            }
+
+
+            h2 {
+                font-weight: bold;
+                font-size: 20px;
+                // margin: 10px 0 10px 0;
+            }
+
+            label {
+                font-weight: bold;
+            }
+
+            &__dobleInp {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            &__contPass {
+                width: 90%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                margin: auto;
+
+                &__showPass {
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    position: relative;
+
+                    input {
+                        width: 100% !important;
+                    }
+
+
+                    svg {
+                        position: absolute;
+                        cursor: pointer;
+                        transition: all .5s;
+                        color: #dd8702;
+                        right: 10px;
+                        top: 10px;
+
+                        &:hover {
+                            color: #dd8702;
+                        }
+                    }
+                }
+
+                &__passInvalid {
+                    text-align: center;
+                    opacity: 0;
+                    visibility: hidden;
+                    height: 5px;
+                    transition: all .5s;
+
+                    &__active {
+                        text-align: center;
+                        opacity: 1;
+                        visibility: visible;
+                        height: auto;
+                        transition: all .5s;
+
+                        span {
+                            font-weight: 600;
+                            color: #c52929;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &::-webkit-scrollbar {
+        width: 5px;
+        /* width of the entire scrollbar */
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #444;
+        border-radius: 10px;
+        /* color of the tracking area */
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: $color-principal;
+        /* color of the scroll thumb */
+        border-radius: 20px;
+        /* roundness of the scroll thumb */
+        border: 3px solid $color-principal;
+        /* creates padding around scroll thumb */
+    }
+}

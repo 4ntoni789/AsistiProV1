@@ -4,18 +4,29 @@
   border-radius: 5px;
   margin: 5px auto 5px auto;
   padding: 0 10px 0 10px;
-  width: 95%;
+  width: 75%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between !important;
   flex-wrap: wrap;
 }
+@media (max-width: 1366px) {
+  .App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__form__horarios__itemHorario__horarios__item {
+    width: 85%;
+  }
+}
 .App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__form__horarios__itemHorario__horarios__item span {
-  width: 50%;
   text-align: left !important;
 }
 .App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__form__horarios__itemHorario__horarios__item span:nth-child(1) b {
   font-weight: bold;
   color: #dd8702;
+}
+.App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__form__horarios__itemHorario__horarios__item span:nth-child(7) {
+  height: 13px;
+  width: 100% !important;
+  display: flex;
+  justify-content: end;
+  align-items: center;
 }
 @media (max-width: 1366px) {
   .App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__form__horarios__itemHorario__horarios__item span {
@@ -33,11 +44,9 @@
   border-radius: 5px;
 }
 .App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__form__horarios__itemHorario__horarios__item svg {
-  position: absolute;
-  bottom: 5px;
-  right: 10px;
   cursor: pointer;
   transition: color 0.5s;
+  font-size: 12px;
 }
 .App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__form__horarios__itemHorario__horarios__item svg:hover {
   color: #dd8702;

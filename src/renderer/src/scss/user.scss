@@ -2,8 +2,8 @@
     position: relative;
     background-color: #333;
     border-radius: 5px;
-    width: 20%;
-    height: 50%;
+    width: 30%;
+    height: 60%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -18,47 +18,12 @@
         }
     }
 
-    hr {
-        width: 50%;
-
-    }
-
-    &__view {
+    &__contOutlet{
+        height: 80%;
         display: flex;
-        flex-direction: column;
-        justify-content: center;
         align-items: center;
-        font-weight: 600;
-
-        &__userLenght {
-            h2 {
-                width: 60px;
-                height: 60px;
-                font-size: 35px;
-                background-color: #dd8702;
-                text-align: center;
-                border-radius: 100%;
-            }
-        }
     }
 
-    &__opcions {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: first baseline;
-
-        span {
-            b {
-                color: #dd8702;
-            }
-        }
-
-        button {
-            width: 100%;
-            margin-top: 10px;
-        }
-    }
 }
 
 
