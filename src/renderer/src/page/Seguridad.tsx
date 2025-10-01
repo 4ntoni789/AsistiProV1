@@ -48,13 +48,11 @@ function Seguridad() {
         <div className='App__dashboard__contPageOutlet__user__seguridad__form__contInputs'>
           <h2>Seguridad</h2>
           <div className='App__dashboard__contPageOutlet__user__seguridad__form__contInputs__dobleInp'>
-            <label htmlFor="">Modificar:</label>
+            <label className='App__dashboard__contPageOutlet__user__seguridad__form__contInputs__dobleInp__label' htmlFor="">Modificar:</label>
             <SwitchButtonEdit activeEdition={activeEditionPass} setActiveEdition={() => setActiveEditionPass(!activeEditionPass)} />
           </div>
 
           <div className='App__dashboard__contPageOutlet__user__seguridad__form__contInputs__contPass'>
-
-
             <label htmlFor='contrasena'>Contraseña:</label>
             <div className='App__dashboard__contPageOutlet__user__seguridad__form__contInputs__contPass__showPass'>
               <input className='input_style' id='contrasena' type={showPass ? "password" : "text"} {...register('contrasena', { required: true, disabled: activeEditionPass })} placeholder='Nueva contraseña' />
@@ -73,17 +71,16 @@ function Seguridad() {
               <span>{typeErrorPass.typeError}</span>
             </div>
           </div>
-          <hr />
 
           <div className='App__dashboard__contPageOutlet__user__seguridad__form__contInputs__dobleInp'>
-            <label htmlFor="">Modificar:</label>
+            <label className='App__dashboard__contPageOutlet__user__seguridad__form__contInputs__dobleInp__label' htmlFor="">Modificar:</label>
             <SwitchButtonEdit activeEdition={activeEdition} setActiveEdition={() => setActiveEdition(!activeEdition)} />
           </div>
 
           <label htmlFor='nombre_usuario'>Nombre completo:</label>
           <input className='input_style' id='nombre_usuario' type="text" {...register('nombre_usuario', { required: true, disabled: activeEdition })}
             defaultValue={userData.nombre_usuario} />
-          <label htmlFor='email'>Correo electronico:</label>
+          <label htmlFor='email'>Correo electrónico:</label>
           <input className='input_style' id='email' type="text" {...register('email', { required: true, disabled: activeEdition })}
             defaultValue={userData.correo} />
           <button className='btn_style' type='submit' >Actualizar</button>

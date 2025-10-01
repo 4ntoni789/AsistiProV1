@@ -42,7 +42,7 @@ function Enrutado({ }) {
                 <Route path='perfil' element={<Perfil />} />
                 <Route path='seguridad' element={<Seguridad />} />
                 <Route path='notificaciones' element={<ConfiguracionNotificaciones/>} />
-                <Route path='configuracion' element={<h1>Configuracion</h1>} />
+                <Route path='configuracion' element={<h1>Configuración</h1>} />
               </Route>
             </Route >
           </Route>

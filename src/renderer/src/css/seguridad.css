@@ -26,6 +26,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-bottom: 5px;
+  border-bottom: 2px solid;
+}
+.App__dashboard__contPageOutlet__user__seguridad__form__contInputs__dobleInp__label {
+  padding-right: 36%;
+  margin-right: 10%;
+  border-right: 2px solid;
 }
 .App__dashboard__contPageOutlet__user__seguridad__form__contInputs__contPass {
   width: 90%;

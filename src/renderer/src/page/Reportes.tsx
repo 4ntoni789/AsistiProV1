@@ -38,7 +38,7 @@ function Reportes(props) {
       <ContainerReportes seleted={seleted} setSeleted={setSeleted} />
       <br />
       <div className='App__init__Reporte__header'>
-        <h2>Generador de reporte</h2>
+        <h2>Generador de reportes</h2>
       </div>
       <div className='App__init__Reporte__tipoReporte'>
         <div className='App__init__Reporte__tipoReporte__contBtnFlotante'>

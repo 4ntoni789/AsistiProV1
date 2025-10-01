@@ -1,4 +1,3 @@
-import React from 'react'
 import '../css/navegacionConfiguracion.css';
 import { NavLink } from 'react-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -30,7 +29,7 @@ function NavegacionConfiguracion() {
       <div className='App__dashboard__contPageOutlet__user__contNavegacion__option'>
         <NavLink to='configuracion'
           className={({ isActive }) => isActive ? "App__dashboard__contPageOutlet__user__contNavegacion__option__activeBtn" : ""
-          }><FontAwesomeIcon icon={faGear} /><b>Configuracion</b></NavLink>
+          }><FontAwesomeIcon icon={faGear} /><b>Configuración</b></NavLink>
       </div>
 
     </div>

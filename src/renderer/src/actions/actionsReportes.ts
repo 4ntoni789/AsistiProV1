@@ -71,6 +71,7 @@ export const Fetch_generar_reporte = (dataInput: any, seleted: string, userId: s
             setLoader(false);
         } catch (error) {
             console.log(error);
+            setLoader(false);
         }
     }
 }

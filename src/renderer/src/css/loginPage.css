@@ -108,7 +108,7 @@
   top: 15%;
   opacity: 1;
   visibility: visible;
-  animation: rotar 0.5s infinite linear;
+  animation: rotate 1s infinite linear;
 }
 .App__loginPage__contBanner {
   width: 60%;
