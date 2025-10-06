@@ -3,6 +3,9 @@ export type DataLogin = {
   contrasena: string
 }
 
+export type DataForgotPass = {
+  correo_recuperacion: string,
+}
 export interface Props {
   registros?: Array<object>;
   start: number;

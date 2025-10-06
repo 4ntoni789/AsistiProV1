@@ -17,6 +17,8 @@ import AnimacionConstruccion from '@renderer/components/AnimacionConstruccion';
 import Perfil from '@renderer/page/Perfil';
 import Seguridad from '@renderer/page/Seguridad';
 import ConfiguracionNotificaciones from '@renderer/page/ConfiguracionNotificaciones';
+import ForgotPass from '@renderer/page/ForgotPass';
+import FormLogin from '@renderer/components/FormLogin';
 
 function Enrutado({ }) {
   const userData = useSelector((state: any) => state.loginAccess.validationAccess);
@@ -25,7 +27,10 @@ function Enrutado({ }) {
     <>
       <Router>
         <Routes>
-          <Route path='/' element={<Login />} />
+          <Route path='/' element={<Login />} >
+            <Route path='formLogin' element={<FormLogin />} />
+            <Route path='forgot' element={<ForgotPass />} />
+          </Route >
           <Route element={<ProtectiveRoute canActivate={userData} />}>
             <Route path='dashboard' element={<Dashboard />} >
               <Route path='init' element={<Inicio />} />
@@ -41,7 +46,7 @@ function Enrutado({ }) {
               <Route path='user' element={<User />}>
                 <Route path='perfil' element={<Perfil />} />
                 <Route path='seguridad' element={<Seguridad />} />
-                <Route path='notificaciones' element={<ConfiguracionNotificaciones/>} />
+                <Route path='notificaciones' element={<ConfiguracionNotificaciones />} />
                 <Route path='configuracion' element={<h1>Configuración</h1>} />
               </Route>
             </Route >

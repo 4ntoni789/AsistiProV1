@@ -1,0 +1,163 @@
+// Variables de color para fácil personalización
+$unlocked-color: #4CAF50; // Verde
+$locked-color: #f44336; // Rojo
+$dark-grey: #333;
+
+.lock-container {
+  perspective: 1000px;
+}
+
+.lock {
+  width: 80px;
+  height: 60px;
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+  // El arco del candado
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    width: 60px;
+    height: 50px;
+    border: 10px solid; // El color se heredará de la animación
+    border-bottom: none;
+    border-radius: 30px 30px 0 0;
+    transform: translateX(-50%);
+    transition: border-color 0.3s ease; // Transición suave para el color del arco
+  }
+
+  // El agujero de la llave
+  &::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    width: 12px;
+    height: 12px;
+    background-color: $dark-grey;
+    border-radius: 50%;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+    transform: translateX(-50%);
+  }
+}
+
+// Clase que activa la animación
+.lockAnimated {
+  // Nombre de la animacion, duración, y que se repita para siempre (infinite)
+  animation: lock-unlock-cycle 4s ease-in-out infinite;
+  transition: all 1s;
+}
+
+.unlockAnimated {
+  animation: Unlock-unlock-cycle 4s ease-in-out infinite;
+  transition: all 1s;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    width: 60px;
+    height: 50px;
+    border: 10px solid; // El color se heredará de la animación
+    border-bottom: none;
+    border-radius: 30px 30px 0 0;
+    transform: translate(30%);
+    animation: unlockArco 1s linear;
+    transition: border-color 0.3s ease; // Transición suave para el color del arco
+  }
+}
+
+// Keyframes para el ciclo de animación completo
+@keyframes lock-unlock-cycle {
+
+  // Fase 1: Inicia desbloqueado (verde) y se mantiene
+  0%,
+  25% {
+    background-color: $locked-color;
+    border-color: $locked-color;
+    transform: scale(1);
+  }
+
+  // Fase 2: Transición a bloqueado (rojo) con una sacudida
+  35% {
+    transform: translateX(-5px) rotate(-3deg);
+  }
+
+  40% {
+    background-color: $locked-color;
+    border-color: $locked-color;
+    transform: translateX(5px) rotate(3deg);
+  }
+
+  45% {
+    transform: translateX(-5px) rotate(-3deg);
+  }
+
+  // Fase 3: Se mantiene bloqueado
+  50%,
+  75% {
+    background-color: $locked-color;
+    border-color: $locked-color;
+    transform: translateX(0) rotate(0);
+  }
+
+  // Fase 4: Transición a desbloqueado (verde) con un pulso
+  85% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    background-color: $locked-color;
+    border-color: $locked-color;
+    transform: scale(1);
+  }
+}
+
+@keyframes Unlock-unlock-cycle {
+
+  // Fase 1: Inicia desbloqueado (verde) y se mantiene
+  0%,
+  25% {
+    background-color: $unlocked-color;
+    border-color: $unlocked-color;
+    transform: scale(1);
+  }
+
+  // Fase 2: Transición a bloqueado (rojo) con una sacudida
+  35% {
+    transform: translateX(-5px) rotate(-3deg);
+  }
+
+  40% {
+    background-color: $unlocked-color;
+    border-color: $unlocked-color;
+    transform: translateX(5px) rotate(3deg);
+  }
+
+  45% {
+    transform: translateX(-5px) rotate(-3deg);
+  }
+
+  // Fase 3: Se mantiene bloqueado
+  50%,
+  75% {
+    background-color: $unlocked-color;
+    border-color: $unlocked-color;
+    transform: translateX(0) rotate(0);
+  }
+
+  // Fase 4: Transición a desbloqueado (verde) con un pulso
+  85% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    background-color: $unlocked-color;
+    border-color: $unlocked-color;
+    transform: scale(1);
+  }
+}

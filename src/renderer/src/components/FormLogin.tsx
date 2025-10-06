@@ -4,10 +4,11 @@ import { ValidationData } from '@renderer/actions/actionsLogin';
 import { useForm } from 'react-hook-form';
 import { DataLogin } from '@renderer/typesTS';
 import { useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router';
+import { NavLink, useNavigate } from 'react-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeLowVision, faRotate } from '@fortawesome/free-solid-svg-icons';
 import { AppDispatch } from '@renderer/store';
+import ErrorLoginSpan from './ErrorLogin';
 
 function FormLogin() {
   // const [datos, setDatos] = useState();
@@ -46,6 +47,13 @@ function FormLogin() {
         <button className={loadingDataRest ? 'App__loginPage__cont__contForm__form__loadingBoton'
           : 'App__loginPage__cont__contForm__form__button'} type='submit' disabled={disableInput}><FontAwesomeIcon icon={faRotate} /> Iniciar sesión</button>
       </form>
+      {!disableInput
+        ? <div className='App__loginPage__cont__contForm__forgot'>
+          <NavLink to={'/forgot'}>¿Olvidaste tu contraseña?</NavLink>
+        </div>
+        : null
+      }
+      <ErrorLoginSpan />
     </div>
   );
 }
