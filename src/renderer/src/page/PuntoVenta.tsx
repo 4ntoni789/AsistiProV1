@@ -87,7 +87,7 @@ function PuntoVenta() {
   };
 
   useEffect(() => {
-    obtenerDatos(null, dispatch(Fetch_Punto_venta(userId)), setUserPuntoVenta);
+    obtenerDatos(dispatch(Fetch_Punto_venta(userId)), setUserPuntoVenta);
   }, [userData == true, spam.active]);
 
   return (

@@ -22,8 +22,8 @@ function VerPuntoVenta({ activeSubModal }: { activeSubModal: boolean }) {
   const [userCargo, setUserCargo] = useState<[]>([]);
 
   useEffect(() => {
-    obtenerDatos(null, dispatch(Fetch_horario(userId, activeMenuPuntoVenta)), setHorario);
-    obtenerDatos(null, dispatch(Fetch_cargos(userId)), setUserCargo);
+    obtenerDatos(dispatch(Fetch_horario(userId, activeMenuPuntoVenta)), setHorario);
+    obtenerDatos(dispatch(Fetch_cargos(userId)), setUserCargo);
 
   }, [activeMenuPuntoVenta.subMenuPuntoVenta == true, activeModalDelete]);
 

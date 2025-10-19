@@ -1,0 +1,43 @@
+.VisualSixInputsVerifyCode {
+  display: flex;
+  gap: 12px;
+  justify-content: "center";
+  align-items: "center";
+  padding: 0px;
+  height: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s;
+}
+.VisualSixInputsVerifyCode__active {
+  display: flex;
+  gap: 12px;
+  justify-content: "center";
+  align-items: "center";
+  padding: 8px;
+  height: auto;
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.5s;
+}
+.VisualSixInputsVerifyCode__input {
+  width: 24px;
+  height: 32px;
+  border-radius: 12px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: linear-gradient(180deg, #dd8702 0%, #fbfdff 100%);
+  box-shadow: 0 8px 24px rgba(2, 6, 23, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  font-family: Courier New, Courier, monospace;
+  font-size: 20px;
+  text-align: center;
+  color: #0f172a;
+  outline: none;
+  padding: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+.VisualSixInputsVerifyCode__input:disabled {
+  background: linear-gradient(180deg, #c0c0c0 0%, #b9babb 100%);
+}
+
+/*# sourceMappingURL=visualSixInputsVerifyCode.css.map */

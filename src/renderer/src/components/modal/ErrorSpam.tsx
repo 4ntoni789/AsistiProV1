@@ -17,7 +17,6 @@ function ErrorSpam(props) {
       }
     }
   }, [userData.active])
-
   return (
     <div className={userData.active ? `App__dashboard__errorSpam__active ${userData?.typeError}` : 'App__dashboard__errorSpam'}>
       <h2>{userData.msg}</h2>

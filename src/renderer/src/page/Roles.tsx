@@ -84,7 +84,7 @@ function Roles({ }) {
 
 
   useEffect(() => {
-    obtenerDatos(null, dispatch(Fetch_roles(userId)), setUserRoles);
+    obtenerDatos(dispatch(Fetch_roles(userId)), setUserRoles);
   }, [userData == true, spam.active]);
 
   return (

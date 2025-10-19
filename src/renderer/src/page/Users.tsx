@@ -87,7 +87,7 @@ function Users() {
     setPaginaActual(1);
   };
   useEffect(() => {
-    obtenerDatos(null, dispatch(Fetch_user(userId)), setDataUsers);
+    obtenerDatos(dispatch(Fetch_user(userId)), setDataUsers);
   }, [userData.validationAccess, spam.active]);
 
   return (

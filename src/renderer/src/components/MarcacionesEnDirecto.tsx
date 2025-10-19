@@ -18,9 +18,9 @@ function MarcacionesEnDirecto({ }) {
     setDataUser([]);
     const intervalo = setInterval(async () => {
       if (!switchBtn) {
-        await obtenerDatos(null, dispatch(Fetch_accesos_dia(userId)), setDataUser);
+        await obtenerDatos(dispatch(Fetch_accesos_dia(userId)), setDataUser);
       } else {
-        await obtenerDatos(null, dispatch(Fetch_accesos_ayer(userId)), setDataUser);
+        await obtenerDatos(dispatch(Fetch_accesos_ayer(userId)), setDataUser);
       }
     }, 1000)
     return () => clearInterval(intervalo);

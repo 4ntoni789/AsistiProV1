@@ -95,8 +95,8 @@ function TablaMarcaciones() {
 
 
   useEffect(() => {
-    obtenerDatos(null, dispatch(Fetch_contratos(userId)), setUserContrato);
-    obtenerDatos(null, dispatch(Fetch_empleados(userId)), setAccesos);
+    obtenerDatos(dispatch(Fetch_contratos(userId)), setUserContrato);
+    obtenerDatos(dispatch(Fetch_empleados(userId)), setAccesos);
 
     if (clickLoad) {
       const interval = setTimeout(() => {

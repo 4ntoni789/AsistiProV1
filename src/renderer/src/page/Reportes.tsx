@@ -29,8 +29,8 @@ function Reportes(props) {
   }
 
   useEffect(() => {
-    obtenerDatos(null, dispatch(Fetch_Punto_venta(userId)), setPuntosVenta);
-    obtenerDatos(null, dispatch(Fetch_empleados(userId)), setEmpleados);
+    obtenerDatos(dispatch(Fetch_Punto_venta(userId)), setPuntosVenta);
+    obtenerDatos(dispatch(Fetch_empleados(userId)), setEmpleados);
   }, [userData.validationAccess == true, seleted]);
 
   return (

@@ -28,7 +28,7 @@ function Empleadores({ }) {
   const filteredAccesos = empleadores?.filter((item) =>
     (item.nombre_empleador || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
     (item.nit || '').toString().includes(searchTerm) ||
-    (item.id_empleador || '').toString().includes(searchTerm) 
+    (item.id_empleador || '').toString().includes(searchTerm)
   );
 
   const totalPages = Math.ceil(filteredAccesos?.length / itemsPerPage);
@@ -85,7 +85,7 @@ function Empleadores({ }) {
 
 
   useEffect(() => {
-    obtenerDatos(null, dispatch(Fetch_empleadores(userId)), setEmpleadores);
+    obtenerDatos(dispatch(Fetch_empleadores(userId)), setEmpleadores);
   }, [userData == true, spam.active]);
 
   const [isOpen, setIsOpen] = useState(false);

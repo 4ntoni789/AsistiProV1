@@ -110,6 +110,62 @@ export const ValidarToken = () => {
         }
     }
 };
+
+export const Fetch_forgot_password = (dataInput, calback) => {
+    return async (dispatch) => {
+        try {
+            const response = await fetch(`${apiUrl}/api/forgot-password`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    identificador: dataInput.correo_recuperacion,
+                }),
+            });
+
+            const result = await response.json();
+            if (result.success) {
+                dispatch(ActiveErrorSpam({ msg: result.message, active: true, typeError: 'submit' }));
+                calback();
+            } else {
+                dispatch(ActiveErrorSpam({ msg: result.message, active: true, typeError: 'error' }));
+            }
+            return result.success
+        } catch (err) {
+            console.error("Error:", err);
+        }
+    }
+}
+
+export const Fetch_forgot_password_verify = (dataInput, calback) => {
+    return async (dispatch) => {
+        try {
+            const response = await fetch(`${apiUrl}/api/forgot-password-verify-code`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email: dataInput.correo_recuperacion,
+                    code: dataInput.code
+                }),
+            });
+
+            const result = await response.json();
+            if (result.success) {
+                dispatch(ActiveErrorSpam({ msg: result.message, active: true, typeError: 'submit' }));
+                calback();
+            } else {
+                dispatch(ActiveErrorSpam({ msg: result.message, active: true, typeError: 'error' }));
+            }
+            return result.success
+        } catch (err) {
+            console.error("Error:", err);
+        }
+    }
+}
+
 export const StateConexion = (value: boolean) => ({ type: STATECONEXIONSSE, value });
 
 export const DesconetarSse = (sseRef) => {

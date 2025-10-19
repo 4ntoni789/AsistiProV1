@@ -15,7 +15,7 @@ function ContratosPorVencer() {
   const spam = useSelector((state: any) => state.menuAccions.errorSpam);
 
   useEffect(() => {
-    obtenerDatos(null, dispatch(Fetch_contratosPorVencer(userId)), setContratosPorVencer);
+    obtenerDatos(dispatch(Fetch_contratosPorVencer(userId)), setContratosPorVencer);
   }, [userData == true, spam])
 
   return (

@@ -93,7 +93,7 @@ function Contratos() {
   };
 
   useEffect(() => {
-    obtenerDatos(null, dispatch(Fetch_contratos(userId)), setUserContrato);
+    obtenerDatos(dispatch(Fetch_contratos(userId)), setUserContrato);
   }, [userData == true, spam]);
 
 

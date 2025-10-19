@@ -4,23 +4,21 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownload, faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 function DownloadButton({ functionDescargar, load, nameButton, disable }) {
-  const [isCompleted, setIsCompleted] = useState(false);
+  const [isCompleted, setIsCompleted] = useState(true);
 
   useEffect(() => {
-    if (!load && isCompleted) {
-      // Si ya terminó la descarga, dejamos el estado en completado
-      return;
-    }
-
-    if (!load && !isCompleted) {
-      // Cuando `load` pase a false después de ejecutar functionDescargar
+    if (load === true) {
+      setIsCompleted(false);
+    }else{
       setIsCompleted(true);
     }
-  }, [load]);
+  }, [load])
 
   const handleDownload = async () => {
-    setIsCompleted(false); 
-    functionDescargar();
+    // setIsCompleted(false);
+    if (functionDescargar !== null) {
+      functionDescargar();
+    }
   };
 
   return (

@@ -29,7 +29,7 @@ function Seguridad() {
       if (!activeEdition && dataInput.nombre_usuario !== userData.nombre_usuario && dataInput.email !== userData.correo) {
         dispatch(Fetch_update_single_user(dataInput, activeUpdateUser, userData.userId, userData));
       } else if (dataInput.contrasena === dataInput.cncontrasena) {
-        obtenerDatos(null, dispatch(Fetch_update_pass(dataInput, userData, reset)), setTypeErrorPass)
+        obtenerDatos(dispatch(Fetch_update_pass(dataInput, userData, reset)), setTypeErrorPass)
       } else {
         if (dataInput.contrasena !== dataInput.cncontrasena) {
           setTypeErrorPass({

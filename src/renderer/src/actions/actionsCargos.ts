@@ -18,7 +18,6 @@ export const Fetch_cargos = (userId: string) => {
                 });
 
                 const result = await response.json();
-
                 if (response.ok) {
                     return result;
                 } else {

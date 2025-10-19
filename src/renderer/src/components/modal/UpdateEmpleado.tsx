@@ -28,7 +28,7 @@ function UpdateEmpleado({ activeSubModal }: { activeSubModal: boolean }) {
 
   useEffect(() => {
     setActiveEdition(true);
-    obtenerDatos(null, dispatch(Fetch_cargos(userId)), setUserCargo);
+    obtenerDatos(dispatch(Fetch_cargos(userId)), setUserCargo);
   }, [activeNewEmpleado.subMenuEmpleado == true]);
 
   return (

@@ -41,7 +41,7 @@ function NewEmpleado() {
   }
 
   useEffect(() => {
-    obtenerDatos(null, dispatch(Fetch_cargos(userId)), setUserCargo);
+    obtenerDatos(dispatch(Fetch_cargos(userId)), setUserCargo);
   }, [activeNewEmpleado == true]);
 
   useEffect(() => {

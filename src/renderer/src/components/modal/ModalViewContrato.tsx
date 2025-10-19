@@ -46,8 +46,8 @@ function ModalViewContrato() {
 
   useEffect(() => {
     obtenerDatosPrimerCoincidencia(dispatch(Fetch_empleados(userId)), setEmpleado, activeVerContrato.user.id_empleado);
-    obtenerDatos(null, dispatch(Fetch_cargos(userId)), setUserCargo);
-    obtenerDatos(null, dispatch(Fetch_empleadores(userId)), setEmpleadores);
+    obtenerDatos(dispatch(Fetch_cargos(userId)), setUserCargo);
+    obtenerDatos(dispatch(Fetch_empleadores(userId)), setEmpleadores);
   }, [activeVerContrato.subMenuVerContrato == true]);
 
   return (
@@ -98,7 +98,7 @@ function ModalViewContrato() {
                         dispatch(ActiveSubMenuDeleteUsers({ user: activeVerContrato.user, activeDeleteUsers: true, typeRemove: 'Contrato' }));
                       }} /> : null
                     }
-                    <DowloadButton functionDescargar={GenerarContrato} load={loader} nameButton={'Descargar contrato'} disable={false}/>
+                    <DowloadButton functionDescargar={GenerarContrato} load={loader} nameButton={'Descargar contrato'} disable={false} />
                   </div>
                 </>
             }

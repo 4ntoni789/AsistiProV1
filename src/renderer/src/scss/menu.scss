@@ -236,6 +236,7 @@
                 right: -15px;
                 top: 50vh;
                 border: 5px solid $color-secundario;
+                background-color: #333;
                 border-radius: 100%;
                 transition: all .5s;
 
@@ -345,6 +346,12 @@
                     border-radius: 5px;
                     transition: all .5s;
 
+                    white-space: nowrap;
+                    /* No permite salto de línea */
+                    overflow: hidden;
+                    /* Oculta el texto que se desborda */
+                    text-overflow: ellipsis;
+                    /* Agrega los tres puntos (...) */
 
                     svg {
                         font-size: 20px;

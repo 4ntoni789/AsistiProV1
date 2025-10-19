@@ -5,6 +5,7 @@ export type DataLogin = {
 
 export type DataForgotPass = {
   correo_recuperacion: string,
+  codigo_recuperacion:string
 }
 export interface Props {
   registros?: Array<object>;

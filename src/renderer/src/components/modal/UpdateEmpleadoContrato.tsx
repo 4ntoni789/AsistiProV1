@@ -21,8 +21,8 @@ function UpdateEmpleadoContrato({ activeSubModal }: { activeSubModal: boolean })
 
   useEffect(() => {
     obtenerDatosPrimerCoincidencia(dispatch(Fetch_contratos(userId)), setUserContrato, activeNewEmpleado.user.id_empleado);
-    obtenerDatos(null, dispatch(Fetch_cargos(userId)), setUserCargo);
-    obtenerDatos(null, dispatch(Fetch_empleadores(userId)), setEmpleadores);
+    obtenerDatos(dispatch(Fetch_cargos(userId)), setUserCargo);
+    obtenerDatos(dispatch(Fetch_empleadores(userId)), setEmpleadores);
   }, [activeNewEmpleado.subMenuEmpleado == true]);
 
   const contFilter = userContrato?.find((c, i) => {

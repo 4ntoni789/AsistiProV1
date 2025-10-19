@@ -14,12 +14,10 @@ function ConfiguracionNotificaciones() {
   const dispatch = useDispatch<AppDispatch>();
   const [configuracionNotificaciones, setConfiguracionNotificaciones] = useState<[]>([]);
   const { register, handleSubmit, reset } = useForm();
-
-
   console.log(configuracionNotificaciones)
 
   useEffect(() => {
-    obtenerDatos(null, dispatch(Fetch_configuracion_notificaciones(userData)), setConfiguracionNotificaciones);
+    obtenerDatos(dispatch(Fetch_configuracion_notificaciones(userData)), setConfiguracionNotificaciones);
     // dispatch(Fet_new_configuracion_notificaciones(null, userData.id_usuario, userData));
   }, [])
 
@@ -31,7 +29,7 @@ function ConfiguracionNotificaciones() {
 
           <div className='App__dashboard__contPageOutlet__user__notificaciones__form__contInputs__dobleInp'>
             <label className='App__dashboard__contPageOutlet__user__notificaciones__form__contInputs__dobleInp__label' htmlFor=""
-            >Avisos automaticos <FontAwesomeIcon title='Este es un aviso que se le da al empleado via correo electrónico' icon={faQuestionCircle} /> :</label>
+            >Avisos automaticos <FontAwesomeIcon title='Este es un aviso que se le notifica al empleado via correo electrónico' icon={faQuestionCircle} /> :</label>
             <SwitchButtonEdit activeEdition={null} setActiveEdition={() => null} />
           </div>
 

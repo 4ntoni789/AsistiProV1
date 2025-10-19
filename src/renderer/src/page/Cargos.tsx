@@ -29,7 +29,6 @@ function Cargos({ }) {
     (item.id_cargo || '').toString().includes(searchTerm)
   );
 
-
   const totalPages = Math.ceil(filteredAccesos?.length / itemsPerPage);
 
   const indexOfLastItem = paginaActual * itemsPerPage;
@@ -83,7 +82,7 @@ function Cargos({ }) {
   };
 
   useEffect(() => {
-    obtenerDatos(null, dispatch(Fetch_cargos(userId)), setUserCargo);
+    obtenerDatos(dispatch(Fetch_cargos(userId)), setUserCargo);
   }, [userData == true, spam.active]);
 
   return (
