@@ -24,11 +24,11 @@ function NewUser() {
   const [typeErrorPass, setTypeErrorPass] = useState<{ activeError: boolean, typeError: string }>();
 
   const onSubmit = async (dataInput) => {
-    obtenerDatos(dataInput, dispatch(Fetch_new_user(dataInput, userId, userData, userActiveCheck, reset)), setTypeErrorPass);
+    obtenerDatos(dispatch(Fetch_new_user(dataInput, userId, userData, userActiveCheck, reset)), setTypeErrorPass);
   }
 
   useEffect(() => {
-    obtenerDatos(null,dispatch(Fetch_roles(userId)),setUserRoles);
+    obtenerDatos(dispatch(Fetch_roles(userId)),setUserRoles);
   }, [activeNewUsers == true]);
 
   return (

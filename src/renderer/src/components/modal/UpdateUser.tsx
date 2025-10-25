@@ -25,7 +25,7 @@ function UpdateUser(props) {
     dispatch(Fetch_update_user(dataInput, userData, activeUpdateUser, userId));
   }
   useEffect(() => {
-    obtenerDatos(null, dispatch(Fetch_roles(userId)), setUserRoles);
+    obtenerDatos(dispatch(Fetch_roles(userId)), setUserRoles);
   }, [activeUpdateUser.subMenuUpdateUser == true]);
 
   return (

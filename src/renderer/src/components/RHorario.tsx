@@ -15,10 +15,10 @@ function RHorario({ active, setDataRHorario }) {
   const activeMenuPuntoVenta = useSelector((state: any) => state.menuAccions.subMenuPuntoVenta);
 
   useEffect(() => {
-    obtenerDatos(null, dispatch(Fetch_horario(userId, activeMenuPuntoVenta)), setHorario);
-    obtenerDatos(null, dispatch(Fetch_cargos(userId)), setUserCargo);
+    obtenerDatos(dispatch(Fetch_horario(userId, activeMenuPuntoVenta)), setHorario);
+    obtenerDatos(dispatch(Fetch_cargos(userId)), setUserCargo);
   }, [active == true]);
-  
+
 
   return (
     <div className={active ? 'App__dashboard__contPageOutlet__PageUsers__menuVerPuntoVenta__newHorario__dataUser__rHorario__active'
@@ -29,7 +29,7 @@ function RHorario({ active, setDataRHorario }) {
             <h2>Reutilizar horarios</h2>
             {
               horario?.map((item: any, i: number) => (
-                <ItemHorario dataHorario={setDataRHorario} cargos={userCargo} key={i} registro={item}/>
+                <ItemHorario dataHorario={setDataRHorario} cargos={userCargo} key={i} registro={item} />
               ))
             }
           </> : <span>No hay horarios para este punto</span>

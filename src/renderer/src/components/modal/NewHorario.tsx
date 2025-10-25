@@ -16,7 +16,7 @@ function NewHorario({ activeSubModal }: { activeSubModal: boolean }) {
   const userId = useSelector((state: any) => state.loginAccess.userLogin.id_usuario);
 
   useEffect(() => {
-    obtenerDatos(null, dispatch(Fetch_cargos(userId)), setUserCargo);
+    obtenerDatos(dispatch(Fetch_cargos(userId)), setUserCargo);
   }, [activeMenuPuntoVenta.subMenuPuntoVenta == true]);
 
   return (

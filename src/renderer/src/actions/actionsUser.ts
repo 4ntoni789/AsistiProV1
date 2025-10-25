@@ -6,15 +6,15 @@ const apiUrl = import.meta.env.VITE_API_URL;
 
 export const ActiveSubMenuUpdatePass = (value: any) => ({ type: ACTIVESUBMENUUPDATEPASS, value });
 
-export const Fetch_update_single_user = (dataInput: any, activeUpdateUser: any, userId: string, userData) => {
+export const Fetch_update_single_user = (dataInput: any, userData) => {
     const token = localStorage.getItem("token");
     return async (dispatch) => {
         try {
-            const response = await fetch(`${apiUrl}/api/single-usuario/${activeUpdateUser.user.id_usuario}`, {
+            const response = await fetch(`${apiUrl}/api/single-usuario/${userData.id_usuario}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
-                    'x-id-usuario': userId,
+                    'x-id-usuario': userData.id_usuario,
                     "Authorization": `Bearer ${token}`
                 },
                 body: JSON.stringify({
@@ -40,7 +40,6 @@ export const Fetch_update_single_user = (dataInput: any, activeUpdateUser: any, 
 
 export const Fetch_update_pass = (dataInput: any, userData: any, reset: () => void) => {
     const token = localStorage.getItem("token");
-    console.log(userData);
     return async (dispatch) => {
         const response = await fetch(`${apiUrl}/api/single-usuario-put-pass/${userData.id_usuario}`, {
             method: 'PUT',

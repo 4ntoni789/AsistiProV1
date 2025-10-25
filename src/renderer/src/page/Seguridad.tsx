@@ -14,7 +14,6 @@ function Seguridad() {
   const [activeEdition, setActiveEdition] = useState<boolean>(true);
   const [activeEditionPass, setActiveEditionPass] = useState<boolean>(true);
   const { register, handleSubmit, reset } = useForm();
-  const activeUpdateUser = useSelector((state: any) => state.menuAccions.subMenuUpdateUser);
   const userData = useSelector((state: any) => state.loginAccess.userLogin);
   const dispatch = useDispatch<AppDispatch>();
   const [showPass, setShowPass] = useState<boolean>(true);
@@ -26,17 +25,20 @@ function Seguridad() {
 
   const onSubmit = async (dataInput) => {
     if (!activeEdition || !activeEditionPass) {
-      if (!activeEdition && dataInput.nombre_usuario !== userData.nombre_usuario && dataInput.email !== userData.correo) {
-        dispatch(Fetch_update_single_user(dataInput, activeUpdateUser, userData.userId, userData));
-      } else if (dataInput.contrasena === dataInput.cncontrasena) {
-        obtenerDatos(dispatch(Fetch_update_pass(dataInput, userData, reset)), setTypeErrorPass)
-      } else {
-        if (dataInput.contrasena !== dataInput.cncontrasena) {
-          setTypeErrorPass({
-            activeError: true,
-            typeError: "Las contraseñas no coinciden"
-          })
-        }
+      if (!activeEdition && !activeEditionPass) {
+        obtenerDatos(dispatch(Fetch_update_pass(dataInput, userData, reset)), setTypeErrorPass);
+        dispatch(Fetch_update_single_user(dataInput, userData));
+      }
+      else if (!activeEdition) {
+        dispatch(Fetch_update_single_user(dataInput, userData));
+      } else if (!activeEditionPass && dataInput.contrasena === dataInput.cncontrasena) {
+        obtenerDatos(dispatch(Fetch_update_pass(dataInput, userData, reset)), setTypeErrorPass);
+      }
+      else if (dataInput.contrasena !== dataInput.cncontrasena) {
+        setTypeErrorPass({
+          activeError: true,
+          typeError: "Las contraseñas no coinciden"
+        })
       }
     } else {
       dispatch(ActiveErrorSpam({ msg: 'Faltan datos por completar, revisa el formulario.', active: true, typeError: 'error' }));

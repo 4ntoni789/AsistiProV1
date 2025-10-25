@@ -7,7 +7,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  max-height: 130px;
+  max-height: 180px;
+  min-height: 130px;
   transition: all 0.5s;
   border: 1px solid transparent;
   animation: slideDownFade 0.5s ease-out;
